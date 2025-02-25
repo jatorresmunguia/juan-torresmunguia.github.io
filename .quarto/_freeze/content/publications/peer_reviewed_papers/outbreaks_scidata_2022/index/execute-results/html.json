@@ -1,0 +1,15 @@
+{
+  "hash": "98df7363afa2efb7cdcf3bd71a00d0c0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nbibliography: cite.bib\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(RefManageR)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'RefManageR' was built under R version 4.4.2\n```\n\n\n:::\n\n```{.r .cell-code}\nbib <- ReadBib(\"cite.bib\")\n\ncat(\"## \", bib$title, \"\\n\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n##  A global dataset of pandemic- and epidemic-prone disease outbreaks \n```\n\n\n:::\n\n```{.r .cell-code}\ncat(\"**Fecha:** \", bib$year, \"\\n\\n\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n**Fecha:**  2022 \n```\n\n\n:::\n\n```{.r .cell-code}\ncat(\"**Palabras clave:** \", paste(bib$keywords, collapse = \", \"), \"\\n\\n\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n**Palabras clave:**  disease outbreaks;epidemics;global dataset;pandemics \n```\n\n\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

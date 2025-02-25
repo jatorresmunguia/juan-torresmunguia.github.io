@@ -1,0 +1,33 @@
+---
+title: "Comparison of Imputation Methods for Handling Missing Categorical Data with Univariate Pattern"
+subtitle: "Revista de métodos cuantitativos para la economía y la empresa" 
+keywords: "imputation;income poverty;Mexico;missing data" 
+year: 2014
+date: "2014-06-02"
+doi: "10.46661/revmetodoscuanteconempresa.2196"
+author: "Juan Armando Torres Munguía"
+categories:
+- imputation methods
+- missing data
+- Mexico
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://www.upo.es/revistas/index.php/RevMetCuant/article/view/2196/1763
+---
+
+### Abstract 
+This paper examines the sample proportions estimates in the presence of univariate missing categorical data. A database about smoking habits (2011 National Addiction Survey of Mexico) was used to create simulated yet realistic datasets at rates 5% and 15% of missingness, each for MCAR, MAR and MNAR mechanisms. Then the performance of six methods for addressing missingness is evaluated: listwise, mode imputation, random imputation, hot-deck, imputation by polytomous regression and random forests. Results showed that the most effective methods for dealing with missing categorical data in most of the scenarios assessed in this paper were hot-deck and polytomous regression approaches. 
+
+### Citation
+<p><b>Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a></b> (2014). Comparison of Imputation Methods for Handling Missing Categorical Data with Univariate Pattern. <i>Revista de métodos cuantitativos para la economía y la empresa</i> (17). DOI: <a href="https://www.upo.es/revistas/index.php/RevMetCuant/article/view/2196" target="_blank">10.46661/revmetodoscuanteconempresa.2196</a>. Retrieved from: <a href="https://www.upo.es/revistas/index.php/RevMetCuant/article/view/2196" target="_blank">https://www.upo.es/revistas/index.php/RevMetCuant/article/view/2196</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```

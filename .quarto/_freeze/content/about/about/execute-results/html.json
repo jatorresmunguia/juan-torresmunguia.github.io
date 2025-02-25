@@ -1,0 +1,15 @@
+{
+  "hash": "ffdbf6a66b90b9239ed33fd94fca140d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"\"\nformat: html\n---\n\n\n\n\n\n\n### Education\n\n\\footnotesize\n\\begin{tabular}{@{}p{0.85\\textwidth}@{}p{0.15\\textwidth}@{}} \n\\textbf{\\small  PhD in Applied Statistics and Empirical Methods, Georg-August-Universität Göttingen} & \\hfill \\small  2023 \\\\ \n\\multicolumn{2}{l}{\\textbf{Thesis:} ``Essays on structured additive regression models with applications in development economics'' (\\textit{Summa cum laude})} \\\\ \n\\multicolumn{2}{l}{\\textbf{Supervisors:} Prof. Inmaculada Martínez-Zarzoso, Prof. Konstantin Wacker, and Prof. Thomas Kneib.} \\\\ \n\\end{tabular} \n \n\\begin{tabular}{@{}p{0.85\\textwidth}@{}p{0.15\\textwidth}@{}} \n\\textbf{\\small  Master in Applied Statistics, Instituto Tecnológico y de Estudios Superiores de Monterrey} & \\hfill \\small  2013 \\\\ \n\\multicolumn{2}{l}{\\textbf{Research project:} ``Comparison of imputation methods for handling missing income data and their impact on poverty''} \\\\ \n\\end{tabular} \n \n\\begin{tabular}{@{}p{0.85\\textwidth}@{}p{0.15\\textwidth}@{}} \n\\textbf{\\small  Bachelor of Economics, Universidad Autónoma de Coahuila} & \\hfill \\small  2010 \\\\ \n\\multicolumn{2}{l}{\\textbf{Thesis:} ``Determinants of migrant's remittances'' (With distinction)} \\\\ \n\\end{tabular} \n \n\\small \n\n\n### About my scientific research\nThe main set of projects in my research seeks to understand how individuals, their families, and communities experience, adapt to, and cope with humanitarian- and development-related issues such as armed conflict, violence, and poverty.\n\nThe starting point of my research is the creation of multidisciplinary micro-datasets integrating information from different sources -household surveys, administrative records, censuses, remote sensing, etc.-. Subsequently, at the core of this line of work is the development and use of boosting structured additive regression models to identify and describe the extent to which a set of risk factors are associated with a variable of interest and/or to derive their causal effects.\n\nI often consider diversity aspects such as gender, age, and ethnicity. Whenever possible, I strive to include interactive visualizations of my research findings.\n\n[You can view my full CV here](CVitaeR.pdf)\n\nThank you for passing by!\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,31 @@
+---
+title: "Publications"
+listing: 
+  - id: journal-articles
+    contents: "peer_reviewed_papers/*/index.qmd"
+    sort: "date desc"
+    categories: cloud
+    template: listing-publications.ejs
+  - id: working-papers
+    contents: "working_papers/*/index.qmd"
+    sort: "date desc"
+    categories: cloud
+    template: listing-publications.ejs
+format: 
+  html: 
+    page-layout: full
+    css: publications.css
+title-block-banner: false
+include-back-link: true
+---
+
+## Journal articles
+
+:::{#journal-articles}
+:::
+
+
+## Working papers
+
+:::{#working-papers}
+:::

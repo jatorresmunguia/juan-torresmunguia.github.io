@@ -1,0 +1,36 @@
+---
+title: "The Prospects for Remote Assessment: A Comparison of Phone vs In-Person Interviews in Nigeria"
+subtitle: "Managing Exits from Armed Conflict (MEAC) - United Nations Institute for Disarmament Research Findings Report" 
+year: 2023
+date: "2023-05-04"
+doi: "10.37559/MEAC/23/03"
+url_link: https://unidir.org/publication/the-prospects-for-remote-assessment-a-comparison-of-phone-vs-in-person-interviews-in-nigeria-findings-report-29
+author: "Juan Armando Torres Munguía; Mohammed Bukar; Fatima Yetcha Ajimi Badu; Siobhan O’Neil; Kato van Broeckhoven"
+categories:
+- armed conflict 
+- Nigeria
+- remote assessment
+- survey methodology
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://unidir.org/wp-content/uploads/2023/09/UNIDIR_MEAC_Findings_Report_29_Prospects_Remote_Assessment.pdf
+---
+
+### Abstract 
+This report is based on a research study about the effects of the interview method on non-response rates and honest reporting on sensitive question topics.
+Specifically, the study set out to compare the answers to a set of five questions on drug use, victimization experiences, and social connectedness with the Boko Haram armed group between interviews conducted by phone and those administered face-to-face with an enumerator. The data comes from a survey carried out between May 2021 and early June 2022 (amid the COVID-29 health crisis) in the Maiduguri Metropolitan area and the communities of Jere and Kodunga, in Borno State, Nigeria, a region hard hit by the Boko Haram insurgency.
+This report provides empirical evidence on the potential for utilizing remote assessment of UN-supported programmes in insecure and/or inaccessible areas. This report examines what works to overcome methodological challenges in remote data collection in the context of armed conflict, specifically by identifying the specific roll-out practices that appear to bolster responses. 
+
+### Citation
+<p><b>Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Bukar, Mohammed; Yetcha Ajimi, Fatima; O’Neil, Siobhan; van Broeckhoven, Kato</b> (2023). The Prospects for Remote Assessment: A Comparison of Phone vs In-Person Interviews in Nigeria. <i>Managing Exits from Armed Conflict (MEAC) - United Nations Institute for Disarmament Research Findings Report</i>, 29. DOI: <a href="https://unidir.org/publication/the-prospects-for-remote-assessment-a-comparison-of-phone-vs-in-person-interviews-in-nigeria-findings-report-29/" target="_blank">10.37559/MEAC/23/03</a>. Retrieved from: <a href="https://unidir.org/publication/the-prospects-for-remote-assessment-a-comparison-of-phone-vs-in-person-interviews-in-nigeria-findings-report-29/" target="_blank">https://unidir.org/publication/the-prospects-for-remote-assessment-a-comparison-of-phone-vs-in-person-interviews-in-nigeria-findings-report-29/</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```

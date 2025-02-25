@@ -1,0 +1,144 @@
+{
+  "index.qmd": {
+    "index.html": "7434aea4",
+    "index.json": "05a6bb95"
+  },
+  "content/about/about.qmd": {
+    "about.html": "c5c9a557"
+  },
+  "en/content/about/about.qmd": {
+    "about.html": "7448edfd"
+  },
+  "content/blog/blog.qmd": {
+    "blog.html": "b15ff9ad"
+  },
+  "content/blog/posts/how_to_maps/index.qmd": {
+    "index.html": "06af2289"
+  },
+  "content/CV/cv.qmd": {
+    "cv.html": "8e3d7ca7"
+  },
+  "content/consulting/consulting.qmd": {
+    "consulting.html": "8e0966b8"
+  },
+  "content/publications/index.qmd": {
+    "index.html": "fc3dea88"
+  },
+  "content/publications/peer_reviewed_papers/outbreaks_scidata_2022/index.Rmd": {
+    "index.html": "a20b194e"
+  },
+  "content/publications/peer_reviewed_papers/outbreaks_scidata_2022/index.qmd": {
+    "index.html": "a13a2350"
+  },
+  "docs/content/about/about.qmd": {
+    "about.html": "f1ec5ed8"
+  },
+  "particles.js-master/LICENSE.md": {
+    "LICENSE.html": "852802f6"
+  },
+  "js/LICENSE.md": {
+    "LICENSE.html": "4d95c328"
+  },
+  "content/projects/projects.qmd": {
+    "projects.html": "b922d690"
+  },
+  "content/projects/outbreaks_dashboard/index.md": {
+    "index.html": "c9a34f0d"
+  },
+  "content/projects/index.qmd": {
+    "index.html": "0bd457ed"
+  },
+  "content/projects/disease_outbreaks/index.qmd": {
+    "index.html": "42bb33b3"
+  },
+  "js/particles.js-master/LICENSE.md": {
+    "LICENSE.html": "a4fbff06"
+  },
+  "content/publications/peer_reviewed_papers/imputation_missing_poverty_Mexico_2014/index.md": {
+    "index.html": "4bffaa72"
+  },
+  "content/publications/working_papers/weapon_holding_nigeria_2023/index.md": {
+    "index.html": "0c63af68"
+  },
+  "content/publications/peer_reviewed_papers/outbreaks_scidata_2022/index.md": {
+    "index.html": "78ed3c43"
+  },
+  "about/about.qmd": {
+    "about.html": "8abf8194"
+  },
+  "blog/blog.qmd": {
+    "blog.html": "ef3aec93"
+  },
+  "blog/posts/how_to_maps/index.qmd": {
+    "index.html": "cee718df"
+  },
+  "consulting/consulting.qmd": {
+    "consulting.html": "09ad5504"
+  },
+  "cv/cv.qmd": {
+    "cv.html": "54c42790"
+  },
+  "projects/disease_outbreaks/index.qmd": {
+    "index.html": "4883b5fa"
+  },
+  "projects/index.qmd": {
+    "index.html": "201485f4"
+  },
+  "publications/index.qmd": {
+    "index.html": "0626d054"
+  },
+  "publications/peer_reviewed_papers/outbreaks_scidata_2022/index.qmd": {
+    "index.html": "31d6a0ed"
+  },
+  "publications/working_papers/weapon_holding_nigeria_2023/index.md": {
+    "index.html": "12dd8233"
+  },
+  "publications/working_papers/child_recruitment_lake_chad_unu_2022/index.qmd": {
+    "index.html": "e91c3ef4"
+  },
+  "publications/working_papers/weapon_holding_nigeria_2023/index.qmd": {
+    "index.html": "3aaae2d4"
+  },
+  "publications/working_papers/behind_homicides_gender_gaps_mexico_2018/index.qmd": {
+    "index.html": "39aab87b"
+  },
+  "publications/working_papers/child_exits_lake_chad_unidir_2023/index.qmd": {
+    "index.html": "86c6722a"
+  },
+  "publications/working_papers/energy_poverty_2024/index.qmd": {
+    "index.html": "919f0188"
+  },
+  "publications/working_papers/violent_crime_latam_iadb_2016/index.qmd": {
+    "index.html": "47cac373"
+  },
+  "publications/working_papers/isil_affiliation_unidir_2023/index.qmd": {
+    "index.html": "d58076a9"
+  },
+  "publications/peer_reviewed_papers/imputation_missing_poverty_Mexico_2014/index.qmd": {
+    "index.html": "3320ba7e"
+  },
+  "publications/peer_reviewed_papers/poverty_rural_mexico_plosone_2021/index.qmd": {
+    "index.html": "9f10b0f7"
+  },
+  "publications/peer_reviewed_papers/poverty_urban_mexico_mdpi_2024/index.qmd": {
+    "index.html": "b24e8261"
+  },
+  "publications/peer_reviewed_papers/risk_factor_physical_violence_mexico_computational_soc_sci_2024/index.qmd": {
+    "index.html": "fccb68ff"
+  },
+  "publications/peer_reviewed_papers/risk_factor_sexual_violence_mexico_2024/index.qmd": {
+    "index.html": "e07d57b4"
+  },
+  "publications/peer_reviewed_papers/risk_factors_emotional_violence_mexico_2022/index.qmd": {
+    "index.html": "9d78e326"
+  },
+  "publications/working_papers/poverty_mexico_2020/index.qmd": {
+    "index.html": "ffc9bf58"
+  },
+  "publications/working_papers/prospects_remote_assessment_nigeria_unidir_2023/index.qmd": {
+    "index.html": "c1b39692"
+  },
+  "publications/working_papers/road_from_alhol_camp_iraq_unu_2022/index.qmd": {
+    "index.html": "2ede8b84"
+  }
+}

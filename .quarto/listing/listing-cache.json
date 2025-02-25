@@ -1,0 +1,31 @@
+{
+  "listingMap": {
+    "content\\blog\\blog.qmd": [
+      "posts"
+    ],
+    "content\\publications\\index.qmd": [
+      "B3049D40",
+      "peer_reviewed_papers/*/index.qmd",
+      "peer_reviewed_papers/*/index.md",
+      "working_papers/*/index.md"
+    ],
+    "content\\projects\\projects.qmd": [
+      "B3049D40"
+    ],
+    "content\\projects\\index.qmd": [
+      "B3049D40",
+      "/"
+    ],
+    "blog\\blog.qmd": [
+      "posts"
+    ],
+    "projects\\index.qmd": [
+      "/"
+    ],
+    "publications\\index.qmd": [
+      "peer_reviewed_papers/*/index.qmd",
+      "working_papers/*/index.md",
+      "working_papers/*/index.qmd"
+    ]
+  }
+}

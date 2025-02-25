@@ -1,0 +1,138 @@
+---
+title: "Consulting"
+---
+  
+I offer a variety of consulting services tailored to research institutions, NGOs, international organizations, and policymakers, aiming to support them in all stages of the data life cycle. 
+
+I have provided my services as a consultant to the following institutions:
+  
+- [Internal Displacement Monitoring Centre - Norwegian Refugee Council](https://www.internal-displacement.org/);
+- [Managing Exits from Armed Conflict - United Nations Institute for Disarmament Research](https://unidir.org/);
+- [Regional Office for Central America, North America and the Caribbean - International Organization for Migration](https://lac.iom.int/es);
+- [Global Centre of Excellence on Gender Statistics - UN Women](https://data.unwomen.org/where-we-work/cegs); and,
+- [Center of Excellence for Statistical Information on Government, Crime, Victimization and Justice - United Nations Office on Drugs and Crime](https://www.cdeunodc.inegi.org.mx/index.php/en/)
+
+## Services
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<div style="text-align: center;">
+  <img src="img/gis--search-data.svg" width="100" height="100" alt="Research design icon"> 
+  <p style="font-size: calc(1.27rem + 0.24vw); font-weight: 600;">Research design</p>
+  </div>
+  
+::: {.callout-note collapse="true" icon=false}
+## Read more +
+**Tasks include:**
+  
+- Defining objectives,
+- Identifying the target population,
+- Designing indicators,
+- Developing survey questionnaires, and
+- Planning the sampling design.
+
+**Experience:**
+  
+I have experience working with questionnaires on victimization experiences and perceptions of insecurity across various Latin American countries. Additionally, I have contributed to the design of surveys assessing the socioeconomic conditions of both displaced and non-displaced households in Sudan, as well as the experiences of individuals and families before, during, and after armed conflicts in Nigeria, Niger, Chad, Cameroon, and Iraq.
+
+**Example:**
+  
+I helped organize the sampling design for the first national victimization survey of Panama [Read the document (only in Spanish)](https://siec.minseg.gob.pa/wp-content/uploads/2023/01/Diseno-Muestral-de-la-ENVIP-2015.pdf).
+
+:::
+  
+:::
+  
+::: {.column width="50%"}
+<div style="text-align: center;">
+<img src="img/eos-icons--data-scientist-outlined.svg" width="100" height="100" alt="Data icon"> 
+<p style="font-size: calc(1.27rem + 0.24vw); font-weight: 600;">Data management</p>
+</div>
+  
+::: {.callout-note collapse="true" icon=false}
+## Read more +
+**Tasks include:**
+  
+- Identification of data sources; 
+- Gathering data from various sources;
+- Cleaning, structuring, and transforming messy data into research-ready datasets; and,
+- Organizing and storing data.
+
+**Experience:**
+  
+I have experience in data cleaning, as well as creating data dictionaries and metadata. Additionally, I have worked on integrating data from household surveys, administrative records, censuses, and remote sensing sources. When statistical information is unavailable, I have leveraged LLMs, web scraping, and text and data mining techniques to generate new datasets.
+
+**Example:**
+
+I am the author of the [global dataset of pandemic- and epidemic-prone disease outbreaks](https://www.nature.com/articles/s41597-022-01797-2), which earned the 2023 ENLIGHT Open Science Award and was a finalist for the Falling Walls Science Breakthroughs in Science & Innovation Management. 
+
+Additionally, I led the data management and analysis of a survey conducted in 2022 across four key locations in Iraq previously occupied by ISIL.
+
+:::
+  
+:::
+  
+::::
+  
+:::: {.columns}
+
+::: {.column width="50%"}
+<div style="text-align: center;">
+<img src="img/fa-regular--file-code.svg" width="100" height="100" alt="Analysis icon"> 
+<p style="font-size: calc(1.27rem + 0.24vw); font-weight: 600;">Statistical analysis</p>
+</div>
+  
+::: {.callout-note collapse="true" icon=false}
+## Read more +
+**Tasks include:**
+  
+- Linear regression and nonlinear regression modeling;
+- Machine learning predictive modelling;
+- Disaggregated analyses; and,
+- Statistical tests to assess differences between populations. 
+
+**Experience:**
+
+I have experience analyzing and interpreting data on victimization, gender-based violence, food security, income poverty, displacement, and armed conflict. Additionally, I have also developed and examined hard-to-measure phenomena such as indicators for severity assessments and perception of social networks.
+
+**Example:**
+
+At UNIDIR, I analyzed and co-authored five research papers on subjects such as [weapon holding](https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.pdf), [child recruitment](https://unidir.org/publication/child-recruitment-in-the-lake-chad-basin-findings-report-22/), and [family reintegration in Iraq](https://unidir.org/publication/coming-home-the-return-and-reintegration-of-families-with-perceived-isil-affiliation-in-iraq-findings-report-28/).
+:::
+  
+:::
+  
+::: {.column width="50%"}
+<div style="text-align: center;">
+<img src="img/ix--start-data-analysis.svg" width="100" height="100" alt="Data visualization icon"> 
+<p style="font-size: calc(1.27rem + 0.24vw); font-weight: 600;">Data visualization</p>
+</div>
+  
+::: {.callout-note collapse="true" icon=false}
+## Read more +
+**Tasks include:**
+  
+- Building dynamic and interactive dashboards; and,
+- Custom data visualizations.
+
+**Experience:** 
+
+I have experience developing dynamic R Shiny dashboards and creating interactive visualizations using ggplot2, tidyplots, and Leaflet. My work includes designing choropleth maps and tailored data visualizations for reports, presentations, and academic publications.
+
+**Example:**
+
+Go to the [Shiny Dashboard of the DISEASE OUTBREAKS DATA project](https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/).
+
+At IOM, I contributed to developing a [PowerBI interactive dashboard for migration governance in Mesoamerica and the Caribbean](https://rosanjose.iom.int/en/interactive-dashboard-governance-migration-mesoamerica-and-caribbean).
+:::
+  
+:::
+  
+::::
+  
+## Deliverables
+I am committed to reproducible research. Therefore, upon completing the consultancy, you will receive well-documented R scripts, along with R Markdown/Quarto files detailing each step of the work, clean datasets in the required format (Excel, CSV, SPSS, etc.), and/or an analytical report.
+
+## Let’s collaborate
+If you need support with data management, statistical analysis, visualization, or team training on these tasks, feel free to reach out at [ja.torresmunguia@gmail.com](mailto:ja.torresmunguia@gmail.com)! Let's discuss how I can help you leverage your data for meaningful impact.

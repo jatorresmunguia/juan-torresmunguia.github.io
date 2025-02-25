@@ -1,0 +1,68 @@
+```{=html}
+<div class="publications publications-list">
+<ul class="list">
+    <% for (const item of items) { %>
+        <li class="publications" <%= metadataAttrs(item) %>>
+            <div class="publications-content listing-publications-info">
+                <p>
+                    <% 
+                      const authorsArray = item.author.split(";").map(a => a.trim());
+                      const formattedAuthors = authorsArray.map(author => {
+                        if (author === "Juan Armando Torres Munguía") {
+                          return `<b>${author}</b><a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
+                            <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
+                          </a>`;
+                        } else {
+                          return author;
+                        }
+                      }).join("; ");
+                      %><%= formattedAuthors %><%
+                    %>
+                    (<%= item.year %>) "<%= item.title %>", <i><%= item.subtitle %></i>, 
+                    <% if (item.doi) { %> DOI: <a href="<%= item.doi %>" target="_blank"><%= item.doi %></a> <% } %>
+                    <% if (item.url_link) { %> Retrieved from: <a href="<%= item.url_link %>" target="_blank"><%= item.url_link %></a> <% } %>
+                </p>
+            </div>
+
+        <% if (item.categories) { %>
+          <span class="info-categories listing-categories">
+            <% for (const category of item.categories) { %>
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;">
+                <%= category %>
+              </div>
+            <% } %>
+          </span>
+        <% } %>
+
+            <span class="publications-details-listing">
+                <ul class="publications-links">
+                    <li class="publications-link details">
+                        <a href="<%- item.path %>" class="custom-btn">
+                            &nbsp;&nbsp; LEARN MORE <i class="fa-solid fa-link"></i>
+                        </a>
+                    </li>
+                    <% if (item.links) { %>
+                        <% for (const link of item.links) { %>
+                        <li class="publications-link">
+                        <% if (link.local) { %>
+                        <a href="<%- item.path.substring(0, item.path.lastIndexOf('/')) %>/<%- link.url %>">
+                        <% } else { %>
+                        <a href="<%- link.url %>">
+                        <% } %>
+                        <% if (link.icon === "github") { %>
+                        <i class="fa-brands fa-<%- link.icon %>"></i> <%= link.name %>
+                        <% } else { %>
+                        <i class="fa-solid fa-<%- link.icon %>"></i> <%= link.name %>
+                        <% } %>
+                        </a>
+                        </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </span>
+        </li>
+    <% } %>
+</ul>
+</div>
+
+```

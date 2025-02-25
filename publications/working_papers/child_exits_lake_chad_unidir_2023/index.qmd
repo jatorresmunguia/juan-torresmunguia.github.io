@@ -1,0 +1,40 @@
+---
+title: "Child Exits from Armed Groups in the Lake Chad Basin"
+subtitle: "United Nations Institute for Disarmament Research Findings Report" 
+year: 2023 
+date: "2023-06-08"
+doi: "10.37559/MEAC/23/05"
+author: "Kato van Broeckhoven; Siobhan O’Neil; Niamh Punton; Juan Armando Torres Munguía; Fatima Yetcha Ajimi Badu; Mohammed Bukar; Anamika Madhuraj"
+categories:
+- armed conflict 
+- Boko Haram
+- child exits
+- Lake Chad basin
+- Nigeria
+- Niger 
+- Chad
+- Cameroon
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://unidir.org/wp-content/uploads/2023/09/UNIDIR_Child_Exits_from_Armed_Groups_in_Lake_Chad_Basin_MEAC_Findings_Report_31.pdf
+---
+
+### Abstract 
+This report aims to contribute evidence to enable a better understanding of the dynamics of child exits from armed groups in the Lake Chad Basin. It is based on data collected in multiple qualitative and quantitative studies across the Lake Chad Region conducted from May 2021 through June 2022.
+The findings provide an insight into the expectations and experiences of child exits from armed groups, the reintegration support provided, community and family acceptance, and the risk of re-recruitment and continued engagement after exiting an armed group. 
+Such knowledge has the potential to strengthen interventions that support children after they leave armed groups and re-enter civilian life, and to ensure that programming accounts for the unique needs of children.
+
+
+### Citation
+<p><b>van Broeckhoven, Kato; O’Neil, Siobhan; Punton, Niamh; Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Yetcha Ajimi, Fatima; Bukar, Mohammed; Madhuraj, Anamika</b> (2023). Child Exits from Armed Groups in the Lake Chad Basin. <i>United Nations Institute for Disarmament Research Findings Report</i>, 31. DOI: <a href="" target="_blank">10.37559/MEAC/23/05</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```

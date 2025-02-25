@@ -1,0 +1,86 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+
+format:
+  html:
+    theme: flatly
+    css: "css/styles.css"
+    mainfont: "Signika"
+    link-external-newwindow: true
+    toc: false
+    fontawesome: true
+    page-layout: full
+    code-link: true
+    highlight-style: tango
+    
+website:
+  title: "Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST"
+  favicon: "img/academicons--open-data.png"
+  search: false
+  page-navigation: true
+  reader-mode: false 
+
+  navbar:
+    title: " "
+    logo: "img/academicons--open-data-square.svg"
+    background: "#153268"
+    foreground: "#f2f0e8"
+    toggle-position: right
+    left: 
+      - text: "About"
+        href: "about/about.qmd"
+      - text: "CV"
+        href: "CV/cv.qmd"
+      - text: "Consulting"
+        href: "consulting/consulting.qmd"
+      - text: "Publications"
+        href: "publications/index.qmd"
+#      - sidebar:data_viz
+      #- text: "Blog"
+      # href: "blog/blog.qmd"
+      - text: "Contact"
+        href: "contact/contact.qmd"
+    right: 
+      - text: "{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}"
+        href: https://bsky.app/profile/jtorresmunguia.bsky.social
+        target: blank
+      - text: "{{< iconify fa6-brands github size=1.1em title='GitHub' >}}"
+        href: https://github.com/jatorresmunguia
+        target: blank
+      - text: "{{< iconify simple-icons figshare size=1.1em title='Figshare' >}}"
+        href: https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372
+        target: blank
+      - text: "{{< iconify fa6-brands orcid size=1.1em title='Orcid' >}}"
+        href: https://orcid.org/0000-0003-3432-6941
+        target: blank
+      - text: "{{< iconify fa6-brands google-scholar size=1.1em title='Google Scholar' >}}"
+        href: https://scholar.google.com/citations?hl=es&user=VelzdlMAAAAJ
+        target: blank
+
+#  sidebar:
+#    - id: data_viz
+#     title: "Data visualization gallery"
+#     style: "docked"
+#     background: light
+#     collapse-level: 3
+#     contents:
+#       - "data_viz/plots.qmd"
+#       - "data_viz/maps.qmd"
+#       - "data_viz/shiny_apps.qmd"
+#       - "data_viz/storytelling.qmd"
+  
+  page-footer:
+    background: "#153268"
+    foreground: "#f2f0e8"
+    left: >-
+     &#169; 2025 Juan TORRES MUNGUÍA
+    center: >-
+     Website built with <a href="https://www.r-project.org/" target="_blank">{{< fa brands r-project >}}</a> and <a href="https://quarto.org/" target="_blank">Quarto</a>
+     <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia" target="_blank">{{< iconify fa6-brands github title='GitHub' >}}</a></br>
+    right: >-
+     Licensed under 
+     <br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">{{< fa brands creative-commons >}}{{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0</a></br>
+editor: source

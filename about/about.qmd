@@ -1,0 +1,38 @@
+---
+title: "Juan Torres Munguía, Ph.D."
+profile_image: "profile_pic.png"
+subtitle: "HUMANITARIAN DATA SCIENTIST"
+about:
+  template: solana
+format:
+  html:
+    grid: 
+      body-width: 600px
+---
+
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-sm-8}
+
+I am a [consultant and independent researcher](content/consultation/consultation.qmd) specializing in the management, analysis, and visualization of data related to humanitarian crises and most vulnerable populations.
+
+My research combines statistics, machine learning algorithms, and data science methods to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.
+
+I am also an R-enthusiast who loves coding to optimize and streamline my work. Check out my [Blog](content/blog/blog.qmd), where I share insights on using R for the study of humanitarian and development economics data.
+
+:::
+
+::: {.g-col-12 .g-col-sm-4}
+
+```{=html}
+
+<div class="g-col-12 g-col-sm-12 text-center">
+  <img class="img-fluid rounded-circle" src="{{< meta profile_image >}}" >
+</div>
+
+```
+
+:::
+
+:::

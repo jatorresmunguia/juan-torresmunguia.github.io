@@ -1,0 +1,34 @@
+---
+title: "Violent Crime in Latin American Cities"
+subtitle: "Inter-American Development Bank Discussion Paper" 
+keywords: "crime;Latin America;violence" 
+date: "2016-08-01"
+year: 2016
+doi: "http://dx.doi.org/10.18235/0007973" 
+author: "Carlos J. Vilalta Perdomo; José G. Castillo; Juan Armando Torres Munguía" 
+categories:
+- crime
+- Latin America
+- violence
+- cities
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://publications.iadb.org/es/publications/english/viewer/Violent-Crime-in-Latin-American-Cities.pdf
+---
+
+### Abstract 
+In the last two decades, Latin America has been describes as an unsafe and violent region. Nonetheless, such picture is mostly based on homicide rates. Even though homicide is considered the best recorded crime, it does not provide full account of other forms of violent crime. Moreover, a great deal of research on crime throughout the region tends to be descriptive and anecdotal. Misunderstanding the causes of crime and disregarding evidence might induce policy makers to implement ineffective strategies, particularly at the local level. Therefore, based on Social Disorganization Theory, this study explains violent crime across and within selected cities of Latin America. 
+
+### Citation
+<p><b>Vilalta Perdomo, Carlos J.; Castillo, José G.; Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a></b> (2016). Violent Crime in Latin American Cities. <i>Inter-American Development Bank Discussion Paper</i>, 474. DOI: <a href="https://publications.iadb.org/en/violent-crime-latin-american-cities" target="_blank">http://dx.doi.org/10.18235/0007973</a>. Retrieved from: <a href="https://publications.iadb.org/en/violent-crime-latin-american-cities" target="_blank">https://publications.iadb.org/en/violent-crime-latin-american-cities</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```
