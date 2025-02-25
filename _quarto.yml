@@ -33,7 +33,7 @@ website:
       - text: "About"
         href: "about/about.qmd"
       - text: "CV"
-        href: "CV/index.qmd"
+        href: "cv/index.qmd"
       - text: "Consulting"
         href: "consulting/consulting.qmd"
       - text: "Publications"
