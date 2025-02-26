@@ -25,6 +25,9 @@ links:
   icon_pack: fas
   name: Code
   url: https://figshare.com/articles/dataset/Essays_on_structured_additive_regression_models_applied_to_data_in_development_economics_Electronic_material_/21183271
+format: 
+  html: 
+    page-layout: article
 ---
  
 ### Abstract 

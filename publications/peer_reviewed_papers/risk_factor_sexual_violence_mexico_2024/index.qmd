@@ -24,6 +24,9 @@ links:
   icon_pack: fas
   name: Code
   url: https://figshare.com/articles/online_resource/An_analysis_of_the_risk_and_protective_factors_for_intimate_partner_sexual_violence_against_women_and_girls_in_Mexico/22679263/1
+format: 
+  html: 
+    page-layout: article
 ---
  
 ### Abstract 

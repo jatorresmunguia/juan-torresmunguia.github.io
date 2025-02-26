@@ -19,6 +19,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://www.econstor.eu/bitstream/10419/178674/1/1023106922.pdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

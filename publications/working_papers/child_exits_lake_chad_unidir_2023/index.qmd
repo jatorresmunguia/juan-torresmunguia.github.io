@@ -19,6 +19,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://unidir.org/wp-content/uploads/2023/09/UNIDIR_Child_Exits_from_Armed_Groups_in_Lake_Chad_Basin_MEAC_Findings_Report_31.pdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

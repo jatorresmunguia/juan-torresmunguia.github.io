@@ -16,6 +16,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://unidir.org/wp-content/uploads/2023/09/UNIDIR_MEAC_Findings_Report_29_Prospects_Remote_Assessment.pdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

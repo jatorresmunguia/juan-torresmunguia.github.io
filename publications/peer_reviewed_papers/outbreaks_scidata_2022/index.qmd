@@ -35,6 +35,9 @@ links:
   icon_pack: fas
   name: ShinyApp
   url: https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

@@ -18,6 +18,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://unidir.org/wp-content/uploads/2023/05/RoadFromAlHol_FINAL-1.pdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

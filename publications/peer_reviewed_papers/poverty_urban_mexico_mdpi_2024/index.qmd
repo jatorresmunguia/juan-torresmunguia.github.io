@@ -25,6 +25,9 @@ links:
   icon_pack: fas
   name: Code
   url: https://doi.org/10.6084/m9.figshare.22132139.v1
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

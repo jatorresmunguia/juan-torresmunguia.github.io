@@ -15,6 +15,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.ppdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 

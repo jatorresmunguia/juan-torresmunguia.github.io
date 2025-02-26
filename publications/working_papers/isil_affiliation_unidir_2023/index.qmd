@@ -19,6 +19,9 @@ links:
   icon_pack: fas
   name: PDF
   url: https://unidir.org/wp-content/uploads/2023/05/UNIDIR_MEAC_Coming_Home_Return_Reintegration_Families_Perceived_ISIL_Affiliation_Iraq.pdf
+format: 
+  html: 
+    page-layout: article
 ---
 
 ### Abstract 
