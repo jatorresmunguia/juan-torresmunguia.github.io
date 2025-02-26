@@ -70,5 +70,14 @@
   },
   "about/about.qmd": {
     "about.html": "b7b6b70a"
+  },
+  "about/index.qmd": {
+    "index.html": "a4b92cbc"
+  },
+  "blog/index.qmd": {
+    "index.html": "82f27aa7"
+  },
+  "consulting/index.qmd": {
+    "index.html": "23c94b0e"
   }
 }

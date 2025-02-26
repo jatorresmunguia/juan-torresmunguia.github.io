@@ -26,5 +26,11 @@
       "/publications/working_papers/behind_homicides_gender_gaps_mexico_2018/index.html",
       "/publications/working_papers/violent_crime_latam_iadb_2016/index.html"
     ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/posts/how_to_maps/index.html"
+    ]
   }
 ]

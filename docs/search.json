@@ -201,5 +201,47 @@
     "title": "Juan Torres Munguía, Ph.D.",
     "section": "",
     "text": "I am a consultant and independent researcher specializing in the management, analysis, and visualization of data related to humanitarian crises and most vulnerable populations.\nMy research combines statistics, machine learning algorithms, and data science methods to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.\nI am also an R-enthusiast who loves coding to optimize and streamline my work. Check out my Blog, where I share insights on using R for the study of humanitarian and development economics data."
+  },
+  {
+    "objectID": "consulting/index.html",
+    "href": "consulting/index.html",
+    "title": "Consulting",
+    "section": "",
+    "text": "I offer a variety of consulting services tailored to research institutions, NGOs, international organizations, and policymakers, aiming to support them in all stages of the data life cycle.\nI have provided my services as a consultant to the following organizations:"
+  },
+  {
+    "objectID": "consulting/index.html#services",
+    "href": "consulting/index.html#services",
+    "title": "Consulting",
+    "section": "Services",
+    "text": "Services\n\n\n\n\n\nResearch design\n\n\n\n\n\n\n\n\nRead more +\n\n\n\n\n\nTasks include:\n\nDefining objectives,\nIdentifying the target population,\nDesigning indicators,\nDeveloping survey questionnaires, and\nPlanning the sampling design.\n\nExperience:\nI have experience working with questionnaires on victimization experiences and perceptions of insecurity across various Latin American countries. Additionally, I have contributed to the design of surveys assessing the socioeconomic conditions of both displaced and non-displaced households in Sudan, as well as the experiences of individuals and families before, during, and after armed conflicts in Nigeria, Niger, Chad, Cameroon, and Iraq.\nExample:\nI helped organize the sampling design for the first national victimization survey of Panama Read the document (only in Spanish).\n\n\n\n\n\n\n\nData management\n\n\n\n\n\n\n\n\nRead more +\n\n\n\n\n\nTasks include:\n\nIdentification of data sources;\nGathering data from various sources;\nCleaning, structuring, and transforming messy data into research-ready datasets; and,\nOrganizing and storing data.\n\nExperience:\nI have experience in data cleaning, as well as creating data dictionaries and metadata. Additionally, I have worked on integrating data from household surveys, administrative records, censuses, and remote sensing sources. When statistical information is unavailable, I have leveraged LLMs, web scraping, and text and data mining techniques to generate new datasets.\nExample:\nI am the author of the global dataset of pandemic- and epidemic-prone disease outbreaks, which earned the 2023 ENLIGHT Open Science Award and was a finalist for the Falling Walls Science Breakthroughs in Science & Innovation Management.\nAdditionally, I led the data management and analysis of a survey conducted in 2022 across four key locations in Iraq previously occupied by ISIL.\n\n\n\n\n\n\n\n\n\n\nStatistical analysis\n\n\n\n\n\n\n\n\nRead more +\n\n\n\n\n\nTasks include:\n\nLinear regression and nonlinear regression modeling;\nMachine learning predictive modelling;\nDisaggregated analyses; and,\nStatistical tests to assess differences between populations.\n\nExperience:\nI have experience analyzing and interpreting data on victimization, gender-based violence, food security, income poverty, displacement, and armed conflict. Additionally, I have also developed and examined hard-to-measure phenomena such as indicators for severity assessments and perception of social networks.\nExample:\nAt UNIDIR, I analyzed and co-authored five research papers on subjects such as weapon holding, child recruitment, and family reintegration in Iraq.\n\n\n\n\n\n\n\nData visualization\n\n\n\n\n\n\n\n\nRead more +\n\n\n\n\n\nTasks include:\n\nBuilding dynamic and interactive dashboards; and,\nCustom data visualizations.\n\nExperience:\nI have experience developing dynamic R Shiny dashboards and creating interactive visualizations using ggplot2, tidyplots, and Leaflet. My work includes designing choropleth maps and tailored data visualizations for reports, presentations, and academic publications.\nExample:\nGo to the Shiny Dashboard of the DISEASE OUTBREAKS DATA project.\nAt IOM, I contributed to developing a PowerBI interactive dashboard for migration governance in Mesoamerica and the Caribbean."
+  },
+  {
+    "objectID": "consulting/index.html#deliverables",
+    "href": "consulting/index.html#deliverables",
+    "title": "Consulting",
+    "section": "Deliverables",
+    "text": "Deliverables\nI am committed to reproducible research. Therefore, upon completing the consultancy, you will receive well-documented R scripts, along with R Markdown/Quarto files detailing each step of the work, clean datasets in the required format (Excel, CSV, SPSS, etc.), and/or an analytical report."
+  },
+  {
+    "objectID": "consulting/index.html#lets-collaborate",
+    "href": "consulting/index.html#lets-collaborate",
+    "title": "Consulting",
+    "section": "Let’s collaborate",
+    "text": "Let’s collaborate\nIf you need support with data management, statistical analysis, visualization, or team training on these tasks, feel free to reach out at ja.torresmunguia@gmail.com! Let’s discuss how I can help you leverage your data for meaningful impact."
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "Juan Torres Munguía, Ph.D.",
+    "section": "",
+    "text": "I am a consultant and independent researcher specializing in the management, analysis, and visualization of data related to humanitarian crises and most vulnerable populations.\nMy research combines statistics, machine learning algorithms, and data science methods to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.\nI am also an R-enthusiast who loves coding to optimize and streamline my work. Check out my Blog, where I share insights on using R for the study of humanitarian and development economics data."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog of the DISEASE OUTBREAKS DATA project",
+    "section": "",
+    "text": "This blog is dedicated to helping researchers, data scientists, and public health professionals make the most of the disease outbreaks data using R. A range of techniques and tools that allow you to explore, visualize, and analyze the dataset in powerful ways will be shared.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking interactive choropleths for disease outbreaks data using leaflet in R\n\n\n\n\n\n\nleaflet\n\n\nmaps\n\n\ncode\n\n\n\n\n\n\nOct 15, 2024\n\n\nJuan Armando Torres Munguía, PhD\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -6,6 +6,9 @@
     "publications\\index.qmd": [
       "peer_reviewed_papers/*/index.qmd",
       "working_papers/*/index.qmd"
+    ],
+    "blog\\index.qmd": [
+      "posts"
     ]
   }
 }
