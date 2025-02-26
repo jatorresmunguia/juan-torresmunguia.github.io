@@ -79,5 +79,8 @@
   },
   "consulting/index.qmd": {
     "index.html": "23c94b0e"
+  },
+  "contact/index.qmd": {
+    "index.html": "81adc560"
   }
 }
