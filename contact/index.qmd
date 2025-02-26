@@ -13,8 +13,10 @@ format:
 You can use this space to contact me for queries, collaboration ideas, or comments.
 
 <div style="text-align: center; margin-top: 10px;">
-<a href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="_blank" style="font-size: 36px; margin-right: 20px;">{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}</a>
-<a href="https://github.com/jatorresmunguia" target="_blank" style="font-size: 36px">{{< iconify fa6-brands github size=1.1em title='GitHub' >}}</a>
+<a href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="_blank" style="font-size: 36px; margin-right: 20px; text-decoration: none; color: inherit;"
+     onmouseover="this.style.color='#50a5d2'" onmouseout="this.style.color='#153268'">{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}</a>
+<a href="https://github.com/jatorresmunguia" target="_blank" style="font-size: 36px; text-decoration: none; color: inherit;"
+     onmouseover="this.style.color='#50a5d2'" onmouseout="this.style.color='#153268'">{{< iconify fa6-brands github size=1.1em title='GitHub' >}}</a>
 </div>
 
 :::
