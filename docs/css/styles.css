@@ -1,0 +1,170 @@
+
+/* Font family */
+  @import url('https://fonts.googleapis.com/css2?family=Signika:wght@500&display=swap');
+
+.navbar-dark, .navbar[data-bs-theme=dark] {
+  --bs-navbar-color: #f2f0e8;
+    --bs-navbar-hover-color: #50a5d2;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color: #FFFFFF;
+    text-decoration: underline dotted; 
+}
+
+/* Color for links and hover */
+  a {
+    text-decoration: none; 
+    color: #50a5d2; 
+  }
+
+a:hover {
+  text-decoration: none; 
+  color: #50a5d2; 
+}
+
+/* Logo navbar */
+  .navbar-brand img {
+    filter: invert(92%) sepia(4%) saturate(90%) hue-rotate(30deg) brightness(100%) contrast(95%); /* #f2f0e8 */
+  }
+
+.navbar-brand img:hover {
+  filter: invert(55%) sepia(38%) saturate(600%) hue-rotate(160deg) brightness(90%) contrast(95%); /* #50a5d2 */
+}
+
+.sep-line {
+  display: block;
+  background: #ecf0f1;
+    width: 100%;
+  height: 0px;
+  margin: auto;
+  display: table;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+.text-effect {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-effect:first-of-type {
+  animation: appear 6s infinite;
+}
+
+.text-effect:last-of-type {
+  animation: reveal 6s infinite;
+}
+
+.text-effect span {
+  animation: slide 6s infinite;
+}
+
+@keyframes appear {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slide {
+  0% { margin-left: -800px; }
+  20% { margin-left: -800px; }
+  35% { margin-left: 0px; }
+  100% { margin-left: 0px; }
+}
+
+@keyframes reveal {
+  0% { opacity: 0; width: 0px; }
+  20% { opacity: 1; width: 0px; }
+  30% { width: 655px; }
+  80% { opacity: 1; }
+  100% { opacity: 0; width: 655px; }
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1; 
+  }
+
+#particles-js h1 h2 {
+  position: absolute;
+}
+
+.footer {
+  position: absolute;
+  width: 100%; /* Ocupa todo el ancho */
+  z-index: 100; /* Un valor mayor que el de las partículas */
+}
+
+/* Title main page */
+.title-main {
+    color: inherit;
+    margin-top: 10%;
+    margin-left: 5%;
+    font-weight: 600;
+    max-width: 80%;
+}
+
+/* Effect download button cv page */
+.custom-btn {
+    color: #f2f0e8;
+}
+
+.custom-btn:hover {
+  color: #50a5d2;
+}
+
+
+/* Callout new format */ 
+div.callout-note.callout-style-default>.callout-header {
+  background-color: #FFFFFF;
+  color: #50a5d2;
+  text-align: center;
+}
+
+div.callout-note.callout {
+  border-left-color: #153268;
+}
+
+.callout-note .callout-header[aria-expanded=false] .callout-toggle::before {
+  transform: none;
+}
+
+.callout-note.callout-style-default {
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.callout-note.callout-style-default .callout-icon::before, .callout.callout-style-default .callout-toggle::before {
+  height: 0rem;
+  width: 0rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: .9rem .9rem;
+}
