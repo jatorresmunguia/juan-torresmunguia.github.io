@@ -3,8 +3,10 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
+
 format:
   html:
+    include-in-header: _head.html
     theme: flatly
     css: "css/styles.css"
     mainfont: "Signika"
@@ -20,7 +22,7 @@ website:
   favicon: "img/academicons--open-data.png"
   search: false
   page-navigation: true
-  reader-mode: false 
+  reader-mode: false
 
   navbar:
     title: " "
