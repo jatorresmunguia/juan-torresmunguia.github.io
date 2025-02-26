@@ -15,7 +15,7 @@
                     }
                     return trimmedAuthor;
                     }).join(', ') %> (<%= item.year %>) "<%= item.title %>", <i><%= item.subtitle %></i>, 
-                    <% if (item.doi) { %> DOI: <a href="<%= item.doi %>" target="_blank"><%= item.doi %></a> <% } %>
+                    <% if (item.doi) { %> DOI: <a href="<%= item.doi %>" target="_blank"><%= item.doi %></a>, <% } %>
                     <% if (item.url_link) { %> Retrieved from: <a href="<%= item.url_link %>" target="_blank"><%= item.url_link %></a> <% } %>
                 </p>
             </div>
