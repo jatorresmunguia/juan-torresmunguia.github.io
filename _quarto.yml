@@ -12,7 +12,6 @@ format:
     link-external-newwindow: true
     toc: false
     fontawesome: true
-    page-layout: full
     code-link: true
     highlight-style: tango
     
