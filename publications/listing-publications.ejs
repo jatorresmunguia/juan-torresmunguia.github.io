@@ -5,20 +5,16 @@
         <li class="publications" <%= metadataAttrs(item) %>>
             <div class="publications-content listing-publications-info">
                 <p>
-                    <% 
-                      const authorsArray = item.author.split(";").map(a => a.trim());
-                      const formattedAuthors = authorsArray.map(author => {
-                        if (author === "Juan Armando Torres Munguía") {
-                          return `<b>${author}</b><a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
-                            <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
-                          </a>`;
-                        } else {
-                          return author;
-                        }
-                      }).join("; ");
-                      %><%= formattedAuthors %><%
-                    %>
-                    (<%= item.year %>) "<%= item.title %>", <i><%= item.subtitle %></i>, 
+                    <%= item.author.split(',').map(author => {
+                    const trimmedAuthor = author.trim(); 
+                    if (trimmedAuthor === "Juan Armando Torres Munguía") {
+                    return `<strong>${trimmedAuthor}</strong> 
+                    <a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
+                    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
+                    </a>`;
+                    }
+                    return trimmedAuthor;
+                    }).join(', ') %> (<%= item.year %>) "<%= item.title %>", <i><%= item.subtitle %></i>, 
                     <% if (item.doi) { %> DOI: <a href="<%= item.doi %>" target="_blank"><%= item.doi %></a> <% } %>
                     <% if (item.url_link) { %> Retrieved from: <a href="<%= item.url_link %>" target="_blank"><%= item.url_link %></a> <% } %>
                 </p>

@@ -5,7 +5,13 @@ year: 2023
 date: "2023-05-04"
 doi: "10.37559/MEAC/23/03"
 url_link: https://unidir.org/publication/the-prospects-for-remote-assessment-a-comparison-of-phone-vs-in-person-interviews-in-nigeria-findings-report-29
-author: "Juan Armando Torres Munguía; Mohammed Bukar; Fatima Yetcha Ajimi Badu; Siobhan O’Neil; Kato van Broeckhoven"
+author:
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
+ - name: Mohammed Bukar
+ - name: Fatima Yetcha Ajimi Badu
+ - name: Siobhan O’Neil
+ - name: Kato van Broeckhoven
 categories:
 - armed conflict 
 - Nigeria

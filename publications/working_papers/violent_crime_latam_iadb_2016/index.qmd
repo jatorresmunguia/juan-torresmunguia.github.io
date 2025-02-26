@@ -4,7 +4,11 @@ subtitle: "Inter-American Development Bank Discussion Paper"
 date: "2016-08-01"
 year: 2016
 doi: "http://dx.doi.org/10.18235/0007973" 
-author: "Carlos J. Vilalta Perdomo; José G. Castillo; Juan Armando Torres Munguía" 
+author: 
+ - name: Carlos J. Vilalta Perdomo
+ - name: José G. Castillo
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
 categories:
 - crime
 - Latin America

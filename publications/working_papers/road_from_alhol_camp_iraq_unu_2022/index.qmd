@@ -5,7 +5,13 @@ year: 2022
 date: "2022-12-20"
 doi: ""
 url_link: https://unidir.org/publication/the-road-home-from-al-hol-camp-reflections-on-the-iraqi-experience-findings-report-24/
-author: "Jacqueline Parry; Yousif Khalid Khoshnaw; Siobhan O’Neil; Juan Armando Torres Munguía; Melisande Genat"
+author: 
+ - name: Jacqueline Parry
+ - name: Yousif Khalid Khoshnaw
+ - name: Siobhan O’Neil
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
+ - name: Melisande Genat
 categories:
 - armed conflict 
 - Iraq

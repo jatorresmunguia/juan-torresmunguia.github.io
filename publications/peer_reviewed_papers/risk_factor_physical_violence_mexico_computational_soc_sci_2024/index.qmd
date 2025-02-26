@@ -4,7 +4,9 @@ subtitle: "Journal of Computational Social Science"
 year: 2024
 date: "2024-05-28"
 doi: "10.1007/s42001-024-00292-5"
-author: "Juan Armando Torres Munguía"
+author: 
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
 categories:
 - additive regression models
 - boosting algorithm

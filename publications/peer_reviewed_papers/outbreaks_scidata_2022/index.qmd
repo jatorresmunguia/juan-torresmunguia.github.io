@@ -3,7 +3,13 @@ title: "A global dataset of pandemic- and epidemic-prone disease outbreaks"
 subtitle: Scientific Data
 year: 2022
 date: "2022-11-10"
-author: "Juan Armando Torres Munguía; Florina Cristina Badarau; Luis Rodrigo Díaz Pavez; Inmaculada Martínez-Zarzoso; Konstantin M. Wacker"
+author: 
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
+ - name: Florina Cristina Badarau
+ - name: Luis Rodrigo Díaz Pavez
+ - name: Inmaculada Martínez-Zarzoso
+ - name: Konstantin M. Wacker
 doi: 10.1038/s41597-022-01797-2
 categories:
  - disease outbreaks

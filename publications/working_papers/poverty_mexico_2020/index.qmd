@@ -5,7 +5,10 @@ year: 2020
 date: "2020-05-19"
 doi: ""
 url_link: https://www.econstor.eu/handle/10419/217231
-author: "Juan Armando Torres Munguía; Inmaculada Martínez-Zarzoso"
+author:
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941
+ - name: Inmaculada Martínez-Zarzoso
 categories:
 - poverty
 - Mexico
