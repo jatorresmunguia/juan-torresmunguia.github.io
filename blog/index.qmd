@@ -13,7 +13,9 @@ listing:
   feed:
     categories: [R]
 citation: false
-
+format: 
+  html: 
+    page-layout: article
 ---
 
 This blog is dedicated to helping researchers, data scientists, and public health professionals make the most of the **disease outbreaks data** using R. A range of techniques and tools that allow you to explore, visualize, and analyze the dataset in powerful ways will be shared.

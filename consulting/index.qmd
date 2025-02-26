@@ -1,5 +1,8 @@
 ---
 title: "Consulting"
+format: 
+  html: 
+    page-layout: article
 ---
   
 I offer a variety of consulting services tailored to research institutions, NGOs, international organizations, and policymakers, aiming to support them in all stages of the data life cycle. 

@@ -13,7 +13,7 @@ listing:
     template: listing-publications.ejs
 format: 
   html: 
-    page-layout: full
+    page-layout: article
     css: publications.css
 title-block-banner: false
 include-back-link: true
