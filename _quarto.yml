@@ -3,8 +3,6 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-metadata:
-  google-site-verification: "DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA"
 format:
   html:
     theme: flatly
