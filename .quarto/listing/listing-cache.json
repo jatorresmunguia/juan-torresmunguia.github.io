@@ -2,10 +2,6 @@
   "listingMap": {
     "blog\\blog.qmd": [
       "posts"
-    ],
-    "publications\\index.qmd": [
-      "peer_reviewed_papers/*/index.qmd",
-      "working_papers/*/index.qmd"
     ]
   }
 }
