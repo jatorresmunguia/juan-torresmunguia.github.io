@@ -194,5 +194,12 @@
     "title": "Violent Crime in Latin American Cities",
     "section": "",
     "text": "Abstract\nIn the last two decades, Latin America has been describes as an unsafe and violent region. Nonetheless, such picture is mostly based on homicide rates. Even though homicide is considered the best recorded crime, it does not provide full account of other forms of violent crime. Moreover, a great deal of research on crime throughout the region tends to be descriptive and anecdotal. Misunderstanding the causes of crime and disregarding evidence might induce policy makers to implement ineffective strategies, particularly at the local level. Therefore, based on Social Disorganization Theory, this study explains violent crime across and within selected cities of Latin America.\n\n\nCitation\n\nVilalta Perdomo, Carlos J.; Castillo, José G.; Torres Munguía, Juan Armando (2016). Violent Crime in Latin American Cities. Inter-American Development Bank Discussion Paper, 474. DOI: http://dx.doi.org/10.18235/0007973. Retrieved from: https://publications.iadb.org/en/violent-crime-latin-american-cities\n\n\n  \n  \n     Download .bib file  (compatible with LaTeX)"
+  },
+  {
+    "objectID": "about/about.html",
+    "href": "about/about.html",
+    "title": "Juan Torres Munguía, Ph.D.",
+    "section": "",
+    "text": "I am a consultant and independent researcher specializing in the management, analysis, and visualization of data related to humanitarian crises and most vulnerable populations.\nMy research combines statistics, machine learning algorithms, and data science methods to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.\nI am also an R-enthusiast who loves coding to optimize and streamline my work. Check out my Blog, where I share insights on using R for the study of humanitarian and development economics data."
   }
 ]

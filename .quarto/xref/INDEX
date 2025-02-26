@@ -1,71 +1,74 @@
 {
   "index.qmd": {
-    "index.html": "f4d7d32a"
+    "index.html": "286f25c1"
   },
   "blog/blog.qmd": {
-    "blog.html": "75989e69"
+    "blog.html": "1a63fbd3"
   },
   "blog/posts/how_to_maps/index.qmd": {
-    "index.html": "f6a1eef9"
+    "index.html": "20d8d040"
   },
   "consulting/consulting.qmd": {
-    "consulting.html": "2c6f5991"
+    "consulting.html": "f03b9886"
   },
   "cv/index.qmd": {
-    "index.html": "a33475dc"
+    "index.html": "c89c7d3c"
   },
   "publications/index.qmd": {
-    "index.html": "0b8dc873"
+    "index.html": "540844fe"
   },
   "publications/peer_reviewed_papers/imputation_missing_poverty_Mexico_2014/index.qmd": {
-    "index.html": "6967a638"
+    "index.html": "71eda259"
   },
   "publications/peer_reviewed_papers/outbreaks_scidata_2022/index.qmd": {
-    "index.html": "b2f20b58"
+    "index.html": "8ac65fa9"
   },
   "publications/peer_reviewed_papers/poverty_rural_mexico_plosone_2021/index.qmd": {
-    "index.html": "af9e0851"
+    "index.html": "3e1403de"
   },
   "publications/peer_reviewed_papers/poverty_urban_mexico_mdpi_2024/index.qmd": {
-    "index.html": "eaa12fb8"
+    "index.html": "a02086f7"
   },
   "publications/peer_reviewed_papers/risk_factor_physical_violence_mexico_computational_soc_sci_2024/index.qmd": {
-    "index.html": "795b491c"
+    "index.html": "a73fa79f"
   },
   "publications/peer_reviewed_papers/risk_factor_sexual_violence_mexico_2024/index.qmd": {
-    "index.html": "b4ea9681"
+    "index.html": "2828e7d4"
   },
   "publications/peer_reviewed_papers/risk_factors_emotional_violence_mexico_2022/index.qmd": {
-    "index.html": "d9c6d7d1"
+    "index.html": "1eefc1a2"
   },
   "publications/working_papers/behind_homicides_gender_gaps_mexico_2018/index.qmd": {
-    "index.html": "f38ed4ea"
+    "index.html": "ef3e7268"
   },
   "publications/working_papers/child_exits_lake_chad_unidir_2023/index.qmd": {
-    "index.html": "98cb8e7a"
+    "index.html": "5c874a02"
   },
   "publications/working_papers/child_recruitment_lake_chad_unu_2022/index.qmd": {
-    "index.html": "98f54128"
+    "index.html": "cf211d15"
   },
   "publications/working_papers/energy_poverty_2024/index.qmd": {
-    "index.html": "c9b27e3c"
+    "index.html": "596b50e9"
   },
   "publications/working_papers/isil_affiliation_unidir_2023/index.qmd": {
-    "index.html": "246e6276"
+    "index.html": "ac3ffd4b"
   },
   "publications/working_papers/poverty_mexico_2020/index.qmd": {
-    "index.html": "b0bfbc22"
+    "index.html": "12f5a974"
   },
   "publications/working_papers/prospects_remote_assessment_nigeria_unidir_2023/index.qmd": {
-    "index.html": "169fa270"
+    "index.html": "480d890b"
   },
   "publications/working_papers/road_from_alhol_camp_iraq_unu_2022/index.qmd": {
-    "index.html": "4d0e9cf0"
+    "index.html": "c0a25ad3"
   },
   "publications/working_papers/violent_crime_latam_iadb_2016/index.qmd": {
-    "index.html": "aba354f2"
+    "index.html": "ffe68915"
   },
   "publications/working_papers/weapon_holding_nigeria_2023/index.qmd": {
-    "index.html": "1ca931b0"
+    "index.html": "61ebaab3"
+  },
+  "about/about.qmd": {
+    "about.html": "b7b6b70a"
   }
 }
