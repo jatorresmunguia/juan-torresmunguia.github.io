@@ -9,11 +9,11 @@ I offer a variety of consulting services tailored to research institutions, NGOs
 
 I have provided my services as a consultant to the following organizations:
   
-- [Internal Displacement Monitoring Centre - Norwegian Refugee Council](https://www.internal-displacement.org/);
-- [Managing Exits from Armed Conflict - United Nations Institute for Disarmament Research](https://unidir.org/);
-- [Regional Office for Central America, North America and the Caribbean - International Organization for Migration](https://lac.iom.int/es);
-- [Global Centre of Excellence on Gender Statistics - UN Women](https://data.unwomen.org/where-we-work/cegs); and,
-- [Center of Excellence for Statistical Information on Government, Crime, Victimization and Justice - United Nations Office on Drugs and Crime](https://www.cdeunodc.inegi.org.mx/index.php/en/)
+- [Internal Displacement Monitoring Centre](https://www.internal-displacement.org/);
+- [United Nations Institute for Disarmament Research](https://unidir.org/);
+- [International Organization for Migration](https://lac.iom.int/es);
+- [UN Women](https://data.unwomen.org/where-we-work/cegs); and,
+- [United Nations Office on Drugs and Crime](https://www.cdeunodc.inegi.org.mx/index.php/en/).
 
 ## Services
 
@@ -37,7 +37,7 @@ I have provided my services as a consultant to the following organizations:
 
 **Experience:**
   
-I have experience working with questionnaires on victimization experiences and perceptions of insecurity across various Latin American countries. Additionally, I have contributed to the design of surveys assessing the socioeconomic conditions of both displaced and non-displaced households in Sudan, as well as the experiences of individuals and families before, during, and after armed conflicts in Nigeria, Niger, Chad, Cameroon, and Iraq.
+I have experience working with questionnaires on victimization experiences and perceptions of insecurity across various Latin American countries, surveys assessing the socioeconomic conditions of both displaced and non-displaced households in Sudan, as well as the experiences of individuals and families before, during, and after armed conflicts in Nigeria, Niger, Chad, Cameroon, and Iraq.
 
 **Example:**
   
@@ -101,7 +101,8 @@ I have experience analyzing and interpreting data on victimization, gender-based
 
 **Example:**
 
-At UNIDIR, I analyzed and co-authored five research papers on subjects such as [weapon holding](https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.pdf), [child recruitment](https://unidir.org/publication/child-recruitment-in-the-lake-chad-basin-findings-report-22/), and [family reintegration in Iraq](https://unidir.org/publication/coming-home-the-return-and-reintegration-of-families-with-perceived-isil-affiliation-in-iraq-findings-report-28/).
+I have co-authored five research papers on subjects such as [weapon holding](https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.pdf), [child recruitment](https://unidir.org/publication/child-recruitment-in-the-lake-chad-basin-findings-report-22/), and [family reintegration in Iraq](https://unidir.org/publication/coming-home-the-return-and-reintegration-of-families-with-perceived-isil-affiliation-in-iraq-findings-report-28/).
+
 :::
   
 :::
