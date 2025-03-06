@@ -1,19 +1,19 @@
 ---
 title: "Blog"
+subtitle: ""
 listing:
   contents: posts
   sort: "date desc"
-  type: default
-  categories: true
+  type: grid
+  categories: false
   sort-ui: false
-  filter-ui: false
-  fields: [title, author, categories, date, image]
-  image-placeholder: sidebar.jpg
-  image-align: right
-  feed:
-    categories: [R]
-citation: false
+  filter-ui: true
+  fields: [title, subtitle, categories, date]
 format: 
   html: 
     page-layout: article
+    css: blog.css
 ---
+
+## About the art and science of working with development and humanitarian data
+

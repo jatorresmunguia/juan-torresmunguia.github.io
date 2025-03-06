@@ -7,7 +7,6 @@ format:
     grid: 
       body-width: 1200px
 execute: 
-  freeze: false
   echo: false
   warning: false
 ---

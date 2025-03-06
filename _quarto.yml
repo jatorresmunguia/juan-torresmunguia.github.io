@@ -3,7 +3,10 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-
+    
+execute:
+  freeze: auto
+  
 format:
   html:
     include-in-header: _head.html
@@ -39,9 +42,8 @@ website:
         href: "consulting/index.qmd"
       - text: "Publications"
         href: "publications/index.qmd"
-#      - sidebar:data_viz
-      #- text: "Blog"
-      # href: "blog/index.qmd"
+      - text: "Blog"
+        href: "blog/index.qmd"
       - text: "Contact"
         href: "contact/index.qmd"
     right: 

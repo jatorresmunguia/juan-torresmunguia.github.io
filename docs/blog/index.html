@@ -66,9 +66,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-categories','listing-date','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-subtitle','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -118,9 +118,10 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="blog.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,6 +155,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../publications/index.html"> 
 <span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../contact/index.html"> 
@@ -192,8 +197,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data visualization">data visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="disease outbreaks">disease outbreaks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="epidemics">epidemics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="leaflet">leaflet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="maps">maps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pandemics">pandemics <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -216,53 +220,74 @@ window.Quarto = {
 </header>
 
 
+<section id="about-the-art-and-science-of-working-with-development-and-humanitarian-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-art-and-science-of-working-with-development-and-humanitarian-data">About the art and science of working with development and humanitarian data</h2>
 
 
 
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="data visualization,leaflet,maps,disease outbreaks,epidemics,pandemics" data-listing-date-sort="1728972000000" data-listing-file-modified-sort="1740756696978" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1786">
-<div class="thumbnail">
-<p><a href="../blog/posts/how_to_maps/index.html" class="no-external"></a></p><a href="../blog/posts/how_to_maps/index.html" class="no-external">
-<p><img src="../blog/posts/how_to_maps/image.png" class="thumbnail-image"></p>
-</a><p><a href="../blog/posts/how_to_maps/index.html" class="no-external"></a></p>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/how_to_maps/index.html" class="no-external">Making interactive choropleths for disease outbreaks data using leaflet in R</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/posts/how_to_maps/index.html" class="no-external"></a>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="data analysis,official statistics,Mexico,household surveys,ENVIPE,crime,victimization,public safety,tidyverse,srvyr,microdata" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1741225860700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1269">
+<a href="../blog/posts/estimating_official_survey_data_mx/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE
+</h5>
+<div class="card-subtitle listing-subtitle">
+Part 1: Estimating crime prevalence
 </div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
+<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
+data analysis
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('leaflet'); return false;">
-leaflet
+<div class="listing-category" onclick="window.quartoListingCategory('official statistics'); return false;">
+official statistics
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('maps'); return false;">
-maps
+<div class="listing-category" onclick="window.quartoListingCategory('Mexico'); return false;">
+Mexico
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
-disease outbreaks
+<div class="listing-category" onclick="window.quartoListingCategory('household surveys'); return false;">
+household surveys
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
-epidemics
+<div class="listing-category" onclick="window.quartoListingCategory('ENVIPE'); return false;">
+ENVIPE
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
-pandemics
+<div class="listing-category" onclick="window.quartoListingCategory('crime'); return false;">
+crime
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('victimization'); return false;">
+victimization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('public safety'); return false;">
+public safety
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
+tidyverse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('srvyr'); return false;">
+srvyr
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('microdata'); return false;">
+microdata
 </div>
 </div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/how_to_maps/index.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
-Oct 15, 2024
+Jan 27, 2025
+</div>
+</div>
+</div>
 </div>
 </a>
-</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">

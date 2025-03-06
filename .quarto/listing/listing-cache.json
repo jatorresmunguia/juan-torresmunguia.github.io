@@ -8,7 +8,9 @@
       "working_papers/*/index.qmd"
     ],
     "blog\\index.qmd": [
-      "posts"
+      "posts",
+      "data_analysis",
+      "data_analysis/*/index.qmd"
     ]
   }
 }

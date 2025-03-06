@@ -85,5 +85,17 @@
   },
   "publications/peer_reviewed_papers/what_makes_an_epidemic_BMC_2025/index.qmd": {
     "index.html": "dfd0ad6a"
+  },
+  "blog/posts/data_analysis/estimating_official_survey_data_mx/index.qmd": {
+    "index.html": "8f971d9d"
+  },
+  "blog/posts/data_visualization/how_to_maps/index.qmd": {
+    "index.html": "f3929a53"
+  },
+  "blog/data_analysis/estimating_official_survey_data_mx/index.qmd": {
+    "index.html": "18a2a671"
+  },
+  "blog/posts/estimating_official_survey_data_mx/index.qmd": {
+    "index.html": "fafd3057"
   }
 }

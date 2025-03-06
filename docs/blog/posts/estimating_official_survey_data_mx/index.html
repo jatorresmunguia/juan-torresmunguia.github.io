@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2025-01-27">
+
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
+<script src="../../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../css/styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title"></span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../consulting/index.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../contact/index.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/jatorresmunguia" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-3432-6941" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE</h1>
+<p class="subtitle lead">Part 1: Estimating crime prevalence</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">data analysis</div>
+    <div class="quarto-category">official statistics</div>
+    <div class="quarto-category">Mexico</div>
+    <div class="quarto-category">household surveys</div>
+    <div class="quarto-category">ENVIPE</div>
+    <div class="quarto-category">crime</div>
+    <div class="quarto-category">victimization</div>
+    <div class="quarto-category">public safety</div>
+    <div class="quarto-category">tidyverse</div>
+    <div class="quarto-category">srvyr</div>
+    <div class="quarto-category">microdata</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Juan Armando Torres Munguía </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 27, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In this article, I will guide you through the process of analyzing Mexico’s 2024 National Survey of Victimization and Perception of Public Safety (<em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</em>, ENVIPE) using the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> framework for survey analysis with the <code>srvyr</code> package. Specifically, we will calculate the <strong>crime prevalence rate per 100,000 inhabitants by state, according to the victim’s sex</strong> ( <em>Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima</em>).</p>
+<p>Official tables with this indicator can be found <a href="https://www.inegi.org.mx/programas/envipe/2024/#tabulados">here</a>.</p>
+<p>By the end of this article, you will be able to use the <code>tidyverse</code> to:</p>
+<ul>
+<li>Load the survey microdata from INEGI’s website.</li>
+<li>Specify the ENVIPE survey design.</li>
+<li>Calculate crime prevalence indicators.</li>
+</ul>
+</section>
+<section id="about-the-envipe" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-envipe">About the ENVIPE</h2>
+<p>ENVIPE is an official survey that provides nationally and state-representative information on household crime victimization and perceptions of public safety in Mexico. Conducted annually since 2011 by the <a href="https://www.inegi.org.mx/default.html">National Institute of Statistics and Geography (INEGI)</a>, ENVIPE collects data on the following crimes:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Total vehicle theft (car, pickup truck, or truck).</li>
+<li>Theft of vehicle accessories, spare parts, or tools (car, pickup truck, or truck).</li>
+<li>Wall graffiti, intentional vehicle damage, and other types of vandalism.</li>
+<li>Burglary or attempted burglary.</li>
+<li>Kidnapping.</li>
+<li>Enforced disappearance.</li>
+<li>Homicide.</li>
+<li>Robbery or assault on the street or public transportation.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Theft in a manner different from the above.</li>
+<li>Bank fraud.</li>
+<li>Consumer fraud.</li>
+<li>Extortion.</li>
+<li>Threats.</li>
+<li>Injuries.</li>
+<li>Kidnapping.</li>
+<li>Harassment or intimidation.</li>
+<li>Groping.</li>
+<li>Exhibitionism.</li>
+<li>Attempted rape.</li>
+<li>Sexual rape.</li>
+<li>Other crimes.</li>
+</ul>
+</div>
+</div>
+<p>All survey-related information, including questionnaires, methodology, glossaries, summaries, and microdata, is fully available at <a href="https://en.www.inegi.org.mx/programas/envipe/2024/">INEGI’s website</a>.</p>
+</section>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
+<p>First, install and load the required packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Tidy data analysis framework</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr) <span class="co"># Tidy syntax for survey data analysis</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(archive) <span class="co"># Extract files from a ZIP archive</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># Create HTML table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="loading-survey-microdata-from-inegi" class="level2">
+<h2 class="anchored" data-anchor-id="loading-survey-microdata-from-inegi">Loading survey microdata from INEGI</h2>
+<p>Microdata is available <a href="https://www.inegi.org.mx/programas/envipe/2024/#microdatos">here</a> in various formats (CSV, DBF, DTA, SAV, and RData). In this post, we will use the RData files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">archive_read</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">archive =</span> <span class="st">"https://www.inegi.org.mx/contenidos/programas/envipe/2024/microdatos/bd_envipe_2024_RData.zip"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"BD_ENVIPE_2024.RData"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the <code>archive</code> package, we can directly extract the required file from <code>bd_envipe_2024_RData.zip</code>.</p>
+</div>
+</div>
+<p>This loads the following objects into the global environment:</p>
+<ul>
+<li><p><code>THogar</code>: This object contains the interview result, the row of the selected respondent, the household factor, and other household characteristics.</p></li>
+<li><p><code>TMod_Vic</code>: This object includes information on the crimes suffered by the selected respondent and their household during the reference year, specifically during 2023. Information comes from the victimization module of the survey.</p></li>
+<li><p><code>TPer_Vic1</code>: This object includes information related to the perception of public security within the respondent’s geographic area, antisocial behaviors in their immediate surroundings, and changes in habits due to fear of becoming a crime victim in 2023. Additionally, it presents information regarding the performance of authorities and trust in them. In other words, this table covers Sections IV and V of the main questionnaire.</p></li>
+<li><p><code>TPer_Vic2</code>: This object consolidates information related to household and personal victimization, particularly focusing on high-impact crimes experienced by the household (such as kidnapping, enforced disappearance, or homicide) or by the selected respondent. This table includes Sections VI and VII of the main questionnaire.</p></li>
+<li><p><code>TSDem</code>: This object contains the socio-demographic characteristics of household members, corresponding to Section III of the main questionnaire.</p></li>
+<li><p><code>TSVivienda</code>: This object contains the characteristics of the households captured through the questionnaire cover page, as well as the count of household residents and the number of households. In other words, it includes Sections I and II of the main questionnaire.</p></li>
+</ul>
+</section>
+<section id="calculating-crime-prevalence-rate-per-100000-thousand-inhabitants-by-state-according-to-the-victims-sex" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-crime-prevalence-rate-per-100000-thousand-inhabitants-by-state-according-to-the-victims-sex">Calculating crime prevalence rate per 100,000 thousand inhabitants by state, according to the victim’s sex</h2>
+<p>To estimate the crime prevalence rate, we use information from <code>TPer_Vic2</code> (screening questions on victimization from the main questionnaire) and <code>TMod_Vic</code> (specific victimization module applied to the respondents who reported being a victim of at least one of the crimes included in the survey during the reference period). <code>TPer_Vic2</code> will serve to characterize the total population and <code>TMod_Vic</code> to describe the victims and the associated crimes.</p>
+<section id="specifying-the-envipe-survey-design" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-the-envipe-survey-design">1. Specifying the ENVIPE survey design</h3>
+<p>ENVIPE follows a probabilistic, three-stage, stratified, and clustered sampling design. The sampling unit is the household, while the unit of analysis is the population aged 18 and older in selected households. More details on the sampling design can be found <a href="https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463920014.pdf">here</a>(in Spanish).</p>
+<p>From the documentation on <a href="https://www.inegi.org.mx/contenidos/programas/envipe/2024/doc/fd_envipe2024.pdf">data structure</a>(in Spanish), the key variables for specifying the survey design are:</p>
+<ul>
+<li><p><code>ID_PER</code>: Person identifier</p></li>
+<li><p><code>EST_DIS</code>: Stratum</p></li>
+<li><p><code>UPM_DIS</code>: Primary sampling unit</p></li>
+<li><p><code>FAC_ELE</code>: Weighting factor for public security perception and victimization estimates.</p></li>
+</ul>
+<p>We specify the survey design as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify victims from TMod_Vic, excluding </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># "Wall graffiti, intentional vehicle damage, and other vandalism" (BPCOD != "03")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>id_victims <span class="ot">&lt;-</span> TMod_Vic <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(BPCOD <span class="sc">!=</span> <span class="st">"03"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(ID_PER)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create victimization variable in TPer_Vic2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>TPer_Vic2 <span class="ot">&lt;-</span> TPer_Vic2 <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">victimization =</span> <span class="fu">ifelse</span>(ID_PER <span class="sc">%in%</span> id_victims, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert FAC_ELE (weights) to numeric</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>TPer_Vic2 <span class="ot">&lt;-</span> TPer_Vic2 <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FAC_ELE =</span> <span class="fu">as.numeric</span>(FAC_ELE))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Label SEXO variable</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>TPer_Vic2 <span class="ot">&lt;-</span> TPer_Vic2 <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SEXO =</span> <span class="fu">recode</span>(SEXO, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Man"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Woman"</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create survey object</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>envipe_design <span class="ot">&lt;-</span> TPer_Vic2 <span class="sc">|&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">weights =</span> FAC_ELE, <span class="co"># Weights (inverse probability)</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">strata =</span> EST_DIS, <span class="co"># Stratum</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">ids =</span> UPM_DIS, <span class="co"># Primary sampling unit</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span> <span class="co"># Nesting within strata</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="calculating-point-estimates-and-variablity-indicators" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-point-estimates-and-variablity-indicators">2. Calculating point estimates and variablity indicators</h3>
+<p>To compute proportions from survey data, we use <code>survey_mean()</code> from <code>srvyr</code> package. From ENVIPE’s documentation, we know that <code>NOM_ENT</code> represents the state, while <code>SEXO</code> corresponds to the respondent’s sex.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>envipe_design <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># `interact` function is used to calculate the proportion </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># over the interaction of state and sex</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">interact</span>(NOM_ENT, SEXO)) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Proportion =</span> <span class="fu">survey_mean</span>(victimization,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">level =</span> <span class="fl">0.90</span>, <span class="co"># Confidence level</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"cv"</span>) <span class="co"># Variability indicators</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Prevalence rate</span><span class="st">`</span> <span class="ot">=</span> Proportion <span class="sc">*</span> <span class="dv">100000</span>, <span class="co"># Rate per 100,000 people</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Standard error</span><span class="st">`</span> <span class="ot">=</span> Proportion_se <span class="sc">*</span> <span class="dv">100000</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Low 90% CI</span><span class="st">`</span> <span class="ot">=</span> Proportion_low <span class="sc">*</span> <span class="dv">100000</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Upper 90% CI</span><span class="st">`</span> <span class="ot">=</span> Proportion_upp <span class="sc">*</span> <span class="dv">100000</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Coefficient of variation %</span><span class="st">`</span> <span class="ot">=</span> Proportion_cv <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">State =</span> <span class="fu">str_to_sentence</span>(NOM_ENT) <span class="co"># Capitalize only the first letter</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Sex =</span> SEXO) <span class="sc">|&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Sex, <span class="st">`</span><span class="at">Prevalence rate</span><span class="st">`</span>, <span class="st">`</span><span class="at">Standard error</span><span class="st">`</span>, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Low 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Upper 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Coefficient of variation %</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">|&gt;</span> <span class="co"># HTML table</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="co"># Apply bootstrap theme to the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output table looks like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">State</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Prevalence rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Standard error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Low 90% CI</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Upper 90% CI</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Coefficient of variation %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Aguascalientes</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">33710.81</td>
+<td style="text-align: right;">2172.7372</td>
+<td style="text-align: right;">30136.71</td>
+<td style="text-align: right;">37284.91</td>
+<td style="text-align: right;">6.445224</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aguascalientes</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">32041.57</td>
+<td style="text-align: right;">1831.7081</td>
+<td style="text-align: right;">29028.45</td>
+<td style="text-align: right;">35054.68</td>
+<td style="text-align: right;">5.716662</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baja California</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">23043.35</td>
+<td style="text-align: right;">1604.9769</td>
+<td style="text-align: right;">20403.20</td>
+<td style="text-align: right;">25683.50</td>
+<td style="text-align: right;">6.965032</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baja California</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">24480.64</td>
+<td style="text-align: right;">1536.1771</td>
+<td style="text-align: right;">21953.66</td>
+<td style="text-align: right;">27007.61</td>
+<td style="text-align: right;">6.275070</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baja California Sur</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">19329.94</td>
+<td style="text-align: right;">1244.1353</td>
+<td style="text-align: right;">17283.36</td>
+<td style="text-align: right;">21376.51</td>
+<td style="text-align: right;">6.436314</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baja California Sur</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">23817.58</td>
+<td style="text-align: right;">1466.2963</td>
+<td style="text-align: right;">21405.56</td>
+<td style="text-align: right;">26229.60</td>
+<td style="text-align: right;">6.156361</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campeche</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">21832.87</td>
+<td style="text-align: right;">1455.8508</td>
+<td style="text-align: right;">19438.03</td>
+<td style="text-align: right;">24227.71</td>
+<td style="text-align: right;">6.668161</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Campeche</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">23213.74</td>
+<td style="text-align: right;">1381.0933</td>
+<td style="text-align: right;">20941.88</td>
+<td style="text-align: right;">25485.61</td>
+<td style="text-align: right;">5.949465</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chiapas</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">16602.99</td>
+<td style="text-align: right;">986.0052</td>
+<td style="text-align: right;">14981.03</td>
+<td style="text-align: right;">18224.94</td>
+<td style="text-align: right;">5.938722</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chiapas</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">12074.36</td>
+<td style="text-align: right;">978.7862</td>
+<td style="text-align: right;">10464.28</td>
+<td style="text-align: right;">13684.44</td>
+<td style="text-align: right;">8.106318</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chihuahua</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">22303.22</td>
+<td style="text-align: right;">1234.5065</td>
+<td style="text-align: right;">20272.49</td>
+<td style="text-align: right;">24333.96</td>
+<td style="text-align: right;">5.535103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chihuahua</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">22804.31</td>
+<td style="text-align: right;">1181.0327</td>
+<td style="text-align: right;">20861.54</td>
+<td style="text-align: right;">24747.08</td>
+<td style="text-align: right;">5.178990</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ciudad De Mexico</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">34562.66</td>
+<td style="text-align: right;">1089.2714</td>
+<td style="text-align: right;">32770.84</td>
+<td style="text-align: right;">36354.49</td>
+<td style="text-align: right;">3.151584</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ciudad De Mexico</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">30746.76</td>
+<td style="text-align: right;">990.3528</td>
+<td style="text-align: right;">29117.66</td>
+<td style="text-align: right;">32375.87</td>
+<td style="text-align: right;">3.220999</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coahuila De Zaragoza</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">18179.70</td>
+<td style="text-align: right;">1249.1422</td>
+<td style="text-align: right;">16124.89</td>
+<td style="text-align: right;">20234.51</td>
+<td style="text-align: right;">6.871084</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coahuila De Zaragoza</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">20447.19</td>
+<td style="text-align: right;">1238.7111</td>
+<td style="text-align: right;">18409.54</td>
+<td style="text-align: right;">22484.84</td>
+<td style="text-align: right;">6.058099</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Colima</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">21106.85</td>
+<td style="text-align: right;">1593.5970</td>
+<td style="text-align: right;">18485.43</td>
+<td style="text-align: right;">23728.28</td>
+<td style="text-align: right;">7.550140</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Colima</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">21295.28</td>
+<td style="text-align: right;">1351.1455</td>
+<td style="text-align: right;">19072.68</td>
+<td style="text-align: right;">23517.88</td>
+<td style="text-align: right;">6.344813</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Durango</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">15240.74</td>
+<td style="text-align: right;">1133.1868</td>
+<td style="text-align: right;">13376.67</td>
+<td style="text-align: right;">17104.80</td>
+<td style="text-align: right;">7.435250</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Durango</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">17401.18</td>
+<td style="text-align: right;">1166.0910</td>
+<td style="text-align: right;">15482.99</td>
+<td style="text-align: right;">19319.37</td>
+<td style="text-align: right;">6.701219</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Guanajuato</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">20057.38</td>
+<td style="text-align: right;">1428.0981</td>
+<td style="text-align: right;">17708.20</td>
+<td style="text-align: right;">22406.57</td>
+<td style="text-align: right;">7.120063</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Guanajuato</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">18930.15</td>
+<td style="text-align: right;">1287.0811</td>
+<td style="text-align: right;">16812.93</td>
+<td style="text-align: right;">21047.37</td>
+<td style="text-align: right;">6.799107</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Guerrero</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">16981.89</td>
+<td style="text-align: right;">1494.6554</td>
+<td style="text-align: right;">14523.22</td>
+<td style="text-align: right;">19440.56</td>
+<td style="text-align: right;">8.801466</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Guerrero</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">14572.44</td>
+<td style="text-align: right;">1238.6234</td>
+<td style="text-align: right;">12534.93</td>
+<td style="text-align: right;">16609.94</td>
+<td style="text-align: right;">8.499769</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hidalgo</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">22397.82</td>
+<td style="text-align: right;">1338.0474</td>
+<td style="text-align: right;">20196.77</td>
+<td style="text-align: right;">24598.88</td>
+<td style="text-align: right;">5.974006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hidalgo</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">20215.02</td>
+<td style="text-align: right;">1157.0294</td>
+<td style="text-align: right;">18311.73</td>
+<td style="text-align: right;">22118.30</td>
+<td style="text-align: right;">5.723613</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jalisco</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">24390.13</td>
+<td style="text-align: right;">1548.7916</td>
+<td style="text-align: right;">21842.40</td>
+<td style="text-align: right;">26937.85</td>
+<td style="text-align: right;">6.350076</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jalisco</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">25141.90</td>
+<td style="text-align: right;">1438.5170</td>
+<td style="text-align: right;">22775.58</td>
+<td style="text-align: right;">27508.23</td>
+<td style="text-align: right;">5.721592</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mexico</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">32906.59</td>
+<td style="text-align: right;">1632.3183</td>
+<td style="text-align: right;">30221.47</td>
+<td style="text-align: right;">35591.71</td>
+<td style="text-align: right;">4.960460</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mexico</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">33023.78</td>
+<td style="text-align: right;">1483.3471</td>
+<td style="text-align: right;">30583.71</td>
+<td style="text-align: right;">35463.85</td>
+<td style="text-align: right;">4.491755</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Michoacan De Ocampo</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">14405.17</td>
+<td style="text-align: right;">1031.1125</td>
+<td style="text-align: right;">12709.01</td>
+<td style="text-align: right;">16101.32</td>
+<td style="text-align: right;">7.157934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Michoacan De Ocampo</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">15485.20</td>
+<td style="text-align: right;">1036.3320</td>
+<td style="text-align: right;">13780.46</td>
+<td style="text-align: right;">17189.94</td>
+<td style="text-align: right;">6.692401</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Morelos</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">26995.43</td>
+<td style="text-align: right;">1517.6054</td>
+<td style="text-align: right;">24499.00</td>
+<td style="text-align: right;">29491.85</td>
+<td style="text-align: right;">5.621713</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Morelos</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">24869.74</td>
+<td style="text-align: right;">1688.5969</td>
+<td style="text-align: right;">22092.04</td>
+<td style="text-align: right;">27647.44</td>
+<td style="text-align: right;">6.789765</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nayarit</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">16075.56</td>
+<td style="text-align: right;">1516.6195</td>
+<td style="text-align: right;">13580.76</td>
+<td style="text-align: right;">18570.36</td>
+<td style="text-align: right;">9.434318</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nayarit</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">18639.61</td>
+<td style="text-align: right;">1597.1842</td>
+<td style="text-align: right;">16012.28</td>
+<td style="text-align: right;">21266.94</td>
+<td style="text-align: right;">8.568766</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nuevo Leon</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">23602.12</td>
+<td style="text-align: right;">1261.9498</td>
+<td style="text-align: right;">21526.25</td>
+<td style="text-align: right;">25678.00</td>
+<td style="text-align: right;">5.346764</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nuevo Leon</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">21440.72</td>
+<td style="text-align: right;">1211.6372</td>
+<td style="text-align: right;">19447.60</td>
+<td style="text-align: right;">23433.83</td>
+<td style="text-align: right;">5.651104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oaxaca</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">12940.56</td>
+<td style="text-align: right;">1158.2366</td>
+<td style="text-align: right;">11035.29</td>
+<td style="text-align: right;">14845.83</td>
+<td style="text-align: right;">8.950434</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oaxaca</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">13548.61</td>
+<td style="text-align: right;">1017.7020</td>
+<td style="text-align: right;">11874.51</td>
+<td style="text-align: right;">15222.70</td>
+<td style="text-align: right;">7.511489</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Puebla</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">26519.64</td>
+<td style="text-align: right;">1342.0473</td>
+<td style="text-align: right;">24312.00</td>
+<td style="text-align: right;">28727.27</td>
+<td style="text-align: right;">5.060579</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puebla</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">24176.45</td>
+<td style="text-align: right;">1124.4656</td>
+<td style="text-align: right;">22326.73</td>
+<td style="text-align: right;">26026.17</td>
+<td style="text-align: right;">4.651078</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Queretaro</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">30297.50</td>
+<td style="text-align: right;">1620.6534</td>
+<td style="text-align: right;">27631.57</td>
+<td style="text-align: right;">32963.44</td>
+<td style="text-align: right;">5.349132</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Queretaro</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">25746.31</td>
+<td style="text-align: right;">1260.3524</td>
+<td style="text-align: right;">23673.06</td>
+<td style="text-align: right;">27819.56</td>
+<td style="text-align: right;">4.895273</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quintana Roo</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">22592.04</td>
+<td style="text-align: right;">1384.4250</td>
+<td style="text-align: right;">20314.70</td>
+<td style="text-align: right;">24869.39</td>
+<td style="text-align: right;">6.127932</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quintana Roo</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">21775.64</td>
+<td style="text-align: right;">1237.8095</td>
+<td style="text-align: right;">19739.48</td>
+<td style="text-align: right;">23811.81</td>
+<td style="text-align: right;">5.684376</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">San Luis Potosi</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">24019.02</td>
+<td style="text-align: right;">1874.7438</td>
+<td style="text-align: right;">20935.11</td>
+<td style="text-align: right;">27102.93</td>
+<td style="text-align: right;">7.805247</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">San Luis Potosi</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">23227.97</td>
+<td style="text-align: right;">1491.3111</td>
+<td style="text-align: right;">20774.80</td>
+<td style="text-align: right;">25681.14</td>
+<td style="text-align: right;">6.420324</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sinaloa</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">21181.44</td>
+<td style="text-align: right;">1122.0160</td>
+<td style="text-align: right;">19335.76</td>
+<td style="text-align: right;">23027.13</td>
+<td style="text-align: right;">5.297165</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sinaloa</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">20562.22</td>
+<td style="text-align: right;">1086.2790</td>
+<td style="text-align: right;">18775.32</td>
+<td style="text-align: right;">22349.12</td>
+<td style="text-align: right;">5.282887</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sonora</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">26864.66</td>
+<td style="text-align: right;">1816.2677</td>
+<td style="text-align: right;">23876.94</td>
+<td style="text-align: right;">29852.37</td>
+<td style="text-align: right;">6.760808</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sonora</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">25742.16</td>
+<td style="text-align: right;">1902.0264</td>
+<td style="text-align: right;">22613.37</td>
+<td style="text-align: right;">28870.95</td>
+<td style="text-align: right;">7.388759</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tabasco</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">25881.72</td>
+<td style="text-align: right;">1354.6212</td>
+<td style="text-align: right;">23653.40</td>
+<td style="text-align: right;">28110.04</td>
+<td style="text-align: right;">5.233891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tabasco</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">25522.45</td>
+<td style="text-align: right;">1091.8488</td>
+<td style="text-align: right;">23726.38</td>
+<td style="text-align: right;">27318.51</td>
+<td style="text-align: right;">4.277994</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tamaulipas</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">17788.15</td>
+<td style="text-align: right;">1075.8038</td>
+<td style="text-align: right;">16018.47</td>
+<td style="text-align: right;">19557.82</td>
+<td style="text-align: right;">6.047869</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tamaulipas</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">18368.67</td>
+<td style="text-align: right;">1017.1639</td>
+<td style="text-align: right;">16695.46</td>
+<td style="text-align: right;">20041.88</td>
+<td style="text-align: right;">5.537493</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tlaxcala</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">23968.33</td>
+<td style="text-align: right;">1621.2198</td>
+<td style="text-align: right;">21301.47</td>
+<td style="text-align: right;">26635.20</td>
+<td style="text-align: right;">6.764007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tlaxcala</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">22295.82</td>
+<td style="text-align: right;">1473.2391</td>
+<td style="text-align: right;">19872.38</td>
+<td style="text-align: right;">24719.26</td>
+<td style="text-align: right;">6.607692</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Veracruz De Ignacio De La Llave</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">16365.05</td>
+<td style="text-align: right;">1055.8247</td>
+<td style="text-align: right;">14628.24</td>
+<td style="text-align: right;">18101.86</td>
+<td style="text-align: right;">6.451705</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Veracruz De Ignacio De La Llave</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">14712.45</td>
+<td style="text-align: right;">947.9121</td>
+<td style="text-align: right;">13153.15</td>
+<td style="text-align: right;">16271.74</td>
+<td style="text-align: right;">6.442927</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yucatan</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">20677.82</td>
+<td style="text-align: right;">1239.0909</td>
+<td style="text-align: right;">18639.55</td>
+<td style="text-align: right;">22716.10</td>
+<td style="text-align: right;">5.992366</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yucatan</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">17805.62</td>
+<td style="text-align: right;">1141.8291</td>
+<td style="text-align: right;">15927.34</td>
+<td style="text-align: right;">19683.90</td>
+<td style="text-align: right;">6.412745</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zacatecas</td>
+<td style="text-align: left;">Man</td>
+<td style="text-align: right;">17328.49</td>
+<td style="text-align: right;">1346.8466</td>
+<td style="text-align: right;">15112.96</td>
+<td style="text-align: right;">19544.02</td>
+<td style="text-align: right;">7.772440</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Zacatecas</td>
+<td style="text-align: left;">Woman</td>
+<td style="text-align: right;">15690.25</td>
+<td style="text-align: right;">1335.9463</td>
+<td style="text-align: right;">13492.65</td>
+<td style="text-align: right;">17887.85</td>
+<td style="text-align: right;">8.514502</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+  author = {Torres Munguía, Juan Armando},
+  title = {Using a Tidy Approach in {R} to Analyze {Mexico’s} 2024
+    {ENVIPE}},
+  date = {2025-01-27},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2025. <span>“Using a Tidy Approach in R to
+Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Juan TORRES MUNGUÍA</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a><br></p>
+</div>
+    <div class="nav-footer-right">
+<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a><br></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
