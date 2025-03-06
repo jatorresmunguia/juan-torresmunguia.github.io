@@ -97,5 +97,11 @@
   },
   "blog/posts/estimating_official_survey_data_mx/index.qmd": {
     "index.html": "fafd3057"
+  },
+  "blog/posts/waffle_chart_disease_outbreaks/index.qmd": {
+    "index.html": "5ce7352b"
+  },
+  "blog/posts/estimating_envipe_prevalence/index.qmd": {
+    "index.html": "c1f61bdd"
   }
 }

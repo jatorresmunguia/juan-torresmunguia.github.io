@@ -1,6 +1,6 @@
 ---
 title: "Using a tidy approach in R to analyze Mexico's 2024 ENVIPE"
-subtitle: "Part 1: Estimating crime prevalence"
+subtitle: "Part 1: Estimating crime prevalence with the {srvyr} package"
 author: 
  - name: 
     given: Juan Armando 

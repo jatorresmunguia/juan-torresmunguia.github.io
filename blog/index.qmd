@@ -8,7 +8,7 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: true
-  fields: [title, subtitle, categories, date]
+  fields: [image, title, subtitle, categories, date]
 format: 
   html: 
     page-layout: article

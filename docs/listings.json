@@ -31,7 +31,8 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/estimating_official_survey_data_mx/index.html"
+      "/blog/posts/estimating_envipe_prevalence/index.html",
+      "/blog/posts/waffle_chart_disease_outbreaks/index.html"
     ]
   }
 ]
