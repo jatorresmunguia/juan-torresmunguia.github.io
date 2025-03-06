@@ -15,5 +15,5 @@ format:
     css: blog.css
 ---
 
-## About the art and science of working with development and humanitarian data
+## Exploring the art and science of working with development and humanitarian data
 
