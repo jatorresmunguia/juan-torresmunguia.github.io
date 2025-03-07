@@ -225,9 +225,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this article, I will guide you through the process of analyzing Mexico’s 2024 National Survey of Victimization and Perception of Public Safety (<em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</em>, ENVIPE) using the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> framework for survey analysis with the <code>srvyr</code> package. Specifically, we will calculate the <strong>crime prevalence rate per 100,000 inhabitants by state, according to the victim’s sex</strong> ( <em>Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima</em>).</p>
+<p>In this article, I will guide you through the process of analyzing Mexico’s 2024 National Survey of Victimization and Perception of Public Safety (<em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</em>, ENVIPE) using the <a href="https://www.tidyverse.org/">{tidyverse}</a> framework for survey analysis with the {srvyr} package. Specifically, we will calculate the <strong>crime prevalence rate per 100,000 inhabitants by state, according to the victim’s sex</strong> ( <em>Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima</em>).</p>
 <p>Official tables with this indicator can be found <a href="https://www.inegi.org.mx/programas/envipe/2024/#tabulados">here</a>.</p>
-<p>By the end of this article, you will be able to use the <code>tidyverse</code> to:</p>
+<p>By the end of this article, you will be able to use the {tidyverse} to:</p>
 <ul>
 <li>Load the survey microdata from INEGI’s website.</li>
 <li>Specify the ENVIPE survey design.</li>
@@ -298,7 +298,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using the <code>archive</code> package, we can directly extract the required file from <code>bd_envipe_2024_RData.zip</code>.</p>
+<p>Using the {archive} package, we can directly extract the required file from <code>bd_envipe_2024_RData.zip</code>.</p>
 </div>
 </div>
 <p>This loads the following objects into the global environment:</p>
@@ -326,7 +326,7 @@ Tip
 </ul>
 <p>We specify the survey design as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify victims from TMod_Vic, excluding </span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify victims from TMod_Vic, excluding</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># "Wall graffiti, intentional vehicle damage, and other vandalism" (BPCOD != "03")</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>id_victims <span class="ot">&lt;-</span> TMod_Vic <span class="sc">|&gt;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(BPCOD <span class="sc">!=</span> <span class="st">"03"</span>) <span class="sc">|&gt;</span></span>
@@ -356,10 +356,10 @@ Tip
 </section>
 <section id="calculating-point-estimates-and-variablity-indicators" class="level3">
 <h3 class="anchored" data-anchor-id="calculating-point-estimates-and-variablity-indicators">2. Calculating point estimates and variablity indicators</h3>
-<p>To compute proportions from survey data, we use <code>survey_mean()</code> from <code>srvyr</code> package. From ENVIPE’s documentation, we know that <code>NOM_ENT</code> represents the state, while <code>SEXO</code> corresponds to the respondent’s sex.</p>
+<p>To compute proportions from survey data, we use <code>survey_mean()</code> from {srvyr} package. From ENVIPE’s documentation, we know that <code>NOM_ENT</code> represents the state, while <code>SEXO</code> corresponds to the respondent’s sex.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>envipe_design <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># `interact` function is used to calculate the proportion </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># `interact` function is used to calculate the proportion</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># over the interaction of state and sex</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">interact</span>(NOM_ENT, SEXO)) <span class="sc">|&gt;</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
@@ -378,10 +378,12 @@ Tip
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">State =</span> <span class="fu">str_to_sentence</span>(NOM_ENT) <span class="co"># Capitalize only the first letter</span></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Sex =</span> SEXO) <span class="sc">|&gt;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Sex, <span class="st">`</span><span class="at">Prevalence rate</span><span class="st">`</span>, <span class="st">`</span><span class="at">Standard error</span><span class="st">`</span>, </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Low 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Upper 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Coefficient of variation %</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">|&gt;</span> <span class="co"># HTML table</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="co"># Apply bootstrap theme to the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    State, Sex, <span class="st">`</span><span class="at">Prevalence rate</span><span class="st">`</span>, <span class="st">`</span><span class="at">Standard error</span><span class="st">`</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Low 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Upper 90% CI</span><span class="st">`</span>, <span class="st">`</span><span class="at">Coefficient of variation %</span><span class="st">`</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">|&gt;</span> <span class="co"># HTML table</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="co"># Apply bootstrap theme to the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The output table looks like this:</p>
 <div class="cell">

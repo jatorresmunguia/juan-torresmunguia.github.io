@@ -32,11 +32,11 @@ comments:
 ---
 
 ## Overview
-In this article, I will guide you through the process of analyzing Mexico's 2024 National Survey of Victimization and Perception of Public Safety (_Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública_, ENVIPE) using the [`tidyverse`](https://www.tidyverse.org/) framework for survey analysis with the `srvyr` package. Specifically, we will calculate the **crime prevalence rate per 100,000 inhabitants by state, according to the victim's sex** ( _Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima_).
+In this article, I will guide you through the process of analyzing Mexico's 2024 National Survey of Victimization and Perception of Public Safety (_Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública_, ENVIPE) using the [{tidyverse}](https://www.tidyverse.org/) framework for survey analysis with the {srvyr} package. Specifically, we will calculate the **crime prevalence rate per 100,000 inhabitants by state, according to the victim's sex** ( _Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima_).
 
 Official tables with this indicator can be found [here](https://www.inegi.org.mx/programas/envipe/2024/#tabulados).
 
-By the end of this article, you will be able to use the `tidyverse` to:
+By the end of this article, you will be able to use the {tidyverse} to:
 
 - Load the survey microdata from INEGI's website.
 - Specify the ENVIPE survey design.
@@ -92,24 +92,21 @@ library(tidyverse) # Tidy data analysis framework
 library(srvyr) # Tidy syntax for survey data analysis
 library(archive) # Extract files from a ZIP archive
 library(kableExtra) # Create HTML table
-
 ```
 
 ## Loading survey microdata from INEGI
 Microdata is available [here](https://www.inegi.org.mx/programas/envipe/2024/#microdatos) in various formats (CSV, DBF, DTA, SAV, and RData). In this post, we will use the RData files.
 
 ```{r}
-
 load(archive_read(
   archive = "https://www.inegi.org.mx/contenidos/programas/envipe/2024/microdatos/bd_envipe_2024_RData.zip",
   file = "BD_ENVIPE_2024.RData"
 ))
-
 ```
 
 ::: {.callout-tip}
 
-Using the `archive` package, we can directly extract the required file from `bd_envipe_2024_RData.zip`. 
+Using the {archive} package, we can directly extract the required file from `bd_envipe_2024_RData.zip`. 
 
 :::
 
@@ -146,8 +143,7 @@ From the documentation on [data structure](https://www.inegi.org.mx/contenidos/p
 We specify the survey design as follows:
 
 ```{r}
-
-# Identify victims from TMod_Vic, excluding 
+# Identify victims from TMod_Vic, excluding
 # "Wall graffiti, intentional vehicle damage, and other vandalism" (BPCOD != "03")
 id_victims <- TMod_Vic |>
   filter(BPCOD != "03") |>
@@ -173,17 +169,16 @@ envipe_design <- TPer_Vic2 |>
     ids = UPM_DIS, # Primary sampling unit
     nest = TRUE # Nesting within strata
   )
-
 ```
 
 ### 2. Calculating point estimates and variablity indicators
-To compute proportions from survey data, we use `survey_mean()` from `srvyr` package. From ENVIPE's documentation, we know that `NOM_ENT` represents the state, while `SEXO` corresponds to the respondent's sex.
+To compute proportions from survey data, we use `survey_mean()` from {srvyr} package. From ENVIPE's documentation, we know that `NOM_ENT` represents the state, while `SEXO` corresponds to the respondent's sex.
 
 ```{r}
 #| results: hide
 
 envipe_design |>
-  # `interact` function is used to calculate the proportion 
+  # `interact` function is used to calculate the proportion
   # over the interaction of state and sex
   group_by(interact(NOM_ENT, SEXO)) |>
   summarize(
@@ -202,11 +197,12 @@ envipe_design |>
     State = str_to_sentence(NOM_ENT) # Capitalize only the first letter
   ) |>
   rename(Sex = SEXO) |>
-  select(State, Sex, `Prevalence rate`, `Standard error`, 
-         `Low 90% CI`, `Upper 90% CI`, `Coefficient of variation %`) |>
+  select(
+    State, Sex, `Prevalence rate`, `Standard error`,
+    `Low 90% CI`, `Upper 90% CI`, `Coefficient of variation %`
+  ) |>
   kbl() |> # HTML table
   kable_styling() # Apply bootstrap theme to the table
-  
 ```
 
 The output table looks like this: 
@@ -214,7 +210,7 @@ The output table looks like this:
 #| echo: false
 
 envipe_design |>
-  # `interact` function is used to calculate the proportion 
+  # `interact` function is used to calculate the proportion
   # over the interaction of state and sex
   group_by(interact(NOM_ENT, SEXO)) |>
   summarize(
@@ -233,9 +229,10 @@ envipe_design |>
     State = str_to_title(NOM_ENT) # Capitalize each word
   ) |>
   rename(Sex = SEXO) |>
-  select(State, Sex, `Prevalence rate`, `Standard error`, 
-         `Low 90% CI`, `Upper 90% CI`, `Coefficient of variation %`) |>
+  select(
+    State, Sex, `Prevalence rate`, `Standard error`,
+    `Low 90% CI`, `Upper 90% CI`, `Coefficient of variation %`
+  ) |>
   kbl() |> # HTML table
   kable_styling() # Apply bootstrap theme to the table
-  
 ```

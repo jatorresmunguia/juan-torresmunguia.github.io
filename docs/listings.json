@@ -31,6 +31,8 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/spi_somalia/index.html",
+      "/blog/posts/spi_somalia_visualization/index.html",
       "/blog/posts/estimating_envipe_prevalence/index.html",
       "/blog/posts/waffle_chart_disease_outbreaks/index.html"
     ]

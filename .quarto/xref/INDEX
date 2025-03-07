@@ -103,5 +103,11 @@
   },
   "blog/posts/estimating_envipe_prevalence/index.qmd": {
     "index.html": "c1f61bdd"
+  },
+  "blog/posts/spi_somalia/index.qmd": {
+    "index.html": "b86e4530"
+  },
+  "blog/posts/spi_somalia_visualization/index.qmd": {
+    "index.html": "f84100bd"
   }
 }

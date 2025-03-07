@@ -16,4 +16,3 @@ format:
 ---
 
 ## Exploring the art and science of working with development and humanitarian data
-
