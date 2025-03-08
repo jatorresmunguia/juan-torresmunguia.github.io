@@ -211,12 +211,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2>Overview</h2>
-<p>The Standardized Precipitation Index (SPI) is a widely used drought index that provides a measure of precipitation anomalies relative to the long-term average. The SPI is calculated for different time scales (e.g., 1, 3, 6, 12 months) and can be used to monitor drought conditions, assess drought severity, and support drought early warning systems, as it provides a standardized measure of precipitation anomalies that can be compared across regions and time periods.</p>
+<p>The Standardized Precipitation Index (SPI) is a widely used drought index that provides a measure of precipitation anomalies relative to the long-term average. The SPI is calculated for different time scales (e.g., 1, 3, 6, 12 months) and can be used to monitor drought conditions, assess drought severity, and support drought early warning systems, as it provides a standardized measure of precipitation anomalies that can be compared across districts and time periods.</p>
 <p>In this tutorial, we will walk through the process of calculating the SPI for Somalia at the subnational level using the {SCI} package in R.</p>
 </section>
 <section id="about-the-data" class="level2">
 <h2>About the data</h2>
-<p>The rainfall dataset used in this tutorial comes from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) and provides monthly precipitation data for Somalia’s subnational regions. It is derived from CHIRPS v2 (Climate Hazards Group InfraRed Precipitation with <em>in situ</em> Station data), using satellite imagery combined with ground-based observations.</p>
+<p>The rainfall dataset used in this tutorial comes from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) and provides monthly precipitation data for Somalia’s subnational districts. It is derived from CHIRPS v2 (Climate Hazards Group InfraRed Precipitation with <em>in situ</em> Station data), using satellite imagery combined with ground-based observations.</p>
 <p>For each 10-day period (dekad), the dataset includes the following indicators:</p>
 <ul>
 <li><code>rfh</code>: Total rainfall (mm) over 10 days</li>
@@ -271,40 +271,41 @@ Warning
 </div>
 <section id="data-wrangling" class="level3">
 <h3>Data wrangling</h3>
-<p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and region_code.</p>
+<p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and district_code.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># Remove the first row (metadata)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date), <span class="co"># Extract year from the &#39;date&#39; column</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date), <span class="co"># Extract month from the &#39;date&#39; column</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">region_code =</span> <span class="fu">substr</span>(ADM2_PCODE, <span class="dv">1</span>, <span class="dv">4</span>) <span class="co"># Extract first 4 characters from &#39;ADM2_PCODE&#39; as &#39;region_code&#39;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">district_code =</span> ADM2_PCODE <span class="co"># Rename the &#39;ADM2_PCODE&#39; column to &#39;district_code&#39;</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> rfh, <span class="co"># Rename the column &#39;rfh&#39; to &#39;rainfall_monthly_total&#39;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> rfh_avg <span class="co"># Rename the column &#39;rfh_avg&#39; to &#39;rainfall_monthly_lt_average&#39;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> <span class="fu">as.numeric</span>(rainfall_monthly_total), <span class="co"># Convert rainfall total to numeric</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> <span class="fu">as.numeric</span>(rainfall_monthly_lt_average) <span class="co"># Convert long-term average to numeric</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, region_code, rainfall_monthly_total, rainfall_monthly_lt_average) <span class="co"># Select relevant columns</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by year, month, and region_code, and calculate mean rainfall values by region</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, region_code) <span class="sc">|&gt;</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> <span class="fu">mean</span>(rainfall_monthly_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># Calculate the mean of rainfall total</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> <span class="fu">mean</span>(rainfall_monthly_lt_average, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Calculate the mean of long-term average</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Optionally, you can calculate rainfall anomaly as a percentage of the long-term average</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rainfall_anomaly = 1, indicates no anomaly</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &lt; 1 indicates below average</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &gt; 1 indicates above average</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_anomaly =</span> rainfall_monthly_total <span class="sc">/</span> rainfall_monthly_lt_average</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&lt;</span> <span class="dv">2025</span>) <span class="sc">|&gt;</span> <span class="co"># Filter data up to 2024</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> rfh, <span class="co"># Rename the column &#39;rfh&#39; to &#39;rainfall_monthly_total&#39;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> rfh_avg <span class="co"># Rename the column &#39;rfh_avg&#39; to &#39;rainfall_monthly_lt_average&#39;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> <span class="fu">as.numeric</span>(rainfall_monthly_total), <span class="co"># Convert rainfall total to numeric</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> <span class="fu">as.numeric</span>(rainfall_monthly_lt_average) <span class="co"># Convert long-term average to numeric</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, district_code, rainfall_monthly_total, rainfall_monthly_lt_average) <span class="co"># Select relevant columns</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by year, month, and district_code, and calculate mean rainfall values by district</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, district_code) <span class="sc">|&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> <span class="fu">mean</span>(rainfall_monthly_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># Calculate the mean of rainfall total</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> <span class="fu">mean</span>(rainfall_monthly_lt_average, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Calculate the mean of long-term average</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Optionally, you can calculate rainfall anomaly as a percentage of the long-term average</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rainfall_anomaly = 1, indicates no anomaly</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &lt; 1 indicates below average</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &gt; 1 indicates above average</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_anomaly =</span> rainfall_monthly_total <span class="sc">/</span> rainfall_monthly_lt_average</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 </section>
 </section>
@@ -312,7 +313,7 @@ Warning
 <h2>We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region_code) <span class="sc">|&gt;</span> <span class="co"># Group by region_code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(district_code) <span class="sc">|&gt;</span> <span class="co"># Group by district_code</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">spi1 =</span> <span class="fu">transformSCI</span>(</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      rainfall_monthly_total,</span>
@@ -356,7 +357,7 @@ Warning
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(region_code)</span></code></pre></div>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(district_code)</span></code></pre></div>
 </div>
 <p>The output table looks like this:</p>
 <div class="cell">
@@ -366,7 +367,7 @@ Warning
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">month</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">region_code</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">district_code</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_total</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_lt_average</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_anomaly</th>
@@ -380,11 +381,11 @@ Warning
 <tr class="odd">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">1.198617</td>
-<td style="text-align: right;">2.350717</td>
-<td style="text-align: right;">0.5098941</td>
-<td style="text-align: right;">-1.7042722</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">0.9417333</td>
+<td style="text-align: right;">1.744867</td>
+<td style="text-align: right;">0.5397165</td>
+<td style="text-align: right;">-1.1043897</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -392,11 +393,11 @@ Warning
 <tr class="even">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">1.624808</td>
-<td style="text-align: right;">1.589125</td>
-<td style="text-align: right;">1.0224547</td>
-<td style="text-align: right;">0.1649976</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">2.0194333</td>
+<td style="text-align: right;">2.027633</td>
+<td style="text-align: right;">0.9959559</td>
+<td style="text-align: right;">0.1537179</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -404,97 +405,97 @@ Warning
 <tr class="odd">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">16.560042</td>
-<td style="text-align: right;">5.196508</td>
-<td style="text-align: right;">3.1867632</td>
-<td style="text-align: right;">2.1707894</td>
-<td style="text-align: right;">1.9890308</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">32.8349667</td>
+<td style="text-align: right;">9.696967</td>
+<td style="text-align: right;">3.3861070</td>
+<td style="text-align: right;">2.0618329</td>
+<td style="text-align: right;">2.0528624</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">10.610600</td>
-<td style="text-align: right;">15.665108</td>
-<td style="text-align: right;">0.6773397</td>
-<td style="text-align: right;">-0.4339654</td>
-<td style="text-align: right;">0.6526135</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">18.3139000</td>
+<td style="text-align: right;">24.722233</td>
+<td style="text-align: right;">0.7407866</td>
+<td style="text-align: right;">-0.3498790</td>
+<td style="text-align: right;">0.9691425</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">3.936542</td>
-<td style="text-align: right;">8.921075</td>
-<td style="text-align: right;">0.4412632</td>
-<td style="text-align: right;">-1.0330481</td>
-<td style="text-align: right;">0.1171168</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">6.7928667</td>
+<td style="text-align: right;">17.754700</td>
+<td style="text-align: right;">0.3825954</td>
+<td style="text-align: right;">-1.1682135</td>
+<td style="text-align: right;">0.3442811</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">1.040783</td>
-<td style="text-align: right;">1.808725</td>
-<td style="text-align: right;">0.5754238</td>
-<td style="text-align: right;">-1.1415239</td>
-<td style="text-align: right;">-1.3697244</td>
-<td style="text-align: right;">-0.0885584</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">2.7443667</td>
+<td style="text-align: right;">4.763233</td>
+<td style="text-align: right;">0.5761563</td>
+<td style="text-align: right;">-1.1812491</td>
+<td style="text-align: right;">-1.5029868</td>
+<td style="text-align: right;">0.1547485</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">8.088233</td>
-<td style="text-align: right;">6.250817</td>
-<td style="text-align: right;">1.2939483</td>
-<td style="text-align: right;">0.8882902</td>
-<td style="text-align: right;">-0.7747269</td>
-<td style="text-align: right;">0.2001340</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">17.3592333</td>
+<td style="text-align: right;">14.047767</td>
+<td style="text-align: right;">1.2357290</td>
+<td style="text-align: right;">0.7686622</td>
+<td style="text-align: right;">-0.9047071</td>
+<td style="text-align: right;">0.3837349</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">13.622933</td>
-<td style="text-align: right;">10.654750</td>
-<td style="text-align: right;">1.2785784</td>
-<td style="text-align: right;">0.7777623</td>
-<td style="text-align: right;">0.7880554</td>
-<td style="text-align: right;">0.4542735</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">34.8381667</td>
+<td style="text-align: right;">26.758133</td>
+<td style="text-align: right;">1.3019655</td>
+<td style="text-align: right;">0.8281642</td>
+<td style="text-align: right;">0.7648521</td>
+<td style="text-align: right;">0.7381726</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">12.180092</td>
-<td style="text-align: right;">8.198142</td>
-<td style="text-align: right;">1.4857137</td>
-<td style="text-align: right;">1.1466991</td>
-<td style="text-align: right;">1.2196269</td>
-<td style="text-align: right;">-0.3149310</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">29.1683000</td>
+<td style="text-align: right;">19.003000</td>
+<td style="text-align: right;">1.5349313</td>
+<td style="text-align: right;">1.2521209</td>
+<td style="text-align: right;">1.2301335</td>
+<td style="text-align: right;">0.0193033</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1981</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: left;">SO11</td>
-<td style="text-align: right;">4.530783</td>
-<td style="text-align: right;">9.343317</td>
-<td style="text-align: right;">0.4849224</td>
-<td style="text-align: right;">-0.5053225</td>
-<td style="text-align: right;">0.2405307</td>
-<td style="text-align: right;">-0.1662094</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">4.1974333</td>
+<td style="text-align: right;">8.226200</td>
+<td style="text-align: right;">0.5102518</td>
+<td style="text-align: right;">-0.3816687</td>
+<td style="text-align: right;">0.7653220</td>
+<td style="text-align: right;">0.1559546</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -506,7 +507,7 @@ Warning
 </section>
 <section id="interpretation" class="level2">
 <h2>Interpretation</h2>
-<p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Sanaag region, one of the <a href="https://blogs.worldbank.org/en/africacan/mapping-climate-change-and-drought-somalia">priority areas to mitigate the adverse impact of the recent drought on the poor</a> as identified by the World Bank. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
+<p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Laasqoray district in Sanaag region. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom theme for the chart</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>theme_boxplot_chart <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
@@ -537,94 +538,83 @@ Warning
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>) <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Subtitle settings</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>,</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">14</span>,</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>),</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Legend settings</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Height of the legend key</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Width of the legend key</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.spacing.x =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>),</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.spacing =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Spacing between legend keys</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey10&quot;</span>,</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">10</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.direction =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.byrow =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Caption settings</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey70&quot;</span>,</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>,</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">12</span>,</span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>)</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;white&quot;</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">40</span>)</span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Title, subtitle, and caption for the boxplot chart</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>title_chart <span class="ot">&lt;-</span> <span class="st">&quot;1-month Standardized Precipitation Index (SPI-1) in Sanaag, Somalia&quot;</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>subtitle_chart <span class="ot">&lt;-</span> <span class="st">&quot;SPI-1 values for the period 1981-2020&quot;</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>caption_chart <span class="ot">&lt;-</span> <span class="st">&quot;Data: Somalia: Rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía&quot;</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>spi_colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymin =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>),</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymax =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">factor</span>(</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near Normal&quot;</span>,</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Near Normal&quot;</span>, <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(</span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near Normal&quot;</span>,</span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  ), <span class="co"># Orden correcto</span></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">c</span>(</span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#F76D5E&quot;</span>, <span class="st">&quot;#FFAD72&quot;</span>, <span class="st">&quot;#FFE099&quot;</span>, <span class="st">&quot;#99FF99&quot;</span>,</span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#99FF99&quot;</span>, <span class="st">&quot;#99EAFF&quot;</span>, <span class="st">&quot;#75D3FF&quot;</span>, <span class="st">&quot;#3D87FF&quot;</span></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="sc">|&gt;</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region_code <span class="sc">==</span> <span class="st">&quot;SO15&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">factor</span>(month, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> month.name)) <span class="sc">|&gt;</span> <span class="co"># Convert month to factor</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> spi1)) <span class="sc">+</span></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add box plot with SPI categories</span></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> spi_colors, <span class="fu">aes</span>(<span class="at">ymin =</span> ymin, <span class="at">ymax =</span> ymax, <span class="at">xmin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> label),</span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">outlier.size =</span> <span class="dv">2</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(spi_colors<span class="sc">$</span>fill, spi_colors<span class="sc">$</span>label)) <span class="sc">+</span></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> title_chart,</span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> subtitle_chart,</span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> caption_chart,</span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;SPI-1&quot;</span>,</span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Number of rows in the legend</span></span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_boxplot_chart</span>()</span></code></pre></div>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Legend settings</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Height of the legend key</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Width of the legend key</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.spacing.x =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.spacing =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Spacing between legend keys</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey10&quot;</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">10</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.direction =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.byrow =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Caption settings</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_textbox</span>(</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>,</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">12</span>,</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">40</span>)</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Title, subtitle, and caption for the boxplot chart</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>title_chart <span class="ot">&lt;-</span> <span class="st">&quot;1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024&quot;</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>caption_chart <span class="ot">&lt;-</span> <span class="st">&quot;Data: Somalia: Own estimations using rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía&quot;</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>spi_colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymin =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>),</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymax =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">factor</span>(</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near normal&quot;</span>,</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Near normal&quot;</span>, <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near normal&quot;</span>,</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  ), </span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">c</span>(</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#F76D5E&quot;</span>, <span class="st">&quot;#FFAD72&quot;</span>, <span class="st">&quot;#FFE099&quot;</span>, <span class="st">&quot;#99FF99&quot;</span>,</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#99FF99&quot;</span>, <span class="st">&quot;#99EAFF&quot;</span>, <span class="st">&quot;#75D3FF&quot;</span>, <span class="st">&quot;#3D87FF&quot;</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="sc">|&gt;</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(district_code <span class="sc">==</span> <span class="st">&quot;SO1503&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">factor</span>(month, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> month.name)) <span class="sc">|&gt;</span> <span class="co"># Convert month to factor</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> spi1)) <span class="sc">+</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add box plot with SPI categories</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> spi_colors, <span class="fu">aes</span>(<span class="at">ymin =</span> ymin, <span class="at">ymax =</span> ymax, <span class="at">xmin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> label),</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">outlier.size =</span> <span class="dv">2</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(spi_colors<span class="sc">$</span>fill, spi_colors<span class="sc">$</span>label)) <span class="sc">+</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> title_chart,</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> caption_chart,</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;SPI-1&quot;</span>,</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Number of rows in the legend</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_boxplot_chart</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_opts</span>(<span class="at">dpi =</span> <span class="dv">320</span>) <span class="co"># Set the resolution of the image 320 dpi is for high-quality images (&quot;retina&quot;)</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;spi-somalia.png&quot;</span>,</span>
@@ -635,6 +625,7 @@ Warning
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="cn">FALSE</span>) <span class="co"># Turn off the showtext functionality</span></span></code></pre></div>
 </div>
+<p><img src="spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%" /></p>
 <div id="quarto-navigation-envelope" class="hidden">
 <p><span class="hidden" data-render-id="quarto-int-sidebar-title">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST</span> <span class="hidden" data-render-id="quarto-int-navbar-title"></span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about/index.html">/about/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:CV">CV</span> <span class="hidden" data-render-id="quarto-int-navbar:/cv/index.html">/cv/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Consulting">Consulting</span> <span class="hidden" data-render-id="quarto-int-navbar:/consulting/index.html">/consulting/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publications">Publications</span> <span class="hidden" data-render-id="quarto-int-navbar:/publications/index.html">/publications/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Blog">Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/blog/index.html">/blog/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Contact">Contact</span> <span class="hidden" data-render-id="quarto-int-navbar:/contact/index.html">/contact/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands bluesky size=1.1em title=&#39;Bluesky&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://bsky.app/profile/jtorresmunguia.bsky.social">https://bsky.app/profile/jtorresmunguia.bsky.social</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands github size=1.1em title=&#39;GitHub&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://github.com/jatorresmunguia">https://github.com/jatorresmunguia</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify simple-icons figshare size=1.1em title=&#39;Figshare&#39; &gt;}}"><iconify-icon role="img" inline  icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372">https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands orcid size=1.1em title=&#39;Orcid&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-3432-6941">https://orcid.org/0000-0003-3432-6941</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands google-scholar size=1.1em title=&#39;Google Scholar&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ">https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ</span></p>
 <div class="hidden" data-render-id="footer-left">
