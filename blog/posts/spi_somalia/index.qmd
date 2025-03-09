@@ -261,7 +261,7 @@ theme_boxplot_chart <- function() {
 title_chart <- "1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024"
 caption_chart <- "Data: Somalia: Own estimations using rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"
 
-# 
+#
 spi_colors <- data.frame(
   ymin = c(-5, -2, -1.5, -1, 0, 1, 1.5, 2),
   ymax = c(-2, -1.5, -1, 0, 1, 1.5, 2, 5),
@@ -274,7 +274,7 @@ spi_colors <- data.frame(
       "Extremely dry", "Severely dry", "Moderately dry", "Near normal",
       "Moderately wet", "Severely wet", "Extremely wet"
     )
-  ), 
+  ),
   fill = c(
     "#F76D5E", "#FFAD72", "#FFE099", "#99FF99",
     "#99FF99", "#99EAFF", "#75D3FF", "#3D87FF"

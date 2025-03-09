@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.4.549" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2025-02-08">
 
-<meta name="author" content="Juan Armando Torres Munguía" />
-<meta name="dcterms.date" content="2025-02-08" />
-
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST – How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +58,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -76,80 +90,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA" />
+<meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 <script src="../../../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="../../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../../css/styles.css" />
+<link rel="stylesheet" href="../../../css/styles.css">
 </head>
 
-<body>
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/img/academicons--open-data-square.svg" alt="" class="navbar-logo" />
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="/index.html">
-    <span class="navbar-title"> </span>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title"></span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/about/index.html"> 
+    <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/cv/index.html"> 
+    <a class="nav-link" href="../../../cv/index.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/consulting/index.html"> 
+    <a class="nav-link" href="../../../consulting/index.html"> 
 <span class="menu-text">Consulting</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/publications/index.html"> 
+    <a class="nav-link" href="../../../publications/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/blog/index.html"> 
+    <a class="nav-link" href="../../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/contact/index.html"> 
+    <a class="nav-link" href="../../../contact/index.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="blank"> 
-<span class="menu-text">{{&lt; iconify fa6-brands bluesky size=1.1em title=&#39;Bluesky&#39; &gt;}}</span></a>
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/jatorresmunguia" target="blank"> 
-<span class="menu-text">{{&lt; iconify fa6-brands github size=1.1em title=&#39;GitHub&#39; &gt;}}</span></a>
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372" target="blank"> 
-<span class="menu-text">{{&lt; iconify simple-icons figshare size=1.1em title=&#39;Figshare&#39; &gt;}}</span></a>
+<span class="menu-text"><iconify-icon role="img" inline="" icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://orcid.org/0000-0003-3432-6941" target="blank"> 
-<span class="menu-text">{{&lt; iconify fa6-brands orcid size=1.1em title=&#39;Orcid&#39; &gt;}}</span></a>
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ" target="blank"> 
-<span class="menu-text">{{&lt; iconify fa6-brands google-scholar size=1.1em title=&#39;Google Scholar&#39; &gt;}}</span></a>
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -162,8 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -210,12 +221,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="overview" class="level2">
-<h2>Overview</h2>
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>The Standardized Precipitation Index (SPI) is a widely used drought index that provides a measure of precipitation anomalies relative to the long-term average. The SPI is calculated for different time scales (e.g., 1, 3, 6, 12 months) and can be used to monitor drought conditions, assess drought severity, and support drought early warning systems, as it provides a standardized measure of precipitation anomalies that can be compared across districts and time periods.</p>
 <p>In this tutorial, we will walk through the process of calculating the SPI for Somalia at the subnational level using the {SCI} package in R.</p>
 </section>
 <section id="about-the-data" class="level2">
-<h2>About the data</h2>
+<h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
 <p>The rainfall dataset used in this tutorial comes from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) and provides monthly precipitation data for Somalia’s subnational districts. It is derived from CHIRPS v2 (Climate Hazards Group InfraRed Precipitation with <em>in situ</em> Station data), using satellite imagery combined with ground-based observations.</p>
 <p>For each 10-day period (dekad), the dataset includes the following indicators:</p>
 <ul>
@@ -232,10 +243,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The data is aggregated at the subnational level and follows administrative boundaries defined by the World Food Programme (WFP), with each unit assigned a unique code (<code>Pcode</code>).</p>
 </section>
 <section id="set-up" class="level2">
-<h2>Set-up</h2>
+<h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>Before we begin, we need to install and load the necessary R packages. We will be using the {tidyverse} package for data wrangling, as well as the {SCI} package for calculating the SPI.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># For data manipulation and visualization</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># For data manipulation and visualization</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SCI) <span class="co"># For Standardized Precipitation Index calculations (climate analysis)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted) <span class="co"># For resolving conflicts between function names in different packages</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># Create HTML table</span></span>
@@ -243,14 +254,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext) <span class="co"># Use rich text elements in ggplot</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext) <span class="co"># Add custom fonts to plots</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>select) <span class="co"># Prefer &#39;select&#39; function from dplyr package</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>lag) <span class="co"># Prefer &#39;lag&#39; function from dplyr package</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter) <span class="co"># Prefer &#39;filter&#39; function from dplyr package</span></span></code></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>select) <span class="co"># Prefer 'select' function from dplyr package</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>lag) <span class="co"># Prefer 'lag' function from dplyr package</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter) <span class="co"># Prefer 'filter' function from dplyr package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Warning
@@ -262,28 +273,28 @@ Warning
 </div>
 </section>
 <section id="loading-data-hdx" class="level2">
-<h2>Loading data HDX</h2>
+<h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
 <p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the rainfall data for Somalia`</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the rainfall data for Somalia`</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also download the data from the HDX platform and read it locally</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/331ab214-0860-44ea-a53b-0a3fac601e82/download/som-rainfall-adm2-full.csv&quot;</span>)</span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/331ab214-0860-44ea-a53b-0a3fac601e82/download/som-rainfall-adm2-full.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data-wrangling" class="level3">
-<h3>Data wrangling</h3>
+<h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and district_code.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># Remove the first row (metadata)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date), <span class="co"># Extract year from the &#39;date&#39; column</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date), <span class="co"># Extract month from the &#39;date&#39; column</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">district_code =</span> ADM2_PCODE <span class="co"># Rename the &#39;ADM2_PCODE&#39; column to &#39;district_code&#39;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date), <span class="co"># Extract year from the 'date' column</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date), <span class="co"># Extract month from the 'date' column</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">district_code =</span> ADM2_PCODE <span class="co"># Rename the 'ADM2_PCODE' column to 'district_code'</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&lt;</span> <span class="dv">2025</span>) <span class="sc">|&gt;</span> <span class="co"># Filter data up to 2024</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> rfh, <span class="co"># Rename the column &#39;rfh&#39; to &#39;rainfall_monthly_total&#39;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> rfh_avg <span class="co"># Rename the column &#39;rfh_avg&#39; to &#39;rainfall_monthly_lt_average&#39;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> rfh, <span class="co"># Rename the column 'rfh' to 'rainfall_monthly_total'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_lt_average =</span> rfh_avg <span class="co"># Rename the column 'rfh_avg' to 'rainfall_monthly_lt_average'</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_monthly_total =</span> <span class="fu">as.numeric</span>(rainfall_monthly_total), <span class="co"># Convert rainfall total to numeric</span></span>
@@ -305,14 +316,14 @@ Warning
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &gt; 1 indicates above average</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">rainfall_anomaly =</span> rainfall_monthly_total <span class="sc">/</span> rainfall_monthly_lt_average</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months." class="level2">
-<h2>We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
+<h2 class="anchored" data-anchor-id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months.">We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(district_code) <span class="sc">|&gt;</span> <span class="co"># Group by district_code</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">spi1 =</span> <span class="fu">transformSCI</span>(</span>
@@ -321,7 +332,7 @@ Warning
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">obj =</span> <span class="fu">fitSCI</span>(rainfall_monthly_total,</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">first.mon =</span> <span class="dv">1</span>, <span class="co"># Start month for SPI calculation</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">time.scale =</span> <span class="dv">1</span>, <span class="co"># Time scale for SPI calculation</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">&quot;gamma&quot;</span>, <span class="co"># Distribution for fitting</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">"gamma"</span>, <span class="co"># Distribution for fitting</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">p0 =</span> <span class="cn">TRUE</span> <span class="co"># Use initial parameter estimates</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
@@ -331,7 +342,7 @@ Warning
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">obj =</span> <span class="fu">fitSCI</span>(rainfall_monthly_total,</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">first.mon =</span> <span class="dv">1</span>,</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">time.scale =</span> <span class="dv">3</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">&quot;gamma&quot;</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">"gamma"</span>,</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">p0 =</span> <span class="cn">TRUE</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
@@ -341,7 +352,7 @@ Warning
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">obj =</span> <span class="fu">fitSCI</span>(rainfall_monthly_total,</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">first.mon =</span> <span class="dv">1</span>,</span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">time.scale =</span> <span class="dv">6</span>,</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">&quot;gamma&quot;</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">"gamma"</span>,</span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">p0 =</span> <span class="cn">TRUE</span></span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    ),</span>
@@ -351,18 +362,18 @@ Warning
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">obj =</span> <span class="fu">fitSCI</span>(rainfall_monthly_total,</span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">first.mon =</span> <span class="dv">1</span>,</span>
 <span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">time.scale =</span> <span class="dv">12</span>,</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">&quot;gamma&quot;</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">distr =</span> <span class="st">"gamma"</span>,</span>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">p0 =</span> <span class="cn">TRUE</span></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(district_code)</span></code></pre></div>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(district_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The output table looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
@@ -506,96 +517,96 @@ Warning
 </div>
 </section>
 <section id="interpretation" class="level2">
-<h2>Interpretation</h2>
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
 <p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Laasqoray district in Sanaag region. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom theme for the chart</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom theme for the chart</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>theme_boxplot_chart <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_family =</span> <span class="st">&quot;Roboto Condensed&quot;</span> <span class="co"># Base theme with custom font</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_family =</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Base theme with custom font</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Custom theme settings</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Axis settings</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey10&quot;</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">14</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey10&quot;</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">12</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Title settings</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>, <span class="co"># Position of the title</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title.position =</span> <span class="st">"plot"</span>, <span class="co"># Position of the title</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">24</span>,</span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>), <span class="co"># Top, right, bottom, left</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>) <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>) <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Legend settings</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Height of the legend key</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Width of the legend key</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.spacing.x =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>),</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.spacing =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>), <span class="co"># Spacing between legend keys</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"cm"</span>), <span class="co"># Height of the legend key</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"cm"</span>), <span class="co"># Width of the legend key</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.spacing.x =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>),</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.spacing =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"cm"</span>), <span class="co"># Spacing between legend keys</span></span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(</span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey10&quot;</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">10</span></span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.direction =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>,</span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.byrow =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Caption settings</span></span>
 <span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;grey70&quot;</span>,</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey70"</span>,</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"italic"</span>,</span>
 <span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">12</span>,</span>
 <span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;npc&quot;</span>)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>)</span>
 <span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">"white"</span></span>
 <span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>      ),</span>
 <span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">40</span>)</span>
 <span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Title, subtitle, and caption for the boxplot chart</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>title_chart <span class="ot">&lt;-</span> <span class="st">&quot;1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024&quot;</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>caption_chart <span class="ot">&lt;-</span> <span class="st">&quot;Data: Somalia: Own estimations using rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía&quot;</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>title_chart <span class="ot">&lt;-</span> <span class="st">"1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024"</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>caption_chart <span class="ot">&lt;-</span> <span class="st">"Data: Somalia: Own estimations using rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"</span></span>
 <span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>spi_colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymin =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>),</span>
 <span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymax =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
 <span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">factor</span>(</span>
 <span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near normal&quot;</span>,</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Near normal&quot;</span>, <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Near normal"</span>, <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
 <span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(</span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Extremely dry&quot;</span>, <span class="st">&quot;Severely dry&quot;</span>, <span class="st">&quot;Moderately dry&quot;</span>, <span class="st">&quot;Near normal&quot;</span>,</span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Moderately wet&quot;</span>, <span class="st">&quot;Severely wet&quot;</span>, <span class="st">&quot;Extremely wet&quot;</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  ), </span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  ),</span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">c</span>(</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#F76D5E&quot;</span>, <span class="st">&quot;#FFAD72&quot;</span>, <span class="st">&quot;#FFE099&quot;</span>, <span class="st">&quot;#99FF99&quot;</span>,</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;#99FF99&quot;</span>, <span class="st">&quot;#99EAFF&quot;</span>, <span class="st">&quot;#75D3FF&quot;</span>, <span class="st">&quot;#3D87FF&quot;</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F76D5E"</span>, <span class="st">"#FFAD72"</span>, <span class="st">"#FFE099"</span>, <span class="st">"#99FF99"</span>,</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#99FF99"</span>, <span class="st">"#99EAFF"</span>, <span class="st">"#75D3FF"</span>, <span class="st">"#3D87FF"</span></span>
 <span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>rainfall_data <span class="sc">|&gt;</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(district_code <span class="sc">==</span> <span class="st">&quot;SO1503&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(district_code <span class="sc">==</span> <span class="st">"SO1503"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">factor</span>(month, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> month.name)) <span class="sc">|&gt;</span> <span class="co"># Convert month to factor</span></span>
 <span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> spi1)) <span class="sc">+</span></span>
 <span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a></span>
@@ -609,42 +620,40 @@ Warning
 <span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> title_chart,</span>
 <span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> caption_chart,</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;SPI-1&quot;</span>,</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"SPI-1"</span>,</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">""</span></span>
 <span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Number of rows in the legend</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_boxplot_chart</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_opts</span>(<span class="at">dpi =</span> <span class="dv">320</span>) <span class="co"># Set the resolution of the image 320 dpi is for high-quality images (&quot;retina&quot;)</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_boxplot_chart</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_opts</span>(<span class="at">dpi =</span> <span class="dv">320</span>) <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;spi-somalia.png&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"spi-somalia.png"</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">320</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">12</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">9</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">&quot;in&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"in"</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="cn">FALSE</span>) <span class="co"># Turn off the showtext functionality</span></span></code></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="cn">FALSE</span>) <span class="co"># Turn off the showtext functionality</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%" /></p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST</span> <span class="hidden" data-render-id="quarto-int-navbar-title"></span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about/index.html">/about/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:CV">CV</span> <span class="hidden" data-render-id="quarto-int-navbar:/cv/index.html">/cv/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Consulting">Consulting</span> <span class="hidden" data-render-id="quarto-int-navbar:/consulting/index.html">/consulting/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publications">Publications</span> <span class="hidden" data-render-id="quarto-int-navbar:/publications/index.html">/publications/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Blog">Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/blog/index.html">/blog/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Contact">Contact</span> <span class="hidden" data-render-id="quarto-int-navbar:/contact/index.html">/contact/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands bluesky size=1.1em title=&#39;Bluesky&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://bsky.app/profile/jtorresmunguia.bsky.social">https://bsky.app/profile/jtorresmunguia.bsky.social</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands github size=1.1em title=&#39;GitHub&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://github.com/jatorresmunguia">https://github.com/jatorresmunguia</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify simple-icons figshare size=1.1em title=&#39;Figshare&#39; &gt;}}"><iconify-icon role="img" inline  icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372">https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands orcid size=1.1em title=&#39;Orcid&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-3432-6941">https://orcid.org/0000-0003-3432-6941</span> <span class="hidden" data-render-id="quarto-int-navbar:{{&lt; iconify fa6-brands google-scholar size=1.1em title=&#39;Google Scholar&#39; &gt;}}"><iconify-icon role="img" inline  icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span> <span class="hidden" data-render-id="quarto-int-navbar:https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ">https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ</span></p>
-<div class="hidden" data-render-id="footer-left">
-<p>© 2025 Juan TORRES MUNGUÍA</p>
-</div>
-<div class="hidden" data-render-id="footer-center">
-<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline  icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a></br></p>
-</div>
-<div class="hidden" data-render-id="footer-right">
-<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></br></p>
-</div>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</span> <span class="hidden" data-render-id="quarto-metasitename">Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level</span></p>
-</div>
+<p><img src="spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></p>
+
+
 </section>
 
-</main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+  author = {Torres Munguía, Juan Armando},
+  title = {How to Compute and Visualize the {Standardized}
+    {Precipitation} {Index} {(SPI)} for Drought Analysis},
+  date = {2025-02-08},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
+the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
+February 8, 2025.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1049,28 +1058,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js"
-  repo="jatorresmunguia/juan-torresmunguia.github.io"
-  issue-term="pathname"
-  theme="github-light"
-  crossorigin="anonymous"
-  async>
+<script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      <div class='footer-contents'>&#169; 2025 Juan TORRES MUNGUÍA</div>  
-    </div>   
+<p>© 2025 Juan TORRES MUNGUÍA</p>
+</div>   
     <div class="nav-footer-center">
-      <div class='footer-contents'>Website built with <a href="https://www.r-project.org/" target="_blank"></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"></a></br></div>  
-    </div>
+<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a><br></p>
+</div>
     <div class="nav-footer-right">
-      <div class='footer-contents'>Licensed under  <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"> Creative Commons Zero v1.0 Universal</a></br></div>  
-    </div>
+<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a><br></p>
+</div>
   </div>
 </footer>
 
-</body>
 
-</html>
+
+
+</body></html>
