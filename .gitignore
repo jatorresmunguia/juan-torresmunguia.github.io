@@ -1,2 +1,5 @@
 /.quarto/
 .Rproj.user
+
+# ignore acled_africa_1997-2025.csv file in the blog/posts/visualizing_conflict_lake_chad_basin directory 
+blog/posts/visualizing_conflict_lake_chad_basin/acled_africa_1997-2025.csv

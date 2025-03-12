@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Juan Armando Torres Munguía">
 <meta name="dcterms.date" content="2025-02-14">
-
 <title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
 <style>
 code{white-space: pre-wrap;}
@@ -58,7 +55,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
@@ -74,8 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,23 +84,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
-
-
+}</script><meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 <link rel="stylesheet" href="../../../css/styles.css">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
-    </a>
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title"></span>
     </a>
@@ -115,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -140,8 +128,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
     <a class="nav-link" href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="blank"> 
 <span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
   </li>  
@@ -162,22 +150,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</h1>
 <p class="subtitle lead">Part 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R</p>
   <div class="quarto-categories">
@@ -214,233 +196,217 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Previously, in <a href="../../../blog/posts/spi_somalia/index.html">Part 1 of this tutorial</a>, we calculated the Standardized Precipitation Index (SPI) for different time scales using the {SCI} package in R. Now, we will map the SPI values for the districts of Somalia using {sf} and {ggplot2} packages in R.</p>
-</section>
-<section id="about-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
-<p>The information of the Somalian sub national administrative boundaries is obtained from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile <code>.shp</code> and is available at https://data.humdata.org/dataset/cod-ab-som? in a zip file named <code>som_adm_ocha_20250108_AB_SHP.zip</code>. The shapefile contains the administrative boundaries of Somalia at the subnational level. In particular, we will use file <code>som_admbnda_ADM2_ocha_20250108.shp</code>, that contains the shapefile of Somalia at the district level. I downloaded this file and located it in <code>/shp</code> folder.</p>
-</section>
-<section id="set-up" class="level2">
-<h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
+</section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
+<p>The information of the Somalian sub national administrative boundaries is obtained from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile <code>.shp</code> and is available <a href="https://data.humdata.org/dataset/cod-ab-som?">here</a> in a zip file named <code>som_adm_ocha_20250108_AB_SHP.zip</code>. The shapefile contains the administrative boundaries of Somalia at the subnational level. In particular, we will use file <code>som_admbnda_ADM2_ocha_20250108.shp</code>, that contains the shapefile of Somalia at the district level. I downloaded this file and located it in <code>/shp</code> folder.</p>
+</section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>Before we begin, we need to install and load the necessary R packages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># For data manipulation and visualization</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># For handling spatial data</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># For data visualization</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># For combining plots</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext) <span class="co"># Use rich text elements in ggplot</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext) <span class="co"># Add custom fonts to plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># For data manipulation and visualization</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span> <span class="co"># For handling spatial data</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># For data visualization</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span> <span class="co"># For combining plots</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> <span class="co"># Use rich text elements in ggplot</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> <span class="co"># Add custom fonts to plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="loading-data-hdx" class="level2">
-<h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
+</section><section id="loading-data-hdx" class="level2"><h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
 <p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the shapefile for Somalia</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>shp_somalia <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"shp/som_admbnda_adm2_ocha_20250108.shp"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for better readability</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>shp_somalia <span class="ot">&lt;-</span> shp_somalia <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">district =</span> ADM2_EN, <span class="co"># Rename ADM2_EN to district (English names of districts)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">district_code =</span> ADM2_PCODE <span class="co"># Rename ADM2_PCODE to district_code (district codes)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the shapefile for Somalia</span></span>
+<span><span class="va">shp_somalia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"shp/som_admbnda_adm2_ocha_20250108.shp"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Rename columns for better readability</span></span>
+<span><span class="va">shp_somalia</span> <span class="op">&lt;-</span> <span class="va">shp_somalia</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
+<span>    district <span class="op">=</span> <span class="va">ADM2_EN</span>, <span class="co"># Rename ADM2_EN to district (English names of districts)</span></span>
+<span>    district_code <span class="op">=</span> <span class="va">ADM2_PCODE</span> <span class="co"># Rename ADM2_PCODE to district_code (district codes)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-wrangling" class="level3">
-<h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
+<section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>I will add the SPI values previously calculated to the shapefile data frame. I saved the SPI values in a RData file named <code>rainfall_data.RData</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"rainfall_data.RData"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we need to filter the SPI values for the last available month, i.e. December 2024</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to have only one observation per district</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>rainfall_data_dec2024 <span class="ot">&lt;-</span> rainfall_data <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2024</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the shapefile with the SPI values</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>shp_somalia <span class="ot">&lt;-</span> shp_somalia <span class="sc">|&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(rainfall_data_dec2024, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district_code"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"rainfall_data.RData"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># First, we need to filter the SPI values for the last available month, i.e. December 2024</span></span>
+<span><span class="co"># to have only one observation per district</span></span>
+<span><span class="va">rainfall_data_dec2024</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">2024</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Merge the shapefile with the SPI values</span></span>
+<span><span class="va">shp_somalia</span> <span class="op">&lt;-</span> <span class="va">shp_somalia</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">rainfall_data_dec2024</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"district_code"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map" class="level2">
-<h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map">Set theme settings and define fonts, colors, and text to be used in the map</h2>
+</section></section><section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map" class="level2"><h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map">Set theme settings and define fonts, colors, and text to be used in the map</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom theme for the map and legend</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>theme_spi_map <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_family =</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Base theme with custom font</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Custom theme settings</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Title settings</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title.position =</span> <span class="st">"plot"</span>, <span class="co"># Position of the title</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">22</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>), <span class="co"># Top, right, bottom, left</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>) <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey50"</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">14</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>),</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Legend settings</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>), <span class="co"># Height of the legend key</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>), <span class="co"># Width of the legend key</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.spacing.x =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>),</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.key.spacing =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>), <span class="co"># Spacing between legend keys</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">10</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>,</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.byrow =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Caption settings</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_textbox</span>(</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey70"</span>,</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">face =</span> <span class="st">"italic"</span>,</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">10</span>,</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">"white"</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">40</span>)</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>title_chart <span class="ot">&lt;-</span> <span class="st">"Standardized Precipitation Index (SPI) in Somalia"</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>subtitle_chart <span class="ot">&lt;-</span> <span class="st">"February 2024"</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>caption_chart <span class="ot">&lt;-</span> <span class="st">"Data: Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Custom theme for the map and legend</span></span>
+<span><span class="va">theme_spi_map</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
+<span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Base theme with custom font</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># Custom theme settings</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span></span>
+<span>      <span class="co"># Title settings</span></span>
+<span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, <span class="co"># Position of the title</span></span>
+<span>      plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">22</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>, <span class="co"># Top, right, bottom, left</span></span>
+<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Legend settings</span></span>
+<span>      legend.position <span class="op">=</span> <span class="st">"top"</span>,</span>
+<span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      legend.key.height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="st">"cm"</span><span class="op">)</span>, <span class="co"># Height of the legend key</span></span>
+<span>      legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="st">"cm"</span><span class="op">)</span>, <span class="co"># Width of the legend key</span></span>
+<span>      legend.spacing.x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>      legend.key.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="st">"cm"</span><span class="op">)</span>, <span class="co"># Spacing between legend keys</span></span>
+<span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">10</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      legend.direction <span class="op">=</span> <span class="st">"horizontal"</span>,</span>
+<span>      legend.byrow <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span></span>
+<span>      <span class="co"># Caption settings</span></span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"italic"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>        fill <span class="op">=</span> <span class="st">"white"</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">40</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
+<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Standardized Precipitation Index (SPI) in Somalia"</span></span>
+<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"February 2024"</span></span>
+<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="st">"Data: Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, lets create a histogram of the SPI values for the districts of Somalia to use as a legend for the map.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>spi_colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymin =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ymax =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">factor</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Extreme dry"</span>, <span class="st">"Severe dry"</span>, <span class="st">"Moderate dry"</span>, <span class="st">"Near normal"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Near normal"</span>, <span class="st">"Moderate wet"</span>, <span class="st">"Severe wet"</span>, <span class="st">"Extreme wet"</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Extreme dry"</span>, <span class="st">"Severe dry"</span>, <span class="st">"Moderate dry"</span>, <span class="st">"Near normal"</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Moderate wet"</span>, <span class="st">"Severe wet"</span>, <span class="st">"Extreme wet"</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">c</span>(</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#F76D5E"</span>, <span class="st">"#FFAD72"</span>, <span class="st">"#FFE099"</span>, <span class="st">"#E5FFE5"</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#E5FFE5"</span>, <span class="st">"#99EAFF"</span>, <span class="st">"#75D3FF"</span>, <span class="st">"#3D87FF"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>shp_somalia <span class="ot">&lt;-</span> shp_somalia <span class="sc">%&gt;%</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spi_category =</span> <span class="fu">cut</span>(spi1,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, spi_colors<span class="sc">$</span>ymax),</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> spi_colors<span class="sc">$</span>label,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">right =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> <span class="co"># right = TRUE means that the intervals are closed on the right</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(spi1))</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>histogram_spi <span class="ot">&lt;-</span> shp_somalia <span class="sc">|&gt;</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(spi_category)) <span class="sc">|&gt;</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> spi_category, <span class="at">fill =</span> spi_category)) <span class="sc">+</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(spi_colors<span class="sc">$</span>fill, spi_colors<span class="sc">$</span>label)) <span class="sc">+</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">""</span>,</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of districts"</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_spi_map</span>() <span class="sc">+</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">7</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"grey10"</span>,</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">7</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spi_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Extreme dry"</span>, <span class="st">"Severe dry"</span>, <span class="st">"Moderate dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span>      <span class="st">"Near normal"</span>, <span class="st">"Moderate wet"</span>, <span class="st">"Severe wet"</span>, <span class="st">"Extreme wet"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Extreme dry"</span>, <span class="st">"Severe dry"</span>, <span class="st">"Moderate dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span>      <span class="st">"Moderate wet"</span>, <span class="st">"Severe wet"</span>, <span class="st">"Extreme wet"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"#F76D5E"</span>, <span class="st">"#FFAD72"</span>, <span class="st">"#FFE099"</span>, <span class="st">"#E5FFE5"</span>,</span>
+<span>    <span class="st">"#E5FFE5"</span>, <span class="st">"#99EAFF"</span>, <span class="st">"#75D3FF"</span>, <span class="st">"#3D87FF"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">shp_somalia</span> <span class="op">&lt;-</span> <span class="va">shp_somalia</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>spi_category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">spi1</span>,</span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="va">spi_colors</span><span class="op">$</span><span class="va">ymax</span><span class="op">)</span>,</span>
+<span>    labels <span class="op">=</span> <span class="va">spi_colors</span><span class="op">$</span><span class="va">label</span>,</span>
+<span>    right <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># right = TRUE means that the intervals are closed on the right</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">spi1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">histogram_spi</span> <span class="op">&lt;-</span> <span class="va">shp_somalia</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">spi_category</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">spi_category</span>, fill <span class="op">=</span> <span class="va">spi_category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">spi_colors</span><span class="op">$</span><span class="va">fill</span>, <span class="va">spi_colors</span><span class="op">$</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Number of districts"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_spi_map</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>      color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">7</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>      color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">7</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the shapefile of Somalia with the interior region borders</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>shp_somalia_region <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"shp/som_admbnda_adm1_ocha_20250108.shp"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>shp_somalia_region <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(shp_somalia_region, <span class="dv">3857</span>) <span class="co"># Web Mercator projection</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>shp_somalia <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(shp_somalia, <span class="dv">3857</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>map_spi <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> shp_somalia, <span class="fu">aes</span>(<span class="at">fill =</span> spi_category), <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(spi_colors<span class="sc">$</span>fill, spi_colors<span class="sc">$</span>label)) <span class="sc">+</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> shp_somalia_region, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> title_chart,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> subtitle_chart,</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> caption_chart,</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">""</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_spi_map</span>() <span class="sc">+</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Axis settings</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read the shapefile of Somalia with the interior region borders</span></span>
+<span><span class="va">shp_somalia_region</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"shp/som_admbnda_adm1_ocha_20250108.shp"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">shp_somalia_region</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">shp_somalia_region</span>, <span class="fl">3857</span><span class="op">)</span> <span class="co"># Web Mercator projection</span></span>
+<span><span class="va">shp_somalia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">shp_somalia</span>, <span class="fl">3857</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">map_spi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">shp_somalia</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">spi_category</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">spi_colors</span><span class="op">$</span><span class="va">fill</span>, <span class="va">spi_colors</span><span class="op">$</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">shp_somalia_region</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span>, linewidth <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="va">title_chart</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="va">subtitle_chart</span>,</span>
+<span>    caption <span class="op">=</span> <span class="va">caption_chart</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">""</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_spi_map</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    <span class="co"># Axis settings</span></span>
+<span>    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>map_spi <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(histogram_spi, <span class="at">left =</span> <span class="fl">0.4</span>, <span class="at">bottom =</span> <span class="dv">0</span>, <span class="at">right =</span> <span class="dv">1</span>, <span class="at">top =</span> <span class="fl">0.4</span>, <span class="at">on_top =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_opts</span>(<span class="at">dpi =</span> <span class="dv">320</span>) <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"spi-somalia-map.png"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">320</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">12</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">9</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"in"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">map_spi</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/inset_element.html">inset_element</a></span><span class="op">(</span><span class="va">histogram_spi</span>, left <span class="op">=</span> <span class="fl">0.4</span>, bottom <span class="op">=</span> <span class="fl">0</span>, right <span class="op">=</span> <span class="fl">1</span>, top <span class="op">=</span> <span class="fl">0.4</span>, on_top <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="st">"spi-somalia-map.png"</span>,</span>
+<span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">9</span>,</span>
+<span>  units <span class="op">=</span> <span class="st">"in"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="spi-somalia-map.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></p>
 
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {How to Compute and Visualize the {Standardized}
     {Precipitation} {Index} {(SPI)} for Drought Analysis},
@@ -451,8 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
 the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
 February 14, 2025.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -856,25 +821,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2025 Juan TORRES MUNGUÍA</p>
 </div>   
     <div class="nav-footer-center">
-<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a><br></p>
+<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a></p>
 </div>
     <div class="nav-footer-right">
-<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a><br></p>
+<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>
