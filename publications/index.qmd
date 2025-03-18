@@ -16,8 +16,6 @@ format:
   html: 
     page-layout: article
     css: publications.css
-title-block-banner: false
-include-back-link: true
 ---
 
 ## Journal articles
