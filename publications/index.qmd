@@ -1,6 +1,5 @@
 ---
 title: "Publications"
-toc: false
 listing: 
   - id: journal-articles
     contents: "peer_reviewed_papers/*/index.qmd"

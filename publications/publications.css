@@ -1,26 +1,28 @@
-
 .publications-list {
   font-size: 18px; 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
-    li.publications {
-      margin-bottom: 2.5em;
-      p {
-        margin: 0;
-        }
-      }
+}
+  
+.publications-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.publications-list ul li.publications {
+  margin-bottom: 2.5em;
+}
+
+.publications-list ul li.publications p {
+  margin: 0;
 }
 
 .info-categories {  
-    display: flex;  
-    white-space: nowrap;
-    flex-wrap: wrap;
-    justify-content: right;  
-    gap: 0.4em; 
-    margin: 0.5em 0;
+  display: flex;  
+  white-space: nowrap;
+  flex-wrap: wrap;
+  justify-content: right;  
+  gap: 0.4em; 
+  margin: 0.5em 0;
 }
 
 .info-category {
@@ -32,10 +34,10 @@
   cursor: pointer;
   text-align: center;
   background-color: #f2f0e8;
-  text-wrap-mode: wrap
+  white-space: normal; /* Corregido */
 }
 
-.info-category:hover{
+.info-category:hover {
   color: #153268;
 }
 
@@ -78,4 +80,11 @@
 
 .custom-btn:hover {
   color: #153268;
+}
+
+.publications-content.listing-publications-info {
+    display: block; 
+    width: 100%; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
 }

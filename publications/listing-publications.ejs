@@ -21,16 +21,16 @@
             </div>
 
         <% if (item.categories) { %>
-          <span class="info-categories listing-categories">
+          <div class="info-categories listing-categories">
             <% for (const category of item.categories) { %>
               <div class="info-category listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;">
                 <%= category %>
               </div>
             <% } %>
-          </span>
+          </div>
         <% } %>
 
-            <span class="publications-details-listing">
+            <div class="publications-details-listing">
                 <ul class="publications-links">
                     <li class="publications-link details">
                         <a href="<%- item.path %>" class="custom-btn">
@@ -55,7 +55,7 @@
                         <% } %>
                     <% } %>
                 </ul>
-            </span>
+            </div>
         </li>
     <% } %>
 </ul>
