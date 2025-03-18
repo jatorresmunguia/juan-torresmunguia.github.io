@@ -523,4 +523,4 @@ ggsave(
 showtext_auto(FALSE)
 ```
 
-![](lake-chad-map.png){width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+![](lake-chad-map.png){fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}
