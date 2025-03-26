@@ -13,7 +13,7 @@ categories:
  - disease outbreaks
  - epidemics
  - pandemics
-image: ""
+image: "hdx_image.png"
 title-block-banner: false
 citation: true
 execute: 

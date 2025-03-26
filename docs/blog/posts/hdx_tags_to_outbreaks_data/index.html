@@ -240,11 +240,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="va">url_who_class</span>, <span class="fu"><a href="https://httr.r-lib.org/reference/write_disk.html">write_disk</a></span><span class="op">(</span><span class="va">temp_file</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3]
-  Date: 2025-03-26 23:32
+  Date: 2025-03-26 23:46
   Status: 200
   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
   Size: 28.9 kB
-&lt;ON DISK&gt;  C:\Users\jator\AppData\Local\Temp\RtmpmAOcuu\filed4e861ecc3a.xlsx</code></pre>
+&lt;ON DISK&gt;  C:\Users\jator\AppData\Local\Temp\RtmpMvbnUG\filef1f87ece1e7.xlsx</code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read the WHO classification data from the downloaded Excel file</span></span>
 <span><span class="va">who_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">temp_file</span><span class="op">)</span></span>
