@@ -1,0 +1,43 @@
+---
+title: "Pandemics and Environmental Performance in a Globalized World"
+subtitle: Frontiers in Climate
+year: 2025
+date: "2025-03-10"
+author: 
+ - name: Inmaculada Martínez-Zarzoso
+ - name: Florina Cristina Badarau
+ - name: Luis Rodrigo Díaz Pavez
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941 
+ - name: Konstantin M. Wacker
+doi: 10.3389/fclim.2025.1504804
+categories:
+ - disease outbreaks
+ - epidemics
+ - pandemics
+ - globalization
+ - environment
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2025.1504804/.pdf
+format: 
+  html: 
+    page-layout: article
+---
+
+### Abstract 
+Purpose: This paper aims at understanding the factors that are associated with disease outbreaks by investigating environmental and globalization risk factors. Design/methodology/approach: As environmental factors we consider several dimensions of the Environmental Performance Index (EPI). To gauge globalization, we consider international trade flows and international flights, as well as two globalization indices accounting for economic and interpersonal globalization. Methodologically, we estimate a Poisson Random Effects model for panel data covering 195 countries over 25 years. Findings: First, concerning the EPI dimensions, we find that improving sanitation and drinking water conditions are negatively and significantly correlated with the frequency of the outbreaks, whereas no robust relationship could be identified for changes in biodiversity habitat, ecosystem services, and waste management. Second, regarding the globalization factors, we find that an increase in imports and in the number of international flights are positively correlated with the number of outbreaks. Conversely, neither of the two globalization indices considered have a clear association with outbreaks. Originality: The paper uses a new dataset of infectious disease outbreaks collected from the Disease Outbreak News produced by the World Health Organization containing information on 1462 events occurred between 1996 and 2019, covering 195 countries and 70 diseases.Practical implications: In view of the results, local policy efforts in low-income countries should aim at improving sanitary conditions. This effort could be leveraged with development aid support. Once outbreaks have been detected in a location, international flight restrictions should be considered to reduce the international contagion rate. The main contribution of this paper is to provide empirical evidence for policymakers that can be used to minimize the probability of future pandemics.
+
+### Citation
+<p><b>Martínez-Zarzoso, Inmaculada; Badarau, Florina Cristina; Díaz Pavez, Luis Rodrigo; Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Wacker, Konstantin M.</b> (2025). Pandemics and Environmental Performance in a Globalized World. <i>Frontiers in Climate</i>, 7. DOI: <a href="https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2025.1504804/" target="_blank">10.3389/fclim.2025.1504804</a>. Retrieved from: <a href="https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2025.1504804/" target="_blank">https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2025.1504804/</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```

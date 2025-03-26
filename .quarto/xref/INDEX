@@ -112,5 +112,11 @@
   },
   "blog/posts/visualizing_conflict_lake_chad_basin/index.qmd": {
     "index.html": "771a16c1"
+  },
+  "publications/peer_reviewed_papers/energy_poverty_2025/index.qmd": {
+    "index.html": "c39adeba"
+  },
+  "publications/peer_reviewed_papers/environment_outbreaks_Frontiers_2025/index.qmd": {
+    "index.html": "570ab108"
   }
 }

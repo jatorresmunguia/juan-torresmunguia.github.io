@@ -66,9 +66,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-execute','listing-format','listing-website','listing-editor','listing-language','listing-title','listing-subtitle','listing-year','listing-date','listing-doi','listing-author','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-execute','listing-format','listing-website','listing-editor','listing-language','listing-title','listing-subtitle','listing-year','listing-date','listing-doi','listing-url_link','listing-author','listing-categories','listing-links','listing-citation','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-execute","listing-format","listing-website","listing-editor","listing-language","listing-title","listing-subtitle","listing-year","listing-date","listing-doi","listing-author","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-execute","listing-format","listing-website","listing-editor","listing-language","listing-title","listing-subtitle","listing-year","listing-date","listing-doi","listing-url_link","listing-author","listing-categories","listing-links","listing-citation","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -254,7 +254,171 @@ window.Quarto = {
 <div class="publications publications-list">
 <ul class="list">
     
-        <li class="publications" data-index="0" data-categories="disease outbreaks,epidemics,pandemics,disasters,open data" data-listing-date-sort="1735884000000" data-listing-file-modified-sort="1741226390361" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="300">
+        <li class="publications" data-index="0" data-categories="COVID-19,energy,poverty,open data,public policies" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1743028357938" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="207">
+            <div class="publications-content listing-publications-info">
+                <p>
+                    <strong>Juan Armando Torres Munguía</strong> 
+                    <a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
+                    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
+                    </a>, Marlies Hesselman, Inmaculada Martínez-Zarzoso, Ilse Ruyssen (2025) "Mapping energy poverty measures during the COVID-19 pandemic: a new global panel dataset", <i>Journal of Applied Economics</i>,
+                     DOI: <a href="https://doi.org/10.1080/15140326.2025.2483403" target="_blank">https://doi.org/10.1080/15140326.2025.2483403</a>. 
+                     Retrieved from: <a href="https://www.tandfonline.com/doi/full/10.1080/15140326.2025.2483403?scroll=top&amp;needAccess=true" target="_blank">https://www.tandfonline.com/doi/full/10.1080/15140326.2025.2483403?scroll=top&amp;needAccess=true</a>.
+                </p>
+            </div>
+
+        
+          <div class="info-categories listing-categories">
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('COVID-19'); return false;">
+                COVID-19
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('energy'); return false;">
+                energy
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('poverty'); return false;">
+                poverty
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('open data'); return false;">
+                open data
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('public policies'); return false;">
+                public policies
+              </div>
+            
+          </div>
+        
+
+            <div class="publications-details-listing">
+                <ul class="publications-links">
+                    <li class="publications-link details">
+                        <a href="../publications/peer_reviewed_papers/energy_poverty_2025/index.html" class="custom-btn">
+                            &nbsp;&nbsp; LEARN MORE <i class="fa-solid fa-link"></i>
+                        </a>
+                    </li>
+                    
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://www.tandfonline.com/doi/epdf/10.1080/15140326.2025.2483403?needAccess=true">
+                        
+                        
+                        <i class="fa-solid fa-file-pdf"></i> PDF
+                        
+                        </a>
+                        </li>
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://doi.org/10.6084/m9.figshare.22652320">
+                        
+                        
+                        <i class="fa-solid fa-database"></i> Data
+                        
+                        </a>
+                        </li>
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://doi.org/10.6084/m9.figshare.22652320">
+                        
+                        
+                        <i class="fa-solid fa-code"></i> Code
+                        
+                        </a>
+                        </li>
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://github.com/jatorresmunguia/EnergyPoverty">
+                        
+                        
+                        <i class="fa-brands fa-github"></i> GitHub
+                        
+                        </a>
+                        </li>
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://jatorresmunguia.shinyapps.io/DashboardEnergyPov/?_ga=2.12193140.1599365608.1647015703-2050109591.1646912998">
+                        
+                        
+                        <i class="fa-solid fa-chart-column"></i> ShinyApp
+                        
+                        </a>
+                        </li>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+    
+        <li class="publications" data-index="1" data-categories="disease outbreaks,epidemics,pandemics,globalization,environment" data-listing-date-sort="1741586400000" data-listing-file-modified-sort="1743029581056" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
+            <div class="publications-content listing-publications-info">
+                <p>
+                    Inmaculada Martínez-Zarzoso, Florina Cristina Badarau, Luis Rodrigo Díaz Pavez, <strong>Juan Armando Torres Munguía</strong> 
+                    <a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
+                    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
+                    </a>, Konstantin M. Wacker (2025) "Pandemics and Environmental Performance in a Globalized World", <i>Frontiers in Climate</i>,
+                     DOI: <a href="10.3389/fclim.2025.1504804" target="_blank">10.3389/fclim.2025.1504804</a>. 
+                    
+                </p>
+            </div>
+
+        
+          <div class="info-categories listing-categories">
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
+                disease outbreaks
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
+                epidemics
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
+                pandemics
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('globalization'); return false;">
+                globalization
+              </div>
+            
+              <div class="info-category listing-category" onclick="window.quartoListingCategory('environment'); return false;">
+                environment
+              </div>
+            
+          </div>
+        
+
+            <div class="publications-details-listing">
+                <ul class="publications-links">
+                    <li class="publications-link details">
+                        <a href="../publications/peer_reviewed_papers/environment_outbreaks_Frontiers_2025/index.html" class="custom-btn">
+                            &nbsp;&nbsp; LEARN MORE <i class="fa-solid fa-link"></i>
+                        </a>
+                    </li>
+                    
+                        
+                        <li class="publications-link">
+                        
+                        <a href="https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2025.1504804/.pdf">
+                        
+                        
+                        <i class="fa-solid fa-file-pdf"></i> PDF
+                        
+                        </a>
+                        </li>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+    
+        <li class="publications" data-index="2" data-categories="disease outbreaks,epidemics,pandemics,disasters,open data" data-listing-date-sort="1735884000000" data-listing-file-modified-sort="1741226390361" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="300">
             <div class="publications-content listing-publications-info">
                 <p>
                     Margo Tonnelier, Damien Delforge, Regina Below, <strong>Juan Armando Torres Munguía</strong> 
@@ -316,7 +480,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="1" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1716876000000" data-listing-file-modified-sort="1740587347301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
+        <li class="publications" data-index="3" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1716876000000" data-listing-file-modified-sort="1740587347301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -398,7 +562,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="2" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1714024800000" data-listing-file-modified-sort="1740587356102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="279">
+        <li class="publications" data-index="4" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1714024800000" data-listing-file-modified-sort="1740587356102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="279">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -480,7 +644,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="3" data-categories="additive regression models,boosting algorithm,poverty,urban households,gender,Mexico" data-listing-date-sort="1709877600000" data-listing-file-modified-sort="1740587324991" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="276">
+        <li class="publications" data-index="5" data-categories="additive regression models,boosting algorithm,poverty,urban households,gender,Mexico" data-listing-date-sort="1709877600000" data-listing-file-modified-sort="1740587324991" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="276">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -566,7 +730,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="4" data-categories="disease outbreaks,epidemics,pandemics,open data" data-listing-date-sort="1668060000000" data-listing-file-modified-sort="1740587248107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+        <li class="publications" data-index="6" data-categories="disease outbreaks,epidemics,pandemics,open data" data-listing-date-sort="1668060000000" data-listing-file-modified-sort="1740587248107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -674,7 +838,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="5" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1644300000000" data-listing-file-modified-sort="1740587378846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="342">
+        <li class="publications" data-index="7" data-categories="additive regression models,boosting algorithm,intimate partner violence,gender,Mexico" data-listing-date-sort="1644300000000" data-listing-file-modified-sort="1740587378846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="342">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -756,7 +920,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="6" data-categories="additive regression models,boosting algorithm,poverty,rural households,gender,Mexico" data-listing-date-sort="1636005600000" data-listing-file-modified-sort="1740587308024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
+        <li class="publications" data-index="8" data-categories="additive regression models,boosting algorithm,poverty,rural households,gender,Mexico" data-listing-date-sort="1636005600000" data-listing-file-modified-sort="1740587308024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -842,7 +1006,7 @@ window.Quarto = {
             </div>
         </li>
     
-        <li class="publications" data-index="7" data-categories="imputation methods,missing data,Mexico" data-listing-date-sort="1401685200000" data-listing-file-modified-sort="1740596496247" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
+        <li class="publications" data-index="9" data-categories="imputation methods,missing data,Mexico" data-listing-date-sort="1401685200000" data-listing-file-modified-sort="1740596496247" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -910,109 +1074,7 @@ No matching items
 <div class="publications publications-list">
 <ul class="list">
     
-        <li class="publications" data-index="0" data-categories="COVID-19,energy,poverty,open data,public policies" data-listing-date-sort="1711951200000" data-listing-file-modified-sort="1740587610418" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
-            <div class="publications-content listing-publications-info">
-                <p>
-                    <strong>Juan Armando Torres Munguía</strong> 
-                    <a href="https://orcid.org/0000-0003-3432-6941" target="_blank">
-                    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16">
-                    </a>, Marlies Hesselman, Inmaculada Martínez-Zarzoso, Ilse Ruyssen (2024) "Mapping Energy Poverty Measures During the COVID-19 Pandemic: A New Global Panel Dataset", <i>International Network for Economic Research</i>,
-                    
-                     Retrieved from: <a href="https://infer-research.eu/publication/mapping-energy-poverty-measures-during-the-covid-19-pandemic-a-new-global-panel-dataset/" target="_blank">https://infer-research.eu/publication/mapping-energy-poverty-measures-during-the-covid-19-pandemic-a-new-global-panel-dataset/</a>.
-                </p>
-            </div>
-
-        
-          <div class="info-categories listing-categories">
-            
-              <div class="info-category listing-category" onclick="window.quartoListingCategory('COVID-19'); return false;">
-                COVID-19
-              </div>
-            
-              <div class="info-category listing-category" onclick="window.quartoListingCategory('energy'); return false;">
-                energy
-              </div>
-            
-              <div class="info-category listing-category" onclick="window.quartoListingCategory('poverty'); return false;">
-                poverty
-              </div>
-            
-              <div class="info-category listing-category" onclick="window.quartoListingCategory('open data'); return false;">
-                open data
-              </div>
-            
-              <div class="info-category listing-category" onclick="window.quartoListingCategory('public policies'); return false;">
-                public policies
-              </div>
-            
-          </div>
-        
-
-            <div class="publications-details-listing">
-                <ul class="publications-links">
-                    <li class="publications-link details">
-                        <a href="../publications/working_papers/energy_poverty_2024/index.html" class="custom-btn">
-                            &nbsp;&nbsp; LEARN MORE <i class="fa-solid fa-link"></i>
-                        </a>
-                    </li>
-                    
-                        
-                        <li class="publications-link">
-                        
-                        <a href="https://infer-research.eu/wp-content/uploads/2024/04/WP2024.04.pdf">
-                        
-                        
-                        <i class="fa-solid fa-file-pdf"></i> PDF
-                        
-                        </a>
-                        </li>
-                        
-                        <li class="publications-link">
-                        
-                        <a href="https://doi.org/10.6084/m9.figshare.22652320">
-                        
-                        
-                        <i class="fa-solid fa-database"></i> Data
-                        
-                        </a>
-                        </li>
-                        
-                        <li class="publications-link">
-                        
-                        <a href="https://doi.org/10.6084/m9.figshare.22652320">
-                        
-                        
-                        <i class="fa-solid fa-code"></i> Code
-                        
-                        </a>
-                        </li>
-                        
-                        <li class="publications-link">
-                        
-                        <a href="https://github.com/jatorresmunguia/EnergyPoverty">
-                        
-                        
-                        <i class="fa-brands fa-github"></i> GitHub
-                        
-                        </a>
-                        </li>
-                        
-                        <li class="publications-link">
-                        
-                        <a href="https://jatorresmunguia.shinyapps.io/DashboardEnergyPov/?_ga=2.12193140.1599365608.1647015703-2050109591.1646912998">
-                        
-                        
-                        <i class="fa-solid fa-chart-column"></i> ShinyApp
-                        
-                        </a>
-                        </li>
-                        
-                    
-                </ul>
-            </div>
-        </li>
-    
-        <li class="publications" data-index="1" data-categories="armed conflict,Boko Haram,weapon holding,Nigeria" data-listing-date-sort="1703224800000" data-listing-file-modified-sort="1740587831158" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315">
+        <li class="publications" data-index="0" data-categories="armed conflict,Boko Haram,weapon holding,Nigeria" data-listing-date-sort="1703224800000" data-listing-file-modified-sort="1740587831158" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="315">
             <div class="publications-content listing-publications-info">
                 <p>
                     Johanna Kleffmann, Francesca Batault, <strong>Juan Armando Torres Munguía</strong> 
@@ -1070,7 +1132,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="2" data-categories="armed conflict,Boko Haram,child exits,Lake Chad basin,Nigeria,Niger,Chad,Cameroon" data-listing-date-sort="1686204000000" data-listing-file-modified-sort="1740587483429" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="200">
+        <li class="publications" data-index="1" data-categories="armed conflict,Boko Haram,child exits,Lake Chad basin,Nigeria,Niger,Chad,Cameroon" data-listing-date-sort="1686204000000" data-listing-file-modified-sort="1740587483429" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="200">
             <div class="publications-content listing-publications-info">
                 <p>
                     Kato van Broeckhoven, Siobhan O’Neil, Niamh Punton, <strong>Juan Armando Torres Munguía</strong> 
@@ -1144,7 +1206,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="3" data-categories="armed conflict,Nigeria,remote assessment,survey methodology" data-listing-date-sort="1683180000000" data-listing-file-modified-sort="1740588457657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
+        <li class="publications" data-index="2" data-categories="armed conflict,Nigeria,remote assessment,survey methodology" data-listing-date-sort="1683180000000" data-listing-file-modified-sort="1740588457657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -1202,7 +1264,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="4" data-categories="armed conflict,Iraq,ISIL,return,reintegration,displacement" data-listing-date-sort="1681970400000" data-listing-file-modified-sort="1740587660506" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="353">
+        <li class="publications" data-index="3" data-categories="armed conflict,Iraq,ISIL,return,reintegration,displacement" data-listing-date-sort="1681970400000" data-listing-file-modified-sort="1740587660506" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="353">
             <div class="publications-content listing-publications-info">
                 <p>
                     Jacqueline Parry, Yousif Khalid Khoshnaw, Siobhan O’Neil, <strong>Juan Armando Torres Munguía</strong> 
@@ -1268,7 +1330,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="5" data-categories="armed conflict,Iraq,ISIL,return,reintegration,displacement" data-listing-date-sort="1671516000000" data-listing-file-modified-sort="1740587787390" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="208">
+        <li class="publications" data-index="4" data-categories="armed conflict,Iraq,ISIL,return,reintegration,displacement" data-listing-date-sort="1671516000000" data-listing-file-modified-sort="1740587787390" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="208">
             <div class="publications-content listing-publications-info">
                 <p>
                     Jacqueline Parry, Yousif Khalid Khoshnaw, Siobhan O’Neil, <strong>Juan Armando Torres Munguía</strong> 
@@ -1334,7 +1396,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="6" data-categories="armed conflict,Boko Haram,child recruitment,Lake Chad basin,Nigeria,Niger,Chad,Cameroon" data-listing-date-sort="1670824800000" data-listing-file-modified-sort="1740587564941" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
+        <li class="publications" data-index="5" data-categories="armed conflict,Boko Haram,child recruitment,Lake Chad basin,Nigeria,Niger,Chad,Cameroon" data-listing-date-sort="1670824800000" data-listing-file-modified-sort="1740587564941" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
             <div class="publications-content listing-publications-info">
                 <p>
                     Niamh Punton, <strong>Juan Armando Torres Munguía</strong> 
@@ -1408,7 +1470,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="7" data-categories="poverty,Mexico,quantile models" data-listing-date-sort="1589864400000" data-listing-file-modified-sort="1740587686043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="257">
+        <li class="publications" data-index="6" data-categories="poverty,Mexico,quantile models" data-listing-date-sort="1589864400000" data-listing-file-modified-sort="1740587686043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="257">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -1462,7 +1524,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="8" data-categories="homicides,gender,violence,semiparametric models,geospatial models,Mexico" data-listing-date-sort="1527224400000" data-listing-file-modified-sort="1740596650429" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="303">
+        <li class="publications" data-index="7" data-categories="homicides,gender,violence,semiparametric models,geospatial models,Mexico" data-listing-date-sort="1527224400000" data-listing-file-modified-sort="1740596650429" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="303">
             <div class="publications-content listing-publications-info">
                 <p>
                     <strong>Juan Armando Torres Munguía</strong> 
@@ -1528,7 +1590,7 @@ No matching items
             </div>
         </li>
     
-        <li class="publications" data-index="9" data-categories="crime,Latin America,violence,cities" data-listing-date-sort="1470027600000" data-listing-file-modified-sort="1740587816623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="178">
+        <li class="publications" data-index="8" data-categories="crime,Latin America,violence,cities" data-listing-date-sort="1470027600000" data-listing-file-modified-sort="1740587816623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="178">
             <div class="publications-content listing-publications-info">
                 <p>
                     Carlos J. Vilalta Perdomo, José G. Castillo, <strong>Juan Armando Torres Munguía</strong> 
