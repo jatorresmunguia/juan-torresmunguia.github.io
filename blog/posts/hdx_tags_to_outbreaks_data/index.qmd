@@ -1,0 +1,190 @@
+---
+title: "Working with Humanitarian Exchange Language (HXL) Hashtags"
+subtitle: "Applying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks."
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-03-26"
+categories: 
+ - data management
+ - Humanitarian Data Exchange
+ - Humanitarian Exchange Language
+ - disease outbreaks
+ - epidemics
+ - pandemics
+image: ""
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Setting Up the Environment
+
+We begin by loading the necessary R packages:
+
+```{r}
+#| message: false
+#| warning: false
+
+# Load required packages
+library(jsonlite) # For working with JSON data
+library(httr) # For HTTP requests
+library(dplyr) # For data manipulation
+library(readxl) # For reading Excel files
+library(writexl) # For writing Excel files
+```
+
+## Step 1: Accessing the Dataset
+
+We retrieve the latest dataset of disease outbreaks from GitHub:
+
+```{r}
+#| message: false
+#| warning: false
+
+# Define the API URL from GitHub containing the latest dataset update
+url_api <- "https://api.github.com/repos/jatorresmunguia/disease_outbreak_news/contents/Last%20update"
+
+# Retrieve the list of files in the "Last update" folder
+file_list <- fromJSON(content(GET(url_api), as = "text"))$name
+
+# Filter the most recent file that starts with "outbreaks"
+last_file <- file_list[grepl(file_list, pattern = paste0("^outbreaks"))]
+
+# Select the file with a .csv extension
+rdata_file <- last_file[grepl(".csv$", last_file)]
+
+# Construct the CSV file URL from GitHub and read the data into a dataframe
+last_version <- read.csv(paste0("https://raw.githubusercontent.com/jatorresmunguia/disease_outbreak_news/refs/heads/main/Last%20update/", rdata_file), header = TRUE)
+
+# Remove unnecessary ICD-11 classification columns
+last_version <- last_version |> select(-c(icd11c1, icd11c2, icd11c3, icd11l1, icd11l2, icd11l3))
+```
+
+## Step 2: Adding WHO and UNSD Regional Classifications
+
+We integrate additional geographic classifications from WHO and UNSD.
+
+### WHO Regions
+
+```{r}
+#| message: false
+#| warning: false
+
+# Define the URL for the WHO regional classification dataset
+url_who_class <- "https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3"
+
+# Create a temporary file to store the downloaded Excel file
+temp_file <- tempfile(fileext = ".xlsx")
+
+# Download the WHO classification file and save it to the temporary file
+GET(url_who_class, write_disk(temp_file, overwrite = TRUE))
+
+# Read the WHO classification data from the downloaded Excel file
+who_class <- read_excel(temp_file)
+
+# Select relevant columns (ISO country code and WHO region name)
+# Rename columns for consistency with the main dataset
+last_version <- who_class |>
+  select(`ISO Country code`, `WHO Region name2`) |>
+  rename(iso3 = `ISO Country code`, who_region = `WHO Region name2`) |>
+  right_join(last_version, by = "iso3") # Merge with the main dataset based on the ISO3 country code
+```
+
+### UNSD Regions
+
+```{r}
+#| message: false
+#| warning: false
+
+# Read the UNSD regional classification dataset from an Excel file
+# The dataset is available at: https://unstats.un.org/unsd/methodology/m49/
+unsd_class <- read_excel(path = "UNSD — Methodology.xlsx")
+
+# Select relevant columns: ISO-alpha3 country code, region name, and sub-region name
+# Rename columns to match the main dataset
+last_version <- unsd_class |>
+  select(`ISO-alpha3 Code`, `Region Name`, `Sub-region Name`) |>
+  rename(
+    iso3 = `ISO-alpha3 Code`,
+    unsd_region = `Region Name`,
+    unsd_subregion = `Sub-region Name`
+  ) |>
+  right_join(last_version, by = "iso3") # Merge with the main dataset based on the ISO3 country code
+```
+
+## Step 3: Structuring the Dataset
+
+To facilitate better organization, we:
+
+1. Order the dataset by year, country, and disease code.
+2. Assign a unique outbreak ID.
+3. Insert an empty row for HXL headers.
+
+```{r}
+#| message: false
+#| warning: false
+
+# Arrange the dataset in descending order by Year, then by ISO3 country code, and ICD-10 4-character code
+last_version <- last_version |>
+  arrange(desc(Year), iso3, icd104c) |>
+  # Create a unique outbreak ID by concatenating Year, ISO3 country code, and ICD-10 4-character code
+  mutate(id_outbreak = paste0(Year, iso3, icd104c)) |>
+  # Add an empty row at the beginning of the dataset (for later HXL hashtag insertion)
+  add_row(.before = 1)
+```
+
+## Step 4: Adding HXL Hashtags
+
+We define HXL hashtags for each relevant column:
+
+```{r}
+#| message: false
+#| warning: false
+
+# Define the mapping of column names to their corresponding HXL hashtags
+cols2hxl <- c(
+  id_outbreak = "#Year+iso3+icd4", # Unique outbreak ID
+  Country = "#country+name", # Country name
+  iso2 = "#country+code+iso2", # ISO 2-letter country code
+  iso3 = "#country+code+iso3", # ISO 3-letter country code
+  unsd_region = "#region+unsd", # UNSD region
+  unsd_subregion = "#subregion+unsd", # UNSD subregion
+  who_region = "#region+who", # WHO region
+  Year = "#date+year", # Year of the outbreak
+  icd10n = "#disease+name+icd", # Disease name (ICD-10)
+  icd103n = "#disease+name+icd3", # Disease name (ICD-10 3-character)
+  icd104n = "#disease+name+icd4", # Disease name (ICD-10 4-character)
+  icd10c = "#disease+code+icd", # Disease code (ICD-10)
+  icd103c = "#disease+code+icd3", # Disease code (ICD-10 3-character)
+  icd104c = "#disease+code+icd4", # Disease code (ICD-10 4-character)
+  Disease = "#disease+name", # Disease name
+  DONs = "#news+id", # News ID
+  Definition = "#x_disease+definition" # Disease definition
+)
+
+# Add HXL hashtags to the relevant columns in the dataset
+last_version <- last_version |>
+  mutate(across(all_of(names(cols2hxl)), ~ replace(., 1, cols2hxl[cur_column()]))) |>
+  # Select the relevant columns for the final dataset
+  select(id_outbreak, Year, icd10n, icd103n, icd104n, icd10c, icd103c, icd104c, Disease, Definition, Country, iso2, iso3, unsd_region, unsd_subregion, who_region, DONs)
+```
+
+## Step 5: Exporting the Final Dataset
+
+Finally, we save the dataset as an Excel file:
+
+```{r}
+#| message: false
+#| warning: false
+
+write_xlsx(x = list(Data = last_version), path = "disease_outbreaks_HDX.xlsx")
+```
