@@ -44,7 +44,7 @@ website:
         href: "publications/index.qmd"
       - text: "Blog"
         href: "blog/index.qmd"
-      - text: "DataViz gallery"
+      - text: "DataViz"
         href: "portfolio/index.qmd"
       - text: "Contact"
         href: "contact/index.qmd"
