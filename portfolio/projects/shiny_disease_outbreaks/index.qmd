@@ -1,0 +1,33 @@
+---
+title: "A Shiny Dashboard on disease outbreaks | 1996-2024"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2024-10-12"
+categories: 
+ - data visualization
+ - research paper
+image: "shiny-pandemics.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+This interactive dashboard was developed in support of the research paper _Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024_, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.
+
+:::{=html}
+<iframe src="https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/" 
+        width="100%" height="600px" style="border: none;"
+        title="Shiny dashboard on disease outbreaks 1996-2024">
+</iframe>
+:::
+
+Access the full interactive dashboard on <a href="https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/" target="_blank">Shinyapps.io</a>.

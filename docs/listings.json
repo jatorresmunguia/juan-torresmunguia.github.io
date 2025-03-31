@@ -39,5 +39,12 @@
       "/blog/posts/estimating_envipe_prevalence/index.html",
       "/blog/posts/waffle_chart_disease_outbreaks/index.html"
     ]
+  },
+  {
+    "listing": "/portfolio/index.html",
+    "items": [
+      "/portfolio/projects/waffle_chart_disease_outbreaks/index.html",
+      "/portfolio/projects/shiny_disease_outbreaks/index.html"
+    ]
   }
 ]

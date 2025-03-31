@@ -242,7 +242,7 @@ ggsave(
   "waffle-pandemics.png",
   dpi = 320,
   width = 12,
-  height = 9,
+  height = 7,
   units = "in"
 )
 showtext_auto(FALSE)

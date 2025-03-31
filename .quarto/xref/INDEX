@@ -121,5 +121,14 @@
   },
   "blog/posts/hdx_tags_to_outbreaks_data/index.qmd": {
     "index.html": "000d3175"
+  },
+  "portfolio/index.qmd": {
+    "index.html": "4879d841"
+  },
+  "portfolio/projects/waffle_chart_disease_outbreaks/index.qmd": {
+    "index.html": "f62c248a"
+  },
+  "portfolio/projects/shiny_disease_outbreaks/index.qmd": {
+    "index.html": "3bdcd51b"
   }
 }

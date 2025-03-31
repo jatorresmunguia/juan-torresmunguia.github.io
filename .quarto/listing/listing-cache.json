@@ -12,6 +12,9 @@
       "posts",
       "data_analysis",
       "data_analysis/*/index.qmd"
+    ],
+    "portfolio\\index.qmd": [
+      "projects"
     ]
   }
 }
