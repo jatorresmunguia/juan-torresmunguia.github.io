@@ -21,7 +21,7 @@ comments:
     repo: jatorresmunguia/juan-torresmunguia.github.io
 ---
 
-This interactive dashboard was developed in support of the research paper _Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024_, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.
+This Shiny app was developed in support of the research paper _Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024_, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.
 
 :::{=html}
 <iframe src="https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/" 
@@ -31,3 +31,6 @@ This interactive dashboard was developed in support of the research paper _Globa
 :::
 
 Access the full interactive dashboard on <a href="https://jatorresmunguia.shinyapps.io/A_global_dataset_of_disease_outbreaks/" target="_blank">Shinyapps.io</a>.
+
+The source code of the Shiny app is available on [GitHub](https://github.com/jatorresmunguia/outbreaks_dashboard).  
+
