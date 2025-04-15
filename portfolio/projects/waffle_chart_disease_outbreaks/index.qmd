@@ -25,7 +25,7 @@ comments:
 This waffle chart was developed in support of the research paper _Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024_, aiming to visualize the distribution of disease outbreaks across the globe.
 
 ::: {.card}
-![](waffle-pandemics.png){width=100%}
+![](waffle-pandemics.png){width=100% .lightbox}
 :::
 
 You can read the full paper [here]().
