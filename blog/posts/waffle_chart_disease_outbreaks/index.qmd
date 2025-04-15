@@ -120,6 +120,11 @@ outbreaks_year_disease_grouped <- outbreaks_year_disease_grouped |>
 ```{r}
 #| warning: false
 
+# Add custom font
+font_add_google("Roboto Condensed", "Roboto Condensed") 
+
+showtext_auto()
+
 # Custom theme for the waffle chart
 theme_waffle_chart <- function() {
   theme_minimal(
@@ -130,7 +135,7 @@ theme_waffle_chart <- function() {
       # Axis settings
       axis.title = element_blank(), # Remove axis title
       axis.line = element_blank(), # Remove axis line
-
+      
       # Title settings
       plot.title.position = "plot", # Position of the title
       plot.title = element_textbox(
@@ -140,7 +145,7 @@ theme_waffle_chart <- function() {
         margin = margin(5, 0, 5, 0), # Top, right, bottom, left
         width = unit(1, "npc") # Width of the title, npc == 1 corresponds to the full width of the plot
       ),
-
+      
       # Subtitle settings
       plot.subtitle = element_textbox(
         color = "grey50",
@@ -149,31 +154,29 @@ theme_waffle_chart <- function() {
         margin = margin(0, 0, 10, 0),
         width = unit(1, "npc")
       ),
-
+      
       # Legend settings
       legend.position = "top",
       legend.title = element_blank(),
-      legend.key.height = unit(0.5, "cm"), # Height of the legend key
-      legend.key.width = unit(0.5, "cm"), # Width of the legend key
       legend.spacing.x = unit(0.2, "cm"),
       legend.key.spacing = unit(0.5, "cm"), # Spacing between legend keys
       legend.text = element_text(
-        margin = margin(5, 0, 5, 0),
+        margin = margin(5, 2, 5, 0),
         face = "bold",
         color = "grey10",
-        size = 10
+        size = 9
       ),
       legend.direction = "horizontal",
       legend.byrow = FALSE,
-
+      
       # Caption settings
-      plot.caption = element_textbox(
+      plot.caption = element_markdown(
         color = "grey70",
-        face = "italic",
-        size = 12,
-        margin = margin(10, 0, 5, 0),
-        width = unit(1, "npc")
-      ),
+        size = 8,
+        hjust = 0
+          ),
+      plot.caption.position = "plot",
+
       plot.background = element_rect(
         color = "white",
         fill = "white"
@@ -185,13 +188,19 @@ theme_waffle_chart <- function() {
 # Title, subtitle, and caption for the waffle chart
 title_chart <- "Pandemic- and epidemic-prone disease outbreaks in the world"
 subtitle_chart <- "In 2024, fewer countries reported public health events linked to COVID-19, while outbreaks of viral diseases transmitted by vectors increased"
-caption_chart <- "Data: A global dataset of pandemic- and epidemic-prone disease outbreaks (DOI: 10.1038/s41597-022-01797-2) | Graphic: Juan Torres Munguía"
+caption_chart <- paste0("**Note:** Each square represents a country.",
+                        "<br>", 
+                        "**Data:** A global dataset of pandemic- and epidemic-prone disease outbreaks (DOI: 10.1038/s41597-022-01797-2)",
+                        "<br>", 
+                        "**Graphic:** Juan Torres Munguía"
+                        )
 
 # Define the colors to be used in the waffle chart
 colors <- c(
   "#B66DFF", "#7e0021", "#ff420e", "#579d1c", "#83caff",
   "#0084d1", "#aecf00", "#4b1f6f", "#FF86FF", "#ffd320", "grey80"
-)
+  )
+
 ```
 
 ## Create the waffle chart
@@ -211,8 +220,8 @@ ggplot(
     make_proportional = FALSE
   ) + # Do not make the waffle chart proportional
   facet_wrap(~Year, # Facet the waffle chart by year
-    nrow = 1,
-    strip.position = "bottom"
+             nrow = 1,
+             strip.position = "bottom"
   ) + # Position of the facet strip
   scale_fill_manual(values = colors) +
   scale_x_discrete() +
@@ -229,8 +238,10 @@ ggplot(
     y = "Total number of outbreaks",
     fill = ""
   ) +
-  guides(fill = guide_legend(nrow = 2)) + # Number of rows in the legend
+  guides(fill = guide_legend(nrow = 2 # Number of rows in the legend
+                             )) + 
   theme_waffle_chart()
+
 ```
 
 ## Save the waffle chart as an image
@@ -241,7 +252,7 @@ showtext_opts(dpi = 320) # Set the resolution of the image 320 dpi is for high-q
 ggsave(
   "waffle-pandemics.png",
   dpi = 320,
-  width = 12,
+  width = 14,
   height = 7,
   units = "in"
 )
