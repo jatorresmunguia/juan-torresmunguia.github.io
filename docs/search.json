@@ -662,7 +662,7 @@
     "href": "portfolio/projects/waffle_chart_disease_outbreaks/index.html",
     "title": "A waffle chart of disease outbreaks in the world",
     "section": "",
-    "text": "This waffle chart was developed in support of the research paper Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024, aiming to visualize the distribution of disease outbreaks across the globe.\n\n\n\nYou can read the full paper here.\nTo access the source code and replicate this chart, visit my Blog.\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {A Waffle Chart of Disease Outbreaks in the World},\n  date = {2025-01-12},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “A Waffle Chart of Disease\nOutbreaks in the World.” January 12, 2025."
+    "text": "This waffle chart was developed in support of the research paper A global dataset of pandemic- and epidemic-prone disease outbreaks, aiming to visualize the distribution of disease outbreaks across the globe.\n\n\n\nTo access the source code and replicate this chart, visit my Blog.\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {A Waffle Chart of Disease Outbreaks in the World},\n  date = {2025-01-12},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “A Waffle Chart of Disease\nOutbreaks in the World.” January 12, 2025."
   },
   {
     "objectID": "portfolio/projects/waffle_chart_disease_outbreaks/index.html#overview",
@@ -725,6 +725,13 @@
     "href": "portfolio/projects/shiny_disease_outbreaks/index.html",
     "title": "A Shiny Dashboard on disease outbreaks | 1996-2024",
     "section": "",
-    "text": "This Shiny app was developed in support of the research paper Global Trends of Pandemic- and Epidemic-Prone Disease Outbreaks in 2024, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.\n\n\n\n\nAccess the full interactive dashboard on Shinyapps.io.\nThe source code of the Shiny app is available on GitHub.\n\n\n\nCitationBibTeX citation:@online{torres munguía2024,\n  author = {Torres Munguía, Juan Armando},\n  title = {A {Shiny} {Dashboard} on Disease Outbreaks \\textbar{}\n    1996-2024},\n  date = {2024-10-12},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2024. “A Shiny Dashboard on Disease\nOutbreaks | 1996-2024.” October 12, 2024."
+    "text": "This Shiny app was developed in support of the research paper A global dataset of pandemic- and epidemic-prone disease outbreaks, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.\n\n\n\n\nAccess the full interactive dashboard on Shinyapps.io.\nThe source code of the Shiny app is available on GitHub.\n\n\n\nCitationBibTeX citation:@online{torres munguía2024,\n  author = {Torres Munguía, Juan Armando},\n  title = {A {Shiny} {Dashboard} on Disease Outbreaks \\textbar{}\n    1996-2024},\n  date = {2024-10-12},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2024. “A Shiny Dashboard on Disease\nOutbreaks | 1996-2024.” October 12, 2024."
+  },
+  {
+    "objectID": "portfolio/index.html",
+    "href": "portfolio/index.html",
+    "title": "Data visualizations gallery",
+    "section": "",
+    "text": "A waffle chart of disease outbreaks in the world\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Shiny Dashboard on disease outbreaks | 1996-2024\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

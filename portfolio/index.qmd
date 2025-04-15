@@ -14,5 +14,3 @@ format:
     page-layout: article
     css: portfolio.css
 ---
-
-## Welcome to my data visualizations gallery
