@@ -260,4 +260,4 @@ ggsave(
 showtext_auto(FALSE)
 ```
 
-![](spi-somalia-map.png){width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+![](spi-somalia-map.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}

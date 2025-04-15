@@ -196,6 +196,11 @@ Drought events are indicated by negative SPI values, with more negative values i
 #| warning: false
 #| output: false
 
+font_add_google("Roboto Condensed", "Roboto Condensed")
+
+# Activate showtext globally 
+showtext_auto()
+
 # Custom theme for the chart
 theme_boxplot_chart <- function() {
   theme_minimal(
@@ -242,13 +247,12 @@ theme_boxplot_chart <- function() {
       legend.byrow = FALSE,
 
       # Caption settings
-      plot.caption = element_textbox(
+      plot.caption = element_markdown(
         color = "grey70",
         face = "italic",
         size = 12,
-        margin = margin(10, 0, 5, 0),
-        width = unit(1, "npc")
-      ),
+        hjust = 0
+        ),
       plot.background = element_rect(
         color = "white",
         fill = "white"
@@ -259,7 +263,9 @@ theme_boxplot_chart <- function() {
 
 # Title, subtitle, and caption for the boxplot chart
 title_chart <- "1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024"
-caption_chart <- "Data: Somalia: Own estimations using rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"
+caption_chart <- paste0("**Data:** Own estimations using Somalia rainfall Indicators at Subnational Level (HDX)",
+                        "<br>", 
+                        "**Graphic:** Juan Torres Munguía")
 
 #
 spi_colors <- data.frame(
@@ -314,4 +320,4 @@ ggsave(
 showtext_auto(FALSE) # Turn off the showtext functionality
 ```
 
-![](spi-somalia.png){width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+![](spi-somalia.png){width=100% style="margin-top: 0px; margin-bottom: 0px;" .lightbox}
