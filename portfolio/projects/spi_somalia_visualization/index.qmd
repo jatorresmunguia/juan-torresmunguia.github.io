@@ -1,0 +1,29 @@
+---
+title: "A map to visualize the Standardized Precipitation Index (SPI) for drought analysis"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-02-14"
+categories: 
+ - data visualization
+image: "spi-somalia-map.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+
+::: {.card}
+![](spi-somalia-map.png){width=100% .lightbox}
+:::
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/spi_somalia_visualization/index.qmd).

@@ -133,5 +133,8 @@
   },
   "portfolio/projects/spi_somalia/index.qmd": {
     "index.html": "55b3e408"
+  },
+  "portfolio/projects/spi_somalia_visualization/index.qmd": {
+    "index.html": "37acbd3e"
   }
 }

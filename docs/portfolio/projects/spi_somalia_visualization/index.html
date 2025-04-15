@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2025-02-14">
 
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Blog</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - A map to visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../img/academicons--open-data.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -56,69 +59,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../css/styles.css">
-<link rel="stylesheet" href="blog.css">
+<link rel="stylesheet" href="../../../css/styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -128,10 +72,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title"></span>
     </a>
   </div>
@@ -141,31 +85,31 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about/index.html"> 
+    <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv/index.html"> 
+    <a class="nav-link" href="../../../cv/index.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../consulting/index.html"> 
+    <a class="nav-link" href="../../../consulting/index.html"> 
 <span class="menu-text">Consulting</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/index.html"> 
+    <a class="nav-link" href="../../../publications/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../portfolio/index.html"> 
+    <a class="nav-link" href="../../../portfolio/index.html"> 
 <span class="menu-text">DataViz</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact/index.html"> 
+    <a class="nav-link" href="../../../contact/index.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -207,14 +151,29 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
+<h1 class="title">A map to visualize the Standardized Precipitation Index (SPI) for drought analysis</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data visualization</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Juan Armando Torres Munguía </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 14, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -224,314 +183,25 @@ window.Quarto = {
 </header>
 
 
-<section id="exploring-the-art-and-science-of-working-with-development-and-humanitarian-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-art-and-science-of-working-with-development-and-humanitarian-data">Exploring the art and science of working with development and humanitarian data</h2>
+<div class="card">
+<p><a href="spi-somalia-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="spi-somalia-map.png" class="img-fluid" style="width:100.0%"></a></p>
+</div>
+<p>To access the source code and replicate this chart, visit my <a href="../../../blog/posts/spi_somalia_visualization/index.html">Blog</a>.</p>
 
 
 
-</section>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="data management,Humanitarian Data Exchange,Humanitarian Exchange Language,disease outbreaks,epidemics,pandemics" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1743032778347" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="718">
-<a href="../blog/posts/hdx_tags_to_outbreaks_data/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/hdx_tags_to_outbreaks_data/hdx_image.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Working with Humanitarian Exchange Language (HXL) Hashtags
-</h5>
-<div class="card-subtitle listing-subtitle">
-Applying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks.
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data management'); return false;">
-data management
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Humanitarian Data Exchange'); return false;">
-Humanitarian Data Exchange
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Humanitarian Exchange Language'); return false;">
-Humanitarian Exchange Language
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
-disease outbreaks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
-epidemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
-pandemics
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 26, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="data visualization,armed conflict,ACLED,Lake Chad basin,Nigeria,Niger,Chad,Cameroon,ggplot2" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1742334754678" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2864">
-<a href="../blog/posts/visualizing_conflict_lake_chad_basin/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/visualizing_conflict_lake_chad_basin/lake-chad-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Visualizing armed conflict using ACLED’s data and HDX shapefiles
-</h5>
-<div class="card-subtitle listing-subtitle">
-Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('armed conflict'); return false;">
-armed conflict
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ACLED'); return false;">
-ACLED
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Lake Chad basin'); return false;">
-Lake Chad basin
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Nigeria'); return false;">
-Nigeria
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Niger'); return false;">
-Niger
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Chad'); return false;">
-Chad
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Cameroon'); return false;">
-Cameroon
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 9, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="data visualization,drought,tidyverse,ggplot2,shapefiles,standardized precipitation index (SPI),Somalia" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1744743697465" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1407">
-<a href="../blog/posts/spi_somalia_visualization/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/spi_somalia_visualization/spi-somalia-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('drought'); return false;">
-drought
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('shapefiles'); return false;">
-shapefiles
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('standardized precipitation index (SPI)'); return false;">
-standardized precipitation index (SPI)
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Somalia'); return false;">
-Somalia
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 14, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="data analysis,drought,tidyverse,ggplot2,box plots,SCI,Standardized Precipitation Index (SPI),Somalia" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1744741622460" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2064">
-<a href="../blog/posts/spi_somalia/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/spi_somalia/spi-somalia.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
-data analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('drought'); return false;">
-drought
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('box plots'); return false;">
-box plots
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SCI'); return false;">
-SCI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Standardized Precipitation Index (SPI)'); return false;">
-Standardized Precipitation Index (SPI)
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Somalia'); return false;">
-Somalia
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 8, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="data analysis,official statistics,Mexico,household surveys,ENVIPE,crime,victimization,public safety,tidyverse,srvyr,microdata" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1741386712354" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1262">
-<a href="../blog/posts/estimating_envipe_prevalence/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/estimating_envipe_prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 1: Estimating crime prevalence with the {srvyr} package
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
-data analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('official statistics'); return false;">
-official statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Mexico'); return false;">
-Mexico
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('household surveys'); return false;">
-household surveys
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ENVIPE'); return false;">
-ENVIPE
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('crime'); return false;">
-crime
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('victimization'); return false;">
-victimization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('public safety'); return false;">
-public safety
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('srvyr'); return false;">
-srvyr
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('microdata'); return false;">
-microdata
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 27, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="data visualization,disease outbreaks,epidemics,pandemics,tidyverse,ggplot2,waffle chart" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1744738371459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1662">
-<a href="../blog/posts/waffle_chart_disease_outbreaks/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../blog/posts/waffle_chart_disease_outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
-</h5>
-<div class="card-subtitle listing-subtitle">
-Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
-disease outbreaks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
-epidemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
-pandemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('waffle chart'); return false;">
-waffle chart
-</div>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 12, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+  author = {Torres Munguía, Juan Armando},
+  title = {A Map to Visualize the {Standardized} {Precipitation} {Index}
+    {(SPI)} for Drought Analysis},
+  date = {2025-02-14},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2025. <span>“A Map to Visualize the
+Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
+February 14, 2025.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -937,6 +607,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -951,6 +623,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

@@ -43,6 +43,7 @@
   {
     "listing": "/portfolio/index.html",
     "items": [
+      "/portfolio/projects/spi_somalia_visualization/index.html",
       "/portfolio/projects/spi_somalia/index.html",
       "/portfolio/projects/waffle_chart_disease_outbreaks/index.html",
       "/portfolio/projects/shiny_disease_outbreaks/index.html"

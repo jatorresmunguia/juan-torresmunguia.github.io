@@ -246,7 +246,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section></section><section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map" class="level2"><h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map">Set theme settings and define fonts, colors, and text to be used in the map</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Custom theme for the map and legend</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Roboto Condensed"</span>, <span class="st">"Roboto Condensed"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Activate showtext globally </span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Custom theme for the map and legend</span></span>
 <span><span class="va">theme_spi_map</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
 <span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Base theme with custom font</span></span>
@@ -288,12 +293,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>      legend.byrow <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span></span>
 <span>      <span class="co"># Caption settings</span></span>
-<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span></span>
 <span>        color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"italic"</span>,</span>
 <span>        size <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
+<span>        hjust <span class="op">=</span> <span class="fl">0</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
 <span>        color <span class="op">=</span> <span class="st">"white"</span>,</span>
@@ -306,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
 <span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Standardized Precipitation Index (SPI) in Somalia"</span></span>
 <span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"February 2024"</span></span>
-<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="st">"Data: Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="st">"**Data:** Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) &lt;br&gt; **Graphic:** Juan Torres Munguía"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, lets create a histogram of the SPI values for the districts of Somalia to use as a legend for the map.</p>
 <div class="cell">
@@ -842,7 +846,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

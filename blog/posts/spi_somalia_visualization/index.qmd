@@ -86,6 +86,11 @@ shp_somalia <- shp_somalia |>
 ```{r}
 #| warning: false
 
+font_add_google("Roboto Condensed", "Roboto Condensed")
+
+# Activate showtext globally 
+showtext_auto()
+
 # Custom theme for the map and legend
 theme_spi_map <- function() {
   theme_minimal(
@@ -128,12 +133,11 @@ theme_spi_map <- function() {
       legend.byrow = FALSE,
 
       # Caption settings
-      plot.caption = element_textbox(
+      plot.caption = element_markdown(
         color = "grey70",
         face = "italic",
         size = 10,
-        margin = margin(10, 0, 5, 0),
-        width = unit(1, "npc")
+        hjust = 0
       ),
       plot.background = element_rect(
         color = "white",
@@ -146,7 +150,7 @@ theme_spi_map <- function() {
 # Title, subtitle, and caption for the waffle chart
 title_chart <- "Standardized Precipitation Index (SPI) in Somalia"
 subtitle_chart <- "February 2024"
-caption_chart <- "Data: Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) | Graphic: Juan Torres Munguía"
+caption_chart <- "**Data:** Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) <br> **Graphic:** Juan Torres Munguía"
 ```
 
 Now, lets create a histogram of the SPI values for the districts of Somalia to use as a legend for the map.
