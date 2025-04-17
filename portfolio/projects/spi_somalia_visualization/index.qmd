@@ -26,4 +26,3 @@ comments:
 ![](spi-somalia-map.png){width=100% .lightbox}
 :::
 
-To access the source code and replicate this chart, visit my [Blog](/blog/posts/spi_somalia_visualization/index.qmd).
