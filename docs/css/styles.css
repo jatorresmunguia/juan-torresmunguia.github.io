@@ -4,12 +4,18 @@
 
 .navbar-dark, .navbar[data-bs-theme=dark] {
   --bs-navbar-color: #f2f0e8;
-    --bs-navbar-hover-color: #50a5d2;
+  --bs-navbar-hover-color: #50a5d2;
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
   color: #FFFFFF;
-    text-decoration: underline dotted; 
+  text-decoration: underline dotted; 
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-footer {
+    padding-top: 0.5rem !important; 
+  }
 }
 
 /* Color for links and hover */
@@ -133,7 +139,7 @@ canvas {
     font-size: 1.8em !important;
   }
   .title-main span[style*="1.5em"] {
-    font-size: 0.96em !important;
+    font-size: 1.3em !important;
   }
 }
 
