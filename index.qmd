@@ -12,7 +12,7 @@ execute:
 ---
 
 <p class="title-main"> 
-  <span style="font-size: 2.2em;">Transforming complex data into actionable insights for social and humanitarian impact</span><br>
+  <span style="font-size: 2.8em;">Transforming complex data into actionable insights for social and humanitarian impact</span><br>
   <br>
   <span style="font-size: 1.5em; font-weight: bold;">Juan Torres Munguía, Ph.D.</span><br> 
   <span style="font-size: 1.5em; font-weight: bold;">HUMANITARIAN DATA SCIENTIST</span>  
