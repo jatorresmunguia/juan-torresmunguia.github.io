@@ -136,5 +136,11 @@
   },
   "portfolio/projects/spi_somalia_visualization/index.qmd": {
     "index.html": "37acbd3e"
+  },
+  "blog/posts/how_to_maps_outbreaks_data/index.qmd": {
+    "index.html": "06da59dd"
+  },
+  "blog/posts/how_to_maps_outbreaks_data/index_or.qmd": {
+    "index_or.html": "73f8ed01"
   }
 }
