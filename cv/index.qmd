@@ -1,5 +1,7 @@
 ---
 title: "Curriculum vitae"
+execute:
+  freeze: true
 format: 
   html: 
     page-layout: article

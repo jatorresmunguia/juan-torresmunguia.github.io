@@ -9,6 +9,8 @@ listing:
   sort-ui: false
   filter-ui: true
   fields: [image, title, subtitle, categories, date]
+execute:
+  freeze: true
 format: 
   html: 
     page-layout: article

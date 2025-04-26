@@ -2,6 +2,8 @@
 title: "Juan Torres Munguía, Ph.D."
 profile_image: "profile_pic.png"
 subtitle: "HUMANITARIAN DATA SCIENTIST"
+execute:
+  freeze: true
 about:
   template: solana
 format:

@@ -11,6 +11,8 @@ listing:
     sort: "date desc"
     categories: false
     template: listing-publications.ejs
+execute:
+  freeze: true
 format: 
   html: 
     page-layout: article

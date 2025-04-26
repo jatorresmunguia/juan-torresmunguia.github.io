@@ -1,5 +1,7 @@
 ---
 title: "Consulting"
+execute:
+  freeze: true
 format: 
   html: 
     page-layout: article
