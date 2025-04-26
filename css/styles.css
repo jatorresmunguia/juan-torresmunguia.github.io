@@ -129,8 +129,11 @@ canvas {
 }
 
 @media only screen and (max-width: 600px) {
-  .title-main span:first-child {
-    font-size: 2.2em !important;
+  .title-main span {
+    font-size: 1.85em !important;
+  }
+  .title-main span[style*="1.5em"] {
+    font-size: 1.2em !important;
   }
 }
 
