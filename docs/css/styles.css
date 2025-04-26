@@ -136,10 +136,10 @@ canvas {
 
 @media only screen and (max-width: 600px) {
   .title-main span {
-    font-size: 1.8em !important;
+    font-size: 2em !important;
   }
   .title-main span[style*="1.5em"] {
-    font-size: 1.3em !important;
+    font-size: 1.2em !important;
   }
 }
 
