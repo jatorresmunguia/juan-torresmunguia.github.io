@@ -142,5 +142,17 @@
   },
   "blog/posts/how_to_maps_outbreaks_data/index_or.qmd": {
     "index_or.html": "73f8ed01"
+  },
+  "blog/posts/map-disesease-outbreals/index.qmd": {
+    "index.html": "e5500ccc"
+  },
+  "blog/posts/estimating-envipe-prevalence/index.qmd": {
+    "index.html": "b0a81e1b"
+  },
+  "blog/posts/visualizing-conflict-lake-chad-basin/index.qmd": {
+    "index.html": "0eed368b"
+  },
+  "blog/posts/waffle-chart-disease-outbreaks/index.qmd": {
+    "index.html": "71ea984d"
   }
 }
