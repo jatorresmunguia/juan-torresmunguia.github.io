@@ -32,16 +32,17 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/hdx_tags_to_outbreaks_data/index.html",
+      "/blog/posts/food-security-fao-line-plot/index.html",
+      "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts/estimating-envipe-prevalence/index.html",
-      "/blog/posts/map-disesease-outbreals/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks/index.html"
     ]
   },
   {
     "listing": "/portfolio/index.html",
     "items": [
+      "/portfolio/projects/food-security-fao-line-chart/index.html",
       "/portfolio/projects/spi_somalia_visualization/index.html",
       "/portfolio/projects/spi_somalia/index.html",
       "/portfolio/projects/waffle_chart_disease_outbreaks/index.html",

@@ -154,5 +154,14 @@
   },
   "blog/posts/waffle-chart-disease-outbreaks/index.qmd": {
     "index.html": "71ea984d"
+  },
+  "blog/posts/food-security-fao-line-plot/index.qmd": {
+    "index.html": "e33c3577"
+  },
+  "blog/posts/hdx-tags-to-outbreaks-data/index.qmd": {
+    "index.html": "9445cf65"
+  },
+  "portfolio/projects/food-security-fao-line-chart/index.qmd": {
+    "index.html": "c06ec267"
   }
 }

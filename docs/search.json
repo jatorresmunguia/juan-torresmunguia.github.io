@@ -732,7 +732,7 @@
     "href": "portfolio/index.html",
     "title": "Data visualizations gallery",
     "section": "",
-    "text": "A map to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Shiny Dashboard on disease outbreaks | 1996-2024\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Visualizing changes over time of the prevalence of undernourishment\n\n\n\n\n\n\n\n\n\n\n\n\n\nA map to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Shiny Dashboard on disease outbreaks | 1996-2024\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "portfolio/projects/spi_somalia/index.html",
@@ -950,5 +950,96 @@
     "title": "A waffle chart of disease outbreaks in the world",
     "section": "Save the waffle chart as an image",
     "text": "Save the waffle chart as an image\n\nshowtext_opts(dpi = 320) # Set the resolution of the image 320 dpi is for high-quality images (\"retina\")\nggsave(\n  \"waffle-pandemics.png\",\n  dpi = 320,\n  width = 14,\n  height = 7,\n  units = \"in\"\n)\nshowtext_auto(FALSE)"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "",
+    "text": "We begin by loading the necessary R packages:\n\n# Load required packages\nlibrary(jsonlite) # For working with JSON data\nlibrary(httr) # For HTTP requests\nlibrary(dplyr) # For data manipulation\nlibrary(readxl) # For reading Excel files\nlibrary(writexl) # For writing Excel files"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#setting-up-the-environment",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#setting-up-the-environment",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "",
+    "text": "We begin by loading the necessary R packages:\n\n# Load required packages\nlibrary(jsonlite) # For working with JSON data\nlibrary(httr) # For HTTP requests\nlibrary(dplyr) # For data manipulation\nlibrary(readxl) # For reading Excel files\nlibrary(writexl) # For writing Excel files"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-1-accessing-the-dataset",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-1-accessing-the-dataset",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "Step 1: Accessing the Dataset",
+    "text": "Step 1: Accessing the Dataset\nWe retrieve the latest dataset of disease outbreaks from GitHub:\n\n# Define the API URL from GitHub containing the latest dataset update\nurl_api &lt;- \"https://api.github.com/repos/jatorresmunguia/disease_outbreak_news/contents/Last%20update\"\n\n# Retrieve the list of files in the \"Last update\" folder\nfile_list &lt;- fromJSON(content(GET(url_api), as = \"text\"))$name\n\n# Filter the most recent file that starts with \"outbreaks\"\nlast_file &lt;- file_list[grepl(file_list, pattern = paste0(\"^outbreaks\"))]\n\n# Select the file with a .csv extension\nrdata_file &lt;- last_file[grepl(\".csv$\", last_file)]\n\n# Construct the CSV file URL from GitHub and read the data into a dataframe\nlast_version &lt;- read.csv(paste0(\"https://raw.githubusercontent.com/jatorresmunguia/disease_outbreak_news/refs/heads/main/Last%20update/\", rdata_file), header = TRUE)\n\n# Remove unnecessary ICD-11 classification columns\nlast_version &lt;- last_version |&gt; select(-c(icd11c1, icd11c2, icd11c3, icd11l1, icd11l2, icd11l3))"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-2-adding-who-and-unsd-regional-classifications",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-2-adding-who-and-unsd-regional-classifications",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "Step 2: Adding WHO and UNSD Regional Classifications",
+    "text": "Step 2: Adding WHO and UNSD Regional Classifications\nWe integrate additional geographic classifications from WHO and UNSD.\nWHO Regions\n\n# Define the URL for the WHO regional classification dataset\nurl_who_class &lt;- \"https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3\"\n\n# Create a temporary file to store the downloaded Excel file\ntemp_file &lt;- tempfile(fileext = \".xlsx\")\n\n# Download the WHO classification file and save it to the temporary file\nGET(url_who_class, write_disk(temp_file, overwrite = TRUE))\n\nResponse [https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3]\n  Date: 2025-04-28 06:21\n  Status: 200\n  Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\n  Size: 28.9 kB\n&lt;ON DISK&gt;  C:\\Users\\jator\\AppData\\Local\\Temp\\RtmpiGD1DX\\file990423923f25.xlsx\n\n# Read the WHO classification data from the downloaded Excel file\nwho_class &lt;- read_excel(temp_file)\n\n# Select relevant columns (ISO country code and WHO region name)\n# Rename columns for consistency with the main dataset\nlast_version &lt;- who_class |&gt;\n  select(`ISO Country code`, `WHO Region name2`) |&gt;\n  rename(iso3 = `ISO Country code`, who_region = `WHO Region name2`) |&gt;\n  right_join(last_version, by = \"iso3\") # Merge with the main dataset based on the ISO3 country code\n\nUNSD Regions\n\n# Read the UNSD regional classification dataset from an Excel file\n# The dataset is available at: https://unstats.un.org/unsd/methodology/m49/\nunsd_class &lt;- read_excel(path = \"UNSD — Methodology.xlsx\")\n\n# Select relevant columns: ISO-alpha3 country code, region name, and sub-region name\n# Rename columns to match the main dataset\nlast_version &lt;- unsd_class |&gt;\n  select(`ISO-alpha3 Code`, `Region Name`, `Sub-region Name`) |&gt;\n  rename(\n    iso3 = `ISO-alpha3 Code`,\n    unsd_region = `Region Name`,\n    unsd_subregion = `Sub-region Name`\n  ) |&gt;\n  right_join(last_version, by = \"iso3\") # Merge with the main dataset based on the ISO3 country code"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-3-structuring-the-dataset",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-3-structuring-the-dataset",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "Step 3: Structuring the Dataset",
+    "text": "Step 3: Structuring the Dataset\nTo facilitate better organization, we:\n\nOrder the dataset by year, country, and disease code.\nAssign a unique outbreak ID.\nInsert an empty row for HXL headers.\n\n\n# Arrange the dataset in descending order by Year, then by ISO3 country code, and ICD-10 4-character code\nlast_version &lt;- last_version |&gt;\n  arrange(desc(Year), iso3, icd104c) |&gt;\n  # Create a unique outbreak ID by concatenating Year, ISO3 country code, and ICD-10 4-character code\n  mutate(id_outbreak = paste0(Year, iso3, icd104c)) |&gt;\n  # Add an empty row at the beginning of the dataset (for later HXL hashtag insertion)\n  add_row(.before = 1)"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-4-adding-hxl-hashtags",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-4-adding-hxl-hashtags",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "Step 4: Adding HXL Hashtags",
+    "text": "Step 4: Adding HXL Hashtags\nWe define HXL hashtags for each relevant column:\n\n# Define the mapping of column names to their corresponding HXL hashtags\ncols2hxl &lt;- c(\n  id_outbreak = \"#Year+iso3+icd4\", # Unique outbreak ID\n  Country = \"#country+name\", # Country name\n  iso2 = \"#country+code+iso2\", # ISO 2-letter country code\n  iso3 = \"#country+code+iso3\", # ISO 3-letter country code\n  unsd_region = \"#region+unsd\", # UNSD region\n  unsd_subregion = \"#subregion+unsd\", # UNSD subregion\n  who_region = \"#region+who\", # WHO region\n  Year = \"#date+year\", # Year of the outbreak\n  icd10n = \"#disease+name+icd\", # Disease name (ICD-10)\n  icd103n = \"#disease+name+icd3\", # Disease name (ICD-10 3-character)\n  icd104n = \"#disease+name+icd4\", # Disease name (ICD-10 4-character)\n  icd10c = \"#disease+code+icd\", # Disease code (ICD-10)\n  icd103c = \"#disease+code+icd3\", # Disease code (ICD-10 3-character)\n  icd104c = \"#disease+code+icd4\", # Disease code (ICD-10 4-character)\n  Disease = \"#disease+name\", # Disease name\n  DONs = \"#news+id\", # News ID\n  Definition = \"#x_disease+definition\" # Disease definition\n)\n\n# Add HXL hashtags to the relevant columns in the dataset\nlast_version &lt;- last_version |&gt;\n  mutate(across(all_of(names(cols2hxl)), ~ replace(., 1, cols2hxl[cur_column()]))) |&gt;\n  # Select the relevant columns for the final dataset\n  select(id_outbreak, Year, icd10n, icd103n, icd104n, icd10c, icd103c, icd104c, Disease, Definition, Country, iso2, iso3, unsd_region, unsd_subregion, who_region, DONs)"
+  },
+  {
+    "objectID": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-5-exporting-the-final-dataset",
+    "href": "blog/posts/hdx-tags-to-outbreaks-data/index.html#step-5-exporting-the-final-dataset",
+    "title": "Working with Humanitarian Exchange Language (HXL) Hashtags",
+    "section": "Step 5: Exporting the Final Dataset",
+    "text": "Step 5: Exporting the Final Dataset\nFinally, we save the dataset as an Excel file:\n\nwrite_xlsx(x = list(Data = last_version), path = \"disease_outbreaks_HDX.xlsx\")"
+  },
+  {
+    "objectID": "blog/posts/food-security-fao-line-plot/index.html#set-up",
+    "href": "blog/posts/food-security-fao-line-plot/index.html#set-up",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "Set-up",
+    "text": "Set-up\n\nlibrary(tidyverse) \nlibrary(ggplot2)\nlibrary(showtext) \nlibrary(ggtext)\nlibrary(geomtextpath)"
+  },
+  {
+    "objectID": "blog/posts/food-security-fao-line-plot/index.html#loading-data-from-fao",
+    "href": "blog/posts/food-security-fao-line-plot/index.html#loading-data-from-fao",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "Loading data from FAO",
+    "text": "Loading data from FAO\n\nfood_security &lt;- read.csv(\"FAOSTAT_data_en_4-27-2025.csv\")\n\nData wrangling\n\nundernourishment &lt;- food_security |&gt;\n  filter(Item == \"Prevalence of undernourishment (percent) (3-year average)\") |&gt;\n  filter(Element == \"Value\") |&gt;\n  filter(Area %in% c(\"Central America\", \"Caribbean\", \"South America\", \n                     \"Northern Africa (excluding Sudan)\", \"Sub-Saharan Africa (including Sudan)\", \n                     \"Central Asia\", \"Southern Asia\", \"South-eastern Asia\")) |&gt;\n  mutate(\n    Area = fct_recode(Area,\n                      `Northern Africa` = \"Northern Africa (excluding Sudan)\", \n                      `Sub-Saharan Africa` = \"Sub-Saharan Africa (including Sudan)\"),\n    Value = as.numeric(Value)/100,\n    Year = fct_recode(Year, \n                      `2001` = \"2000-2002\", `2002` = \"2001-2003\", `2003` = \"2002-2004\", `2004` = \"2003-2005\", `2005` = \"2004-2006\",\n                      `2006` = \"2005-2007\", `2007` = \"2006-2008\", `2008` = \"2007-2009\", `2009` = \"2008-2010\", `2010` = \"2009-2011\", \n                      `2011` = \"2010-2012\", `2012` = \"2011-2013\", `2013` = \"2012-2014\", `2014` = \"2013-2015\", `2015` = \"2014-2016\", \n                      `2016` = \"2015-2017\", `2017` = \"2016-2018\", `2018` = \"2017-2019\", `2019` = \"2018-2020\", `2020` = \"2019-2021\",\n                      `2021` = \"2020-2022\", `2022` = \"2021-2023\"),\n    Year = as.numeric(as.character(Year))\n    )"
+  },
+  {
+    "objectID": "blog/posts/food-security-fao-line-plot/index.html#set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart",
+    "href": "blog/posts/food-security-fao-line-plot/index.html#set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "Set theme settings and define fonts, colors, and text to be used in the waffle chart",
+    "text": "Set theme settings and define fonts, colors, and text to be used in the waffle chart\n\n my_theme &lt;- function() { \n   \n   theme_minimal(\n    base_family = \"fjalla\"\n    ) + \n  \n  # Custom format\n  theme(\n    # Title setting\n    plot.title = element_text(\n      color = \"black\",\n      size = 18\n    ), \n    plot.title.position = \"plot\", \n    \n    # Subtitle setting\n    plot.subtitle = element_text(\n      color = \"grey50\",\n      size = 14\n    ), \n    \n    # Axis settings\n    axis.title = element_text(\n      color = \"black\",\n      size = 11\n    ),\n    \n    axis.text = element_text(\n      color = \"grey50\",\n      size = 11\n    ),\n    \n    axis.ticks = element_line(\n      size = 1.25, \n      color = \"black\"\n      ),\n    \n    axis.line.x.bottom = element_line(\n      color = \"black\",\n      size = 1.25\n      ),\n    \n    axis.line.y.left = element_line(\n      color = \"black\",\n      size = 1.25\n      ),\n    \n    # Panel\n    panel.grid = element_blank(),\n    \n    # Caption settings\n    plot.caption.position = \"plot\", \n    plot.caption = element_markdown(\n      size = 10,\n      hjust = 0\n      ),\n    \n    # Background\n    plot.background = element_rect(\n      color = \"#FFF5EB\",\n      fill = \"#FFF5EB\"\n      )\n    )\n }"
+  },
+  {
+    "objectID": "blog/posts/food-security-fao-line-plot/index.html#create-the-line-chart",
+    "href": "blog/posts/food-security-fao-line-plot/index.html#create-the-line-chart",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "Create the line chart",
+    "text": "Create the line chart\n\n# Plot\nfont_add_google(\"Fjalla One\", \"fjalla\")\n\nshowtext_auto()\n\nggplot(undernourishment) +\n  geom_line(\n    linewidth = 1.5,\n    aes(x = Year,\n        y = Value,\n        color = Area, \n        group = Area)\n  ) + \n  \n  scale_color_manual(values = c(\"#B2432F\", \"#DB735C\", \n                                \"#919C4C\", \"#9B5672\",\n                                \"#B58900\", \"#3A6589\",\n                                \"#6F5438\", \"#828585\")) + \n  \n  scale_y_continuous(\n    labels = scales::label_percent()\n    ) +\n  \n  scale_x_continuous(\n    expand = expansion(add = 0.8),\n    breaks = 2001:2022\n  ) + \n  \n  geom_textpath(\n    text_only = TRUE,\n    spacing =  50,\n    data = filter(undernourishment,\n                  Area %in% c(\"Sub-Saharan Africa\", \"Caribbean\", \n                              \"Southern Asia\", \"Central Asia\")\n    ),\n    aes(x = Year,\n        y = Value,\n        color = Area,\n        label = Area), \n    vjust = -0.5, \n    hjust = 1, \n    size = 3) +\n  \n  geom_textpath(\n    text_only = TRUE,\n    spacing =  50,\n    data = filter(undernourishment,\n                  Area %in% c(\"South America\", \"Central America\", \n                              \"Northern Africa\")\n    ),\n    aes(x = Year,\n        y = Value,\n        color = Area,\n        label = Area), \n    vjust = -0.5, \n    hjust = 0, \n    size = 3) +\n  \n  geom_textpath(\n    text_only = TRUE,\n    spacing =  50,\n    data = filter(undernourishment,\n                  Area == \"South-eastern Asia\"\n    ),\n    aes(x = Year,\n        y = Value,\n        color = Area,\n        label = Area), \n    vjust = -0.5, \n    hjust = 0.5, \n    size = 3) +\n  \n  guides(color = \"none\") +\n  \n  labs(\n    title = \"Prevalence of undernourishment by region | 2001-2022\",\n    subtitle = \"Proportion of the population with a dietary energy consumption below the minimum required for maintaining a healthy life and carrying out a light physical activity\",\n    caption = paste0(\n      \"&lt;span style='color:black;'&gt;Source:&lt;/span&gt; &lt;span style='color:grey50;'&gt;FAO Statistics Division&lt;/span&gt;\",\n      \"&lt;br&gt;\",\n      \"&lt;span style='color:black;'&gt;Plot:&lt;/span&gt; &lt;span style='color:grey50;'&gt;Juan Torres Munguía&lt;/span&gt;\"\n    ),\n    x = \"\",\n    y = \"\"\n  ) + \n  my_theme()"
+  },
+  {
+    "objectID": "blog/posts/food-security-fao-line-plot/index.html#save-the-line-chart-as-an-image",
+    "href": "blog/posts/food-security-fao-line-plot/index.html#save-the-line-chart-as-an-image",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "Save the line chart as an image",
+    "text": "Save the line chart as an image\n\nshowtext_opts(dpi = 320)  \nggsave(\n  \"undernourishment.png\",\n  dpi = 320,\n  width = 14,\n  height = 7,\n  units = \"in\"\n)"
+  },
+  {
+    "objectID": "portfolio/projects/food-security-fao-line-chart/index.html",
+    "href": "portfolio/projects/food-security-fao-line-chart/index.html",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Visualizing Changes over Time of the Prevalence of\n    Undernourishment},\n  date = {2025-04-18},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Visualizing Changes over Time\nof the Prevalence of Undernourishment.” April 18, 2025."
   }
 ]
