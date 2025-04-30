@@ -3,10 +3,10 @@ particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": 650,
+        "value": 375,
         "density": {
           "enable": true,
-          "value_area": 1500
+          "value_area": 2250
         }
       },
       "color": {
@@ -19,7 +19,7 @@ particlesJS('particles-js',
           "color": "#50a5d2"
         },
         "polygon": {
-          "nb_sides": 5
+          "nb_sides": 1
         },
         "image": {
           "src": "img/github.svg",
@@ -28,11 +28,11 @@ particlesJS('particles-js',
         }
       },
       "opacity": {
-        "value": 0.3,
+        "value": 0.4,
         "random": false,
         "anim": {
           "enable": false,
-          "speed": 1,
+          "speed": 10,
           "opacity_min": 0.1,
           "sync": false
         }
@@ -51,8 +51,8 @@ particlesJS('particles-js',
         "enable": true,
         "distance": 150,
         "color": "#50a5d2",
-        "opacity": 0.1,
-        "width": 2
+        "opacity": 0.15,
+        "width": 2.5
       },
       "move": {
         "enable": true,
@@ -90,16 +90,16 @@ particlesJS('particles-js',
         },
         "bubble": {
           "distance": 400,
-          "size": 40,
+          "size": 1,
           "duration": 2,
           "opacity": 8,
-          "speed": 3
+          "speed": 30
         },
         "repulse": {
-          "distance": 150
+          "distance": 200
         },
         "push": {
-          "particles_nb": 4
+          "particles_nb": 10
         },
         "remove": {
           "particles_nb": 2
@@ -108,8 +108,8 @@ particlesJS('particles-js',
     },
     "retina_detect": true,
     "config_demo": {
-      "hide_card": false,
-      "background_color": "#b61924",
+      "hide_card": true,
+      "background_color": "#50a5d2",
       "background_image": "",
       "background_position": "50% 50%",
       "background_repeat": "no-repeat",
