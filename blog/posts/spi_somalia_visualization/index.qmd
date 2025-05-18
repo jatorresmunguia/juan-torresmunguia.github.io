@@ -39,12 +39,14 @@ Before we begin, we need to install and load the necessary R packages.
 ```{r}
 #| warning: false
 
-library(tidyverse) # For data manipulation and visualization
-library(sf) # For handling spatial data
-library(ggplot2) # For data visualization
-library(patchwork) # For combining plots
-library(ggtext) # Use rich text elements in ggplot
-library(showtext) # Add custom fonts to plots
+library(tidyverse) 
+library(sf) 
+
+library(ggplot2) 
+library(ggtext) 
+library(showtext) 
+library(patchwork) 
+
 ```
 
 ## Loading data HDX
@@ -53,14 +55,12 @@ Data can be found [here](https://data.humdata.org/dataset/som-rainfall-subnation
 ```{r}
 #| warning: false
 
-# Load the shapefile for Somalia
 shp_somalia <- read_sf("shp/som_admbnda_adm2_ocha_20250108.shp")
 
-# Rename columns for better readability
 shp_somalia <- shp_somalia |>
   rename(
-    district = ADM2_EN, # Rename ADM2_EN to district (English names of districts)
-    district_code = ADM2_PCODE # Rename ADM2_PCODE to district_code (district codes)
+    district = ADM2_EN, 
+    district_code = ADM2_PCODE
   )
 ```
 
@@ -88,25 +88,23 @@ shp_somalia <- shp_somalia |>
 
 font_add_google("Roboto Condensed", "Roboto Condensed")
 
-# Activate showtext globally 
 showtext_auto()
 
-# Custom theme for the map and legend
 theme_spi_map <- function() {
   theme_minimal(
-    base_family = "Roboto Condensed" # Base theme with custom font
+    base_family = "Roboto Condensed" 
   ) +
     # Custom theme settings
     theme(
 
       # Title settings
-      plot.title.position = "plot", # Position of the title
+      plot.title.position = "plot", 
       plot.title = element_textbox(
         color = "black",
         face = "bold",
         size = 22,
-        margin = margin(5, 0, 5, 0), # Top, right, bottom, left
-        width = unit(1, "npc") # Width of the title, npc == 1 corresponds to the full width of the plot
+        margin = margin(5, 0, 5, 0), 
+        width = unit(1, "npc") 
       ),
       plot.subtitle = element_textbox(
         color = "grey50",
@@ -116,13 +114,12 @@ theme_spi_map <- function() {
         width = unit(1, "npc")
       ),
 
-      # Legend settings
       legend.position = "top",
       legend.title = element_blank(),
-      legend.key.height = unit(0.1, "cm"), # Height of the legend key
-      legend.key.width = unit(0.1, "cm"), # Width of the legend key
+      legend.key.height = unit(0.1, "cm"), 
+      legend.key.width = unit(0.1, "cm"), 
       legend.spacing.x = unit(0.1, "cm"),
-      legend.key.spacing = unit(0.1, "cm"), # Spacing between legend keys
+      legend.key.spacing = unit(0.1, "cm"), 
       legend.text = element_text(
         margin = margin(5, 0, 5, 0),
         face = "bold",
@@ -253,7 +250,7 @@ map_spi <- ggplot() +
 map_spi +
   inset_element(histogram_spi, left = 0.4, bottom = 0, right = 1, top = 0.4, on_top = FALSE)
 
-showtext_opts(dpi = 320) # Set the resolution of the image 320 dpi is for high-quality images ("retina")
+showtext_opts(dpi = 320) 
 ggsave(
   "spi-somalia-map.png",
   dpi = 320,
