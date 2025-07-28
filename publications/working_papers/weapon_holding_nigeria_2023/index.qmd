@@ -4,6 +4,7 @@ subtitle: "Managing Exits from Armed Conflict (MEAC) - United Nations Institute 
 date: "2023-12-22"
 year: 2023
 doi: "10.37559/MEAC/23/11"
+url_link: https://unidir.org/publication/factors-driving-weapons-holding-in-the-north-east-of-nigeria-findings-report-33
 author: 
  - name: Johanna Kleffmann
  - name: Francesca Batault
@@ -24,7 +25,7 @@ links:
 - icon: file-pdf
   icon_pack: fas
   name: PDF
-  url: https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.ppdf
+  url: https://unidir.org/wp-content/uploads/2024/01/UNIDIR_Factors_Driving_Weapons_Holding_in_the_North_East_of_Nigeria_MEAC_Findings_Report_33.pdf
 format: 
   html: 
     page-layout: article

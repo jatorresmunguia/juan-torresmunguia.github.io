@@ -4,7 +4,7 @@ subtitle: "Diskussionsbeiträge des Ibero-America Institute for Economic Researc
 date: "2018-05-25"
 year: 2018
 doi: ""
-url_link: https://www.econstor.eu/bitstream/10419/178674/1/1023106922.pdf
+url_link: https://www.econstor.eu/handle/10419/178674
 author:
  - name: Juan Armando Torres Munguía
    orcid: 0000-0003-3432-6941

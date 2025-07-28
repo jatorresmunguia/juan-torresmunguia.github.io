@@ -4,6 +4,7 @@ subtitle: "United Nations Institute for Disarmament Research Findings Report"
 year: 2023 
 date: "2023-06-08"
 doi: "10.37559/MEAC/23/05"
+url_link: https://unidir.org/publication/child-exits-from-armed-groups-in-the-lake-chad-basin-findings-report-31/
 author:
  - name: Kato van Broeckhoven
  - name: Siobhan O’Neil
@@ -39,7 +40,7 @@ Such knowledge has the potential to strengthen interventions that support childr
 
 
 ### Citation
-<p><b>van Broeckhoven, Kato; O’Neil, Siobhan; Punton, Niamh; Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Yetcha Ajimi, Fatima; Bukar, Mohammed; Madhuraj, Anamika</b> (2023). Child Exits from Armed Groups in the Lake Chad Basin. <i>United Nations Institute for Disarmament Research Findings Report</i>, 31. DOI: <a href="" target="_blank">10.37559/MEAC/23/05</a></p>
+<p><b>van Broeckhoven, Kato; O’Neil, Siobhan; Punton, Niamh; Torres Munguía, Juan Armando<a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Yetcha Ajimi, Fatima; Bukar, Mohammed; Madhuraj, Anamika</b> (2023). Child Exits from Armed Groups in the Lake Chad Basin. <i>United Nations Institute for Disarmament Research Findings Report</i>, 31. DOI: <a href="https://unidir.org/publication/child-exits-from-armed-groups-in-the-lake-chad-basin-findings-report-31/" target="_blank">10.37559/MEAC/23/05</a>. Retrieved from: <a href="https://unidir.org/publication/child-exits-from-armed-groups-in-the-lake-chad-basin-findings-report-31/" target="_blank">https://unidir.org/publication/child-exits-from-armed-groups-in-the-lake-chad-basin-findings-report-31/</a></p>
 
 ```{=html}
 
