@@ -1,6 +1,7 @@
 ---
 title: "Pandemics and Environmental Performance in a Globalized World"
 subtitle: Frontiers in Climate
+doi: 10.3389/fclim.2025.1504804
 year: 2025
 date: "2025-03-10"
 author: 
@@ -10,7 +11,6 @@ author:
  - name: Juan Armando Torres Munguía
    orcid: 0000-0003-3432-6941 
  - name: Konstantin M. Wacker
-doi: 10.3389/fclim.2025.1504804
 categories:
  - disease outbreaks
  - epidemics
