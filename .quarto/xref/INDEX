@@ -75,7 +75,8 @@
     "index.html": "a4b92cbc"
   },
   "blog/index.qmd": {
-    "index.html": "82f27aa7"
+    "index.html": "82f27aa7",
+    "juan-torresmunguia_2025-01-27_estimating-envipe-prevalence.pdf.html": "76473193"
   },
   "consulting/index.qmd": {
     "index.html": "23c94b0e"
@@ -147,7 +148,8 @@
     "index.html": "e5500ccc"
   },
   "blog/posts/estimating-envipe-prevalence/index.qmd": {
-    "index.html": "b0a81e1b"
+    "index.html": "b0a81e1b",
+    "index.tex": "44feb376"
   },
   "blog/posts/visualizing-conflict-lake-chad-basin/index.qmd": {
     "index.html": "0eed368b"

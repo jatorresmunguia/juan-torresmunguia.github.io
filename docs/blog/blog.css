@@ -25,3 +25,11 @@
   padding-bottom: .55em;
   font-size: 15px;
 }
+
+.thumbnail-image {
+    border-width: 1.2px !important;
+    border-style: solid;
+    margin-top: 0px !important;
+    padding-top: 0em !important;
+    border-color: #153268 !important;
+}
