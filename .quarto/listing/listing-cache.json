@@ -15,6 +15,10 @@
     ],
     "portfolio\\index.qmd": [
       "projects"
+    ],
+    "feedblog.qmd": [
+      "blog/**/index.qmd",
+      "!blog/index.qmd"
     ]
   }
 }

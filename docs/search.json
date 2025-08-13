@@ -240,9 +240,9 @@
   {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
-    "title": "Blog",
+    "title": "Juan Torres Munguía’s Blog",
     "section": "",
-    "text": "Exploring the art and science of working with development and humanitarian data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nVisualizing changes over time of the prevalence of undernourishment\n\n\nUsing {ggplot2} to create a line plot for the evolution of food security in the world\n\n\n\ndata visualization\n\n\nfood security\n\n\nggthemr\n\n\nggplot2\n\n\nline chart\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Humanitarian Exchange Language (HXL) Hashtags\n\n\nApplying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks.\n\n\n\ndata management\n\n\nHumanitarian Data Exchange\n\n\nHumanitarian Exchange Language\n\n\ndisease outbreaks\n\n\nepidemics\n\n\npandemics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing armed conflict using ACLED’s data and HDX shapefiles\n\n\nUsing {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin\n\n\n\ndata visualization\n\n\narmed conflict\n\n\nACLED\n\n\nLake Chad basin\n\n\nNigeria\n\n\nNiger\n\n\nChad\n\n\nCameroon\n\n\nggplot2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\nPart 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R\n\n\n\ndata visualization\n\n\ndrought\n\n\ntidyverse\n\n\nggplot2\n\n\nshapefiles\n\n\nstandardized precipitation index (SPI)\n\n\nSomalia\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\nPart 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level\n\n\n\ndata analysis\n\n\ndrought\n\n\ntidyverse\n\n\nggplot2\n\n\nbox plots\n\n\nSCI\n\n\nStandardized Precipitation Index (SPI)\n\n\nSomalia\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing a tidy approach in R to analyze Mexico’s 2024 ENVIPE\n\n\nPart 1: Estimating crime prevalence with the {srvyr} package\n\n\n\ndata analysis\n\n\nofficial statistics\n\n\nMexico\n\n\nhousehold surveys\n\n\nENVIPE\n\n\ncrime\n\n\nvictimization\n\n\npublic safety\n\n\ntidyverse\n\n\nsrvyr\n\n\nmicrodata\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\nUsing {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world\n\n\n\ndata visualization\n\n\ndisease outbreaks\n\n\nepidemics\n\n\npandemics\n\n\ntidyverse\n\n\nggplot2\n\n\nwaffle chart\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE\n\n\nPart 1: Estimating crime prevalence with the {srvyr} package\n\n\n\ndata analysis\n\n\nofficial statistics\n\n\nMexico\n\n\nhousehold surveys\n\n\nENVIPE\n\n\ncrime\n\n\nvictimization\n\n\npublic safety\n\n\ntidyverse\n\n\nsrvyr\n\n\nmicrodata\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "contact/index.html",
@@ -1041,5 +1041,19 @@
     "title": "Visualizing changes over time of the prevalence of undernourishment",
     "section": "",
     "text": "CitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Visualizing Changes over Time of the Prevalence of\n    Undernourishment},\n  date = {2025-04-18},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Visualizing Changes over Time\nof the Prevalence of Undernourishment.” April 18, 2025."
+  },
+  {
+    "objectID": "index.es.html",
+    "href": "index.es.html",
+    "title": "Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST",
+    "section": "",
+    "text": "Transformando datos complejos en información útil para generar impacto social y humanitario  Juan Torres Munguía, Ph.D. CIENTÍFICO DE DATOS HUMANITARIOS"
+  },
+  {
+    "objectID": "about/index.es.html",
+    "href": "about/index.es.html",
+    "title": "Juan Torres Munguía, Ph.D.",
+    "section": "",
+    "text": "Soy estadístico especializado en la gestión, análisis y visualización de datos relacionados con emergencias humanitarias y poblaciones en situación de mayor vulnerabilidad.\nMi trabajo integra métodos estadísticos, algoritmos de aprendizaje automático y técnicas de ciencia de datos para comprender mejor cómo las personas, familias y comunidades experimentan, se adaptan y afrontan fenómenos como los conflictos armados, la violencia, el cambio climático, la pobreza y el desplazamiento.\nComo entusiasta de R, disfruto programando para optimizar y agilizar mi trabajo. Visita mi Blog, donde comparto ideas sobre el uso de R para el estudio de datos humanitarios y de desarrollo."
   }
 ]

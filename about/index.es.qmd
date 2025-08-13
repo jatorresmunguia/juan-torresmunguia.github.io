@@ -1,0 +1,39 @@
+---
+title: "Juan Torres Munguía, Ph.D."
+profile_image: "profile_pic.png"
+subtitle: "CIENTÍFICO DE DATOS HUMANITARIOS"
+execute:
+  freeze: true
+about:
+  template: solana
+format:
+  html:
+    page-layout: article
+---
+
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-sm-8}
+
+Soy estadístico especializado en la gestión, análisis y visualización de datos relacionados con emergencias humanitarias y poblaciones en situación de mayor vulnerabilidad.
+
+Mi trabajo integra métodos estadísticos, algoritmos de aprendizaje automático y técnicas de ciencia de datos para comprender mejor cómo las personas, familias y comunidades experimentan, se adaptan y afrontan fenómenos como los conflictos armados, la violencia, el cambio climático, la pobreza y el desplazamiento.
+
+Como entusiasta de R, disfruto programando para optimizar y agilizar mi trabajo. Visita mi [Blog](../blog/index.es.qmd), donde comparto ideas sobre el uso de R para el estudio de datos humanitarios y de desarrollo.
+
+:::
+
+::: {.g-col-12 .g-col-sm-4}
+
+```{=html}
+
+<div class="g-col-12 g-col-sm-12 text-center">
+  <img class="img-fluid rounded-circle" src="{{< meta profile_image >}}" >
+</div>
+
+```
+
+:::
+
+:::
