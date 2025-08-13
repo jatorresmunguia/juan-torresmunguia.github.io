@@ -65,6 +65,8 @@ website:
       - text: "{{< iconify fa6-brands google-scholar size=1.1em title='Google Scholar' >}}"
         href: https://scholar.google.com/citations?hl=es&user=VelzdlMAAAAJ
         target: blank
+      - icon: rss
+        href: /blog/index.xml  
 
 #  sidebar:
 #    - id: data_viz
