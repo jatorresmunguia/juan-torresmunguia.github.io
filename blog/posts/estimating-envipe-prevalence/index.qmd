@@ -32,7 +32,7 @@ comments:
 ---
 
 ## Overview
-In this post, I will guide you through the process of analyzing Mexico's 2024 National Survey of Victimization and Perception of Public Safety (_Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública_, ENVIPE) using the [{tidyverse}](https://www.tidyverse.org/) framework for survey analysis with the {srvyr} package. Specifically, we will calculate the **crime prevalence rate per 100,000 inhabitants by state, according to the victim's sex** ( _Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima_).
+In this article, I will guide you through the process of analyzing Mexico's 2024 National Survey of Victimization and Perception of Public Safety (_Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública_, ENVIPE) using the [{tidyverse}](https://www.tidyverse.org/) framework for survey analysis with the {srvyr} package. Specifically, we will calculate the **crime prevalence rate per 100,000 inhabitants by state, according to the victim's sex** ( _Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima_).
 
 Official tables with this indicator can be found [here](https://www.inegi.org.mx/programas/envipe/2024/#tabulados).
 

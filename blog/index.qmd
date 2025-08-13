@@ -1,5 +1,5 @@
 ---
-title: "Juan Torres Munguía's Blog:"
+title: "Blog"
 subtitle: ""
 listing:
   contents: posts
@@ -7,17 +7,10 @@ listing:
   type: grid
   categories: false
   sort-ui: false
-  filter-ui: false
+  filter-ui: true
   fields: [image, title, subtitle, categories]
-  feed: 
-    items: 5
-    title: Juan Torres Munguía's Blog
-    description: Exploring the art and science of working with development and humanitarian data
-    type: partial
-
 execute:
   freeze: true
-
 format: 
   html: 
     page-layout: article

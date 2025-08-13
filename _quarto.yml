@@ -5,7 +5,7 @@ project:
     - "*.qmd"
 execute:
   freeze: auto
-
+  
 format:
   html:
     include-in-header: _head.html
@@ -18,28 +18,13 @@ format:
     page-layout: full
     code-link: true
     highlight-style: tango
-
-babelquarto:
-  icon: "bi bi-backpack"
-  languagelinks: true
-  languagecodes:
-  - name: es
-    text: "Español"
-  - name: en
-    text: "English"
-  mainlanguage: 'en'
-  languages: ['es']
-title-es: Juan TORRES MUNGUÍA | CIENTÍFICO DE DATOS HUMANITARIOS
-lang: en
-
+    
 website:
   title: "Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST"
   favicon: "img/academicons--open-data.png"
   search: false
   page-navigation: true
   reader-mode: false
-  site-url: https://juan-torresmunguia.netlify.app/blog
-  description: Exploring the art and science of working with development and humanitarian data
 
   navbar:
     title: " "
@@ -78,8 +63,6 @@ website:
       - text: "{{< iconify fa6-brands google-scholar size=1.1em title='Google Scholar' >}}"
         href: https://scholar.google.com/citations?hl=es&user=VelzdlMAAAAJ
         target: blank
-      - icon: rss
-        href: /blog/index.xml   
 
 #  sidebar:
 #    - id: data_viz
@@ -92,7 +75,7 @@ website:
 #       - "data_viz/maps.qmd"
 #       - "data_viz/shiny_apps.qmd"
 #       - "data_viz/storytelling.qmd"
- 
+  
   page-footer:
     background: "#153268"
     foreground: "#f2f0e8"
@@ -105,4 +88,3 @@ website:
      Licensed under 
      <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">{{< fa brands creative-commons >}}{{< fa brands creative-commons-by >}} Creative Commons Zero v1.0 Universal</a></br>
 editor: source
-  
