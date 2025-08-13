@@ -1,0 +1,18 @@
+---
+title: "Data visualizations gallery"
+subtitle: ""
+listing:
+  contents: projects
+  sort: "date desc"
+  type: grid
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title]
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---

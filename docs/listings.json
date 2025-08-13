@@ -1,8 +1,18 @@
 [
   {
-    "listing": "/blog/blog.html",
+    "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/how_to_maps/index.html"
+      "/blog/posts/estimating-envipe-prevalence/index.html"
+    ]
+  },
+  {
+    "listing": "/portfolio/index.html",
+    "items": [
+      "/portfolio/projects/food-security-fao-line-chart/index.html",
+      "/portfolio/projects/spi_somalia_visualization/index.html",
+      "/portfolio/projects/spi_somalia/index.html",
+      "/portfolio/projects/waffle_chart_disease_outbreaks/index.html",
+      "/portfolio/projects/shiny_disease_outbreaks/index.html"
     ]
   },
   {
@@ -27,34 +37,6 @@
       "/publications/working_papers/poverty_mexico_2020/index.html",
       "/publications/working_papers/behind_homicides_gender_gaps_mexico_2018/index.html",
       "/publications/working_papers/violent_crime_latam_iadb_2016/index.html"
-    ]
-  },
-  {
-    "listing": "/blog/index.html",
-    "items": [
-      "/blog/posts/estimating-envipe-prevalence/index.html"
-    ]
-  },
-  {
-    "listing": "/portfolio/index.html",
-    "items": [
-      "/portfolio/projects/food-security-fao-line-chart/index.html",
-      "/portfolio/projects/spi_somalia_visualization/index.html",
-      "/portfolio/projects/spi_somalia/index.html",
-      "/portfolio/projects/waffle_chart_disease_outbreaks/index.html",
-      "/portfolio/projects/shiny_disease_outbreaks/index.html"
-    ]
-  },
-  {
-    "listing": "/feedblog.html",
-    "items": [
-      "/blog/posts/food-security-fao-line-plot/index.html",
-      "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
-      "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
-      "/blog/posts/spi_somalia_visualization/index.html",
-      "/blog/posts/spi_somalia/index.html",
-      "/blog/posts/estimating-envipe-prevalence/index.html",
-      "/blog/posts/waffle-chart-disease-outbreaks/index.html"
     ]
   }
 ]

@@ -174,5 +174,20 @@
   },
   "about/index.es.qmd": {
     "index.es.html": "4ee9a62b"
+  },
+  "blog/index.es.qmd": {
+    "index.es.html": "bb5dc639"
+  },
+  "contact/index.es.qmd": {
+    "index.es.html": "412f9d5b"
+  },
+  "cv/index.es.qmd": {
+    "index.es.html": "97367ef4"
+  },
+  "portfolio/index.es.qmd": {
+    "index.es.html": "f92fe47b"
+  },
+  "publications/index.es.qmd": {
+    "index.es.html": "fa519b51"
   }
 }
