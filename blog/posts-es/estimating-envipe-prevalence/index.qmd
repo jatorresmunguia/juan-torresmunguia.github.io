@@ -1,0 +1,238 @@
+---
+title: "Usando un enfoque tidy en R para analizar la ENVIPE 2024 de México"
+subtitle: "Parte 1: Estimando la prevalencia delictiva con el paquete {srvyr}"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-01-27"
+categories: 
+ - análisis de datos
+ - estadísticas oficiales
+ - México
+ - encuestas a hogares
+ - ENVIPE
+ - delito
+ - victimización
+ - seguridad pública
+ - tidyverse
+ - srvyr
+ - microdatos
+image: "table_envipe.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Introducción
+En este artículo, te guiaré en el proceso de analizar la Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública 2024 (ENVIPE) de México utilizando el enfoque [{tidyverse}](https://www.tidyverse.org/) para análisis de encuestas, junto con el paquete {srvyr}. En particular, se calcula la **tasa de prevalencia delictiva por cada 100,000 habitantes por entidad federativa, según sexo de la víctima**.
+
+Las tablas oficiales con este indicador pueden consultarse [aquí](https://www.inegi.org.mx/programas/envipe/2024/#tabulados).
+
+Al final de este artículo, podrás usar el {tidyverse} para:
+
+- Cargar los microdatos de la encuesta desde el sitio web del INEGI.
+- Especificar el diseño muestral de la ENVIPE.
+- Calcular indicadores de prevalencia delictiva.
+
+## Acerca de la ENVIPE
+La ENVIPE es una encuesta que proporciona información oficial representativa a nivel nacional y estatal sobre la victimización delictiva en los hogares y la percepción de seguridad pública en México. Desde 2011, es realizada anualmente por el [Instituto Nacional de Estadística y Geografía (INEGI)](https://www.inegi.org.mx/default.html), recolectando datos sobre los siguientes delitos:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Robo total de vehículo (auto, camioneta o camión).
+- Robo de accesorios, refacciones o herramientas de vehículo (auto, camioneta o camión).
+- Grafiti en paredes, daños intencionales a vehículos y otros tipos de vandalismo.
+- Robo a casa habitación o intento de robo.
+- Secuestro.
+- Desaparición forzada.
+- Homicidio.
+- Robo o asalto en la calle o transporte público.
+
+:::
+  
+::: {.column width="50%"}
+
+- Robo distinto a los anteriores.
+- Fraude bancario.
+- Fraude al consumidor.
+- Extorsión.
+- Amenazas.
+- Lesiones.
+- Secuestro.
+- Hostigamiento o intimidación.
+- Manoseo.
+- Exhibicionismo.
+- Intento de violación.
+- Violación sexual.
+- Otros delitos.
+
+:::
+
+::::
+
+Toda la información relacionada con la encuesta, incluidos cuestionarios, metodología, glosarios, resúmenes y microdatos, está disponible en el [sitio web del INEGI](https://en.www.inegi.org.mx/programas/envipe/2024/).
+
+## Preparación del entorno
+Primero, instala y carga los paquetes requeridos:
+
+```{r}
+#| warning: false
+
+library(tidyverse) # Marco de análisis de datos con sintaxis tidy
+library(srvyr) # Sintaxis tidy para análisis de encuestas
+library(archive) # Extraer archivos de un ZIP
+library(kableExtra) # Crear tablas HTML
+```
+
+## Cargando microdatos de la encuesta desde el INEGI
+Los microdatos están disponibles [aquí](https://www.inegi.org.mx/programas/envipe/2024/#microdatos) en varios formatos (CSV, DBF, DTA, SAV y RData). En este ejemplo usaremos los archivos en formato RData.
+
+```{r}
+load(archive_read(
+  archive = "https://www.inegi.org.mx/contenidos/programas/envipe/2024/microdatos/bd_envipe_2024_RData.zip",
+  file = "BD_ENVIPE_2024.RData"
+))
+```
+
+::: {.callout-tip}
+
+Usando el paquete {archive}, podemos extraer directamente el archivo requerido desde `bd_envipe_2024_RData.zip`. 
+
+:::
+
+Esto carga los siguientes objetos en el entorno global:
+
+- `THogar`: Contiene el resultado de la entrevista, la fila del informante seleccionado, el factor de expansión del hogar y otras características del hogar.
+
+- `TMod_Vic`: Incluye información sobre los delitos sufridos por el informante seleccionado y su hogar durante el año de referencia (2023). Proviene del módulo de victimización de la encuesta.
+
+- `TPer_Vic1`: Incluye información relacionada con la percepción de seguridad pública en el área geográfica del entrevistado, conductas antisociales en su entorno inmediato y cambios de hábitos por temor a ser víctima de un delito en 2023. También presenta información sobre el desempeño y la confianza en las autoridades (Secciones IV y V del cuestionario).
+
+- `TPer_Vic2`: Consolida información sobre victimización del hogar y personal, especialmente en delitos de alto impacto (como secuestro, desaparición forzada u homicidio) sufridos por el hogar o el entrevistado. Incluye las Secciones VI y VII del cuestionario.
+
+- `TSDem`: Contiene las características sociodemográficas de los integrantes del hogar (Sección III del cuestionario).
+
+- `TSVivienda`: Contiene las características de las viviendas registradas en la portada del cuestionario, así como el número de residentes y de hogares (Secciones I y II del cuestionario).
+
+## Cálculo de la tasa de prevalencia delictiva por cada 100,000 habitantes por entidad federativa, según sexo de la víctima
+Para estimar la tasa de prevalencia delictiva, utilizamos información de `TPer_Vic2` (preguntas de cribado sobre victimización) y de `TMod_Vic` (módulo específico para víctimas). `TPer_Vic2` se usa para caracterizar a la población total y `TMod_Vic` para describir a las víctimas y los delitos asociados.
+
+### 1. Especificando el diseño muestral de la ENVIPE
+La ENVIPE sigue un diseño probabilístico, estratificado, por conglomerados y en tres etapas. La unidad de muestreo es el hogar, y la unidad de análisis es la población de 18 años o más en hogares seleccionados. Más detalles [aquí](https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463920014.pdf).
+
+De la documentación sobre la [estructura de datos ](https://www.inegi.org.mx/contenidos/programas/envipe/2024/doc/fd_envipe2024.pdf), las variables clave para el diseño son:
+
+- `ID_PER`: Identificador de persona
+
+- `EST_DIS`: Estrato
+
+- `UPM_DIS`: Unidad primaria de muestreo
+
+- `FAC_ELE`: Factor de expansión para estimaciones de victimización y percepción de seguridad.
+
+El diseño se especifica así:
+
+```{r}
+# Identificar víctimas en TMod_Vic, excluyendo
+# "Grafiti, daños intencionales a vehículos y otros vandalismos" (BPCOD != "03")
+id_victims <- TMod_Vic |>
+  filter(BPCOD != "03") |>
+  pull(ID_PER)
+
+# Crear variable de victimización en TPer_Vic2
+TPer_Vic2 <- TPer_Vic2 |>
+  mutate(victimization = ifelse(ID_PER %in% id_victims, 1, 0))
+
+# Convertir FAC_ELE (pesos) a numérico
+TPer_Vic2 <- TPer_Vic2 |>
+  mutate(FAC_ELE = as.numeric(FAC_ELE))
+
+# Etiquetar variable SEXO
+TPer_Vic2 <- TPer_Vic2 |>
+  mutate(SEXO = recode(SEXO, "1" = "Hombre", "2" = "Mujer"))
+
+# Crear objeto de encuesta
+envipe_design <- TPer_Vic2 |>
+  as_survey_design(
+    weights = FAC_ELE,
+    strata = EST_DIS,
+    ids = UPM_DIS,
+    nest = TRUE
+  )
+```
+
+### 2. Cálculo de estimaciones puntuales e indicadores de variabilidad
+Para calcular proporciones usamos `survey_mean()` del paquete {srvyr}. `NOM_ENT` representa la entidad federativa y `SEXO` el sexo de la persona entrevistada.
+
+```{r}
+#| results: hide
+
+envipe_design |>
+  # La función `interact` se usa para calcular la proporción
+  # sobre la interacción de entidad federativa y sexo
+  group_by(interact(NOM_ENT, SEXO)) |>
+  summarize(
+    Proporcion = survey_mean(victimization,
+      level = 0.90, # Nivel de confianza
+      vartype = c("se", "ci", "cv") # Indicadores de variabilidad
+    )
+  ) |>
+  ungroup() |>
+  mutate(
+    `Tasa de prevalencia` = Proporcion * 100000, # Tasa por cada 100,000 personas
+    `Error estándar` = Proporcion_se * 100000,
+    `Límite inferior IC 90%` = Proporcion_low * 100000,
+    `Límite superior IC 90%` = Proporcion_upp * 100000,
+    `Coeficiente de variación %` = Proporcion_cv * 100,
+    Entidad = str_to_sentence(NOM_ENT) # Capitalizar solo la primera letra
+  ) |>
+  rename(Sexo = SEXO) |>
+  select(
+    Entidad, Sexo, `Tasa de prevalencia`, `Error estándar`,
+    `Límite inferior IC 90%`, `Límite superior IC 90%`, `Coeficiente de variación %`
+  ) |>
+  kbl() |> # Tabla HTML
+  kable_styling() # Aplicar tema bootstrap a la tabla
+```
+
+La tabla final es: 
+```{r}
+#| echo: false
+
+envipe_design |>
+  # La función `interact` se usa para calcular la proporción
+  # sobre la interacción de entidad federativa y sexo
+  group_by(interact(NOM_ENT, SEXO)) |>
+  summarize(
+    Proporcion = survey_mean(victimization,
+      level = 0.90, # Nivel de confianza
+      vartype = c("se", "ci", "cv") # Indicadores de variabilidad
+    )
+  ) |>
+  ungroup() |>
+  mutate(
+    `Tasa de prevalencia` = Proporcion * 100000, # Tasa por cada 100,000 personas
+    `Error estándar` = Proporcion_se * 100000,
+    `Límite inferior IC 90%` = Proporcion_low * 100000,
+    `Límite superior IC 90%` = Proporcion_upp * 100000,
+    `Coeficiente de variación %` = Proporcion_cv * 100,
+    Entidad = str_to_sentence(NOM_ENT) # Capitalizar solo la primera letra
+  ) |>
+  rename(Sexo = SEXO) |>
+  select(
+    Entidad, Sexo, `Tasa de prevalencia`, `Error estándar`,
+    `Límite inferior IC 90%`, `Límite superior IC 90%`, `Coeficiente de variación %`
+  ) |>
+  kbl() |> # Tabla HTML
+  kable_styling() # Aplicar tema bootstrap a la tabla
+```

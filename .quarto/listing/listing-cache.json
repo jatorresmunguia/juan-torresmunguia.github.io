@@ -11,10 +11,14 @@
     "blog\\index.qmd": [
       "posts",
       "data_analysis",
-      "data_analysis/*/index.qmd"
+      "data_analysis/*/index.qmd",
+      "posts-es"
     ],
     "portfolio\\index.qmd": [
       "projects"
+    ],
+    "blog\\index-es.qmd": [
+      "posts-es"
     ]
   }
 }

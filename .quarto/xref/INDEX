@@ -165,5 +165,11 @@
   },
   "portfolio/projects/food-security-fao-line-chart/index.qmd": {
     "index.html": "c06ec267"
+  },
+  "blog/posts-es/estimating-envipe-prevalence/index.qmd": {
+    "index.html": "5523bf59"
+  },
+  "blog/index-es.qmd": {
+    "index-es.html": "aae3d917"
   }
 }

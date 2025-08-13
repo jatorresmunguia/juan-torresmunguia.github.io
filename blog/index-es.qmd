@@ -2,18 +2,13 @@
 title: "Blog"
 subtitle: ""
 listing:
-  contents: posts
+  contents: posts-es
   sort: "date desc"
   type: grid
   categories: false
   sort-ui: false
   filter-ui: false
   fields: [image, title, subtitle, categories]
-  feed:
-    items: 20
-    title: "Juan Torres Munguía's Blog"
-    description: "Exploring the art and science of working with development and humanitarian data"
-    type: partial
 execute:
   freeze: true
 format: 
@@ -32,7 +27,7 @@ format:
 ```{=html}
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
   <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:95px; display:flex; align-items:center; justify-content:center;">
-    <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English ▼
+    <img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español ▼
   </button>
   <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:95px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
@@ -84,4 +79,4 @@ if (window.location.href.includes("index-es.html")) {
 
 :::
 
-## Exploring the art and science of working with development and humanitarian data
+## Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Juan Armando Torres Munguía">
 <meta name="dcterms.date" content="2025-01-27">
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Usando un enfoque tidy en R para analizar la ENVIPE 2024 de México</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,20 +161,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE</h1>
-<p class="subtitle lead">Part 1: Estimating crime prevalence with the {srvyr} package</p>
+<h1 class="title">Usando un enfoque tidy en R para analizar la ENVIPE 2024 de México</h1>
+<p class="subtitle lead">Parte 1: Estimando la prevalencia delictiva con el paquete {srvyr}</p>
   <div class="quarto-categories">
-    <div class="quarto-category">data analysis</div>
-    <div class="quarto-category">official statistics</div>
-    <div class="quarto-category">Mexico</div>
-    <div class="quarto-category">household surveys</div>
+    <div class="quarto-category">análisis de datos</div>
+    <div class="quarto-category">estadísticas oficiales</div>
+    <div class="quarto-category">México</div>
+    <div class="quarto-category">encuestas a hogares</div>
     <div class="quarto-category">ENVIPE</div>
-    <div class="quarto-category">crime</div>
-    <div class="quarto-category">victimization</div>
-    <div class="quarto-category">public safety</div>
+    <div class="quarto-category">delito</div>
+    <div class="quarto-category">victimización</div>
+    <div class="quarto-category">seguridad pública</div>
     <div class="quarto-category">tidyverse</div>
     <div class="quarto-category">srvyr</div>
-    <div class="quarto-category">microdata</div>
+    <div class="quarto-category">microdatos</div>
   </div>
   </div>
 
@@ -201,57 +201,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this article, I will guide you through the process of analyzing Mexico’s 2024 National Survey of Victimization and Perception of Public Safety (<em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</em>, ENVIPE) using the <a href="https://www.tidyverse.org/">{tidyverse}</a> framework for survey analysis with the {srvyr} package. Specifically, we will calculate the <strong>crime prevalence rate per 100,000 inhabitants by state, according to the victim’s sex</strong> ( <em>Tasa de prevalencia delictiva por entidad federativa por cada cien mil habitantes, según sexo de la víctima</em>).</p>
-<p>Official tables with this indicator can be found <a href="https://www.inegi.org.mx/programas/envipe/2024/#tabulados">here</a>.</p>
-<p>By the end of this article, you will be able to use the {tidyverse} to:</p>
+</header><section id="introducción" class="level2"><h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>En este artículo, te guiaré en el proceso de analizar la Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública 2024 (ENVIPE) de México utilizando el marco de trabajo <a href="https://www.tidyverse.org/">{tidyverse}</a> para análisis de encuestas, junto con el paquete {srvyr}. En particular, calcularemos la <strong>tasa de prevalencia delictiva por cada 100,000 habitantes por entidad federativa, según sexo de la víctima</strong>.</p>
+<p>Las tablas oficiales con este indicador pueden consultarse <a href="https://www.inegi.org.mx/programas/envipe/2024/#tabulados">aquí</a>.</p>
+<p>Al final de este artículo, podrás usar el {tidyverse} para:</p>
 <ul>
-<li>Load the survey microdata from INEGI’s website.</li>
-<li>Specify the ENVIPE survey design.</li>
-<li>Calculate crime prevalence indicators.</li>
-</ul></section><section id="about-the-envipe" class="level2"><h2 class="anchored" data-anchor-id="about-the-envipe">About the ENVIPE</h2>
-<p>ENVIPE is an official survey that provides nationally and state-representative information on household crime victimization and perceptions of public safety in Mexico. Conducted annually since 2011 by the <a href="https://www.inegi.org.mx/default.html">National Institute of Statistics and Geography (INEGI)</a>, ENVIPE collects data on the following crimes:</p>
+<li>Cargar los microdatos de la encuesta desde el sitio web del INEGI.</li>
+<li>Especificar el diseño muestral de la ENVIPE.</li>
+<li>Calcular indicadores de prevalencia delictiva.</li>
+</ul></section><section id="acerca-de-la-envipe" class="level2"><h2 class="anchored" data-anchor-id="acerca-de-la-envipe">Acerca de la ENVIPE</h2>
+<p>La ENVIPE es una encuesta oficial que proporciona información representativa a nivel nacional y estatal sobre la victimización delictiva en los hogares y la percepción de seguridad pública en México. Desde 2011, es realizada anualmente por el <a href="https://www.inegi.org.mx/default.html">Instituto Nacional de Estadística y Geografía (INEGI)</a>, recolectando datos sobre los siguientes delitos:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Total vehicle theft (car, pickup truck, or truck).</li>
-<li>Theft of vehicle accessories, spare parts, or tools (car, pickup truck, or truck).</li>
-<li>Wall graffiti, intentional vehicle damage, and other types of vandalism.</li>
-<li>Burglary or attempted burglary.</li>
-<li>Kidnapping.</li>
-<li>Enforced disappearance.</li>
-<li>Homicide.</li>
-<li>Robbery or assault on the street or public transportation.</li>
+<li>Robo total de vehículo (auto, camioneta o camión).</li>
+<li>Robo de accesorios, refacciones o herramientas de vehículo (auto, camioneta o camión).</li>
+<li>Grafiti en paredes, daños intencionales a vehículos y otros tipos de vandalismo.</li>
+<li>Robo a casa habitación o intento de robo.</li>
+<li>Secuestro.</li>
+<li>Desaparición forzada.</li>
+<li>Homicidio.</li>
+<li>Robo o asalto en la calle o transporte público.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Theft in a manner different from the above.</li>
-<li>Bank fraud.</li>
-<li>Consumer fraud.</li>
-<li>Extortion.</li>
-<li>Threats.</li>
-<li>Injuries.</li>
-<li>Kidnapping.</li>
-<li>Harassment or intimidation.</li>
-<li>Groping.</li>
-<li>Exhibitionism.</li>
-<li>Attempted rape.</li>
-<li>Sexual rape.</li>
-<li>Other crimes.</li>
+<li>Robo distinto a los anteriores.</li>
+<li>Fraude bancario.</li>
+<li>Fraude al consumidor.</li>
+<li>Extorsión.</li>
+<li>Amenazas.</li>
+<li>Lesiones.</li>
+<li>Secuestro.</li>
+<li>Hostigamiento o intimidación.</li>
+<li>Manoseo.</li>
+<li>Exhibicionismo.</li>
+<li>Intento de violación.</li>
+<li>Violación sexual.</li>
+<li>Otros delitos.</li>
 </ul>
 </div>
 </div>
-<p>All survey-related information, including questionnaires, methodology, glossaries, summaries, and microdata, is fully available at <a href="https://en.www.inegi.org.mx/programas/envipe/2024/">INEGI’s website</a>.</p>
-</section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>First, install and load the required packages:</p>
+<p>Toda la información relacionada con la encuesta, incluidos cuestionarios, metodología, glosarios, resúmenes y microdatos, está disponible en el <a href="https://en.www.inegi.org.mx/programas/envipe/2024/">sitio web del INEGI</a>.</p>
+</section><section id="preparación-del-entorno" class="level2"><h2 class="anchored" data-anchor-id="preparación-del-entorno">Preparación del entorno</h2>
+<p>Primero, instala y carga los paquetes requeridos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Tidy data analysis framework</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://gdfe.co/srvyr/">srvyr</a></span><span class="op">)</span> <span class="co"># Tidy syntax for survey data analysis</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://archive.r-lib.org/">archive</a></span><span class="op">)</span> <span class="co"># Extract files from a ZIP archive</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> <span class="co"># Create HTML table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Marco de análisis de datos con sintaxis tidy</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://gdfe.co/srvyr/">srvyr</a></span><span class="op">)</span> <span class="co"># Sintaxis tidy para análisis de encuestas</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://archive.r-lib.org/">archive</a></span><span class="op">)</span> <span class="co"># Extraer archivos de un ZIP</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> <span class="co"># Crear tablas HTML</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="loading-survey-microdata-from-inegi" class="level2"><h2 class="anchored" data-anchor-id="loading-survey-microdata-from-inegi">Loading survey microdata from INEGI</h2>
-<p>Microdata is available <a href="https://www.inegi.org.mx/programas/envipe/2024/#microdatos">here</a> in various formats (CSV, DBF, DTA, SAV, and RData). In this post, we will use the RData files.</p>
+</section><section id="cargando-microdatos-de-la-encuesta-desde-el-inegi" class="level2"><h2 class="anchored" data-anchor-id="cargando-microdatos-de-la-encuesta-desde-el-inegi">Cargando microdatos de la encuesta desde el INEGI</h2>
+<p>Los microdatos están disponibles <a href="https://www.inegi.org.mx/programas/envipe/2024/#microdatos">aquí</a> en varios formatos (CSV, DBF, DTA, SAV y RData). En este ejemplo usaremos los archivos en formato RData.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://archive.r-lib.org/reference/archive_read.html">archive_read</a></span><span class="op">(</span></span>
 <span>  archive <span class="op">=</span> <span class="st">"https://www.inegi.org.mx/contenidos/programas/envipe/2024/microdatos/bd_envipe_2024_RData.zip"</span>,</span>
@@ -268,104 +268,104 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using the {archive} package, we can directly extract the required file from <code>bd_envipe_2024_RData.zip</code>.</p>
+<p>Usando el paquete {archive}, podemos extraer directamente el archivo requerido desde <code>bd_envipe_2024_RData.zip</code>.</p>
 </div>
 </div>
-<p>This loads the following objects into the global environment:</p>
+<p>Esto carga los siguientes objetos en el entorno global:</p>
 <ul>
-<li><p><code>THogar</code>: This object contains the interview result, the row of the selected respondent, the household factor, and other household characteristics.</p></li>
-<li><p><code>TMod_Vic</code>: This object includes information on the crimes suffered by the selected respondent and their household during the reference year, specifically during 2023. Information comes from the victimization module of the survey.</p></li>
-<li><p><code>TPer_Vic1</code>: This object includes information related to the perception of public security within the respondent’s geographic area, antisocial behaviors in their immediate surroundings, and changes in habits due to fear of becoming a crime victim in 2023. Additionally, it presents information regarding the performance of authorities and trust in them. In other words, this table covers Sections IV and V of the main questionnaire.</p></li>
-<li><p><code>TPer_Vic2</code>: This object consolidates information related to household and personal victimization, particularly focusing on high-impact crimes experienced by the household (such as kidnapping, enforced disappearance, or homicide) or by the selected respondent. This table includes Sections VI and VII of the main questionnaire.</p></li>
-<li><p><code>TSDem</code>: This object contains the socio-demographic characteristics of household members, corresponding to Section III of the main questionnaire.</p></li>
-<li><p><code>TSVivienda</code>: This object contains the characteristics of the households captured through the questionnaire cover page, as well as the count of household residents and the number of households. In other words, it includes Sections I and II of the main questionnaire.</p></li>
-</ul></section><section id="calculating-crime-prevalence-rate-per-100000-thousand-inhabitants-by-state-according-to-the-victims-sex" class="level2"><h2 class="anchored" data-anchor-id="calculating-crime-prevalence-rate-per-100000-thousand-inhabitants-by-state-according-to-the-victims-sex">Calculating crime prevalence rate per 100,000 thousand inhabitants by state, according to the victim’s sex</h2>
-<p>To estimate the crime prevalence rate, we use information from <code>TPer_Vic2</code> (screening questions on victimization from the main questionnaire) and <code>TMod_Vic</code> (specific victimization module applied to the respondents who reported being a victim of at least one of the crimes included in the survey during the reference period). <code>TPer_Vic2</code> will serve to characterize the total population and <code>TMod_Vic</code> to describe the victims and the associated crimes.</p>
-<section id="specifying-the-envipe-survey-design" class="level3"><h3 class="anchored" data-anchor-id="specifying-the-envipe-survey-design">1. Specifying the ENVIPE survey design</h3>
-<p>ENVIPE follows a probabilistic, three-stage, stratified, and clustered sampling design. The sampling unit is the household, while the unit of analysis is the population aged 18 and older in selected households. More details on the sampling design can be found <a href="https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463920014.pdf">here</a>(in Spanish).</p>
-<p>From the documentation on <a href="https://www.inegi.org.mx/contenidos/programas/envipe/2024/doc/fd_envipe2024.pdf">data structure</a>(in Spanish), the key variables for specifying the survey design are:</p>
+<li><p><code>THogar</code>: Contiene el resultado de la entrevista, la fila del informante seleccionado, el factor de expansión del hogar y otras características del hogar.</p></li>
+<li><p><code>TMod_Vic</code>: Incluye información sobre los delitos sufridos por el informante seleccionado y su hogar durante el año de referencia (2023). Proviene del módulo de victimización de la encuesta.</p></li>
+<li><p><code>TPer_Vic1</code>: Incluye información relacionada con la percepción de seguridad pública en el área geográfica del entrevistado, conductas antisociales en su entorno inmediato y cambios de hábitos por temor a ser víctima de un delito en 2023. También presenta información sobre el desempeño y la confianza en las autoridades (Secciones IV y V del cuestionario).</p></li>
+<li><p><code>TPer_Vic2</code>: Consolida información sobre victimización del hogar y personal, especialmente en delitos de alto impacto (como secuestro, desaparición forzada u homicidio) sufridos por el hogar o el entrevistado. Incluye las Secciones VI y VII del cuestionario.</p></li>
+<li><p><code>TSDem</code>: Contiene las características sociodemográficas de los integrantes del hogar (Sección III del cuestionario).</p></li>
+<li><p><code>TSVivienda</code>: Contiene las características de las viviendas registradas en la portada del cuestionario, así como el número de residentes y de hogares (Secciones I y II del cuestionario).</p></li>
+</ul></section><section id="cálculo-de-la-tasa-de-prevalencia-delictiva-por-cada-100000-habitantes-por-entidad-federativa-según-sexo-de-la-víctima" class="level2"><h2 class="anchored" data-anchor-id="cálculo-de-la-tasa-de-prevalencia-delictiva-por-cada-100000-habitantes-por-entidad-federativa-según-sexo-de-la-víctima">Cálculo de la tasa de prevalencia delictiva por cada 100,000 habitantes por entidad federativa, según sexo de la víctima</h2>
+<p>Para estimar la tasa de prevalencia delictiva, utilizamos información de <code>TPer_Vic2</code> (preguntas de cribado sobre victimización) y de <code>TMod_Vic</code> (módulo específico para víctimas). <code>TPer_Vic2</code> se usa para caracterizar a la población total y <code>TMod_Vic</code> para describir a las víctimas y los delitos asociados.</p>
+<section id="especificando-el-diseño-muestral-de-la-envipe" class="level3"><h3 class="anchored" data-anchor-id="especificando-el-diseño-muestral-de-la-envipe">1. Especificando el diseño muestral de la ENVIPE</h3>
+<p>La ENVIPE sigue un diseño probabilístico, estratificado, por conglomerados y en tres etapas. La unidad de muestreo es el hogar, y la unidad de análisis es la población de 18 años o más en hogares seleccionados. Más detalles <a href="https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463920014.pdf">aquí</a>.</p>
+<p>De la documentación sobre la <a href="https://www.inegi.org.mx/contenidos/programas/envipe/2024/doc/fd_envipe2024.pdf">estructura de datos</a>, las variables clave para el diseño son:</p>
 <ul>
-<li><p><code>ID_PER</code>: Person identifier</p></li>
-<li><p><code>EST_DIS</code>: Stratum</p></li>
-<li><p><code>UPM_DIS</code>: Primary sampling unit</p></li>
-<li><p><code>FAC_ELE</code>: Weighting factor for public security perception and victimization estimates.</p></li>
+<li><p><code>ID_PER</code>: Identificador de persona</p></li>
+<li><p><code>EST_DIS</code>: Estrato</p></li>
+<li><p><code>UPM_DIS</code>: Unidad primaria de muestreo</p></li>
+<li><p><code>FAC_ELE</code>: Factor de expansión para estimaciones de victimización y percepción de seguridad.</p></li>
 </ul>
-<p>We specify the survey design as follows:</p>
+<p>El diseño se especifica así:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Identify victims from TMod_Vic, excluding</span></span>
-<span><span class="co"># "Wall graffiti, intentional vehicle damage, and other vandalism" (BPCOD != "03")</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Identificar víctimas en TMod_Vic, excluyendo</span></span>
+<span><span class="co"># "Grafiti, daños intencionales a vehículos y otros vandalismos" (BPCOD != "03")</span></span>
 <span><span class="va">id_victims</span> <span class="op">&lt;-</span> <span class="va">TMod_Vic</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">BPCOD</span> <span class="op">!=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">ID_PER</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create victimization variable in TPer_Vic2</span></span>
+<span><span class="co"># Crear variable de victimización en TPer_Vic2</span></span>
 <span><span class="va">TPer_Vic2</span> <span class="op">&lt;-</span> <span class="va">TPer_Vic2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>victimization <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">ID_PER</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">id_victims</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Convert FAC_ELE (weights) to numeric</span></span>
+<span><span class="co"># Convertir FAC_ELE (pesos) a numérico</span></span>
 <span><span class="va">TPer_Vic2</span> <span class="op">&lt;-</span> <span class="va">TPer_Vic2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>FAC_ELE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">FAC_ELE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Label SEXO variable</span></span>
+<span><span class="co"># Etiquetar variable SEXO</span></span>
 <span><span class="va">TPer_Vic2</span> <span class="op">&lt;-</span> <span class="va">TPer_Vic2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>SEXO <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">SEXO</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Man"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"Woman"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>SEXO <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">SEXO</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Hombre"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"Mujer"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create survey object</span></span>
+<span><span class="co"># Crear objeto de encuesta</span></span>
 <span><span class="va">envipe_design</span> <span class="op">&lt;-</span> <span class="va">TPer_Vic2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span></span>
-<span>    weights <span class="op">=</span> <span class="va">FAC_ELE</span>, <span class="co"># Weights (inverse probability)</span></span>
-<span>    strata <span class="op">=</span> <span class="va">EST_DIS</span>, <span class="co"># Stratum</span></span>
-<span>    ids <span class="op">=</span> <span class="va">UPM_DIS</span>, <span class="co"># Primary sampling unit</span></span>
-<span>    nest <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># Nesting within strata</span></span>
+<span>    weights <span class="op">=</span> <span class="va">FAC_ELE</span>,</span>
+<span>    strata <span class="op">=</span> <span class="va">EST_DIS</span>,</span>
+<span>    ids <span class="op">=</span> <span class="va">UPM_DIS</span>,</span>
+<span>    nest <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="calculating-point-estimates-and-variablity-indicators" class="level3"><h3 class="anchored" data-anchor-id="calculating-point-estimates-and-variablity-indicators">2. Calculating point estimates and variablity indicators</h3>
-<p>To compute proportions from survey data, we use <code><a href="http://gdfe.co/srvyr/reference/survey_mean.html">survey_mean()</a></code> from {srvyr} package. From ENVIPE’s documentation, we know that <code>NOM_ENT</code> represents the state, while <code>SEXO</code> corresponds to the respondent’s sex.</p>
+</section><section id="cálculo-de-estimaciones-puntuales-e-indicadores-de-variabilidad" class="level3"><h3 class="anchored" data-anchor-id="cálculo-de-estimaciones-puntuales-e-indicadores-de-variabilidad">2. Cálculo de estimaciones puntuales e indicadores de variabilidad</h3>
+<p>Para calcular proporciones usamos <code><a href="http://gdfe.co/srvyr/reference/survey_mean.html">survey_mean()</a></code> del paquete {srvyr}. <code>NOM_ENT</code> representa la entidad federativa y <code>SEXO</code> el sexo de la persona entrevistada.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">envipe_design</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># `interact` function is used to calculate the proportion</span></span>
-<span>  <span class="co"># over the interaction of state and sex</span></span>
+<span>  <span class="co"># La función `interact` se usa para calcular la proporción</span></span>
+<span>  <span class="co"># sobre la interacción de entidad federativa y sexo</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/interact.html">interact</a></span><span class="op">(</span><span class="va">NOM_ENT</span>, <span class="va">SEXO</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    Proportion <span class="op">=</span> <span class="fu"><a href="http://gdfe.co/srvyr/reference/survey_mean.html">survey_mean</a></span><span class="op">(</span><span class="va">victimization</span>,</span>
-<span>      level <span class="op">=</span> <span class="fl">0.90</span>, <span class="co"># Confidence level</span></span>
-<span>      vartype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"cv"</span><span class="op">)</span> <span class="co"># Variability indicators</span></span>
+<span>    Proporcion <span class="op">=</span> <span class="fu"><a href="http://gdfe.co/srvyr/reference/survey_mean.html">survey_mean</a></span><span class="op">(</span><span class="va">victimization</span>,</span>
+<span>      level <span class="op">=</span> <span class="fl">0.90</span>, <span class="co"># Nivel de confianza</span></span>
+<span>      vartype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"cv"</span><span class="op">)</span> <span class="co"># Indicadores de variabilidad</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    `Prevalence rate` <span class="op">=</span> <span class="va">Proportion</span> <span class="op">*</span> <span class="fl">100000</span>, <span class="co"># Rate per 100,000 people</span></span>
-<span>    `Standard error` <span class="op">=</span> <span class="va">Proportion_se</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
-<span>    `Low 90% CI` <span class="op">=</span> <span class="va">Proportion_low</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
-<span>    `Upper 90% CI` <span class="op">=</span> <span class="va">Proportion_upp</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
-<span>    `Coefficient of variation %` <span class="op">=</span> <span class="va">Proportion_cv</span> <span class="op">*</span> <span class="fl">100</span>,</span>
-<span>    State <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence</a></span><span class="op">(</span><span class="va">NOM_ENT</span><span class="op">)</span> <span class="co"># Capitalize only the first letter</span></span>
+<span>    `Tasa de prevalencia` <span class="op">=</span> <span class="va">Proporcion</span> <span class="op">*</span> <span class="fl">100000</span>, <span class="co"># Tasa por cada 100,000 personas</span></span>
+<span>    `Error estándar` <span class="op">=</span> <span class="va">Proporcion_se</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
+<span>    `Límite inferior IC 90%` <span class="op">=</span> <span class="va">Proporcion_low</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
+<span>    `Límite superior IC 90%` <span class="op">=</span> <span class="va">Proporcion_upp</span> <span class="op">*</span> <span class="fl">100000</span>,</span>
+<span>    `Coeficiente de variación %` <span class="op">=</span> <span class="va">Proporcion_cv</span> <span class="op">*</span> <span class="fl">100</span>,</span>
+<span>    Entidad <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence</a></span><span class="op">(</span><span class="va">NOM_ENT</span><span class="op">)</span> <span class="co"># Capitalizar solo la primera letra</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Sex <span class="op">=</span> <span class="va">SEXO</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Sexo <span class="op">=</span> <span class="va">SEXO</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
-<span>    <span class="va">State</span>, <span class="va">Sex</span>, <span class="va">`Prevalence rate`</span>, <span class="va">`Standard error`</span>,</span>
-<span>    <span class="va">`Low 90% CI`</span>, <span class="va">`Upper 90% CI`</span>, <span class="va">`Coefficient of variation %`</span></span>
+<span>    <span class="va">Entidad</span>, <span class="va">Sexo</span>, <span class="va">`Tasa de prevalencia`</span>, <span class="va">`Error estándar`</span>,</span>
+<span>    <span class="va">`Límite inferior IC 90%`</span>, <span class="va">`Límite superior IC 90%`</span>, <span class="va">`Coeficiente de variación %`</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># HTML table</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Apply bootstrap theme to the table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Tabla HTML</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Aplicar tema bootstrap a la tabla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The output table looks like this:</p>
+<p>La tabla final es:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">State</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Sex</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Prevalence rate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Standard error</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Low 90% CI</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Upper 90% CI</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Coefficient of variation %</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Entidad</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sexo</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Tasa de prevalencia</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Error estándar</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Límite inferior IC 90%</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Límite superior IC 90%</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Coeficiente de variación %</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Aguascalientes</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">33710.81</td>
 <td style="text-align: right;">2172.7372</td>
 <td style="text-align: right;">30136.71</td>
@@ -374,7 +374,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Aguascalientes</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">32041.57</td>
 <td style="text-align: right;">1831.7081</td>
 <td style="text-align: right;">29028.45</td>
@@ -382,8 +382,8 @@ Tip
 <td style="text-align: right;">5.716662</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Baja California</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Baja california</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">23043.35</td>
 <td style="text-align: right;">1604.9769</td>
 <td style="text-align: right;">20403.20</td>
@@ -391,8 +391,8 @@ Tip
 <td style="text-align: right;">6.965032</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Baja California</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Baja california</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">24480.64</td>
 <td style="text-align: right;">1536.1771</td>
 <td style="text-align: right;">21953.66</td>
@@ -400,8 +400,8 @@ Tip
 <td style="text-align: right;">6.275070</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Baja California Sur</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Baja california sur</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">19329.94</td>
 <td style="text-align: right;">1244.1353</td>
 <td style="text-align: right;">17283.36</td>
@@ -409,8 +409,8 @@ Tip
 <td style="text-align: right;">6.436314</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Baja California Sur</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Baja california sur</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">23817.58</td>
 <td style="text-align: right;">1466.2963</td>
 <td style="text-align: right;">21405.56</td>
@@ -419,7 +419,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Campeche</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">21832.87</td>
 <td style="text-align: right;">1455.8508</td>
 <td style="text-align: right;">19438.03</td>
@@ -428,7 +428,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Campeche</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">23213.74</td>
 <td style="text-align: right;">1381.0933</td>
 <td style="text-align: right;">20941.88</td>
@@ -437,7 +437,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Chiapas</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">16602.99</td>
 <td style="text-align: right;">986.0052</td>
 <td style="text-align: right;">14981.03</td>
@@ -446,7 +446,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Chiapas</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">12074.36</td>
 <td style="text-align: right;">978.7862</td>
 <td style="text-align: right;">10464.28</td>
@@ -455,7 +455,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Chihuahua</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">22303.22</td>
 <td style="text-align: right;">1234.5065</td>
 <td style="text-align: right;">20272.49</td>
@@ -464,7 +464,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Chihuahua</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">22804.31</td>
 <td style="text-align: right;">1181.0327</td>
 <td style="text-align: right;">20861.54</td>
@@ -472,8 +472,8 @@ Tip
 <td style="text-align: right;">5.178990</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Ciudad De Mexico</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Ciudad de mexico</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">34562.66</td>
 <td style="text-align: right;">1089.2714</td>
 <td style="text-align: right;">32770.84</td>
@@ -481,8 +481,8 @@ Tip
 <td style="text-align: right;">3.151584</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Ciudad De Mexico</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Ciudad de mexico</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">30746.76</td>
 <td style="text-align: right;">990.3528</td>
 <td style="text-align: right;">29117.66</td>
@@ -490,8 +490,8 @@ Tip
 <td style="text-align: right;">3.220999</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Coahuila De Zaragoza</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Coahuila de zaragoza</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">18179.70</td>
 <td style="text-align: right;">1249.1422</td>
 <td style="text-align: right;">16124.89</td>
@@ -499,8 +499,8 @@ Tip
 <td style="text-align: right;">6.871084</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Coahuila De Zaragoza</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Coahuila de zaragoza</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">20447.19</td>
 <td style="text-align: right;">1238.7111</td>
 <td style="text-align: right;">18409.54</td>
@@ -509,7 +509,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Colima</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">21106.85</td>
 <td style="text-align: right;">1593.5970</td>
 <td style="text-align: right;">18485.43</td>
@@ -518,7 +518,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Colima</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">21295.28</td>
 <td style="text-align: right;">1351.1455</td>
 <td style="text-align: right;">19072.68</td>
@@ -527,7 +527,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Durango</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">15240.74</td>
 <td style="text-align: right;">1133.1868</td>
 <td style="text-align: right;">13376.67</td>
@@ -536,7 +536,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Durango</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">17401.18</td>
 <td style="text-align: right;">1166.0910</td>
 <td style="text-align: right;">15482.99</td>
@@ -545,7 +545,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Guanajuato</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">20057.38</td>
 <td style="text-align: right;">1428.0981</td>
 <td style="text-align: right;">17708.20</td>
@@ -554,7 +554,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Guanajuato</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">18930.15</td>
 <td style="text-align: right;">1287.0811</td>
 <td style="text-align: right;">16812.93</td>
@@ -563,7 +563,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Guerrero</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">16981.89</td>
 <td style="text-align: right;">1494.6554</td>
 <td style="text-align: right;">14523.22</td>
@@ -572,7 +572,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Guerrero</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">14572.44</td>
 <td style="text-align: right;">1238.6234</td>
 <td style="text-align: right;">12534.93</td>
@@ -581,7 +581,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Hidalgo</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">22397.82</td>
 <td style="text-align: right;">1338.0474</td>
 <td style="text-align: right;">20196.77</td>
@@ -590,7 +590,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Hidalgo</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">20215.02</td>
 <td style="text-align: right;">1157.0294</td>
 <td style="text-align: right;">18311.73</td>
@@ -599,7 +599,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Jalisco</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">24390.13</td>
 <td style="text-align: right;">1548.7916</td>
 <td style="text-align: right;">21842.40</td>
@@ -608,7 +608,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Jalisco</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">25141.90</td>
 <td style="text-align: right;">1438.5170</td>
 <td style="text-align: right;">22775.58</td>
@@ -617,7 +617,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Mexico</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">32906.59</td>
 <td style="text-align: right;">1632.3183</td>
 <td style="text-align: right;">30221.47</td>
@@ -626,7 +626,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Mexico</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">33023.78</td>
 <td style="text-align: right;">1483.3471</td>
 <td style="text-align: right;">30583.71</td>
@@ -634,8 +634,8 @@ Tip
 <td style="text-align: right;">4.491755</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Michoacan De Ocampo</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Michoacan de ocampo</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">14405.17</td>
 <td style="text-align: right;">1031.1125</td>
 <td style="text-align: right;">12709.01</td>
@@ -643,8 +643,8 @@ Tip
 <td style="text-align: right;">7.157934</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Michoacan De Ocampo</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Michoacan de ocampo</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">15485.20</td>
 <td style="text-align: right;">1036.3320</td>
 <td style="text-align: right;">13780.46</td>
@@ -653,7 +653,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Morelos</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">26995.43</td>
 <td style="text-align: right;">1517.6054</td>
 <td style="text-align: right;">24499.00</td>
@@ -662,7 +662,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Morelos</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">24869.74</td>
 <td style="text-align: right;">1688.5969</td>
 <td style="text-align: right;">22092.04</td>
@@ -671,7 +671,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Nayarit</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">16075.56</td>
 <td style="text-align: right;">1516.6195</td>
 <td style="text-align: right;">13580.76</td>
@@ -680,7 +680,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Nayarit</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">18639.61</td>
 <td style="text-align: right;">1597.1842</td>
 <td style="text-align: right;">16012.28</td>
@@ -688,8 +688,8 @@ Tip
 <td style="text-align: right;">8.568766</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Nuevo Leon</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Nuevo leon</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">23602.12</td>
 <td style="text-align: right;">1261.9498</td>
 <td style="text-align: right;">21526.25</td>
@@ -697,8 +697,8 @@ Tip
 <td style="text-align: right;">5.346764</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Nuevo Leon</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Nuevo leon</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">21440.72</td>
 <td style="text-align: right;">1211.6372</td>
 <td style="text-align: right;">19447.60</td>
@@ -707,7 +707,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Oaxaca</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">12940.56</td>
 <td style="text-align: right;">1158.2366</td>
 <td style="text-align: right;">11035.29</td>
@@ -716,7 +716,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Oaxaca</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">13548.61</td>
 <td style="text-align: right;">1017.7020</td>
 <td style="text-align: right;">11874.51</td>
@@ -725,7 +725,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Puebla</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">26519.64</td>
 <td style="text-align: right;">1342.0473</td>
 <td style="text-align: right;">24312.00</td>
@@ -734,7 +734,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Puebla</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">24176.45</td>
 <td style="text-align: right;">1124.4656</td>
 <td style="text-align: right;">22326.73</td>
@@ -743,7 +743,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Queretaro</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">30297.50</td>
 <td style="text-align: right;">1620.6534</td>
 <td style="text-align: right;">27631.57</td>
@@ -752,7 +752,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Queretaro</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">25746.31</td>
 <td style="text-align: right;">1260.3524</td>
 <td style="text-align: right;">23673.06</td>
@@ -760,8 +760,8 @@ Tip
 <td style="text-align: right;">4.895273</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Quintana Roo</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Quintana roo</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">22592.04</td>
 <td style="text-align: right;">1384.4250</td>
 <td style="text-align: right;">20314.70</td>
@@ -769,8 +769,8 @@ Tip
 <td style="text-align: right;">6.127932</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Quintana Roo</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Quintana roo</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">21775.64</td>
 <td style="text-align: right;">1237.8095</td>
 <td style="text-align: right;">19739.48</td>
@@ -778,8 +778,8 @@ Tip
 <td style="text-align: right;">5.684376</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">San Luis Potosi</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">San luis potosi</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">24019.02</td>
 <td style="text-align: right;">1874.7438</td>
 <td style="text-align: right;">20935.11</td>
@@ -787,8 +787,8 @@ Tip
 <td style="text-align: right;">7.805247</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">San Luis Potosi</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">San luis potosi</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">23227.97</td>
 <td style="text-align: right;">1491.3111</td>
 <td style="text-align: right;">20774.80</td>
@@ -797,7 +797,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sinaloa</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">21181.44</td>
 <td style="text-align: right;">1122.0160</td>
 <td style="text-align: right;">19335.76</td>
@@ -806,7 +806,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sinaloa</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">20562.22</td>
 <td style="text-align: right;">1086.2790</td>
 <td style="text-align: right;">18775.32</td>
@@ -815,7 +815,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sonora</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">26864.66</td>
 <td style="text-align: right;">1816.2677</td>
 <td style="text-align: right;">23876.94</td>
@@ -824,7 +824,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sonora</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">25742.16</td>
 <td style="text-align: right;">1902.0264</td>
 <td style="text-align: right;">22613.37</td>
@@ -833,7 +833,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Tabasco</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">25881.72</td>
 <td style="text-align: right;">1354.6212</td>
 <td style="text-align: right;">23653.40</td>
@@ -842,7 +842,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Tabasco</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">25522.45</td>
 <td style="text-align: right;">1091.8488</td>
 <td style="text-align: right;">23726.38</td>
@@ -851,7 +851,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Tamaulipas</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">17788.15</td>
 <td style="text-align: right;">1075.8038</td>
 <td style="text-align: right;">16018.47</td>
@@ -860,7 +860,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Tamaulipas</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">18368.67</td>
 <td style="text-align: right;">1017.1639</td>
 <td style="text-align: right;">16695.46</td>
@@ -869,7 +869,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Tlaxcala</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">23968.33</td>
 <td style="text-align: right;">1621.2198</td>
 <td style="text-align: right;">21301.47</td>
@@ -878,7 +878,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Tlaxcala</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">22295.82</td>
 <td style="text-align: right;">1473.2391</td>
 <td style="text-align: right;">19872.38</td>
@@ -886,8 +886,8 @@ Tip
 <td style="text-align: right;">6.607692</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Veracruz De Ignacio De La Llave</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Veracruz de ignacio de la llave</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">16365.05</td>
 <td style="text-align: right;">1055.8247</td>
 <td style="text-align: right;">14628.24</td>
@@ -895,8 +895,8 @@ Tip
 <td style="text-align: right;">6.451705</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Veracruz De Ignacio De La Llave</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Veracruz de ignacio de la llave</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">14712.45</td>
 <td style="text-align: right;">947.9121</td>
 <td style="text-align: right;">13153.15</td>
@@ -905,7 +905,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Yucatan</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">20677.82</td>
 <td style="text-align: right;">1239.0909</td>
 <td style="text-align: right;">18639.55</td>
@@ -914,7 +914,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Yucatan</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">17805.62</td>
 <td style="text-align: right;">1141.8291</td>
 <td style="text-align: right;">15927.34</td>
@@ -923,7 +923,7 @@ Tip
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Zacatecas</td>
-<td style="text-align: left;">Man</td>
+<td style="text-align: left;">Hombre</td>
 <td style="text-align: right;">17328.49</td>
 <td style="text-align: right;">1346.8466</td>
 <td style="text-align: right;">15112.96</td>
@@ -932,7 +932,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">Zacatecas</td>
-<td style="text-align: left;">Woman</td>
+<td style="text-align: left;">Mujer</td>
 <td style="text-align: right;">15690.25</td>
 <td style="text-align: right;">1335.9463</td>
 <td style="text-align: right;">13492.65</td>
@@ -947,15 +947,15 @@ Tip
 
 </section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
   author = {Torres Munguía, Juan Armando},
-  title = {Using a Tidy Approach in {R} to Analyze {Mexico’s} 2024
-    {ENVIPE}},
+  title = {Usando Un Enfoque Tidy En {R} Para Analizar La {ENVIPE} 2024
+    de {México}},
   date = {2025-01-27},
-  url = {https://juan-torresmunguia.netlify.app/blog/blog/posts/estimating-envipe-prevalence},
+  url = {https://juan-torresmunguia.netlify.app/blog/blog/posts-es/estimating-envipe-prevalence},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Torres Munguía, Juan Armando. 2025. <span>“Using a Tidy Approach in R to
-Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts/estimating-envipe-prevalence">https://juan-torresmunguia.netlify.app/blog/blog/posts/estimating-envipe-prevalence</a>.
+Torres Munguía, Juan Armando. 2025. <span>“Usando Un Enfoque Tidy En R
+Para Analizar La ENVIPE 2024 de México.”</span> January 27, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts-es/estimating-envipe-prevalence">https://juan-torresmunguia.netlify.app/blog/blog/posts-es/estimating-envipe-prevalence</a>.
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
