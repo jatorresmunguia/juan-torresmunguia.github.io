@@ -10,7 +10,88 @@
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Mon, 27 Jan 2025 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 18 Apr 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Visualizing changes over time of the prevalence of undernourishment</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/</link>
+  <description><![CDATA[ 
+ ]]></description>
+  <category>data visualization</category>
+  <category>food security</category>
+  <category>ggthemr</category>
+  <category>ggplot2</category>
+  <category>line chart</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/</guid>
+  <pubDate>Fri, 18 Apr 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/undernourishment.png" medium="image" type="image/png" height="72" width="144"/>
+</item>
+<item>
+  <title>Working with Humanitarian Exchange Language (HXL) Hashtags</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/hdx-tags-to-outbreaks-data/</link>
+  <description><![CDATA[ We begin by loading the necessary R packages: ]]></description>
+  <category>data management</category>
+  <category>Humanitarian Data Exchange</category>
+  <category>Humanitarian Exchange Language</category>
+  <category>disease outbreaks</category>
+  <category>epidemics</category>
+  <category>pandemics</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/hdx-tags-to-outbreaks-data/</guid>
+  <pubDate>Wed, 26 Mar 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/hdx-tags-to-outbreaks-data/hdx_image.png" medium="image" type="image/png" height="57" width="144"/>
+</item>
+<item>
+  <title>Visualizing armed conflict using ACLED’s data and HDX shapefiles</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/visualizing-conflict-lake-chad-basin/</link>
+  <description><![CDATA[ <a href="https://acleddata.com/">ACLED (Armed Conflict Location &amp; Event Data Project)</a> provides detailed data on political violence and protest events across the globe. This blog post explores the visualization of armed conflict in the Lake Chad Basin, focusing on the dynamics of violence against civilians in the region. Using ACLED’s data in combination with shapefiles from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA), we leverage {ggplot2}, {sf} and the {tidyverse} to create insightful maps that highlight the impact of armed conflict. ]]></description>
+  <category>data visualization</category>
+  <category>armed conflict</category>
+  <category>ACLED</category>
+  <category>Lake Chad basin</category>
+  <category>Nigeria</category>
+  <category>Niger</category>
+  <category>Chad</category>
+  <category>Cameroon</category>
+  <category>ggplot2</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/visualizing-conflict-lake-chad-basin/</guid>
+  <pubDate>Sun, 09 Mar 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/visualizing-conflict-lake-chad-basin/lake-chad-map.png" medium="image" type="image/png" height="346" width="144"/>
+</item>
+<item>
+  <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia_visualization/</link>
+  <description><![CDATA[ Previously, in <a href="../../../blog/posts/spi_somalia/index.html">Part 1 of this tutorial</a>, we calculated the Standardized Precipitation Index (SPI) for different time scales using the {SCI} package in R. Now, we will map the SPI values for the districts of Somalia using {sf} and {ggplot2} packages in R. ]]></description>
+  <category>data visualization</category>
+  <category>drought</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>shapefiles</category>
+  <category>standardized precipitation index (SPI)</category>
+  <category>Somalia</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia_visualization/</guid>
+  <pubDate>Fri, 14 Feb 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia_visualization/spi-somalia-map.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia/</link>
+  <description><![CDATA[ The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems. ]]></description>
+  <category>data analysis</category>
+  <category>drought</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>box plots</category>
+  <category>SCI</category>
+  <category>Standardized Precipitation Index (SPI)</category>
+  <category>Somalia</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia/</guid>
+  <pubDate>Sat, 08 Feb 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia/spi-somalia.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
 <item>
   <title>Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
@@ -30,6 +111,22 @@
   <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/estimating-envipe-prevalence/</guid>
   <pubDate>Mon, 27 Jan 2025 06:00:00 GMT</pubDate>
   <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/estimating-envipe-prevalence/table_envipe.png" medium="image" type="image/png" height="78" width="144"/>
+</item>
+<item>
+  <title>A waffle chart of disease outbreaks in the world</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/waffle-chart-disease-outbreaks/</link>
+  <description><![CDATA[ In these notes, I will show you how to use {ggplot} to create a waffle chart about the frequency of disease outbreaks in the world. The final output will look like this: ]]></description>
+  <category>data visualization</category>
+  <category>disease outbreaks</category>
+  <category>epidemics</category>
+  <category>pandemics</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>waffle chart</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/waffle-chart-disease-outbreaks/</guid>
+  <pubDate>Sun, 12 Jan 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 </channel>
 </rss>

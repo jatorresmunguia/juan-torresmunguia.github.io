@@ -2,7 +2,13 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/estimating-envipe-prevalence/index.html"
+      "/blog/posts/food-security-fao-line-plot/index.html",
+      "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
+      "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
+      "/blog/posts/spi_somalia_visualization/index.html",
+      "/blog/posts/spi_somalia/index.html",
+      "/blog/posts/estimating-envipe-prevalence/index.html",
+      "/blog/posts/waffle-chart-disease-outbreaks/index.html"
     ]
   },
   {

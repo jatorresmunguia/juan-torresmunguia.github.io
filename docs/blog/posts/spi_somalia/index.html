@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2025-02-08">
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
+<script src="../../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title"></span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../portfolio/index.html"> 
+<span class="menu-text">DataViz</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../contact/index.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/jatorresmunguia" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-3432-6941" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../blog/index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</h1>
+<p class="subtitle lead">Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">data analysis</div>
+    <div class="quarto-category">drought</div>
+    <div class="quarto-category">tidyverse</div>
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">box plots</div>
+    <div class="quarto-category">SCI</div>
+    <div class="quarto-category">Standardized Precipitation Index (SPI)</div>
+    <div class="quarto-category">Somalia</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Juan Armando Torres Munguía </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 8, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems.</p>
+<p>In this tutorial, I will walk through the process of calculating the SPI for Somalia at the subnational level using the {SCI} package in R.</p>
+</section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
+<p>The rainfall dataset used in this tutorial comes from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) and provides monthly precipitation data for Somalia’s subnational districts. It is derived from CHIRPS v2 (Climate Hazards Group InfraRed Precipitation with <em>in situ</em> Station data), using satellite imagery combined with ground-based observations.</p>
+<p>For each 10-day period (dekad), the dataset includes the following indicators:</p>
+<ul>
+<li>
+<code>rfh</code>: Total rainfall (mm) over 10 days</li>
+<li>
+<code>r1h</code>: 1-month rolling rainfall sum (mm)</li>
+<li>
+<code>r3h</code>: 3-month rolling rainfall sum (mm)</li>
+<li>
+<code>rfh_avg</code>: Long-term average rainfall for the dekad (mm)</li>
+<li>
+<code>r1h_avg</code>: Long-term average for 1-month rolling rainfall (mm)</li>
+<li>
+<code>r3h_avg</code>: Long-term average for 3-month rolling rainfall (mm)</li>
+<li>
+<code>rfq</code>: Rainfall anomaly (%)</li>
+<li>
+<code>r1q</code>: Rainfall anomaly (%)</li>
+<li>
+<code>r3q</code>: 3-month rainfall anomaly (%)</li>
+</ul>
+<p>The data is aggregated at the subnational level and follows administrative boundaries defined by the World Food Programme (WFP), with each unit assigned a unique code (<code>Pcode</code>).</p>
+</section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
+<p>Before we begin, we need to install and load the necessary R packages. We will be using the {tidyverse} package for data wrangling, as well as the {SCI} package for calculating the SPI.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">SCI</span><span class="op">)</span> <span class="co"># For Standardized Precipitation Index calculations (climate analysis)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://conflicted.r-lib.org/">conflicted</a></span><span class="op">)</span> <span class="co"># For resolving conflicts between function names in different packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> </span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">)</span> <span class="co"># Prefer 'select' function from dplyr package</span></span>
+<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">)</span> <span class="co"># Prefer 'lag' function from dplyr package</span></span>
+<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">)</span> <span class="co"># Prefer 'filter' function from dplyr package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Important to use {conflicted} package to specify preferred functions to avoid naming conflicts between {tidyverse} and {SCI} packages.</p>
+</div>
+</div>
+</section><section id="loading-data-hdx" class="level2"><h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
+<p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read the rainfall data for Somalia`</span></span>
+<span><span class="co"># You can also download the data from the HDX platform and read it locally</span></span>
+<span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/331ab214-0860-44ea-a53b-0a3fac601e82/download/som-rainfall-adm2-full.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
+<p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and district_code.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Remove the first row (metadata)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, <span class="co"># Extract year from the 'date' column</span></span>
+<span>    month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, <span class="co"># Extract month from the 'date' column</span></span>
+<span>    district_code <span class="op">=</span> <span class="va">ADM2_PCODE</span> <span class="co"># Rename the 'ADM2_PCODE' column to 'district_code'</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&lt;</span> <span class="fl">2025</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Filter data up to 2024</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
+<span>    rainfall_monthly_total <span class="op">=</span> <span class="va">rfh</span>, <span class="co"># Rename the column 'rfh' to 'rainfall_monthly_total'</span></span>
+<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="va">rfh_avg</span> <span class="co"># Rename the column 'rfh_avg' to 'rainfall_monthly_lt_average'</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    rainfall_monthly_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span><span class="op">)</span>, <span class="co"># Convert rainfall total to numeric</span></span>
+<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rainfall_monthly_lt_average</span><span class="op">)</span> <span class="co"># Convert long-term average to numeric</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">district_code</span>, <span class="va">rainfall_monthly_total</span>, <span class="va">rainfall_monthly_lt_average</span><span class="op">)</span> <span class="co"># Select relevant columns</span></span>
+<span></span>
+<span><span class="co"># Group by year, month, and district_code, and calculate mean rainfall values by district</span></span>
+<span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">district_code</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    rainfall_monthly_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="co"># Calculate the mean of rainfall total</span></span>
+<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rainfall_monthly_lt_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Calculate the mean of long-term average</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Optionally, you can calculate rainfall anomaly as a percentage of the long-term average</span></span>
+<span>  <span class="co"># rainfall_anomaly = 1, indicates no anomaly</span></span>
+<span>  <span class="co"># &lt; 1 indicates below average</span></span>
+<span>  <span class="co"># &gt; 1 indicates above average</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    rainfall_anomaly <span class="op">=</span> <span class="va">rainfall_monthly_total</span> <span class="op">/</span> <span class="va">rainfall_monthly_lt_average</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months." class="level2"><h2 class="anchored" data-anchor-id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months.">We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">district_code</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Group by district_code</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    spi1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
+<span>      <span class="va">rainfall_monthly_total</span>,</span>
+<span>      first.mon <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Start month for SPI calculation</span></span>
+<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
+<span>        first.mon <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Start month for SPI calculation</span></span>
+<span>        time.scale <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Time scale for SPI calculation</span></span>
+<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>, <span class="co"># Distribution for fitting</span></span>
+<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># Use initial parameter estimates</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    spi3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
+<span>      <span class="va">rainfall_monthly_total</span>,</span>
+<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
+<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        time.scale <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    spi6 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
+<span>      <span class="va">rainfall_monthly_total</span>,</span>
+<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
+<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        time.scale <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    spi12 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
+<span>      <span class="va">rainfall_monthly_total</span>,</span>
+<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
+<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        time.scale <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">district_code</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output table looks like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">month</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">district_code</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_lt_average</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_anomaly</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">spi1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">spi3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">spi6</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">spi12</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">0.9417333</td>
+<td style="text-align: right;">1.744867</td>
+<td style="text-align: right;">0.5397165</td>
+<td style="text-align: right;">-1.1043897</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">2.0194333</td>
+<td style="text-align: right;">2.027633</td>
+<td style="text-align: right;">0.9959559</td>
+<td style="text-align: right;">0.1537179</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">32.8349667</td>
+<td style="text-align: right;">9.696967</td>
+<td style="text-align: right;">3.3861070</td>
+<td style="text-align: right;">2.0618329</td>
+<td style="text-align: right;">2.0528624</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">18.3139000</td>
+<td style="text-align: right;">24.722233</td>
+<td style="text-align: right;">0.7407866</td>
+<td style="text-align: right;">-0.3498790</td>
+<td style="text-align: right;">0.9691425</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">6.7928667</td>
+<td style="text-align: right;">17.754700</td>
+<td style="text-align: right;">0.3825954</td>
+<td style="text-align: right;">-1.1682135</td>
+<td style="text-align: right;">0.3442811</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">2.7443667</td>
+<td style="text-align: right;">4.763233</td>
+<td style="text-align: right;">0.5761563</td>
+<td style="text-align: right;">-1.1812491</td>
+<td style="text-align: right;">-1.5029868</td>
+<td style="text-align: right;">0.1547485</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">17.3592333</td>
+<td style="text-align: right;">14.047767</td>
+<td style="text-align: right;">1.2357290</td>
+<td style="text-align: right;">0.7686622</td>
+<td style="text-align: right;">-0.9047071</td>
+<td style="text-align: right;">0.3837349</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">34.8381667</td>
+<td style="text-align: right;">26.758133</td>
+<td style="text-align: right;">1.3019655</td>
+<td style="text-align: right;">0.8281642</td>
+<td style="text-align: right;">0.7648521</td>
+<td style="text-align: right;">0.7381726</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">29.1683000</td>
+<td style="text-align: right;">19.003000</td>
+<td style="text-align: right;">1.5349313</td>
+<td style="text-align: right;">1.2521209</td>
+<td style="text-align: right;">1.2301335</td>
+<td style="text-align: right;">0.0193033</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1981</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">SO1101</td>
+<td style="text-align: right;">4.1974333</td>
+<td style="text-align: right;">8.226200</td>
+<td style="text-align: right;">0.5102518</td>
+<td style="text-align: right;">-0.3816687</td>
+<td style="text-align: right;">0.7653220</td>
+<td style="text-align: right;">0.1559546</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="interpretation" class="level2"><h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Laasqoray district in Sanaag region. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Roboto Condensed"</span>, <span class="st">"Roboto Condensed"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Custom theme for the chart</span></span>
+<span><span class="va">theme_boxplot_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
+<span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> </span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># Custom theme settings</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>      <span class="co"># Axis settings</span></span>
+<span>      axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">14</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">12</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Title settings</span></span>
+<span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, </span>
+<span>      plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">24</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> </span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Legend settings</span></span>
+<span>      legend.position <span class="op">=</span> <span class="st">"top"</span>,</span>
+<span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      legend.key.height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>      legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>      legend.spacing.x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>      legend.key.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>, </span>
+<span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">10</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      legend.direction <span class="op">=</span> <span class="st">"horizontal"</span>,</span>
+<span>      legend.byrow <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span></span>
+<span>      <span class="co"># Caption settings</span></span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"italic"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>        hjust <span class="op">=</span> <span class="fl">0</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>      plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>        fill <span class="op">=</span> <span class="st">"white"</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">40</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024"</span></span>
+<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"**Data:** Own estimations using Somalia rainfall Indicators at Subnational Level (HDX)"</span>,</span>
+<span>                        <span class="st">"&lt;br&gt;"</span>, </span>
+<span>                        <span class="st">"**Graphic:** Juan Torres Munguía"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#</span></span>
+<span><span class="va">spi_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span>      <span class="st">"Near normal"</span>, <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
+<span>      <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"#F76D5E"</span>, <span class="st">"#FFAD72"</span>, <span class="st">"#FFE099"</span>, <span class="st">"#99FF99"</span>,</span>
+<span>    <span class="st">"#99FF99"</span>, <span class="st">"#99EAFF"</span>, <span class="st">"#75D3FF"</span>, <span class="st">"#3D87FF"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">district_code</span> <span class="op">==</span> <span class="st">"SO1503"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">month</span>, levels <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, labels <span class="op">=</span> <span class="va">month.name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Convert month to factor</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">month</span>, y <span class="op">=</span> <span class="va">spi1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="co"># Add box plot with SPI categories</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">spi_colors</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">ymin</span>, ymax <span class="op">=</span> <span class="va">ymax</span>, xmin <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>, xmax <span class="op">=</span> <span class="cn">Inf</span>, fill <span class="op">=</span> <span class="va">label</span><span class="op">)</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.2</span>, inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span>, outlier.size <span class="op">=</span> <span class="fl">2</span>, outlier.shape <span class="op">=</span> <span class="fl">16</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">spi_colors</span><span class="op">$</span><span class="va">fill</span>, <span class="va">spi_colors</span><span class="op">$</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="va">title_chart</span>,</span>
+<span>    caption <span class="op">=</span> <span class="va">caption_chart</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"SPI-1"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">""</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Number of rows in the legend</span></span>
+<span>  <span class="fu">theme_boxplot_chart</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="st">"spi-somalia.png"</span>,</span>
+<span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">9</span>,</span>
+<span>  units <span class="op">=</span> <span class="st">"in"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># Turn off the showtext functionality</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="spi-somalia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+  author = {Torres Munguía, Juan Armando},
+  title = {How to Compute and Visualize the {Standardized}
+    {Precipitation} {Index} {(SPI)} for Drought Analysis},
+  date = {2025-02-08},
+  url = {https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
+the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
+February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia">https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia</a>.
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/juan-torresmunguia\.netlify\.app\/blog");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Juan TORRES MUNGUÍA</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a></p>
+</div>
+    <div class="nav-footer-right">
+<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
+</div>
+  </div>
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+</body></html>
