@@ -10,22 +10,7 @@
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Fri, 18 Apr 2025 06:00:00 GMT</lastBuildDate>
-<item>
-  <title>Visualizing changes over time of the prevalence of undernourishment</title>
-  <dc:creator>Juan Armando Torres Munguía</dc:creator>
-  <link>https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/</link>
-  <description><![CDATA[ 
- ]]></description>
-  <category>data visualization</category>
-  <category>food security</category>
-  <category>ggthemr</category>
-  <category>ggplot2</category>
-  <category>line chart</category>
-  <guid>https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/</guid>
-  <pubDate>Fri, 18 Apr 2025 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/undernourishment.png" medium="image" type="image/png" height="72" width="144"/>
-</item>
+<lastBuildDate>Wed, 26 Mar 2025 06:00:00 GMT</lastBuildDate>
 <item>
   <title>Working with Humanitarian Exchange Language (HXL) Hashtags</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
