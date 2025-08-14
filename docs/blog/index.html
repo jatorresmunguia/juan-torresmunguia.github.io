@@ -67,7 +67,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 4,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
@@ -378,7 +379,7 @@ Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R us
 <a href="../blog/posts/estimating-envipe-prevalence/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../blog/posts/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
+<img data-src="../blog/posts/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -395,7 +396,7 @@ Part 1: Estimating crime prevalence with the {srvyr} package
 <a href="../blog/posts/waffle-chart-disease-outbreaks/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
+<img data-src="../blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -412,6 +413,9 @@ Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in 
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

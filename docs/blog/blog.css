@@ -68,3 +68,12 @@
     position: relative;
     z-index: 2;
 }
+
+.pagination {
+    --bs-pagination-color: #50a5d2;
+    --bs-pagination-bg: #153268;
+    --bs-pagination-active-color: white;
+    --bs-pagination-active-bg: #153268;
+    --bs-pagination-hover-color: #50a5d2;
+    --bs-pagination-hover-bg: #153268;
+}

@@ -11,6 +11,7 @@ listing:
   sort-ui: false
   filter-ui: false
   fields: [image, title, subtitle]
+  page-size: 4
   feed:
     items: 20
     title: "Data Art & Science Blog"
