@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Blog</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Blog del Arte &amp; Ciencia de Datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -85,6 +85,13 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(img/creazione-di-adamo.jpeg);
+background-size: cover;
+      }
+</style>
 <meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -124,7 +131,7 @@ window.Quarto = {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -199,30 +206,42 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog del Arte &amp; Ciencia de Datos</h1>
+            <p class="subtitle lead">Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+        
+        <div class="quarto-title-meta">
+
+                
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
   
-    
-  </div>
-  
-
-
-</header>
 
 
 <div class="grid">
@@ -231,15 +250,15 @@ window.Quarto = {
 </div>
 <div class="g-col-12 g-col-sm-2">
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
-  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:95px; display:flex; align-items:center; justify-content:center;">
-    <img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español ▼
+  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:150px; display:flex; align-items:center; justify-content:center;">
+    Versión en Español ▼
   </button>
-  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:95px;">
+  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:150px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
-      <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English
+      English
     </li>
     <li id="lang-es" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index-es.html'">
-      <img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español
+      Español
     </li>
   </ul>
 </div>
@@ -271,22 +290,19 @@ const enOption = document.getElementById("lang-en");
 const esOption = document.getElementById("lang-es");
 
 if (window.location.href.includes("index-es.html")) {
-  langButton.innerHTML = '<img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español ▼';
+  langButton.innerHTML = 'Versión en Español ▼';
   esOption.classList.add("selected-lang");
 } else {
-  langButton.innerHTML = '<img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English ▼';
+  langButton.innerHTML = 'Version in English ▼';
   enOption.classList.add("selected-lang");
 }
 </script>
 
 </div>
 </div>
-<section id="explorando-el-arte-y-la-ciencia-de-trabajar-con-datos-sobre-desarrollo-y-humanitarios" class="level2">
-<h2 class="anchored" data-anchor-id="explorando-el-arte-y-la-ciencia-de-trabajar-con-datos-sobre-desarrollo-y-humanitarios">Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios</h2>
 
 
 
-</section>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
@@ -302,41 +318,6 @@ Usando un enfoque tidy en R para analizar la ENVIPE 2024 de México
 </h5>
 <div class="card-subtitle listing-subtitle">
 Parte 1: Estimando la prevalencia delictiva con el paquete {srvyr}
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('análisis de datos'); return false;">
-análisis de datos
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('estadísticas oficiales'); return false;">
-estadísticas oficiales
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('México'); return false;">
-México
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('encuestas a hogares'); return false;">
-encuestas a hogares
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ENVIPE'); return false;">
-ENVIPE
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('delito'); return false;">
-delito
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('victimización'); return false;">
-victimización
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('seguridad pública'); return false;">
-seguridad pública
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('srvyr'); return false;">
-srvyr
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('microdatos'); return false;">
-microdatos
-</div>
 </div>
 </div>
 </div>

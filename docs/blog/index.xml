@@ -5,7 +5,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Juan Torres Munguía&#39;s Blog</title>
+<title>Data Art &amp; Science Blog</title>
 <link>https://juan-torresmunguia.netlify.app/blog/blog/</link>
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>

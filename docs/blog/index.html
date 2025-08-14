@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Blog</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Data Art &amp; Science Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -85,6 +85,13 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(img/creazione-di-adamo.jpeg);
+background-size: cover;
+      }
+</style>
 <meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -119,12 +126,12 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="blog.css">
-<link rel="alternate" type="application/rss+xml" title="Juan Torres Munguía's Blog" href="index.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="Data Art &amp; Science Blog" href="index.xml" data-external="1"></head>
 
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -199,30 +206,42 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Art &amp; Science Blog</h1>
+            <p class="subtitle lead">Exploring the art and science of working with development and humanitarian data</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+        
+        <div class="quarto-title-meta">
+
+                
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
   
-    
-  </div>
-  
-
-
-</header>
 
 
 <div class="grid">
@@ -231,15 +250,15 @@ window.Quarto = {
 </div>
 <div class="g-col-12 g-col-sm-2">
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
-  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:95px; display:flex; align-items:center; justify-content:center;">
-    <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English ▼
+  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:125px; display:flex; align-items:center; justify-content:center;">
+    Version in English ▼
   </button>
-  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:95px;">
+  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:125px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
-      <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English
+     English
     </li>
     <li id="lang-es" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index-es.html'">
-      <img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español
+     Español
     </li>
   </ul>
 </div>
@@ -271,22 +290,19 @@ const enOption = document.getElementById("lang-en");
 const esOption = document.getElementById("lang-es");
 
 if (window.location.href.includes("index-es.html")) {
-  langButton.innerHTML = '<img src="https://cdn.countryflags.com/thumbs/mexico/flag-800.png" alt="MX" style="width:18px; margin-right:5px;"> Español ▼';
+  langButton.innerHTML = 'Versión en Español ▼';
   esOption.classList.add("selected-lang");
 } else {
-  langButton.innerHTML = '<img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-800.png" alt="US" style="width:18px; margin-right:5px;"> English ▼';
+  langButton.innerHTML = 'Version in English ▼';
   enOption.classList.add("selected-lang");
 }
 </script>
 
 </div>
 </div>
-<section id="exploring-the-art-and-science-of-working-with-development-and-humanitarian-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-art-and-science-of-working-with-development-and-humanitarian-data">Exploring the art and science of working with development and humanitarian data</h2>
 
 
 
-</section>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
@@ -302,26 +318,6 @@ Working with Humanitarian Exchange Language (HXL) Hashtags
 </h5>
 <div class="card-subtitle listing-subtitle">
 Applying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks.
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data management'); return false;">
-data management
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Humanitarian Data Exchange'); return false;">
-Humanitarian Data Exchange
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Humanitarian Exchange Language'); return false;">
-Humanitarian Exchange Language
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
-disease outbreaks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
-epidemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
-pandemics
-</div>
 </div>
 </div>
 </div>
@@ -340,35 +336,6 @@ Visualizing armed conflict using ACLED’s data and HDX shapefiles
 <div class="card-subtitle listing-subtitle">
 Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin
 </div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('armed conflict'); return false;">
-armed conflict
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ACLED'); return false;">
-ACLED
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Lake Chad basin'); return false;">
-Lake Chad basin
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Nigeria'); return false;">
-Nigeria
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Niger'); return false;">
-Niger
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Chad'); return false;">
-Chad
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Cameroon'); return false;">
-Cameroon
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-</div>
 </div>
 </div>
 </a>
@@ -385,29 +352,6 @@ How to compute and visualize the Standardized Precipitation Index (SPI) for drou
 </h5>
 <div class="card-subtitle listing-subtitle">
 Part 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('drought'); return false;">
-drought
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('shapefiles'); return false;">
-shapefiles
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('standardized precipitation index (SPI)'); return false;">
-standardized precipitation index (SPI)
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Somalia'); return false;">
-Somalia
-</div>
 </div>
 </div>
 </div>
@@ -426,32 +370,6 @@ How to compute and visualize the Standardized Precipitation Index (SPI) for drou
 <div class="card-subtitle listing-subtitle">
 Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level
 </div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
-data analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('drought'); return false;">
-drought
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('box plots'); return false;">
-box plots
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SCI'); return false;">
-SCI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Standardized Precipitation Index (SPI)'); return false;">
-Standardized Precipitation Index (SPI)
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Somalia'); return false;">
-Somalia
-</div>
-</div>
 </div>
 </div>
 </a>
@@ -469,41 +387,6 @@ Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE
 <div class="card-subtitle listing-subtitle">
 Part 1: Estimating crime prevalence with the {srvyr} package
 </div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data analysis'); return false;">
-data analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('official statistics'); return false;">
-official statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Mexico'); return false;">
-Mexico
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('household surveys'); return false;">
-household surveys
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ENVIPE'); return false;">
-ENVIPE
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('crime'); return false;">
-crime
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('victimization'); return false;">
-victimization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('public safety'); return false;">
-public safety
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('srvyr'); return false;">
-srvyr
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('microdata'); return false;">
-microdata
-</div>
-</div>
 </div>
 </div>
 </a>
@@ -520,29 +403,6 @@ A waffle chart of disease outbreaks in the world
 </h5>
 <div class="card-subtitle listing-subtitle">
 Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data visualization'); return false;">
-data visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('disease outbreaks'); return false;">
-disease outbreaks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('epidemics'); return false;">
-epidemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('pandemics'); return false;">
-pandemics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('waffle chart'); return false;">
-waffle chart
-</div>
 </div>
 </div>
 </div>

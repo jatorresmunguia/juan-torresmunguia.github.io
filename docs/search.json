@@ -2,28 +2,28 @@
   {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
-    "title": "Blog",
+    "title": "Data Art & Science Blog",
     "section": "",
-    "text": "English ▼\n  \n  \n    \n       English\n    \n    \n       Español"
+    "text": "Version in English ▼\n  \n  \n    \n     English\n    \n    \n     Español\n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Humanitarian Exchange Language (HXL) Hashtags\n\n\nApplying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks.\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing armed conflict using ACLED’s data and HDX shapefiles\n\n\nUsing {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\nPart 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\nPart 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing a tidy approach in R to analyze Mexico’s 2024 ENVIPE\n\n\nPart 1: Estimating crime prevalence with the {srvyr} package\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\nUsing {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/index.html#exploring-the-art-and-science-of-working-with-development-and-humanitarian-data",
     "href": "blog/index.html#exploring-the-art-and-science-of-working-with-development-and-humanitarian-data",
-    "title": "Blog",
+    "title": "Juan Torres Munguía’s Blog",
     "section": "Exploring the art and science of working with development and humanitarian data",
     "text": "Exploring the art and science of working with development and humanitarian data"
   },
   {
     "objectID": "blog/index-es.html",
     "href": "blog/index-es.html",
-    "title": "Blog",
+    "title": "Blog del Arte & Ciencia de Datos",
     "section": "",
-    "text": "Español ▼\n  \n  \n    \n       English\n    \n    \n       Español"
+    "text": "Versión en Español ▼\n  \n  \n    \n      English\n    \n    \n      Español\n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsando un enfoque tidy en R para analizar la ENVIPE 2024 de México\n\n\nParte 1: Estimando la prevalencia delictiva con el paquete {srvyr}\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/index-es.html#explorando-el-arte-y-la-ciencia-de-trabajar-con-datos-sobre-desarrollo-y-humanitarios",
     "href": "blog/index-es.html#explorando-el-arte-y-la-ciencia-de-trabajar-con-datos-sobre-desarrollo-y-humanitarios",
-    "title": "Blog",
+    "title": "Blog de Juan Torres Munguía",
     "section": "Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios",
     "text": "Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios"
   },
