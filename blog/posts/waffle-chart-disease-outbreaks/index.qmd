@@ -30,7 +30,7 @@ comments:
 ## Overview
 In these notes, I will show you how to use {ggplot} to create a waffle chart about the frequency of disease outbreaks in the world. The final output will look like this:
 
-![](waffle-pandemics.png){width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+![](waffle-pandemics.png){.lightbox width=100% style="margin-top: 0px; margin-bottom: 0px;"}
 
 ## About the data
 The source of information is the global dataset of pandemic- and epidemic-prone disease outbreaks, whose data is freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the **disease outbreaks project**. 

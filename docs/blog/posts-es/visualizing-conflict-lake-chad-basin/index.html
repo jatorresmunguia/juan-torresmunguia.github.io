@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Juan Armando Torres Munguía">
 <meta name="dcterms.date" content="2025-03-09">
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Visualizing armed conflict using ACLED’s data and HDX shapefiles</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Visualizando el conflicto armado usando los datos de ACLED y los shapefiles de HDX</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -165,17 +168,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Visualizing armed conflict using ACLED’s data and HDX shapefiles</h1>
-<p class="subtitle lead">Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin</p>
+<h1 class="title">Visualizando el conflicto armado usando los datos de ACLED y los shapefiles de HDX</h1>
+<p class="subtitle lead">Usando {ggplot2} y {tidyverse} para hacer un mapa de la violencia contra civiles en la Cuenca del Lago Chad</p>
   <div class="quarto-categories">
-    <div class="quarto-category">data visualization</div>
-    <div class="quarto-category">armed conflict</div>
+    <div class="quarto-category">visualización de datos</div>
+    <div class="quarto-category">conflicto armado</div>
     <div class="quarto-category">ACLED</div>
-    <div class="quarto-category">Lake Chad basin</div>
+    <div class="quarto-category">Cuenca del Lago Chad</div>
     <div class="quarto-category">Nigeria</div>
-    <div class="quarto-category">Niger</div>
+    <div class="quarto-category">Níger</div>
     <div class="quarto-category">Chad</div>
-    <div class="quarto-category">Cameroon</div>
+    <div class="quarto-category">Camerún</div>
     <div class="quarto-category">ggplot2</div>
   </div>
   </div>
@@ -203,31 +206,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><a href="https://acleddata.com/">ACLED (Armed Conflict Location &amp; Event Data Project)</a> provides detailed data on political violence and protest events across the globe. This blog post explores the visualization of armed conflict in the Lake Chad Basin, focusing on the dynamics of violence against civilians in the region. Using ACLED’s data in combination with shapefiles from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA), we leverage {ggplot2}, {sf} and the {tidyverse} to create insightful maps that highlight the impact of armed conflict.</p>
-</section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>Load necessary libraries for data processing and visualization.</p>
+</header><section id="descripción-general" class="level2"><h2 class="anchored" data-anchor-id="descripción-general">Descripción general</h2>
+<p><a href="https://acleddata.com/">ACLED (Armed Conflict Location &amp; Event Data Project)</a> proporciona datos detallados sobre violencia política y eventos de protesta en todo el mundo. Esta publicación explora la visualización del conflicto armado en la Cuenca del Lago Chad, enfocándose en la dinámica de la violencia contra civiles en la región. Usando los datos de ACLED en combinación con los <em>shapefiles</em> de la <a href="https://data.humdata.org/">iniciativa Humanitarian Data Exchange (HDX)</a> de la Oficina de Coordinación de Asuntos Humanitarios de las Naciones Unidas (OCHA), con los paquetes {ggplot2}, {sf} y {tidyverse} para crear mapas del impacto del conflicto armado.</p>
+</section><section id="preparación" class="level2"><h2 class="anchored" data-anchor-id="preparación">Preparación</h2>
+<p>Cargar las librerías necesarias para el procesamiento y la visualización de datos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># For data manipulation and visualization</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span> <span class="co"># For handling spatial data</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># For data visualization</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span> <span class="co"># For combining plots</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> <span class="co"># Use rich text elements in ggplot</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> <span class="co"># Add custom fonts to plots</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/ggspatial/">ggspatial</a></span><span class="op">)</span> <span class="co"># For interacting with spatial data using ggplot2</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearth/">rnaturalearth</a></span><span class="op">)</span> <span class="co"># To provide map data that can be visualized using other R packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearthdata/">rnaturalearthdata</a></span><span class="op">)</span> <span class="co"># To store data for the rnaturalearth package</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>      <span class="co"># Para manipulación y visualización de datos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>             <span class="co"># Para trabajar con datos espaciales</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>        <span class="co"># Para visualización de datos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span>      <span class="co"># Para combinar gráficos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span>         <span class="co"># Para usar texto enriquecido en ggplot</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span>       <span class="co"># Para añadir tipografías a los gráficos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/ggspatial/">ggspatial</a></span><span class="op">)</span>      <span class="co"># Para interactuar con datos espaciales en ggplot2</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearth/">rnaturalearth</a></span><span class="op">)</span>  <span class="co"># Para obtener datos de mapas que pueden visualizarse con otros paquetes de R</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearthdata/">rnaturalearthdata</a></span><span class="op">)</span> <span class="co"># Para almacenar datos usados por el paquete rnaturalearth</span></span>
 <span></span>
-<span><span class="co"># Set environment to English (useful for date/time formatting)</span></span>
+<span><span class="co"># Configurar el entorno en inglés (para formato de fechas/tiempo)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span><span class="st">"LC_TIME"</span>, <span class="st">"English"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
-<p>Accessing ACLED data requires registering on their <a href="https://developer.acleddata.com/">ACLED Access Portal</a> to generate a unique access key. Once registered, you can download the data using their <a href="https://acleddata.com/data-export-tool/">Data Export Tool</a>. I downloaded all the events occurred in Africa since 1997 and save them in file <code>acled_africa_1997-2025.csv</code>. To have a better understanding of their data, they provide a <a href="https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf">codebook</a>.</p>
+</section><section id="cargando-datos" class="level2"><h2 class="anchored" data-anchor-id="cargando-datos">Cargando datos</h2>
+<p>Acceder a los datos de ACLED requiere registrarse en su <a href="https://developer.acleddata.com/">Portal de Acceso ACLED</a> para generar una clave de acceso única. Una vez registrado, puedes descargar los datos usando su <a href="https://acleddata.com/data-export-tool/">Herramienta de Exportación de Datos</a>. Yo descargué todos los eventos ocurridos en África desde 1997 y los guardé en el archivo <code>acled_africa_1997-2025.csv</code>. Para una mejor comprensión de los datos, ACLED proporciona un <a href="https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf">manual de códigos</a>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">conflict_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"acled_africa_1997-2025.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Information of the national and sub national administrative boundaries in the Lake Chad Basin is obtained from the HDX. The information comes as a shapefile <code>.shp</code> and is available <a href="https://data.humdata.org/dataset/lac-chad-basin-area?force_layout=desktop">here</a> in a zip file named <code>lcb_admbnda_adm2_ocha.zip</code>. The shapefile contains the administrative boundaries of Lake Chad Basin region at the subnational level. In particular, we will use file <code>lcb_admbnda_adm2_ocha.shp</code>. I also downloaded the administrative boundaries of the West and Central Africa region available <a href="https://data.humdata.org/dataset/west-and-central-africa-administrative-boundaries-levels">here</a>.</p>
+</section><section id="carga-de-datos" class="level2"><h2 class="anchored" data-anchor-id="carga-de-datos">Carga de datos</h2>
+<p>La información de los límites administrativos nacionales y subnacionales en la Cuenca del Lago Chad se obtiene de <strong>HDX</strong>. Esta información se encuentra en un shapefile <code>.shp</code> y está disponible <a href="https://data.humdata.org/dataset/lac-chad-basin-area?force_layout=desktop">aquí</a> en un archivo comprimido llamado <code>lcb_admbnda_adm2_ocha.zip</code>. El shapefile contiene los límites administrativos de la región de la Cuenca del Lago Chad a nivel subnacional. En particular, utilizaremos el archivo <code>lcb_admbnda_adm2_ocha.shp</code>. Además, descargué los límites administrativos de la región de África Occidental y Central, disponibles <a href="https://data.humdata.org/dataset/west-and-central-africa-administrative-boundaries-levels">aquí</a>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Lake Chad Basin Area - Administrative boundaries for Nigeria, Chad, Cameroon and Niger</span></span>
 <span><span class="va">shp_lake_chad_basin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"lcb_admbnda_adm2_ocha/lcb_admbnda_adm2_ocha.shp"</span><span class="op">)</span></span>
@@ -235,10 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># West and Central Africa - Administrative boundaries levels 0 - 2 and Settlements</span></span>
 <span><span class="va">west_central_africa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"wca_admbnda_adm2_ocha/wca_admbnda_adm2_ocha.shp"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="data-processing" class="level2"><h2 class="anchored" data-anchor-id="data-processing">Data processing</h2>
-<p>As indicated in the <a href="https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf">ACLED’s codebook</a>, geographic location of the events is specified in columns <code>latitude</code> and <code>longitude</code> in the <code>conflict_data</code> object and they are using the <a href="https://epsg.io/4326">EPSG:4326</a> coordinate reference system. We have to ensure, that both <code>shp_lake_chad_basin</code> and <code>west_central_africa</code> have the same coordinate reference system. To achieve this, we use <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform()</a></code> from {sf} package.</p>
+</section><section id="procesamiento-de-datos" class="level2"><h2 class="anchored" data-anchor-id="procesamiento-de-datos">Procesamiento de datos</h2>
+<p>Como se indica en el <a href="https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf">manual de ACLED</a>, la ubicación geográfica de los eventos se especifica en las columnas <code>latitude</code> y <code>longitude</code> del objeto <code>conflict_data</code> y utilizan el sistema de referencia de coordenadas <a href="https://epsg.io/4326">EPSG:4326</a>. Debemos asegurarnos de que tanto <code>shp_lake_chad_basin</code> como <code>west_central_africa</code> tengan el mismo sistema de referencia de coordenadas. Para lograr esto, usamos <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform()</a></code> del paquete {sf}.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># st_transform to convert coordinates to ACLED's data coordinate reference system</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># st_transform para convertir el sistema de referencia de coordenadas de los datos de ACLED</span></span>
 <span><span class="va">shp_lake_chad_basin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">shp_lake_chad_basin</span>,</span>
 <span>  crs <span class="op">=</span> <span class="fl">4326</span></span>
 <span><span class="op">)</span></span>
@@ -246,45 +250,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  crs <span class="op">=</span> <span class="fl">4326</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, we subset the events to exclusively account for those occurred between 2020 and 2024 in the Lake Chad Basin. To achieve this, we use the {tidyverse} package for data wrangling and {sf} for spatial filtering. By applying the <code>st_filter</code> function, we retain only events located within the Lake Chad Basin area.</p>
+<p>Ahora, seleccionamos únicamente los eventos ocurridos entre 2020 y 2024 en la cuenca del Lago Chad. Para esto, utilizamos el paquete {tidyverse} para la manipulación de datos y {sf} para el filtrado espacial. Aplicando la función <code>st_filter</code>, conservamos únicamente los eventos ubicados dentro del área de la cuenca del Lago Chad.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">conflict_data</span> <span class="op">&lt;-</span> <span class="va">conflict_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Keep only events from 2020 to 2024</span></span>
+<span>  <span class="co"># Conservar únicamente los eventos de 2020 a 2024</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2020</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&lt;</span> <span class="fl">2025</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Select only "Violence against civilians" events of type "Attack"</span></span>
+<span>  <span class="co"># Seleccionar únicamente los eventos de "Violencia contra civiles" del tipo "Ataque"</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">event_type</span> <span class="op">==</span> <span class="st">"Violence against civilians"</span> <span class="op">&amp;</span> <span class="va">sub_event_type</span> <span class="op">==</span> <span class="st">"Attack"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Keep events from Nigeria, Niger, Cameroon, and Chad</span></span>
+<span>  <span class="co"># Conservar eventos de Nigeria, Níger, Camerún y Chad</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Nigeria"</span>, <span class="st">"Niger"</span>, <span class="st">"Cameroon"</span>, <span class="st">"Chad"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Extract the month name from event_date</span></span>
+<span>  <span class="co"># Extraer el nombre del mes a partir de event_date</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">event_date</span><span class="op">)</span>,</span>
 <span>      label <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Select only relevant columns</span></span>
+<span>  <span class="co"># Seleccionar únicamente las columnas relevantes</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>    <span class="va">event_id_cnty</span>, <span class="va">event_date</span>, <span class="va">month</span>, <span class="va">year</span>, <span class="va">event_type</span>, <span class="va">sub_event_type</span>,</span>
 <span>    <span class="va">actor1</span>, <span class="va">actor2</span>, <span class="va">location</span>, <span class="va">latitude</span>, <span class="va">longitude</span>, <span class="va">fatalities</span>, <span class="va">notes</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Convert the data to a spatial object using latitude and longitude (WGS 84 CRS)</span></span>
+<span><span class="co"># Convertir los datos a un objeto espacial usando latitud y longitud (CRS WGS 84)</span></span>
 <span><span class="va">conflict_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">conflict_data</span>,</span>
 <span>  coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"longitude"</span>, <span class="st">"latitude"</span><span class="op">)</span>,</span>
 <span>  crs <span class="op">=</span> <span class="fl">4326</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Filter events that fall within the Lake Chad Basin shapefile</span></span>
+<span><span class="co"># Filtrar los eventos que caen dentro del shapefile de la cuenca del Lago Chad</span></span>
 <span><span class="va">conflict_data_lake_chad</span> <span class="op">&lt;-</span> <span class="va">conflict_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html">st_filter</a></span><span class="op">(</span><span class="va">shp_lake_chad_basin</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We then processes administrative boundary data to extract relevant regions in West and Central Africa, focusing on the Lake Chad Basin area.</p>
+<p>Luego, procesamos los datos de los límites administrativos para extraer las regiones relevantes en África Occidental y Central, centrándonos en el área de la cuenca del Lago Chad.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Filter to include only countries in the Lake Chad Basin region</span></span>
-<span><span class="co"># I included Central African Republic for visualization purposes</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Filtrar para incluir solo países en la región de la cuenca del Lago Chad</span></span>
+<span><span class="co"># Incluí República Centroafricana con fines de visualización</span></span>
 <span><span class="va">shp_countries</span> <span class="op">&lt;-</span> <span class="va">west_central_africa</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">admin0Name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Nigeria"</span>, <span class="st">"Niger"</span>, <span class="st">"Chad"</span>, <span class="st">"Cameroon"</span>, <span class="st">"Central African Republic"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create country codes and format administrative division codes</span></span>
+<span><span class="co"># Crear códigos de país y formatear códigos de divisiones administrativas</span></span>
 <span><span class="va">shp_countries</span> <span class="op">&lt;-</span> <span class="va">shp_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    country_code <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
@@ -293,78 +297,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>      <span class="va">admin0Name</span> <span class="op">==</span> <span class="st">"Chad"</span> <span class="op">~</span> <span class="st">"TCD"</span>,</span>
 <span>      <span class="va">admin0Name</span> <span class="op">==</span> <span class="st">"Cameroon"</span> <span class="op">~</span> <span class="st">"CMR"</span></span>
 <span>    <span class="op">)</span>,</span>
-<span>    <span class="co"># Extract and format adm1 and adm2 codes</span></span>
+<span>    <span class="co"># Extraer y formatear códigos adm1 y adm2</span></span>
 <span>    adm1_code <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_pad.html">str_pad</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">admin1Pcod</span>, <span class="st">"\\d+"</span><span class="op">)</span>, <span class="fl">3</span>, pad <span class="op">=</span> <span class="st">"0"</span><span class="op">)</span>,</span>
 <span>    adm2_code <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_pad.html">str_pad</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">admin2Pcod</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, <span class="fl">3</span>, pad <span class="op">=</span> <span class="st">"0"</span><span class="op">)</span>,</span>
-<span>    <span class="co"># Create a unique administrative code by combining country and division codes</span></span>
+<span>    <span class="co"># Crear un código administrativo único combinando códigos de país y divisiones</span></span>
 <span>    adm_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">country_code</span>, <span class="va">adm1_code</span>, <span class="va">adm2_code</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Rename columns for clarity</span></span>
+<span>  <span class="co"># Renombrar columnas para mayor claridad</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
 <span>    country <span class="op">=</span> <span class="va">admin0Name</span>,</span>
 <span>    adm1 <span class="op">=</span> <span class="va">admin1Name</span>,</span>
 <span>    adm2 <span class="op">=</span> <span class="va">admin2Name</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Select only relevant columns</span></span>
+<span>  <span class="co"># Seleccionar solo las columnas relevantes</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">adm_code</span>, <span class="va">country</span>, <span class="va">adm1</span>, <span class="va">adm2</span>, <span class="va">geometry</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Identify administrative units within the Lake Chad Basin</span></span>
+<span><span class="co"># Identificar unidades administrativas dentro de la cuenca del Lago Chad</span></span>
 <span><span class="va">shp_countries</span> <span class="op">&lt;-</span> <span class="va">shp_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lake_chad_basin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">adm_code</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">shp_lake_chad_basin</span><span class="op">$</span><span class="va">Rowcacode2</span>,</span>
 <span>    <span class="st">"Yes"</span>, <span class="st">"No"</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Subset to retain only the administrative units inside the Lake Chad Basin</span></span>
+<span><span class="co"># Subconjunto para mantener solo las unidades administrativas dentro de la cuenca del Lago Chad</span></span>
 <span><span class="va">shp_lake_chad</span> <span class="op">&lt;-</span> <span class="va">shp_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lake_chad_basin</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Compute the bounding box for visualization</span></span>
+<span><span class="co"># Calcular la caja delimitadora para la visualización</span></span>
 <span><span class="va">bbox</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">shp_lake_chad</span><span class="op">)</span></span>
 <span><span class="va">x_min</span> <span class="op">&lt;-</span> <span class="va">bbox</span><span class="op">[</span><span class="st">"xmin"</span><span class="op">]</span></span>
 <span><span class="va">x_max</span> <span class="op">&lt;-</span> <span class="va">bbox</span><span class="op">[</span><span class="st">"xmax"</span><span class="op">]</span></span>
 <span><span class="va">y_min</span> <span class="op">&lt;-</span> <span class="va">bbox</span><span class="op">[</span><span class="st">"ymin"</span><span class="op">]</span></span>
 <span><span class="va">y_max</span> <span class="op">&lt;-</span> <span class="va">bbox</span><span class="op">[</span><span class="st">"ymax"</span><span class="op">]</span></span>
 <span></span>
-<span><span class="co"># Aggregate administrative level 1 (regions/states) within the Lake Chad Basin</span></span>
+<span><span class="co"># Agregar nivel administrativo 1 (regiones/estados) dentro de la cuenca del Lago Chad</span></span>
 <span><span class="va">shp_adm1_aggregated</span> <span class="op">&lt;-</span> <span class="va">shp_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">adm1</span>, <span class="va">lake_chad_basin</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Keep only regions in the Lake Chad Basin and clean names</span></span>
+<span><span class="co"># Mantener solo regiones en la cuenca del Lago Chad y limpiar nombres</span></span>
 <span><span class="va">shp_adm1_aggregated</span> <span class="op">&lt;-</span> <span class="va">shp_adm1_aggregated</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lake_chad_basin</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>adm1 <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">adm1</span>, <span class="st">"_"</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Compute centroid coordinates for labeling</span></span>
+<span>  <span class="co"># Calcular coordenadas del centroide para etiquetado</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>,</span>
 <span>    y <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, we create a hexagonal grid over the Lake Chad region with a cell size of approximately 10.69 km and fatalities and attack counts are aggregated per grid cell.</p>
+<p>Ahora, creamos una cuadrícula hexagonal sobre la región del Lago Chad con un tamaño de celda de aproximadamente 10.69 km, y se agregan las fatalidades y el número de ataques por celda.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reproject Lake Chad Basin shapefile to UTM Zone 33N (EPSG:32633)</span></span>
-<span><span class="co"># This is important to set a cell size in km</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reproyectar el shapefile de la Cuenca del Lago Chad a UTM Zona 33N (EPSG:32633)</span></span>
+<span><span class="co"># Esto es importante para establecer un tamaño de celda en km</span></span>
 <span><span class="va">shp_lake_chad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">shp_lake_chad</span>, crs <span class="op">=</span> <span class="fl">32633</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create a hexagonal grid over the Lake Chad Basin with a cell size of ~10.69 km</span></span>
+<span><span class="co"># Crear una cuadrícula hexagonal sobre la Cuenca del Lago Chad con un tamaño de celda de ~10.69 km</span></span>
 <span><span class="va">nc_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_make_grid.html">st_make_grid</a></span><span class="op">(</span><span class="va">shp_lake_chad</span>,</span>
 <span>  cellsize <span class="op">=</span> <span class="fl">10690</span>,</span>
 <span>  square <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Filter the grid to keep only hexagons intersecting the Lake Chad Basin</span></span>
+<span><span class="co"># Filtrar la cuadrícula para mantener solo los hexágonos que intersectan la Cuenca del Lago Chad</span></span>
 <span><span class="va">nc_grid_filter</span> <span class="op">&lt;-</span> <span class="va">nc_grid</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/sf.html">st_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html">st_filter</a></span><span class="op">(</span><span class="va">shp_lake_chad</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Reproject the grid and Lake Chad Basin back to WGS84 (EPSG:4326)</span></span>
+<span><span class="co"># Reproyectar la cuadrícula y la Cuenca del Lago Chad de vuelta a WGS84 (EPSG:4326)</span></span>
 <span><span class="va">nc_grid_filter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">nc_grid_filter</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
 <span><span class="va">shp_lake_chad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">shp_lake_chad</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Spatially join conflict data with the hexagonal grid</span></span>
+<span><span class="co"># Unir espacialmente los datos de conflicto con la cuadrícula hexagonal</span></span>
 <span><span class="va">conflict_data_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html">st_join</a></span><span class="op">(</span><span class="va">nc_grid_filter</span>, <span class="va">conflict_data_lake_chad</span>, left <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Aggregate conflict data by grid cell, summing fatalities and counting attacks</span></span>
+<span><span class="co"># Agregar los datos de conflicto por celda, sumando las fatalidades y contando los ataques</span></span>
 <span><span class="va">fatalities_per_grid</span> <span class="op">&lt;-</span> <span class="va">conflict_data_grid</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">nc_grid</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
@@ -372,57 +376,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    num_attacks <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Compute centroid coordinates for visualization</span></span>
+<span>  <span class="co"># Calcular las coordenadas del centroide para visualización</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">nc_grid</span><span class="op">)</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>,</span>
 <span>    y <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">nc_grid</span><span class="op">)</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We need to relocate the coordinates of the labels for specific regions for better readability.</p>
+<p>Se reajustan las coordenadas de los nombres de regiones específicas para mejorar la legibilidad</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Adjust label positions for specific administrative regions to improve readability</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Ajustar posiciones de los nombres de las regiones administrativas específicas para mejorar la legibilidad</span></span>
 <span><span class="va">shp_adm1_aggregated</span> <span class="op">&lt;-</span> <span class="va">shp_adm1_aggregated</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Extreme Nord"</span> <span class="op">~</span> <span class="va">x</span> <span class="op">-</span> <span class="fl">0.1</span>, <span class="co"># Shift label slightly left</span></span>
+<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Extreme Nord"</span> <span class="op">~</span> <span class="va">x</span> <span class="op">-</span> <span class="fl">0.1</span>, <span class="co"># Mover nombre ligeramente a la izquierda</span></span>
 <span>      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">x</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    y <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Extreme Nord"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">0.5</span>, <span class="co"># Move label downward</span></span>
-<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Adamawa"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">0.3</span>, <span class="co"># Move label upward</span></span>
-<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Borno"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">0.4</span>, <span class="co"># Adjust label downward</span></span>
+<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Extreme Nord"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">0.5</span>, <span class="co"># Mover nombre hacia abajo</span></span>
+<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Adamawa"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">0.3</span>,      <span class="co"># Mover nombre hacia arriba</span></span>
+<span>      <span class="va">adm1</span> <span class="op">==</span> <span class="st">"Borno"</span> <span class="op">~</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">0.4</span>,        <span class="co"># Ajustar nombre hacia abajo</span></span>
 <span>      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">y</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Aggregate country geometries by merging administrative boundaries</span></span>
-<span><span class="co"># Dissolve some shapes</span></span>
+<span><span class="co"># Agregar geometrías de los países combinando las fronteras administrativas</span></span>
+<span><span class="co"># Disolver algunas formas</span></span>
 <span><span class="va">shp_countries_countries</span> <span class="op">&lt;-</span> <span class="va">shp_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_cast.html">st_cast</a></span><span class="op">(</span><span class="st">"POLYGON"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Retain the largest polygon for each country</span></span>
+<span>  <span class="co"># Mantener el polígono más grande de cada país</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
 <span></span>
-<span><span class="co"># Define manual label positions for country names</span></span>
+<span><span class="co"># Definir manualmente la posición de los nombres de los países</span></span>
 <span><span class="va">country_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Nigeria"</span>, <span class="st">"Niger"</span>, <span class="st">"Chad"</span>, <span class="st">"Cameroon"</span><span class="op">)</span>,</span>
-<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.15</span>, <span class="fl">11</span>, <span class="fl">15</span>, <span class="fl">13.6</span><span class="op">)</span>, <span class="co"># X-coordinates for label placement</span></span>
-<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">14.2</span>, <span class="fl">9</span><span class="op">)</span> <span class="co"># Y-coordinates for label placement</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.15</span>, <span class="fl">11</span>, <span class="fl">15</span>, <span class="fl">13.6</span><span class="op">)</span>, <span class="co"># Coordenadas X </span></span>
+<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">14.2</span>, <span class="fl">9</span><span class="op">)</span>      <span class="co"># Coordenadas Y </span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We first create an empty map of the countries and highlight the Lake Chad Basin area using {ggplot2}.</p>
+<p>Primero creamos un mapa vacío de los países y destacamos el área de la cuenca del Lago Chad usando {ggplot2}.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Automatically use showtext for handling fonts</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Usar automáticamente showtext para manejar las fuentes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Add Google font "Voltaire"</span></span>
+<span><span class="co"># Agregar la fuente de Google "Voltaire"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Voltaire"</span>, <span class="st">"Voltaire"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lake_chad_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Plot country borders with a light fill color</span></span>
+<span>  <span class="co"># Dibujar los bordes de los países con un color de relleno claro</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_countries</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"#ECEFF1"</span>,</span>
@@ -431,32 +435,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Plot Lake Chad Basin area with a darker fill color</span></span>
+<span>  <span class="co"># Dibujar el área de la cuenca del Lago Chad con un color de relleno más oscuro</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_lake_chad</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"#E0E0E0"</span>,</span>
 <span>    color <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>    linewidth <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>    inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, we add the fatalities information.</p>
+<p>Se agrega la información de fatalidades.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lake_chad_map</span> <span class="op">&lt;-</span> <span class="va">lake_chad_map</span> <span class="op">+</span></span>
-<span>  <span class="co"># Plot fatalities per grid with a color gradient</span></span>
+<span>  <span class="co"># Graficar fatalidades por celda con color degradado</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">fatalities_per_grid</span>,</span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">fatalities</span><span class="op">)</span>,</span>
 <span>    color <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>    alpha <span class="op">=</span> <span class="fl">1</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Fatalities"</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Fatalidades"</span>, </span>
 <span>                      low <span class="op">=</span> <span class="st">"#FCC5C0"</span>, high <span class="op">=</span> <span class="st">"#67001F"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We add different color to subnational and national boundaries and add their corresponding labels.</p>
+<p>Se agrega un color diferente a los límites subnacionales y nacionales y sus nombres correspondientes.</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lake_chad_map</span> <span class="op">&lt;-</span> <span class="va">lake_chad_map</span> <span class="op">+</span></span>
-<span>  <span class="co"># Plot aggregated administrative region boundaries with white lines</span></span>
+<span>  <span class="co"># Límites de las regiones administrativas con líneas blancas</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_adm1_aggregated</span>,</span>
 <span>    fill <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -464,19 +468,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    linewidth <span class="op">=</span> <span class="fl">0.5</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Plot country boundaries with black lines</span></span>
+<span>  <span class="co"># Límites de los países con líneas negras</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_countries_countries</span>,</span>
 <span>    fill <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>    linewidth <span class="op">=</span> <span class="fl">1.25</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Add labels for administrative regions (e.g., "Extreme Nord")</span></span>
+<span>  <span class="co"># Agregar nombres para las regiones administrativas (e.g. "Extreme Nord")</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_adm1_aggregated</span>,</span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
 <span>      x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>,</span>
-<span>      <span class="co"># Wrap text if needed for long region names</span></span>
+<span>      <span class="co"># Ajustar texto si es necesario para nombres largos de regiones</span></span>
 <span>      label <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span><span class="va">adm1</span>, <span class="fl">1</span><span class="op">)</span> </span>
 <span>    <span class="op">)</span>,</span>
 <span>    colour <span class="op">=</span> <span class="st">"#999"</span>,</span>
@@ -485,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    family <span class="op">=</span> <span class="st">"Voltaire"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  </span>
-<span>  <span class="co"># Add labels for countries with a larger font</span></span>
+<span>  <span class="co"># Agregar nombres de los países con una fuente más grande</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">country_labels</span>,</span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, label <span class="op">=</span> <span class="va">country</span><span class="op">)</span>,</span>
@@ -495,34 +499,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    family <span class="op">=</span> <span class="st">"Voltaire"</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, we center the map at the Lake Chad Basin area and add format for a better visualization.</p>
+<p>Finalmente, el mapa se centra en el área de la cuenca del Lago Chad y se agrega el formato para una mejor visualización.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
-<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Armed conflict in the Lake Chad Basin, 2020-2024"</span></span>
-<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"Fatalities in attacks perpetrated by organized armed actors against civilians"</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Título, subtítulo y pie de gráfico para el mapa</span></span>
+<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Conflicto armado en la cuenca del Lago Chad, 2020-2024"</span></span>
+<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"Fatalidades en ataques perpetrados por actores armados organizados contra civiles"</span></span>
 <span></span>
 <span><span class="va">lake_chad_map</span> <span class="op">&lt;-</span> <span class="va">lake_chad_map</span> <span class="op">+</span></span>
 <span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="va">title_chart</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="va">subtitle_chart</span>,</span>
-<span>    caption <span class="op">=</span> <span class="st">"**Data:** Armed Conflict Location &amp; Event Data (ACLED) &lt;br&gt; **Graphic:** Juan Torres Munguía"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"**Datos:** Armed Conflict Location &amp; Event Data (ACLED) &lt;br&gt; **Gráfico:** Juan Torres Munguía"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">""</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">""</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Set the map's coordinate limits and prevent expansion</span></span>
+<span>  <span class="co"># Establecer los límites de coordenadas del mapa y prevenir expansión</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span></span>
 <span>    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_min</span>, <span class="va">x_max</span><span class="op">)</span>,</span>
 <span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y_min</span>, <span class="va">y_max</span><span class="op">)</span>,</span>
 <span>    expand <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Add a scale bar in the bottom left</span></span>
+<span>  <span class="co"># Agregar una barra de escala en la esquina inferior izquierda</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"bl"</span>, width_hint <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Add a north arrow in the top left corner</span></span>
+<span>  <span class="co"># Agregar una flecha del norte en la esquina superior izquierda</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_north_arrow.html">annotation_north_arrow</a></span><span class="op">(</span></span>
 <span>    location <span class="op">=</span> <span class="st">"tl"</span>,</span>
 <span>    which_north <span class="op">=</span> <span class="st">"true"</span>,</span>
@@ -531,24 +535,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"cm"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Customize the legend</span></span>
+<span>  <span class="co"># Personalizar la leyenda</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span></span>
 <span>    fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Set the base theme without any background elements</span></span>
+<span>  <span class="co"># Establecer el tema base sin elementos de fondo</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"Voltaire"</span><span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Customize the map's text and legend styling</span></span>
+<span>  <span class="co"># Personalizar el estilo de texto y la leyenda del mapa</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>    <span class="co"># Title settings</span></span>
-<span>    plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, <span class="co"># Position of the title</span></span>
+<span>    <span class="co"># Configuración del título</span></span>
+<span>    plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, <span class="co"># Posición del título</span></span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
 <span>      color <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
 <span>      size <span class="op">=</span> <span class="fl">22</span>,</span>
-<span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span>, <span class="co"># Top, right, bottom, left</span></span>
-<span>      <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
+<span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span>, <span class="co"># Arriba, derecha, abajo, izquierda</span></span>
+<span>      <span class="co"># Ancho del título, npc == 1 corresponde al ancho completo del gráfico</span></span>
 <span>      width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> </span>
 <span>    <span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
@@ -559,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>      width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span></span>
-<span>    <span class="co"># Caption settings</span></span>
+<span>    <span class="co"># Configuración del pie del gráfico</span></span>
 <span>    plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span></span>
 <span>      color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
 <span>      size <span class="op">=</span> <span class="fl">10</span>,</span>
@@ -576,15 +580,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#ECEFF1"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using ggplot2. It includes the ne_countries function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.</p>
+<p>Creamos un mapa ampliado de la cuenca del Lago Chad insertado dentro del continente africano, utilizando {ggplot2}. Incluye la función <code>ne_countries</code> del paquete {rnaturalearth} para obtener el mapa de África. El mapa de la cuenca del Lago Chad se superpone sobre África, y se dibuja un rectángulo para resaltar la región de interés (cuenca del Lago Chad). El mapa se personaliza con un fondo blanco y bordes negros.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fetch African countries map from the rnaturalearth package</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Obtener el mapa de los países africanos del paquete rnaturalearth</span></span>
 <span><span class="va">africa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_countries.html">ne_countries</a></span><span class="op">(</span>continent <span class="op">=</span> <span class="st">"Africa"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create a zoomed-in map of Lake Chad Basin within the African map</span></span>
+<span><span class="co"># Crear un mapa ampliado de la cuenca del Lago Chad dentro del mapa de África</span></span>
 <span><span class="va">lake_chad_map_zoom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Plot the Africa map with a light fill color</span></span>
+<span>  <span class="co"># Dibujar el mapa de África con un color de relleno claro</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">africa</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"#ECEFF1"</span>,</span>
@@ -593,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Plot Lake Chad Basin area with a darker fill color</span></span>
+<span>  <span class="co"># Dibujar el área de la cuenca del Lago Chad con un color de relleno más oscuro</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">shp_lake_chad</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"#E0E0E0"</span>,</span>
@@ -602,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Add a rectangle highlighting the Lake Chad Basin on the Africa map</span></span>
+<span>  <span class="co"># Añadir un rectángulo resaltando la cuenca del Lago Chad en el mapa de África</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">x_min</span>, xmax <span class="op">=</span> <span class="va">x_max</span>, ymin <span class="op">=</span> <span class="va">y_min</span>, ymax <span class="op">=</span> <span class="va">y_max</span><span class="op">)</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">"black"</span>,</span>
@@ -610,10 +614,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    linewidth <span class="op">=</span> <span class="fl">0.2</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Remove grid and axes for a clean map appearance</span></span>
+<span>  <span class="co"># Eliminar cuadrícula y ejes para una apariencia limpia del mapa</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span></span>
-<span>  <span class="co"># Customize borders and background of the map</span></span>
+<span>  <span class="co"># Personalizar los bordes y el fondo del mapa</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
 <span>      color <span class="op">=</span> <span class="st">"black"</span>,</span>
@@ -623,9 +627,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, we combine the main map of the Lake Chad Basin with an inset map of Africa showing the location of the Lake Chad Basin. The inset map is positioned within the main map using the <code><a href="https://patchwork.data-imaginist.com/reference/inset_element.html">inset_element()</a></code> function of the {patchwork} package. Additionally, we set the resolution of the saved image to 320 dpi (high resolution) for better quality. Finally, the map is saved as a PNG file using <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code></p>
+<p>Finalmente, se combina el mapa principal de la cuenca del Lago Chad con un mapa insertado de África que muestra la ubicación de la cuenca del Lago Chad. El mapa insertado se posiciona dentro del mapa principal usando la función <code><a href="https://patchwork.data-imaginist.com/reference/inset_element.html">inset_element()</a></code> del paquete {patchwork}. Además, se establece la resolución de la imagen guardada en 320 dpi (alta resolución) para mejor calidad. Finalmente, el mapa se guarda como un archivo PNG usando <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># locate main and inset map</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Ubicar el mapa principal y el mapa insertado</span></span>
 <span><span class="va">lake_chad_map</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/inset_element.html">inset_element</a></span><span class="op">(</span></span>
 <span>    align_to <span class="op">=</span> <span class="st">"plot"</span>,</span>
@@ -636,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    bottom <span class="op">=</span> <span class="fl">0.91</span>,</span>
 <span>    on_top <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Establecer la resolución de la imagen; 320 dpi es para imágenes de alta calidad ("retina")</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
 <span>  <span class="st">"lake-chad-map.png"</span>,</span>
@@ -648,22 +652,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></p>
+<figure class="figure"><p><a href="lake-chad-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></a></p>
 </figure>
 </div>
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
   author = {Torres Munguía, Juan Armando},
-  title = {Visualizing Armed Conflict Using {ACLED’s} Data and {HDX}
-    Shapefiles},
+  title = {Visualizando El Conflicto Armado Usando Los Datos de {ACLED}
+    y Los Shapefiles de {HDX}},
   date = {2025-03-09},
   url = {https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Torres Munguía, Juan Armando. 2025. <span>“Visualizing Armed Conflict
-Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin">https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin</a>.
+Torres Munguía, Juan Armando. 2025. <span>“Visualizando El Conflicto
+Armado Usando Los Datos de ACLED y Los Shapefiles de HDX.”</span> March
+9, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin">https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin</a>.
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1082,7 +1087,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 </body></html>

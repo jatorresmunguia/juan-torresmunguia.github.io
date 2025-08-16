@@ -67,7 +67,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 4,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
@@ -323,7 +324,7 @@ Usando HXL en una base de datos global sobre brotes de enfermedades que tienden 
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="data visualization,armed conflict,ACLED,Lake Chad basin,Nigeria,Niger,Chad,Cameroon,ggplot2" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755069953500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2864">
+<div class="g-col-1" data-index="1" data-categories="visualización de datos,conflicto armado,ACLED,Cuenca del Lago Chad,Nigeria,Níger,Chad,Camerún,ggplot2" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755377862872" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3097">
 <a href="../blog/posts-es/visualizing-conflict-lake-chad-basin/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -331,10 +332,10 @@ Usando HXL en una base de datos global sobre brotes de enfermedades que tienden 
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Visualizing armed conflict using ACLED’s data and HDX shapefiles
+Visualizando el conflicto armado usando los datos de ACLED y los shapefiles de HDX
 </h5>
 <div class="card-subtitle listing-subtitle">
-Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin
+Usando {ggplot2} y {tidyverse} para hacer un mapa de la violencia contra civiles en la Cuenca del Lago Chad
 </div>
 </div>
 </div>
@@ -378,7 +379,7 @@ Parte 1: Guía paso a paso para calcular el SPI con el paquete {SCI} en R usando
 <a href="../blog/posts-es/estimating-envipe-prevalence/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../blog/posts-es/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
+<img data-src="../blog/posts-es/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -391,18 +392,18 @@ Parte 1: Estimando la prevalencia delictiva con el paquete {srvyr}
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="data visualization,disease outbreaks,epidemics,pandemics,tidyverse,ggplot2,waffle chart" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755069953851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1662">
+<div class="g-col-1" data-index="5" data-categories="visualización de datos,brotes de enfermedades,epidemias,pandemias,tidyverse,ggplot2,gráfico de waffle" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755378847249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1710">
 <a href="../blog/posts-es/waffle-chart-disease-outbreaks/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../blog/posts-es/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
+<img data-src="../blog/posts-es/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
+Un gráfico de waffle de brotes de enfermedades en el mundo
 </h5>
 <div class="card-subtitle listing-subtitle">
-Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world
+Usando {ggplot2} en R para crear un gráfico de waffle y visualizar brotes de enfermedades en el mundo
 </div>
 </div>
 </div>
@@ -412,6 +413,9 @@ Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in 
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

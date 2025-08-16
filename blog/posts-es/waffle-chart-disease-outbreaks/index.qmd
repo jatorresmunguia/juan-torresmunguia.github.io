@@ -1,19 +1,19 @@
 ---
-title: "A waffle chart of disease outbreaks in the world"
-subtitle: "Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world"
+title: "Un gráfico de waffle de brotes de enfermedades en el mundo"
+subtitle: "Usando {ggplot2} en R para crear un gráfico de waffle y visualizar brotes de enfermedades en el mundo"
 author: 
  - name: 
     given: Juan Armando 
     family: Torres Munguía
 date: "2025-01-12"
 categories: 
- - data visualization
- - disease outbreaks
- - epidemics
- - pandemics
+ - visualización de datos
+ - brotes de enfermedades
+ - epidemias
+ - pandemias
  - tidyverse
  - ggplot2
- - waffle chart
+ - gráfico de waffle
 image: "waffle-pandemics.png"
 title-block-banner: false
 citation: true
@@ -27,63 +27,63 @@ comments:
     repo: jatorresmunguia/juan-torresmunguia.github.io
 ---
 
-## Overview
-In these notes, I will show you how to use {ggplot} to create a waffle chart about the frequency of disease outbreaks in the world. The final output will look like this:
+## Descripción general
+En estas notas, se muestra cómo usar {ggplot} para crear un gráfico de waffle sobre la frecuencia de brotes de enfermedades en el mundo. El resultado final se verá así:
 
-![](waffle-pandemics.png){width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+![](waffle-pandemics.png){.lightbox width=100% style="margin-top: 0px; margin-bottom: 0px;"}
 
-## About the data
-The source of information is the global dataset of pandemic- and epidemic-prone disease outbreaks, whose data is freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the **disease outbreaks project**. 
+## Acerca de los datos
+La fuente de información es la base de datos global de brotes de enfermedades con potencial pandémico y epidémico, cuyos datos están disponibles de forma gratuita en el <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">repositorio de GitHub</a> del **proyecto de brotes de enfermedades**.  
 
-The unit of analysis in the database is an outbreak, defined as the occurrence of at least one case of a specific disease in a country -or territory- during a particular year. Therefore, a country -or territory- cannot have more than one outbreak of the same disease in the same year, although it may experience outbreaks of different diseases within the same year. A country can only have multiple outbreaks of the same disease if they occur in different years.
+La unidad de análisis en la base de datos es un brote, definido como la ocurrencia de al menos un caso de una enfermedad específica en un país -o territorio- durante un año particular. Por lo tanto, un país -o territorio- no puede tener más de un brote de la misma enfermedad en el mismo año, aunque sí puede experimentar brotes de diferentes enfermedades dentro del mismo año. Un país solo puede tener múltiples brotes de la misma enfermedad si ocurren en años diferentes.
 
-The dataset includes information on over 3,000 pandemic- and epidemic-prone disease outbreaks associated with more than 80 different infectious diseases, occurring globally from January 1996 to the present. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and disease for each outbreak.
+La base de datos incluye información sobre más de 3,000 brotes de enfermedades con potencial pandémico y epidémico asociados a más de 80 enfermedades infecciosas diferentes, ocurridos a nivel mundial desde enero de 1996 hasta la fecha. Las enfermedades están clasificadas según la Clasificación Internacional de Enfermedades, 10.ª Revisión (CIE-10), y la base de datos contiene información sobre el año, país y enfermedad de cada brote.
 
-The dataset of pandemic- and epidemic-prone disease outbreaks is also part of the [Humanitarian Data Exchange](https://data.humdata.org/) coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA).
+La base de datos de brotes de enfermedades con potencial pandémico y epidémico también forma parte del [Humanitarian Data Exchange](https://data.humdata.org/) coordinado por la Oficina de Coordinación de Asuntos Humanitarios de las Naciones Unidas (OCHA).
 
-## Set-up
-To create the waffle chart, we will use the following R packages:
+## Preparación 
+Para crear el gráfico de waffle, utilizaremos los siguientes paquetes de R:
 
 ```{r}
 #| warning: false
 
-library(tidyverse) # Tidy data analysis framework
-library(readxl) # Read Excel files
-library(httr) # Perform HTTP requests
-library(showtext) # Add custom fonts to plots
-library(ggtext) # Use rich text elements in ggplot
-library(waffle) # Create waffle charts
+library(tidyverse) # Formato de análisis de datos tidy
+library(readxl) # Leer archivos de Excel
+library(httr) # Realizar solicitudes HTTP
+library(showtext) # Añadir fuentes personalizadas a los gráficos
+library(ggtext) # Añadir texto enriquecido a los gráficos
+library(waffle) #  Crear gráficos de waffle
 ```
 
-## Loading data from GitHub
-The dataset is stored in an Excel. We will download it from the [GitHub repository](https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx) and load it into R:
+## Cargando datos desde GitHub
+La base de datos está almacenada en un archivo Excel. Se descarga desde [GitHub](https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx) y se carga en R:
 
 ```{r}
 #| warning: false
 
-# Define the GitHub raw content URL
+# Definir la URL del contenido raw de GitHub
 link_data <- "https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx"
 
-# Create a temporary file to store the data
+# Crear un archivo temporal para almacenar los datos
 temp <- tempfile(fileext = ".xlsx")
 
-# Download the data from GitHub using authentication
+# Descargar los datos desde GitHub usando autenticación
 get_req <- GET(
   link_data,
   authenticate(Sys.getenv("GITHUB_PAT"), ""),
   write_disk(path = temp)
 )
 
-# Read the Excel file into R
+# Leer el archivo Excel en R
 outbreaks <- read_excel(temp)
 ```
 
-### Data wrangling
-We will group the data by year and disease, and then filter the top 10 diseases from 1996 to 2024. We will also group the data by year and disease, and then filter the top 10 diseases from 2015 to 2024. Finally, we will create a factor variable for the top 10 diseases and the "Other" category:
+### Procesamiento de datos
+Agruparemos los datos por año y enfermedad, y luego filtraremos las 10 enfermedades principales de 1996 a 2024. También agruparemos los datos por año y enfermedad, y luego filtraremos las 10 enfermedades principales de 2015 a 2024. Finalmente, crearemos una variable factor para las 10 enfermedades principales y la categoría "Otros".
 ```{r}
 #| warning: false
 
-# Top 10 diseases 1996-2024
+# Top 10 enfermedades 1996-2024
 top_10_icd104n <- outbreaks |>
   filter(Year < 2025) |>
   group_by(icd104n) |>
@@ -91,62 +91,62 @@ top_10_icd104n <- outbreaks |>
   arrange(-freq) |>
   slice_head(n = 10)
 
-# Only top-10 categories and Others
+# Solo categorías top-10 y Otros
 outbreaks_year_disease_grouped <- outbreaks |>
   filter(Year < 2025 & Year > 2014) |>
-  mutate(icd104n = ifelse(icd104n %in% top_10_icd104n$icd104n, icd104n, "Other")) |> # Group the diseases
+  mutate(icd104n = ifelse(icd104n %in% top_10_icd104n$icd104n, icd104n, "Otros")) |> # Agrupar las enfermedades
   group_by(Year, icd104n) |>
-  summarise(freq = n(), .groups = "drop") |> # Count the number of outbreaks
+  summarise(freq = n(), .groups = "drop") |> # Contar el número de brotes
   arrange(-freq)
 
-# Create a factor variable for the top 10 diseases and the "Other" category
+# Crear variable factor para las 10 enfermedades principales y la categoría "Otros"
 outbreaks_year_disease_grouped <- outbreaks_year_disease_grouped |>
   mutate(icd104n = factor(icd104n,
     levels = c(
       "Acute poliomyelitis, unspecified", "Classical cholera", "COVID-19, virus identified",
       "Dengue, unspecified", "Influenza due to identified zoonotic or pandemic influenza virus", "Measles",
       "Meningococcal meningitis", "Middle East respiratory syndrome coronavirus [MERS-CoV]", "Monkeypox",
-      "Yellow fever, unspecified", "Other"
+      "Yellow fever, unspecified", "Otros"
     ),
     labels = c(
-      "Acute poliomyelitis", "Cholera", "COVID-19", "Dengue", "Influenza",
-      "Measles", "Meningococcal meningitis", "MERS-CoV", "Monkeypox",
-      "Yellow fever", "Other"
+      "Poliomielitis aguda", "Cólera", "COVID-19", "Dengue", "Influenza",
+      "Sarampión", "Meningitis meningocócica", "MERS-CoV", "Viruela del mono",
+      "Fiebre amarilla", "Otros"
     )
   ))
 ```
 
-## Set theme settings and define fonts, colors, and text to be used in the waffle chart
+## Establece el tema y define fuentes, colores y texto a ser usado en la gráfica
 ```{r}
 #| warning: false
 
-# Add custom font
+# Agregar fuente personalizada
 font_add_google("Roboto Condensed", "Roboto Condensed") 
 
 showtext_auto()
 
-# Custom theme for the waffle chart
+# Tema personalizado para el gráfico de waffle
 theme_waffle_chart <- function() {
   theme_minimal(
-    base_family = "Roboto Condensed" # Base theme with custom font
+    base_family = "Roboto Condensed" # Tema base con fuente personalizada
   ) +
-    # Custom theme settings
+    # Configuración del tema
     theme(
-      # Axis settings
-      axis.title = element_blank(), # Remove axis title
-      axis.line = element_blank(), # Remove axis line
+      # Configuración de los ejes
+      axis.title = element_blank(), # Quitar títulos de los ejes
+      axis.line = element_blank(), # Quitar línea de los ejes
       
-      # Title settings
-      plot.title.position = "plot", # Position of the title
+      # Configuración del título
+      plot.title.position = "plot", # Posición del título
       plot.title = element_textbox(
         color = "black",
         face = "bold",
         size = 24,
         margin = margin(5, 0, 5, 0), # Top, right, bottom, left
-        width = unit(1, "npc") # Width of the title, npc == 1 corresponds to the full width of the plot
+        width = unit(1, "npc") # Ancho del título, npc == 1 corresponde al ancho total del gráfico
       ),
       
-      # Subtitle settings
+      # Configuración del subtítulo
       plot.subtitle = element_textbox(
         color = "grey50",
         face = "bold",
@@ -155,11 +155,11 @@ theme_waffle_chart <- function() {
         width = unit(1, "npc")
       ),
       
-      # Legend settings
+      # Configuración de la leyenda
       legend.position = "top",
       legend.title = element_blank(),
       legend.spacing.x = unit(0.2, "cm"),
-      legend.key.spacing = unit(0.5, "cm"), # Spacing between legend keys
+      legend.key.spacing = unit(0.5, "cm"), # Espacio entre claves de la leyenda
       legend.text = element_text(
         margin = margin(5, 2, 5, 0),
         face = "bold",
@@ -169,7 +169,7 @@ theme_waffle_chart <- function() {
       legend.direction = "horizontal",
       legend.byrow = FALSE,
       
-      # Caption settings
+      # Configuración del pie de gráfico
       plot.caption = element_markdown(
         color = "grey70",
         size = 8,
@@ -185,17 +185,17 @@ theme_waffle_chart <- function() {
     )
 }
 
-# Title, subtitle, and caption for the waffle chart
-title_chart <- "Pandemic- and epidemic-prone disease outbreaks in the world"
-subtitle_chart <- "In 2024, fewer countries reported public health events linked to COVID-19, while outbreaks of viral diseases transmitted by vectors increased"
-caption_chart <- paste0("**Note:** Each square represents a country.",
+# Título, subtítulo y pie de gráfico para el gráfico de waffle
+title_chart <- "Brotes de enfermedades con potencial pandémico y epidémico en el mundo"
+subtitle_chart <- "En 2024, menos países reportaron eventos de salud pública vinculados con COVID-19, mientras aumentaron los brotes de enfermedades virales transmitidas por vectores"
+caption_chart <- paste0("**Nota:** Cada cuadrado representa un país.",
                         "<br>", 
-                        "**Data:** A global dataset of pandemic- and epidemic-prone disease outbreaks (DOI: 10.1038/s41597-022-01797-2)",
+                        "**Datos:** Conjunto de datos global de brotes de enfermedades con potencial pandémico y epidémico (DOI: 10.1038/s41597-022-01797-2)",
                         "<br>", 
-                        "**Graphic:** Juan Torres Munguía"
+                        "**Gráfico:** Juan Torres Munguía"
                         )
 
-# Define the colors to be used in the waffle chart
+# Definir los colores a utilizar en el gráfico de waffle
 colors <- c(
   "#B66DFF", "#7e0021", "#ff420e", "#579d1c", "#83caff",
   "#0084d1", "#aecf00", "#4b1f6f", "#FF86FF", "#ffd320", "grey80"
@@ -203,7 +203,7 @@ colors <- c(
 
 ```
 
-## Create the waffle chart
+## Crear gráfica de waffle
 ```{r}
 #| warning: false
 #| output: false
@@ -213,42 +213,42 @@ ggplot(
   aes(fill = icd104n, values = freq)
 ) +
   geom_waffle(
-    size = 0.25, # Size of the waffle squares
-    n_rows = 10, # Number of rows in the waffle chart
-    flip = TRUE, # Flip the waffle chart
-    color = "white", # Color of the border of the waffle squares
+    size = 0.25, # Tamaño de los cuadrados del waffle
+    n_rows = 10, # Número de filas en el gráfico de waffle
+    flip = TRUE, # Voltear el gráfico de waffle
+    color = "white", # Color del borde de los cuadrados
     make_proportional = FALSE
-  ) + # Do not make the waffle chart proportional
-  facet_wrap(~Year, # Facet the waffle chart by year
+  ) + # No hacer proporcional el gráfico de waffle
+  facet_wrap(~Year, # Dividir el gráfico por año
              nrow = 1,
              strip.position = "bottom"
-  ) + # Position of the facet strip
+  ) + # Posición de la etiqueta de faceta
   scale_fill_manual(values = colors) +
   scale_x_discrete() +
   scale_y_continuous(
     labels = function(x) x * 10,
     expand = c(0, 0)
-  ) + # Expand the y-axis
+  ) + # Expandir el eje y
   coord_equal() +
   labs(
     title = title_chart,
     subtitle = subtitle_chart,
     caption = caption_chart,
     x = "",
-    y = "Total number of outbreaks",
+    y = "Número total de brotes",
     fill = ""
   ) +
-  guides(fill = guide_legend(nrow = 2 # Number of rows in the legend
+  guides(fill = guide_legend(nrow = 2 # Número de filas en la leyenda
                              )) + 
   theme_waffle_chart()
 
 ```
 
-## Save the waffle chart as an image
+## Guardar la gráfica en formato PNG
 ```{r}
 #| warning: false
 
-showtext_opts(dpi = 320) # Set the resolution of the image 320 dpi is for high-quality images ("retina")
+showtext_opts(dpi = 320) # Resolución de 320 ("retina")
 ggsave(
   "waffle-pandemics.png",
   dpi = 320,

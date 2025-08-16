@@ -1,20 +1,20 @@
 ---
-title: "Visualizing armed conflict using ACLED's data and HDX shapefiles"
-subtitle: "Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin"
+title: "Visualizando el conflicto armado usando los datos de ACLED y los shapefiles de HDX"
+subtitle: "Usando {ggplot2} y {tidyverse} para hacer un mapa de la violencia contra civiles en la Cuenca del Lago Chad"
 author: 
  - name: 
     given: Juan Armando 
     family: Torres Munguía
 date: "2025-03-09"
 categories: 
- - data visualization
- - armed conflict
+ - visualización de datos
+ - conflicto armado
  - ACLED
- - Lake Chad basin
+ - Cuenca del Lago Chad
  - Nigeria
- - Niger
+ - Níger
  - Chad
- - Cameroon
+ - Camerún
  - ggplot2
 
 image: "lake-chad-map.png"
@@ -30,39 +30,41 @@ comments:
     repo: jatorresmunguia/juan-torresmunguia.github.io
 ---
 
-## Overview
-[ACLED (Armed Conflict Location & Event Data Project)](https://acleddata.com/) provides detailed data on political violence and protest events across the globe. This blog post explores the visualization of armed conflict in the Lake Chad Basin, focusing on the dynamics of violence against civilians in the region. Using ACLED's data in combination with shapefiles from the [Humanitarian Data Exchange (HDX) initiative](https://data.humdata.org/) of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA), we leverage {ggplot2}, {sf} and the {tidyverse} to create insightful maps that highlight the impact of armed conflict. 
+## Descripción general  
+[ACLED (Armed Conflict Location & Event Data Project)](https://acleddata.com/) proporciona datos detallados sobre violencia política y eventos de protesta en todo el mundo. Esta publicación explora la visualización del conflicto armado en la Cuenca del Lago Chad, enfocándose en la dinámica de la violencia contra civiles en la región. Usando los datos de ACLED en combinación con los *shapefiles* de la [iniciativa Humanitarian Data Exchange (HDX)](https://data.humdata.org/) de la Oficina de Coordinación de Asuntos Humanitarios de las Naciones Unidas (OCHA), con los paquetes {ggplot2}, {sf} y {tidyverse} para crear mapas del impacto del conflicto armado.  
 
-## Set-up
-Load necessary libraries for data processing and visualization.
+## Preparación  
+Cargar las librerías necesarias para el procesamiento y la visualización de datos.  
 
 ```{r}
 #| warning: false
 
-library(tidyverse) # For data manipulation and visualization
-library(sf) # For handling spatial data
-library(ggplot2) # For data visualization
-library(patchwork) # For combining plots
-library(ggtext) # Use rich text elements in ggplot
-library(showtext) # Add custom fonts to plots
-library(ggspatial) # For interacting with spatial data using ggplot2
-library(rnaturalearth) # To provide map data that can be visualized using other R packages
-library(rnaturalearthdata) # To store data for the rnaturalearth package
+library(tidyverse)      # Para manipulación y visualización de datos
+library(sf)             # Para trabajar con datos espaciales
+library(ggplot2)        # Para visualización de datos
+library(patchwork)      # Para combinar gráficos
+library(ggtext)         # Para usar texto enriquecido en ggplot
+library(showtext)       # Para añadir tipografías a los gráficos
+library(ggspatial)      # Para interactuar con datos espaciales en ggplot2
+library(rnaturalearth)  # Para obtener datos de mapas que pueden visualizarse con otros paquetes de R
+library(rnaturalearthdata) # Para almacenar datos usados por el paquete rnaturalearth
 
-# Set environment to English (useful for date/time formatting)
+# Configurar el entorno en inglés (para formato de fechas/tiempo)
 invisible(Sys.setenv(LANG = "en"))
 invisible(Sys.setlocale("LC_TIME", "English"))
 ```
 
-## Loading data
-Accessing ACLED data requires registering on their [ACLED Access Portal](https://developer.acleddata.com/) to generate a unique access key. Once registered, you can download the data using their [Data Export Tool](https://acleddata.com/data-export-tool/). I downloaded all the events occurred in Africa since 1997 and save them in file `acled_africa_1997-2025.csv`. To have a better understanding of their data, they provide a [codebook](https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf).
+## Cargando datos  
+Acceder a los datos de ACLED requiere registrarse en su [Portal de Acceso ACLED](https://developer.acleddata.com/) para generar una clave de acceso única. Una vez registrado, puedes descargar los datos usando su [Herramienta de Exportación de Datos](https://acleddata.com/data-export-tool/). Yo descargué todos los eventos ocurridos en África desde 1997 y los guardé en el archivo `acled_africa_1997-2025.csv`. Para una mejor comprensión de los datos, ACLED proporciona un [manual de códigos](https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf).
 ```{r}
 #| warning: false
 
 conflict_data <- read.csv("acled_africa_1997-2025.csv")
 ```
 
-Information of the national and sub national administrative boundaries in the Lake Chad Basin is obtained from the HDX. The information comes as a shapefile `.shp` and is available [here](https://data.humdata.org/dataset/lac-chad-basin-area?force_layout=desktop) in a zip file named `lcb_admbnda_adm2_ocha.zip`. The shapefile contains the administrative boundaries of Lake Chad Basin region at the subnational level. In particular, we will use file `lcb_admbnda_adm2_ocha.shp`. I also downloaded the administrative boundaries of the West and Central Africa region available [here](https://data.humdata.org/dataset/west-and-central-africa-administrative-boundaries-levels).
+## Carga de datos
+La información de los límites administrativos nacionales y subnacionales en la Cuenca del Lago Chad se obtiene de **HDX**. Esta información se encuentra en un shapefile `.shp` y está disponible [aquí](https://data.humdata.org/dataset/lac-chad-basin-area?force_layout=desktop) en un archivo comprimido llamado `lcb_admbnda_adm2_ocha.zip`. El shapefile contiene los límites administrativos de la región de la Cuenca del Lago Chad a nivel subnacional. En particular, utilizaremos el archivo `lcb_admbnda_adm2_ocha.shp`. Además, descargué los límites administrativos de la región de África Occidental y Central, disponibles [aquí](https://data.humdata.org/dataset/west-and-central-africa-administrative-boundaries-levels).
+
 ```{r}
 #| warning: false
 
@@ -73,12 +75,12 @@ shp_lake_chad_basin <- read_sf("lcb_admbnda_adm2_ocha/lcb_admbnda_adm2_ocha.shp"
 west_central_africa <- read_sf("wca_admbnda_adm2_ocha/wca_admbnda_adm2_ocha.shp")
 ```
 
-## Data processing
-As indicated in the [ACLED's codebook](https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf), geographic location of the events is specified in columns `latitude` and `longitude` in the `conflict_data` object and they are using the [EPSG:4326](https://epsg.io/4326) coordinate reference system. We have to ensure, that both `shp_lake_chad_basin` and `west_central_africa` have the same coordinate reference system. To achieve this, we use `st_transform()` from {sf} package. 
+## Procesamiento de datos
+Como se indica en el [manual de ACLED](https://acleddata.com/acleddatanew/wp-content/uploads/dlm_uploads/2024/10/ACLED-Codebook-2024-7-Oct.-2024.pdf), la ubicación geográfica de los eventos se especifica en las columnas `latitude` y `longitude` del objeto `conflict_data` y utilizan el sistema de referencia de coordenadas [EPSG:4326](https://epsg.io/4326). Debemos asegurarnos de que tanto `shp_lake_chad_basin` como `west_central_africa` tengan el mismo sistema de referencia de coordenadas. Para lograr esto, usamos `st_transform()` del paquete {sf}. 
 ```{r}
 #| warning: false
 
-# st_transform to convert coordinates to ACLED's data coordinate reference system
+# st_transform para convertir el sistema de referencia de coordenadas de los datos de ACLED
 shp_lake_chad_basin <- st_transform(shp_lake_chad_basin,
   crs = 4326
 )
@@ -87,50 +89,50 @@ west_central_africa <- st_transform(west_central_africa,
 )
 ```
 
-Now, we subset the events to exclusively account for those occurred between 2020 and 2024 in the Lake Chad Basin. To achieve this, we use the {tidyverse} package for data wrangling and {sf} for spatial filtering. By applying the `st_filter` function, we retain only events located within the Lake Chad Basin area.
+Ahora, seleccionamos únicamente los eventos ocurridos entre 2020 y 2024 en la cuenca del Lago Chad. Para esto, utilizamos el paquete {tidyverse} para la manipulación de datos y {sf} para el filtrado espacial. Aplicando la función `st_filter`, conservamos únicamente los eventos ubicados dentro del área de la cuenca del Lago Chad.
 ```{r}
 #| warning: false
 
 conflict_data <- conflict_data |>
-  # Keep only events from 2020 to 2024
+  # Conservar únicamente los eventos de 2020 a 2024
   filter(year >= 2020 & year < 2025) |>
-  # Select only "Violence against civilians" events of type "Attack"
+  # Seleccionar únicamente los eventos de "Violencia contra civiles" del tipo "Ataque"
   filter(event_type == "Violence against civilians" & sub_event_type == "Attack") |>
-  # Keep events from Nigeria, Niger, Cameroon, and Chad
+  # Conservar eventos de Nigeria, Níger, Camerún y Chad
   filter(country %in% c("Nigeria", "Niger", "Cameroon", "Chad")) |>
-  # Extract the month name from event_date
+  # Extraer el nombre del mes a partir de event_date
   mutate(
     month = month(dmy(event_date),
       label = TRUE
     )
   ) |>
-  # Select only relevant columns
+  # Seleccionar únicamente las columnas relevantes
   select(
     event_id_cnty, event_date, month, year, event_type, sub_event_type,
     actor1, actor2, location, latitude, longitude, fatalities, notes
   )
 
-# Convert the data to a spatial object using latitude and longitude (WGS 84 CRS)
+# Convertir los datos a un objeto espacial usando latitud y longitud (CRS WGS 84)
 conflict_data <- st_as_sf(conflict_data,
   coords = c("longitude", "latitude"),
   crs = 4326
 )
 
-# Filter events that fall within the Lake Chad Basin shapefile
+# Filtrar los eventos que caen dentro del shapefile de la cuenca del Lago Chad
 conflict_data_lake_chad <- conflict_data |>
   st_filter(shp_lake_chad_basin)
 ```
 
-We then processes administrative boundary data to extract relevant regions in West and Central Africa, focusing on the Lake Chad Basin area.
+Luego, procesamos los datos de los límites administrativos para extraer las regiones relevantes en África Occidental y Central, centrándonos en el área de la cuenca del Lago Chad.
 ```{r}
 #| warning: false
 
-# Filter to include only countries in the Lake Chad Basin region
-# I included Central African Republic for visualization purposes
+# Filtrar para incluir solo países en la región de la cuenca del Lago Chad
+# Incluí República Centroafricana con fines de visualización
 shp_countries <- west_central_africa |>
   filter(admin0Name %in% c("Nigeria", "Niger", "Chad", "Cameroon", "Central African Republic"))
 
-# Create country codes and format administrative division codes
+# Crear códigos de país y formatear códigos de divisiones administrativas
 shp_countries <- shp_countries |>
   mutate(
     country_code = case_when(
@@ -139,81 +141,81 @@ shp_countries <- shp_countries |>
       admin0Name == "Chad" ~ "TCD",
       admin0Name == "Cameroon" ~ "CMR"
     ),
-    # Extract and format adm1 and adm2 codes
+    # Extraer y formatear códigos adm1 y adm2
     adm1_code = str_pad(str_extract(admin1Pcod, "\\d+"), 3, pad = "0"),
     adm2_code = str_pad(str_sub(admin2Pcod, 5, 6), 3, pad = "0"),
-    # Create a unique administrative code by combining country and division codes
+    # Crear un código administrativo único combinando códigos de país y divisiones
     adm_code = paste0(country_code, adm1_code, adm2_code)
   ) |>
-  # Rename columns for clarity
+  # Renombrar columnas para mayor claridad
   rename(
     country = admin0Name,
     adm1 = admin1Name,
     adm2 = admin2Name
   ) |>
-  # Select only relevant columns
+  # Seleccionar solo las columnas relevantes
   select(adm_code, country, adm1, adm2, geometry)
 
-# Identify administrative units within the Lake Chad Basin
+# Identificar unidades administrativas dentro de la cuenca del Lago Chad
 shp_countries <- shp_countries |>
   mutate(lake_chad_basin = ifelse(adm_code %in% shp_lake_chad_basin$Rowcacode2,
     "Yes", "No"
   ))
 
-# Subset to retain only the administrative units inside the Lake Chad Basin
+# Subconjunto para mantener solo las unidades administrativas dentro de la cuenca del Lago Chad
 shp_lake_chad <- shp_countries |>
   filter(lake_chad_basin == "Yes")
 
-# Compute the bounding box for visualization
+# Calcular la caja delimitadora para la visualización
 bbox <- st_bbox(shp_lake_chad)
 x_min <- bbox["xmin"]
 x_max <- bbox["xmax"]
 y_min <- bbox["ymin"]
 y_max <- bbox["ymax"]
 
-# Aggregate administrative level 1 (regions/states) within the Lake Chad Basin
+# Agregar nivel administrativo 1 (regiones/estados) dentro de la cuenca del Lago Chad
 shp_adm1_aggregated <- shp_countries |>
   group_by(adm1, lake_chad_basin) |>
   summarise(geometry = st_union(geometry))
 
-# Keep only regions in the Lake Chad Basin and clean names
+# Mantener solo regiones en la cuenca del Lago Chad y limpiar nombres
 shp_adm1_aggregated <- shp_adm1_aggregated |>
   filter(lake_chad_basin == "Yes") |>
   mutate(adm1 = str_replace_all(adm1, "_", " ")) |>
-  # Compute centroid coordinates for labeling
+  # Calcular coordenadas del centroide para etiquetado
   mutate(
     x = st_coordinates(st_centroid(geometry))[, 1],
     y = st_coordinates(st_centroid(geometry))[, 2]
   )
 ```
 
-Now, we create a hexagonal grid over the Lake Chad region with a cell size of approximately 10.69 km and fatalities and attack counts are aggregated per grid cell.
+Ahora, creamos una cuadrícula hexagonal sobre la región del Lago Chad con un tamaño de celda de aproximadamente 10.69 km, y se agregan las fatalidades y el número de ataques por celda.
 ```{r}
 #| warning: false
 
-# Reproject Lake Chad Basin shapefile to UTM Zone 33N (EPSG:32633)
-# This is important to set a cell size in km
+# Reproyectar el shapefile de la Cuenca del Lago Chad a UTM Zona 33N (EPSG:32633)
+# Esto es importante para establecer un tamaño de celda en km
 shp_lake_chad <- st_transform(shp_lake_chad, crs = 32633)
 
-# Create a hexagonal grid over the Lake Chad Basin with a cell size of ~10.69 km
+# Crear una cuadrícula hexagonal sobre la Cuenca del Lago Chad con un tamaño de celda de ~10.69 km
 nc_grid <- st_make_grid(shp_lake_chad,
   cellsize = 10690,
   square = FALSE
 )
 
-# Filter the grid to keep only hexagons intersecting the Lake Chad Basin
+# Filtrar la cuadrícula para mantener solo los hexágonos que intersectan la Cuenca del Lago Chad
 nc_grid_filter <- nc_grid |>
   st_sf() |>
   st_filter(shp_lake_chad)
 
-# Reproject the grid and Lake Chad Basin back to WGS84 (EPSG:4326)
+# Reproyectar la cuadrícula y la Cuenca del Lago Chad de vuelta a WGS84 (EPSG:4326)
 nc_grid_filter <- st_transform(nc_grid_filter, crs = 4326)
 shp_lake_chad <- st_transform(shp_lake_chad, crs = 4326)
 
-# Spatially join conflict data with the hexagonal grid
+# Unir espacialmente los datos de conflicto con la cuadrícula hexagonal
 conflict_data_grid <- st_join(nc_grid_filter, conflict_data_lake_chad, left = FALSE)
 
-# Aggregate conflict data by grid cell, summing fatalities and counting attacks
+# Agregar los datos de conflicto por celda, sumando las fatalidades y contando los ataques
 fatalities_per_grid <- conflict_data_grid |>
   group_by(nc_grid) |>
   summarise(
@@ -221,63 +223,63 @@ fatalities_per_grid <- conflict_data_grid |>
     num_attacks = n()
   ) |>
   st_as_sf() |>
-  # Compute centroid coordinates for visualization
+  # Calcular las coordenadas del centroide para visualización
   mutate(
     x = st_coordinates(st_centroid(nc_grid))[, 1],
     y = st_coordinates(st_centroid(nc_grid))[, 2]
   )
 ```
 
-We need to relocate the coordinates of the labels for specific regions for better readability. 
+Se reajustan las coordenadas de los nombres de regiones específicas para mejorar la legibilidad
 ```{r}
 #| warning: false
 
-# Adjust label positions for specific administrative regions to improve readability
+# Ajustar posiciones de los nombres de las regiones administrativas específicas para mejorar la legibilidad
 shp_adm1_aggregated <- shp_adm1_aggregated |>
   mutate(
     x = case_when(
-      adm1 == "Extreme Nord" ~ x - 0.1, # Shift label slightly left
+      adm1 == "Extreme Nord" ~ x - 0.1, # Mover nombre ligeramente a la izquierda
       TRUE ~ x
     ),
     y = case_when(
-      adm1 == "Extreme Nord" ~ y - 0.5, # Move label downward
-      adm1 == "Adamawa" ~ y + 0.3, # Move label upward
-      adm1 == "Borno" ~ y - 0.4, # Adjust label downward
+      adm1 == "Extreme Nord" ~ y - 0.5, # Mover nombre hacia abajo
+      adm1 == "Adamawa" ~ y + 0.3,      # Mover nombre hacia arriba
+      adm1 == "Borno" ~ y - 0.4,        # Ajustar nombre hacia abajo
       TRUE ~ y
     )
   )
 
-# Aggregate country geometries by merging administrative boundaries
-# Dissolve some shapes
+# Agregar geometrías de los países combinando las fronteras administrativas
+# Disolver algunas formas
 shp_countries_countries <- shp_countries |>
   group_by(country) |>
   summarise(geometry = st_union(geometry)) |>
   st_cast("POLYGON") |>
   group_by(country) |>
-  # Retain the largest polygon for each country
+  # Mantener el polígono más grande de cada país
   filter(st_area(geometry) == max(st_area(geometry))) 
 
-# Define manual label positions for country names
+# Definir manualmente la posición de los nombres de los países
 country_labels <- tibble(
   country = c("Nigeria", "Niger", "Chad", "Cameroon"),
-  x = c(10.15, 11, 15, 13.6), # X-coordinates for label placement
-  y = c(10, 15, 14.2, 9) # Y-coordinates for label placement
+  x = c(10.15, 11, 15, 13.6), # Coordenadas X 
+  y = c(10, 15, 14.2, 9)      # Coordenadas Y 
 )
 ```
 
-We first create an empty map of the countries and highlight the Lake Chad Basin area using {ggplot2}.
+Primero creamos un mapa vacío de los países y destacamos el área de la cuenca del Lago Chad usando {ggplot2}.
 ```{r}
 #| warning: false
 
-# Automatically use showtext for handling fonts
+# Usar automáticamente showtext para manejar las fuentes
 showtext_auto()
 
-# Add Google font "Voltaire"
+# Agregar la fuente de Google "Voltaire"
 font_add_google("Voltaire", "Voltaire")
 
 lake_chad_map <- ggplot() +
 
-  # Plot country borders with a light fill color
+  # Dibujar los bordes de los países con un color de relleno claro
   geom_sf(
     data = shp_countries,
     fill = "#ECEFF1",
@@ -286,39 +288,38 @@ lake_chad_map <- ggplot() +
     inherit.aes = FALSE
   ) +
 
-  # Plot Lake Chad Basin area with a darker fill color
+  # Dibujar el área de la cuenca del Lago Chad con un color de relleno más oscuro
   geom_sf(
     data = shp_lake_chad,
     fill = "#E0E0E0",
     color = NA,
     linewidth = 0,
     inherit.aes = FALSE
-    )
+  )
 ```
 
-Now, we add the fatalities information.
-
+Se agrega la información de fatalidades.
 ```{r}
 #| warning: false
 
 lake_chad_map <- lake_chad_map +
-  # Plot fatalities per grid with a color gradient
+  # Graficar fatalidades por celda con color degradado
   geom_sf(
     data = fatalities_per_grid,
     aes(fill = fatalities),
     color = NA,
     alpha = 1
   ) +
-  scale_fill_gradient(name = "Fatalities", 
+  scale_fill_gradient(name = "Fatalidades", 
                       low = "#FCC5C0", high = "#67001F")
 ```
 
-We add different color to subnational and national boundaries and add their corresponding labels.
+Se agrega un color diferente a los límites subnacionales y nacionales y sus nombres correspondientes.
 ```{r}
 #| warning: false
 
 lake_chad_map <- lake_chad_map +
-  # Plot aggregated administrative region boundaries with white lines
+  # Límites de las regiones administrativas con líneas blancas
   geom_sf(
     data = shp_adm1_aggregated,
     fill = NA,
@@ -326,19 +327,19 @@ lake_chad_map <- lake_chad_map +
     linewidth = 0.5
   ) +
 
-  # Plot country boundaries with black lines
+  # Límites de los países con líneas negras
   geom_sf(
     data = shp_countries_countries,
     fill = NA,
     color = "black",
     linewidth = 1.25
   ) +
-  # Add labels for administrative regions (e.g., "Extreme Nord")
+  # Agregar nombres para las regiones administrativas (e.g. "Extreme Nord")
   geom_text(
     data = shp_adm1_aggregated,
     aes(
       x = x, y = y,
-      # Wrap text if needed for long region names
+      # Ajustar texto si es necesario para nombres largos de regiones
       label = str_wrap(adm1, 1) 
     ),
     colour = "#999",
@@ -347,7 +348,7 @@ lake_chad_map <- lake_chad_map +
     family = "Voltaire"
   ) +
   
-  # Add labels for countries with a larger font
+  # Agregar nombres de los países con una fuente más grande
   geom_label(
     data = country_labels,
     aes(x = x, y = y, label = country),
@@ -358,37 +359,36 @@ lake_chad_map <- lake_chad_map +
   )
 ```
 
-Finally, we center the map at the Lake Chad Basin area and add format for a better visualization.
-
+Finalmente, el mapa se centra en el área de la cuenca del Lago Chad y se agrega el formato para una mejor visualización.
 ```{r}
 #| warning: false
 
-# Title, subtitle, and caption for the waffle chart
-title_chart <- "Armed conflict in the Lake Chad Basin, 2020-2024"
-subtitle_chart <- "Fatalities in attacks perpetrated by organized armed actors against civilians"
+# Título, subtítulo y pie de gráfico para el mapa
+title_chart <- "Conflicto armado en la cuenca del Lago Chad, 2020-2024"
+subtitle_chart <- "Fatalidades en ataques perpetrados por actores armados organizados contra civiles"
 
 lake_chad_map <- lake_chad_map +
 
   labs(
     title = title_chart,
     subtitle = subtitle_chart,
-    caption = "**Data:** Armed Conflict Location & Event Data (ACLED) <br> **Graphic:** Juan Torres Munguía",
+    caption = "**Datos:** Armed Conflict Location & Event Data (ACLED) <br> **Gráfico:** Juan Torres Munguía",
     x = "",
     y = "",
     fill = ""
   ) +
 
-  # Set the map's coordinate limits and prevent expansion
+  # Establecer los límites de coordenadas del mapa y prevenir expansión
   coord_sf(
     xlim = c(x_min, x_max),
     ylim = c(y_min, y_max),
     expand = FALSE
   ) +
 
-  # Add a scale bar in the bottom left
+  # Agregar una barra de escala en la esquina inferior izquierda
   annotation_scale(location = "bl", width_hint = 0.2) +
 
-  # Add a north arrow in the top left corner
+  # Agregar una flecha del norte en la esquina superior izquierda
   annotation_north_arrow(
     location = "tl",
     which_north = "true",
@@ -397,24 +397,24 @@ lake_chad_map <- lake_chad_map +
     width = unit(1, "cm")
   ) +
 
-  # Customize the legend
+  # Personalizar la leyenda
   guides(
     fill = guide_legend(position = "bottom")
   ) +
 
-  # Set the base theme without any background elements
+  # Establecer el tema base sin elementos de fondo
   theme_void(base_family = "Voltaire") +
 
-  # Customize the map's text and legend styling
+  # Personalizar el estilo de texto y la leyenda del mapa
   theme(
-    # Title settings
-    plot.title.position = "plot", # Position of the title
+    # Configuración del título
+    plot.title.position = "plot", # Posición del título
     plot.title = element_textbox(
       color = "black",
       face = "bold",
       size = 22,
-      margin = margin(5, 3, 5, 3), # Top, right, bottom, left
-      # Width of the title, npc == 1 corresponds to the full width of the plot
+      margin = margin(5, 3, 5, 3), # Arriba, derecha, abajo, izquierda
+      # Ancho del título, npc == 1 corresponde al ancho completo del gráfico
       width = unit(1, "npc") 
     ),
     plot.subtitle = element_textbox(
@@ -425,7 +425,7 @@ lake_chad_map <- lake_chad_map +
       width = unit(1, "npc")
     ),
 
-    # Caption settings
+    # Configuración del pie del gráfico
     plot.caption = element_markdown(
       color = "grey70",
       size = 10,
@@ -443,18 +443,18 @@ lake_chad_map <- lake_chad_map +
   )
 ```
 
-We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using ggplot2. It includes the ne_countries function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.
+Creamos un mapa ampliado de la cuenca del Lago Chad insertado dentro del continente africano, utilizando {ggplot2}. Incluye la función `ne_countries` del paquete {rnaturalearth} para obtener el mapa de África. El mapa de la cuenca del Lago Chad se superpone sobre África, y se dibuja un rectángulo para resaltar la región de interés (cuenca del Lago Chad). El mapa se personaliza con un fondo blanco y bordes negros.
 
 ```{r}
 #| warning: false
 
-# Fetch African countries map from the rnaturalearth package
+# Obtener el mapa de los países africanos del paquete rnaturalearth
 africa <- ne_countries(continent = "Africa", returnclass = "sf")
 
-# Create a zoomed-in map of Lake Chad Basin within the African map
+# Crear un mapa ampliado de la cuenca del Lago Chad dentro del mapa de África
 lake_chad_map_zoom <- ggplot() +
 
-  # Plot the Africa map with a light fill color
+  # Dibujar el mapa de África con un color de relleno claro
   geom_sf(
     data = africa,
     fill = "#ECEFF1",
@@ -463,7 +463,7 @@ lake_chad_map_zoom <- ggplot() +
     inherit.aes = FALSE
   ) +
 
-  # Plot Lake Chad Basin area with a darker fill color
+  # Dibujar el área de la cuenca del Lago Chad con un color de relleno más oscuro
   geom_sf(
     data = shp_lake_chad,
     fill = "#E0E0E0",
@@ -472,7 +472,7 @@ lake_chad_map_zoom <- ggplot() +
     inherit.aes = FALSE
   ) +
 
-  # Add a rectangle highlighting the Lake Chad Basin on the Africa map
+  # Añadir un rectángulo resaltando la cuenca del Lago Chad en el mapa de África
   geom_rect(
     aes(xmin = x_min, xmax = x_max, ymin = y_min, ymax = y_max),
     color = "black",
@@ -480,10 +480,10 @@ lake_chad_map_zoom <- ggplot() +
     linewidth = 0.2
   ) +
 
-  # Remove grid and axes for a clean map appearance
+  # Eliminar cuadrícula y ejes para una apariencia limpia del mapa
   theme_void() +
 
-  # Customize borders and background of the map
+  # Personalizar los bordes y el fondo del mapa
   theme(
     panel.border = element_rect(
       color = "black",
@@ -494,12 +494,13 @@ lake_chad_map_zoom <- ggplot() +
   )
 ```
 
-Finally, we combine the main map of the Lake Chad Basin with an inset map of Africa showing the location of the Lake Chad Basin. The inset map is positioned within the main map using the `inset_element()` function of the {patchwork} package. Additionally, we set the resolution of the saved image to 320 dpi (high resolution) for better quality. Finally, the map is saved as a PNG file using `ggsave()`
+Finalmente, se combina el mapa principal de la cuenca del Lago Chad con un mapa insertado de África que muestra la ubicación de la cuenca del Lago Chad. El mapa insertado se posiciona dentro del mapa principal usando la función `inset_element()` del paquete {patchwork}. Además, se establece la resolución de la imagen guardada en 320 dpi (alta resolución) para mejor calidad. Finalmente, el mapa se guarda como un archivo PNG usando `ggsave()`.
+
 ```{r}
 #| warning: false
 #| output: false
 
-# locate main and inset map
+# Ubicar el mapa principal y el mapa insertado
 lake_chad_map +
   inset_element(
     align_to = "plot",
@@ -511,7 +512,7 @@ lake_chad_map +
     on_top = TRUE
   )
 
-# Set the resolution of the image 320 dpi is for high-quality images ("retina")
+# Establecer la resolución de la imagen; 320 dpi es para imágenes de alta calidad ("retina")
 showtext_opts(dpi = 320) 
 ggsave(
   "lake-chad-map.png",
@@ -523,4 +524,4 @@ ggsave(
 showtext_auto(FALSE)
 ```
 
-![](lake-chad-map.png){fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}
+![](lake-chad-map.png){.lightbox fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}

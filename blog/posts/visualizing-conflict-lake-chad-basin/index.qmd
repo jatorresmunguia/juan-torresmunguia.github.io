@@ -443,7 +443,7 @@ lake_chad_map <- lake_chad_map +
   )
 ```
 
-We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using ggplot2. It includes the ne_countries function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.
+We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using {ggplot2}. It includes the `ne_countries` function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.
 
 ```{r}
 #| warning: false
@@ -523,4 +523,4 @@ ggsave(
 showtext_auto(FALSE)
 ```
 
-![](lake-chad-map.png){fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}
+![](lake-chad-map.png){.lightbox fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}

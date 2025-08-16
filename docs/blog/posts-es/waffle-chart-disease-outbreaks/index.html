@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Juan Armando Torres Munguía">
 <meta name="dcterms.date" content="2025-01-12">
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - A waffle chart of disease outbreaks in the world</title>
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Un gráfico de waffle de brotes de enfermedades en el mundo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -165,16 +168,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">A waffle chart of disease outbreaks in the world</h1>
-<p class="subtitle lead">Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world</p>
+<h1 class="title">Un gráfico de waffle de brotes de enfermedades en el mundo</h1>
+<p class="subtitle lead">Usando {ggplot2} en R para crear un gráfico de waffle y visualizar brotes de enfermedades en el mundo</p>
   <div class="quarto-categories">
-    <div class="quarto-category">data visualization</div>
-    <div class="quarto-category">disease outbreaks</div>
-    <div class="quarto-category">epidemics</div>
-    <div class="quarto-category">pandemics</div>
+    <div class="quarto-category">visualización de datos</div>
+    <div class="quarto-category">brotes de enfermedades</div>
+    <div class="quarto-category">epidemias</div>
+    <div class="quarto-category">pandemias</div>
     <div class="quarto-category">tidyverse</div>
     <div class="quarto-category">ggplot2</div>
-    <div class="quarto-category">waffle chart</div>
+    <div class="quarto-category">gráfico de waffle</div>
   </div>
   </div>
 
@@ -201,47 +204,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In these notes, I will show you how to use {ggplot} to create a waffle chart about the frequency of disease outbreaks in the world. The final output will look like this:</p>
-<p><img src="waffle-pandemics.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></p>
-</section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
-<p>The source of information is the global dataset of pandemic- and epidemic-prone disease outbreaks, whose data is freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the <strong>disease outbreaks project</strong>.</p>
-<p>The unit of analysis in the database is an outbreak, defined as the occurrence of at least one case of a specific disease in a country -or territory- during a particular year. Therefore, a country -or territory- cannot have more than one outbreak of the same disease in the same year, although it may experience outbreaks of different diseases within the same year. A country can only have multiple outbreaks of the same disease if they occur in different years.</p>
-<p>The dataset includes information on over 3,000 pandemic- and epidemic-prone disease outbreaks associated with more than 80 different infectious diseases, occurring globally from January 1996 to the present. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and disease for each outbreak.</p>
-<p>The dataset of pandemic- and epidemic-prone disease outbreaks is also part of the <a href="https://data.humdata.org/">Humanitarian Data Exchange</a> coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA).</p>
-</section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>To create the waffle chart, we will use the following R packages:</p>
+</header><section id="descripción-general" class="level2"><h2 class="anchored" data-anchor-id="descripción-general">Descripción general</h2>
+<p>En estas notas, se muestra cómo usar {ggplot} para crear un gráfico de waffle sobre la frecuencia de brotes de enfermedades en el mundo. El resultado final se verá así:</p>
+<p><a href="waffle-pandemics.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="waffle-pandemics.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+</section><section id="acerca-de-los-datos" class="level2"><h2 class="anchored" data-anchor-id="acerca-de-los-datos">Acerca de los datos</h2>
+<p>La fuente de información es la base de datos global de brotes de enfermedades con potencial pandémico y epidémico, cuyos datos están disponibles de forma gratuita en el <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">repositorio de GitHub</a> del <strong>proyecto de brotes de enfermedades</strong>.</p>
+<p>La unidad de análisis en la base de datos es un brote, definido como la ocurrencia de al menos un caso de una enfermedad específica en un país -o territorio- durante un año particular. Por lo tanto, un país -o territorio- no puede tener más de un brote de la misma enfermedad en el mismo año, aunque sí puede experimentar brotes de diferentes enfermedades dentro del mismo año. Un país solo puede tener múltiples brotes de la misma enfermedad si ocurren en años diferentes.</p>
+<p>La base de datos incluye información sobre más de 3,000 brotes de enfermedades con potencial pandémico y epidémico asociados a más de 80 enfermedades infecciosas diferentes, ocurridos a nivel mundial desde enero de 1996 hasta la fecha. Las enfermedades están clasificadas según la Clasificación Internacional de Enfermedades, 10.ª Revisión (CIE-10), y la base de datos contiene información sobre el año, país y enfermedad de cada brote.</p>
+<p>La base de datos de brotes de enfermedades con potencial pandémico y epidémico también forma parte del <a href="https://data.humdata.org/">Humanitarian Data Exchange</a> coordinado por la Oficina de Coordinación de Asuntos Humanitarios de las Naciones Unidas (OCHA).</p>
+</section><section id="preparación" class="level2"><h2 class="anchored" data-anchor-id="preparación">Preparación</h2>
+<p>Para crear el gráfico de waffle, utilizaremos los siguientes paquetes de R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Tidy data analysis framework</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span> <span class="co"># Read Excel files</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span> <span class="co"># Perform HTTP requests</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> <span class="co"># Add custom fonts to plots</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> <span class="co"># Use rich text elements in ggplot</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">waffle</span><span class="op">)</span> <span class="co"># Create waffle charts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Formato de análisis de datos tidy</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span> <span class="co"># Leer archivos de Excel</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span> <span class="co"># Realizar solicitudes HTTP</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> <span class="co"># Añadir fuentes personalizadas a los gráficos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> <span class="co"># Añadir texto enriquecido a los gráficos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">waffle</span><span class="op">)</span> <span class="co">#  Crear gráficos de waffle</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="loading-data-from-github" class="level2"><h2 class="anchored" data-anchor-id="loading-data-from-github">Loading data from GitHub</h2>
-<p>The dataset is stored in an Excel. We will download it from the <a href="https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx">GitHub repository</a> and load it into R:</p>
+</section><section id="cargando-datos-desde-github" class="level2"><h2 class="anchored" data-anchor-id="cargando-datos-desde-github">Cargando datos desde GitHub</h2>
+<p>La base de datos está almacenada en un archivo Excel. Se descarga desde <a href="https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx">GitHub</a> y se carga en R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the GitHub raw content URL</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definir la URL del contenido raw de GitHub</span></span>
 <span><span class="va">link_data</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx"</span></span>
 <span></span>
-<span><span class="co"># Create a temporary file to store the data</span></span>
+<span><span class="co"># Crear un archivo temporal para almacenar los datos</span></span>
 <span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xlsx"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Download the data from GitHub using authentication</span></span>
+<span><span class="co"># Descargar los datos desde GitHub usando autenticación</span></span>
 <span><span class="va">get_req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span></span>
 <span>  <span class="va">link_data</span>,</span>
 <span>  <span class="fu"><a href="https://httr.r-lib.org/reference/authenticate.html">authenticate</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GITHUB_PAT"</span><span class="op">)</span>, <span class="st">""</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://httr.r-lib.org/reference/write_disk.html">write_disk</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">temp</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Read the Excel file into R</span></span>
+<span><span class="co"># Leer el archivo Excel en R</span></span>
 <span><span class="va">outbreaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
-<p>We will group the data by year and disease, and then filter the top 10 diseases from 1996 to 2024. We will also group the data by year and disease, and then filter the top 10 diseases from 2015 to 2024. Finally, we will create a factor variable for the top 10 diseases and the “Other” category:</p>
+<section id="procesamiento-de-datos" class="level3"><h3 class="anchored" data-anchor-id="procesamiento-de-datos">Procesamiento de datos</h3>
+<p>Agruparemos los datos por año y enfermedad, y luego filtraremos las 10 enfermedades principales de 1996 a 2024. También agruparemos los datos por año y enfermedad, y luego filtraremos las 10 enfermedades principales de 2015 a 2024. Finalmente, crearemos una variable factor para las 10 enfermedades principales y la categoría “Otros”.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Top 10 diseases 1996-2024</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Top 10 enfermedades 1996-2024</span></span>
 <span><span class="va">top_10_icd104n</span> <span class="op">&lt;-</span> <span class="va">outbreaks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">&lt;</span> <span class="fl">2025</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">icd104n</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -249,59 +252,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">freq</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Only top-10 categories and Others</span></span>
+<span><span class="co"># Solo categorías top-10 y Otros</span></span>
 <span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">&lt;-</span> <span class="va">outbreaks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">&lt;</span> <span class="fl">2025</span> <span class="op">&amp;</span> <span class="va">Year</span> <span class="op">&gt;</span> <span class="fl">2014</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>icd104n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">icd104n</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top_10_icd104n</span><span class="op">$</span><span class="va">icd104n</span>, <span class="va">icd104n</span>, <span class="st">"Other"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Group the diseases</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>icd104n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">icd104n</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top_10_icd104n</span><span class="op">$</span><span class="va">icd104n</span>, <span class="va">icd104n</span>, <span class="st">"Otros"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Agrupar las enfermedades</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">icd104n</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>freq <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Count the number of outbreaks</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>freq <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Contar el número de brotes</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">freq</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create a factor variable for the top 10 diseases and the "Other" category</span></span>
+<span><span class="co"># Crear variable factor para las 10 enfermedades principales y la categoría "Otros"</span></span>
 <span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">&lt;-</span> <span class="va">outbreaks_year_disease_grouped</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>icd104n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">icd104n</span>,</span>
 <span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Acute poliomyelitis, unspecified"</span>, <span class="st">"Classical cholera"</span>, <span class="st">"COVID-19, virus identified"</span>,</span>
 <span>      <span class="st">"Dengue, unspecified"</span>, <span class="st">"Influenza due to identified zoonotic or pandemic influenza virus"</span>, <span class="st">"Measles"</span>,</span>
 <span>      <span class="st">"Meningococcal meningitis"</span>, <span class="st">"Middle East respiratory syndrome coronavirus [MERS-CoV]"</span>, <span class="st">"Monkeypox"</span>,</span>
-<span>      <span class="st">"Yellow fever, unspecified"</span>, <span class="st">"Other"</span></span>
+<span>      <span class="st">"Yellow fever, unspecified"</span>, <span class="st">"Otros"</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>      <span class="st">"Acute poliomyelitis"</span>, <span class="st">"Cholera"</span>, <span class="st">"COVID-19"</span>, <span class="st">"Dengue"</span>, <span class="st">"Influenza"</span>,</span>
-<span>      <span class="st">"Measles"</span>, <span class="st">"Meningococcal meningitis"</span>, <span class="st">"MERS-CoV"</span>, <span class="st">"Monkeypox"</span>,</span>
-<span>      <span class="st">"Yellow fever"</span>, <span class="st">"Other"</span></span>
+<span>      <span class="st">"Poliomielitis aguda"</span>, <span class="st">"Cólera"</span>, <span class="st">"COVID-19"</span>, <span class="st">"Dengue"</span>, <span class="st">"Influenza"</span>,</span>
+<span>      <span class="st">"Sarampión"</span>, <span class="st">"Meningitis meningocócica"</span>, <span class="st">"MERS-CoV"</span>, <span class="st">"Viruela del mono"</span>,</span>
+<span>      <span class="st">"Fiebre amarilla"</span>, <span class="st">"Otros"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart" class="level2"><h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart">Set theme settings and define fonts, colors, and text to be used in the waffle chart</h2>
+</section></section><section id="establece-el-tema-y-define-fuentes-colores-y-texto-a-ser-usado-en-la-gráfica" class="level2"><h2 class="anchored" data-anchor-id="establece-el-tema-y-define-fuentes-colores-y-texto-a-ser-usado-en-la-gráfica">Establece el tema y define fuentes, colores y texto a ser usado en la gráfica</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Add custom font</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Agregar fuente personalizada</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Roboto Condensed"</span>, <span class="st">"Roboto Condensed"</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Custom theme for the waffle chart</span></span>
+<span><span class="co"># Tema personalizado para el gráfico de waffle</span></span>
 <span><span class="va">theme_waffle_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
-<span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Base theme with custom font</span></span>
+<span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> <span class="co"># Tema base con fuente personalizada</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="co"># Custom theme settings</span></span>
+<span>    <span class="co"># Configuración del tema</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>      <span class="co"># Axis settings</span></span>
-<span>      axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># Remove axis title</span></span>
-<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># Remove axis line</span></span>
+<span>      <span class="co"># Configuración de los ejes</span></span>
+<span>      axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># Quitar títulos de los ejes</span></span>
+<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># Quitar línea de los ejes</span></span>
 <span>      </span>
-<span>      <span class="co"># Title settings</span></span>
-<span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, <span class="co"># Position of the title</span></span>
+<span>      <span class="co"># Configuración del título</span></span>
+<span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, <span class="co"># Posición del título</span></span>
 <span>      plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
 <span>        color <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
 <span>        size <span class="op">=</span> <span class="fl">24</span>,</span>
 <span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>, <span class="co"># Top, right, bottom, left</span></span>
-<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> <span class="co"># Width of the title, npc == 1 corresponds to the full width of the plot</span></span>
+<span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> <span class="co"># Ancho del título, npc == 1 corresponde al ancho total del gráfico</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      </span>
-<span>      <span class="co"># Subtitle settings</span></span>
+<span>      <span class="co"># Configuración del subtítulo</span></span>
 <span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
 <span>        color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
@@ -310,11 +313,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      </span>
-<span>      <span class="co"># Legend settings</span></span>
+<span>      <span class="co"># Configuración de la leyenda</span></span>
 <span>      legend.position <span class="op">=</span> <span class="st">"top"</span>,</span>
 <span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>      legend.spacing.x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>      legend.key.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>, <span class="co"># Spacing between legend keys</span></span>
+<span>      legend.key.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>, <span class="co"># Espacio entre claves de la leyenda</span></span>
 <span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
 <span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
@@ -324,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>      legend.direction <span class="op">=</span> <span class="st">"horizontal"</span>,</span>
 <span>      legend.byrow <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>      </span>
-<span>      <span class="co"># Caption settings</span></span>
+<span>      <span class="co"># Configuración del pie de gráfico</span></span>
 <span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span></span>
 <span>        color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
 <span>        size <span class="op">=</span> <span class="fl">8</span>,</span>
@@ -340,61 +343,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
-<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Pandemic- and epidemic-prone disease outbreaks in the world"</span></span>
-<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"In 2024, fewer countries reported public health events linked to COVID-19, while outbreaks of viral diseases transmitted by vectors increased"</span></span>
-<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"**Note:** Each square represents a country."</span>,</span>
+<span><span class="co"># Título, subtítulo y pie de gráfico para el gráfico de waffle</span></span>
+<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Brotes de enfermedades con potencial pandémico y epidémico en el mundo"</span></span>
+<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"En 2024, menos países reportaron eventos de salud pública vinculados con COVID-19, mientras aumentaron los brotes de enfermedades virales transmitidas por vectores"</span></span>
+<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"**Nota:** Cada cuadrado representa un país."</span>,</span>
 <span>                        <span class="st">"&lt;br&gt;"</span>, </span>
-<span>                        <span class="st">"**Data:** A global dataset of pandemic- and epidemic-prone disease outbreaks (DOI: 10.1038/s41597-022-01797-2)"</span>,</span>
+<span>                        <span class="st">"**Datos:** Conjunto de datos global de brotes de enfermedades con potencial pandémico y epidémico (DOI: 10.1038/s41597-022-01797-2)"</span>,</span>
 <span>                        <span class="st">"&lt;br&gt;"</span>, </span>
-<span>                        <span class="st">"**Graphic:** Juan Torres Munguía"</span></span>
+<span>                        <span class="st">"**Gráfico:** Juan Torres Munguía"</span></span>
 <span>                        <span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Define the colors to be used in the waffle chart</span></span>
+<span><span class="co"># Definir los colores a utilizar en el gráfico de waffle</span></span>
 <span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"#B66DFF"</span>, <span class="st">"#7e0021"</span>, <span class="st">"#ff420e"</span>, <span class="st">"#579d1c"</span>, <span class="st">"#83caff"</span>,</span>
 <span>  <span class="st">"#0084d1"</span>, <span class="st">"#aecf00"</span>, <span class="st">"#4b1f6f"</span>, <span class="st">"#FF86FF"</span>, <span class="st">"#ffd320"</span>, <span class="st">"grey80"</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="create-the-waffle-chart" class="level2"><h2 class="anchored" data-anchor-id="create-the-waffle-chart">Create the waffle chart</h2>
+</section><section id="crear-gráfica-de-waffle" class="level2"><h2 class="anchored" data-anchor-id="crear-gráfica-de-waffle">Crear gráfica de waffle</h2>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">outbreaks_year_disease_grouped</span>,</span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">icd104n</span>, values <span class="op">=</span> <span class="va">freq</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle</a></span><span class="op">(</span></span>
-<span>    size <span class="op">=</span> <span class="fl">0.25</span>, <span class="co"># Size of the waffle squares</span></span>
-<span>    n_rows <span class="op">=</span> <span class="fl">10</span>, <span class="co"># Number of rows in the waffle chart</span></span>
-<span>    flip <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Flip the waffle chart</span></span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span>, <span class="co"># Color of the border of the waffle squares</span></span>
+<span>    size <span class="op">=</span> <span class="fl">0.25</span>, <span class="co"># Tamaño de los cuadrados del waffle</span></span>
+<span>    n_rows <span class="op">=</span> <span class="fl">10</span>, <span class="co"># Número de filas en el gráfico de waffle</span></span>
+<span>    flip <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Voltear el gráfico de waffle</span></span>
+<span>    color <span class="op">=</span> <span class="st">"white"</span>, <span class="co"># Color del borde de los cuadrados</span></span>
 <span>    make_proportional <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># Do not make the waffle chart proportional</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Year</span>, <span class="co"># Facet the waffle chart by year</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># No hacer proporcional el gráfico de waffle</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Year</span>, <span class="co"># Dividir el gráfico por año</span></span>
 <span>             nrow <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>             strip.position <span class="op">=</span> <span class="st">"bottom"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># Position of the facet strip</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># Posición de la etiqueta de faceta</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span></span>
 <span>    labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">10</span>,</span>
 <span>    expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># Expand the y-axis</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> <span class="co"># Expandir el eje y</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="va">title_chart</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="va">subtitle_chart</span>,</span>
 <span>    caption <span class="op">=</span> <span class="va">caption_chart</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">""</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Total number of outbreaks"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Número total de brotes"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span> <span class="co"># Number of rows in the legend</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span> <span class="co"># Número de filas en la leyenda</span></span>
 <span>                             <span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">theme_waffle_chart</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="save-the-waffle-chart-as-an-image" class="level2"><h2 class="anchored" data-anchor-id="save-the-waffle-chart-as-an-image">Save the waffle chart as an image</h2>
+</section><section id="guardar-la-gráfica-en-formato-png" class="level2"><h2 class="anchored" data-anchor-id="guardar-la-gráfica-en-formato-png">Guardar la gráfica en formato PNG</h2>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Resolución de 320 ("retina")</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
 <span>  <span class="st">"waffle-pandemics.png"</span>,</span>
 <span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
@@ -408,14 +411,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
   author = {Torres Munguía, Juan Armando},
-  title = {A Waffle Chart of Disease Outbreaks in the World},
+  title = {Un Gráfico de Waffle de Brotes de Enfermedades En El Mundo},
   date = {2025-01-12},
   url = {https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Torres Munguía, Juan Armando. 2025. <span>“A Waffle Chart of Disease
-Outbreaks in the World.”</span> January 12, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks">https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks</a>.
+Torres Munguía, Juan Armando. 2025. <span>“Un Gráfico de Waffle de
+Brotes de Enfermedades En El Mundo.”</span> January 12, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks">https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks</a>.
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -834,7 +837,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 </body></html>
