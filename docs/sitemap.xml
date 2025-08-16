@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://juan-torresmunguia.netlify.app/blog/blog/index.html</loc>
-    <lastmod>2025-08-14T22:40:23.150Z</lastmod>
+    <lastmod>2025-08-14T23:59:29.832Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/blog/blog/index-es.html</loc>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts/spi_somalia/index.html</loc>
-    <lastmod>2025-08-13T07:25:53.095Z</lastmod>
+    <lastmod>2025-08-14T23:24:58.994Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts/food-security-fao-line-plot/index.html</loc>
@@ -158,6 +158,26 @@
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts/waffle-chart-disease-outbreaks/index.html</loc>
+    <lastmod>2025-08-13T07:25:53.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts-es/hdx-tags-to-outbreaks-data/index.html</loc>
+    <lastmod>2025-08-14T23:29:01.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts-es/visualizing-conflict-lake-chad-basin/index.html</loc>
+    <lastmod>2025-08-13T07:25:53.500Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts-es/spi_somalia/index.html</loc>
+    <lastmod>2025-08-14T23:57:55.117Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts-es/spi_somalia_visualization/index.html</loc>
+    <lastmod>2025-08-14T23:59:20.424Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/blog/posts-es/waffle-chart-disease-outbreaks/index.html</loc>
     <lastmod>2025-08-13T07:25:53.851Z</lastmod>
   </url>
 </urlset>

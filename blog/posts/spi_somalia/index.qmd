@@ -84,7 +84,7 @@ Data can be found [here](https://data.humdata.org/dataset/som-rainfall-subnation
 
 # Read the rainfall data for Somalia`
 # You can also download the data from the HDX platform and read it locally
-rainfall_data <- read.csv("https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/331ab214-0860-44ea-a53b-0a3fac601e82/download/som-rainfall-adm2-full.csv")
+rainfall_data <- read.csv("https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/8b333d58-d69e-418c-b5e3-dd86f12eee05/download/som-rainfall-subnat-full.csv")
 ```
 
 ### Data wrangling
