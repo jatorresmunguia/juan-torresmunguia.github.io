@@ -3,6 +3,7 @@ title: "Scatterplots"
 subtitle: ""
 image: ix--scatterplot.svg
 categories: correlation
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

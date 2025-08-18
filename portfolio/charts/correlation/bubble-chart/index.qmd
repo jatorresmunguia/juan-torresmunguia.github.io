@@ -3,6 +3,7 @@ title: "Bubble charts"
 subtitle: ""
 image: tdesign--chart-bubble-filled.svg
 categories: correlation
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

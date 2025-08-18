@@ -3,6 +3,7 @@ title: "Pie chart"
 subtitle: ""
 image: streamline-sharp-color--pie-chart-flat.svg
 categories: proportions
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

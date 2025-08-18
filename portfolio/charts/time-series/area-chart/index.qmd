@@ -3,6 +3,7 @@ title: "Area chart"
 subtitle: ""
 image: tabler--chart-area-filled.svg
 categories: time-series
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

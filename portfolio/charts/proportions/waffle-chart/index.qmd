@@ -3,6 +3,7 @@ title: "Waffle chart"
 subtitle: ""
 image: tabler--chart-cohort.svg
 categories: proportions
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 listing: 

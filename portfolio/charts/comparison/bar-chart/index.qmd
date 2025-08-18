@@ -5,6 +5,7 @@ image: bi--bar-chart-fill.svg
 categories: comparison
 title-block-banner: true
 title-block-style: manuscript
+link-external-newwindow: false
 execute:
   freeze: true
 format: 

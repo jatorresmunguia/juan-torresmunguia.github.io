@@ -3,6 +3,7 @@ title: "Boxplots"
 subtitle: ""
 image: ix--box-plot.svg
 categories: distribution
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 listing: 

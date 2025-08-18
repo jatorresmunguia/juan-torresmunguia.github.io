@@ -3,6 +3,7 @@ title: "Line chart"
 subtitle: ""
 image: la--chart-line.svg
 categories: time-series
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 listing: 

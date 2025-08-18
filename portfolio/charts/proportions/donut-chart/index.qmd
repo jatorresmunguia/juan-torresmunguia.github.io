@@ -3,6 +3,7 @@ title: "Donut chart"
 subtitle: ""
 image: mdi--chart-arc.svg
 categories: proportions
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

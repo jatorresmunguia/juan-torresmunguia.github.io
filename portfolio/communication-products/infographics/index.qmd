@@ -3,6 +3,7 @@ title: "Infographics"
 subtitle: ""
 image: ix--dashboard.svg
 categories: infographics
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

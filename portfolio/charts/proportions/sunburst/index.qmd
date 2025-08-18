@@ -3,6 +3,7 @@ title: "Sunburst chart"
 subtitle: ""
 image: carbon--chart-sunburst.svg
 categories: proportions
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

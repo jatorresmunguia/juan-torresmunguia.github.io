@@ -2,6 +2,7 @@
 title: "Histograms"
 subtitle: ""
 image: mdi-light--chart-histogram.svg
+link-external-newwindow: false
 categories: distribution
 title-block-banner: true
 title-block-style: manuscript

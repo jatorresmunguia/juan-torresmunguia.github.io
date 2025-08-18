@@ -3,6 +3,7 @@ title: "Population pyramids"
 subtitle: ""
 image: population-pyramid.png
 categories: distribution
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

@@ -3,6 +3,7 @@ title: "Dot-plot"
 subtitle: ""
 image: fa7-solid--chart-gantt.svg
 categories: time-series
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:

@@ -3,6 +3,7 @@ title: "Dashboards"
 subtitle: ""
 image: carbon--chart-multitype.svg
 categories: dashboards
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 listing: 

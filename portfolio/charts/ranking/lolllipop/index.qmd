@@ -2,6 +2,7 @@
 title: "Lollipop chart"
 subtitle: ""
 image: lollipop.svg
+link-external-newwindow: false
 categories: ranking
 title-block-banner: true
 title-block-style: manuscript

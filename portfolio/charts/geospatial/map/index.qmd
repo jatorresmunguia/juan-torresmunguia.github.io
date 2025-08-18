@@ -3,6 +3,7 @@ title: "Maps"
 subtitle: ""
 image: fxemoji--worldmap.svg
 categories: geospatial
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 listing: 

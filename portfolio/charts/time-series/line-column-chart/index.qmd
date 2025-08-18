@@ -3,6 +3,7 @@ title: "Line column chart"
 subtitle: ""
 image: gravity-ui--chart-mixed.svg
 categories: time-series
+link-external-newwindow: false
 title-block-banner: true
 title-block-style: manuscript
 execute:
