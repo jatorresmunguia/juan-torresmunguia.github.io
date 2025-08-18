@@ -1,0 +1,29 @@
+---
+title: "A box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-02-08"
+categories: 
+ - data visualization
+image: "spi-somalia.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/spi_somalia/index.html).
+
+::: {.card}
+![](spi-somalia.png){width=100% .lightbox}
+:::
+

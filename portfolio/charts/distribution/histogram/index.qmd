@@ -1,0 +1,19 @@
+---
+title: "Histograms"
+subtitle: ""
+image: mdi-light--chart-histogram.svg
+categories: distribution
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Histograms are beautiful
+
+
+## Examples

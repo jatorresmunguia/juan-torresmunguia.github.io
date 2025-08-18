@@ -1,0 +1,19 @@
+---
+title: "Infographics"
+subtitle: ""
+image: ix--dashboard.svg
+categories: infographics
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Infographics are beautiful
+
+
+## Examples

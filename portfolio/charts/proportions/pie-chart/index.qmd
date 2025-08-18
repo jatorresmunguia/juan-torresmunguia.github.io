@@ -1,0 +1,19 @@
+---
+title: "Pie chart"
+subtitle: ""
+image: streamline-sharp-color--pie-chart-flat.svg
+categories: proportions
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Pie chart are beautiful
+
+
+## Examples

@@ -70,7 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -203,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In these notes, I will show you how to use {ggplot} to create a waffle chart about the frequency of disease outbreaks in the world. The final output will look like this:</p>
-<p><img src="waffle-pandemics.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></p>
+<p><a href="waffle-pandemics.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="waffle-pandemics.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 </section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
 <p>The source of information is the global dataset of pandemic- and epidemic-prone disease outbreaks, whose data is freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the <strong>disease outbreaks project</strong>.</p>
 <p>The unit of analysis in the database is an outbreak, defined as the occurrence of at least one case of a specific disease in a country -or territory- during a particular year. Therefore, a country -or territory- cannot have more than one outbreak of the same disease in the same year, although it may experience outbreaks of different diseases within the same year. A country can only have multiple outbreaks of the same disease if they occur in different years.</p>
@@ -834,7 +837,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 </body></html>

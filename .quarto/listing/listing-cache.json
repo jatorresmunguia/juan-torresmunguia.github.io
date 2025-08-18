@@ -15,10 +15,28 @@
       "posts-es"
     ],
     "portfolio\\index.qmd": [
-      "projects"
+      "projects",
+      "charts/*/index.qmd",
+      "charts/*/*/index.qmd",
+      "/communication-products/*/index.qmd"
     ],
     "blog\\index-es.qmd": [
       "posts-es"
+    ],
+    "portfolio\\communication-products\\dashboards\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\charts\\time-series\\line-chart\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\charts\\geospatial\\map\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\charts\\distribution\\boxplot\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\charts\\proportions\\waffle-chart\\index.qmd": [
+      "/*/index.qmd"
     ]
   }
 }

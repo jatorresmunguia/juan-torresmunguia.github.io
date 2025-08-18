@@ -1,0 +1,19 @@
+---
+title: "Sunburst chart"
+subtitle: ""
+image: carbon--chart-sunburst.svg
+categories: proportions
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Sunburst chart are beautiful
+
+
+## Examples

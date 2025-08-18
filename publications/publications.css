@@ -34,7 +34,7 @@
   cursor: pointer;
   text-align: center;
   background-color: #f2f0e8;
-  white-space: normal; /* Corregido */
+  white-space: normal; 
 }
 
 .info-category:hover {

@@ -1,14 +1,29 @@
 ---
 title: "Data visualizations gallery"
 subtitle: ""
-listing:
-  contents: projects
-  sort: "date desc"
-  type: grid
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [image, title]
+title-block-banner: true
+title-block-style: manuscript
+listing: 
+  - id: charts
+    contents: "charts/*/*/index.qmd"
+    type: grid
+    grid-columns: 6
+    sort: "date desc"
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    fields: [image, title]
+    page-size: 100
+  - id: communication-products
+    contents: "/communication-products/*/index.qmd"
+    type: grid
+    grid-columns: 6
+    sort: "date desc"
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    fields: [image, title]
+    page-size: 100
 execute:
   freeze: true
 format: 
@@ -16,3 +31,12 @@ format:
     page-layout: article
     css: portfolio.css
 ---
+
+## Charts 
+
+:::{#charts}
+:::
+
+## Communication products 
+:::{#communication-products}
+:::

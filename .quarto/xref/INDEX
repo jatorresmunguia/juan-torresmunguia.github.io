@@ -186,5 +186,113 @@
   },
   "blog/posts-es/waffle-chart-disease-outbreaks/index.qmd": {
     "index.html": "60a69e70"
+  },
+  "portfolio/comparison/bar-chart/index.qmd": {
+    "index.html": "ce504489"
+  },
+  "portfolio/charts/comparison/bar-chart/index.qmd": {
+    "index.html": "98c59102"
+  },
+  "portfolio/charts/comparison/index.qmd": {
+    "index.html": "e14e7ebf"
+  },
+  "portfolio/charts/comparison/column-chart/index.qmd": {
+    "index.html": "875dc82b"
+  },
+  "portfolio/charts/correlation/index.qmd": {
+    "index.html": "16f2fafe"
+  },
+  "portfolio/charts/correlation/bubble-chart/index.qmd": {
+    "index.html": "92f6b627"
+  },
+  "portfolio/charts/correlation/venn-diagram/index.qmd": {
+    "index.html": "0626eada"
+  },
+  "portfolio/charts/correlation/heatmap/index.qmd": {
+    "index.html": "184efc92"
+  },
+  "portfolio/charts/time-series/area-chart/index.qmd": {
+    "index.html": "e16df382"
+  },
+  "portfolio/charts/time-series/dot-plot/index.qmd": {
+    "index.html": "70023184"
+  },
+  "portfolio/charts/time-series/line-chart/index.qmd": {
+    "index.html": "e4bc5da6"
+  },
+  "portfolio/charts/time-series/line-column-chart/index.qmd": {
+    "index.html": "b069c4cc"
+  },
+  "portfolio/charts/time-series/slope-chart/index.qmd": {
+    "index.html": "684876f4"
+  },
+  "portfolio/charts/correlation/scatterplot/index.qmd": {
+    "index.html": "00f6fe4e"
+  },
+  "portfolio/charts/geospatial/map/index.qmd": {
+    "index.html": "dec5c0de"
+  },
+  "portfolio/charts/distribution/boxplot/index.qmd": {
+    "index.html": "4455fc20"
+  },
+  "portfolio/charts/distribution/histogram/index.qmd": {
+    "index.html": "73b9196b"
+  },
+  "portfolio/charts/distribution/population-pyramid/index.qmd": {
+    "index.html": "3595be12"
+  },
+  "portfolio/charts/flow/sankey/index.qmd": {
+    "index.html": "ca3b1b69"
+  },
+  "portfolio/charts/proportions/donut-chart/index.qmd": {
+    "index.html": "cb47f53b"
+  },
+  "portfolio/charts/proportions/pie-chart/index.qmd": {
+    "index.html": "1acfa249"
+  },
+  "portfolio/charts/proportions/sunburst/index.qmd": {
+    "index.html": "c0bbe165"
+  },
+  "portfolio/charts/proportions/treemap/index.qmd": {
+    "index.html": "92d26858"
+  },
+  "portfolio/charts/proportions/venn-diagram/index.qmd": {
+    "index.html": "f1381025"
+  },
+  "portfolio/charts/proportions/waffle-chart/index.qmd": {
+    "index.html": "d68895c2"
+  },
+  "portfolio/charts/ranking/lolllipop/index.qmd": {
+    "index.html": "1179b8d8"
+  },
+  "portfolio/charts/ranking/wordcloud/index.qmd": {
+    "index.html": "228e6e44"
+  },
+  "portfolio/communication-products/dashboards/index.qmd": {
+    "index.html": "9f99374f"
+  },
+  "portfolio/communication-products/infographics/index.qmd": {
+    "index.html": "046b7ea3"
+  },
+  "portfolio/communication-products/scrollytelling/index.qmd": {
+    "index.html": "e677cd5d"
+  },
+  "portfolio/communication-products/dashboards/shiny_disease_outbreaks/index.qmd": {
+    "index.html": "00ba102e"
+  },
+  "portfolio/charts/geospatial/map/spi_somalia_visualization/index.qmd": {
+    "index.html": "86074ac1"
+  },
+  "portfolio/charts/time-series/line-chart/food-security-fao-line-chart/index.qmd": {
+    "index.html": "7b504a1e"
+  },
+  "portfolio/charts/proportions/waffle-chart/waffle_chart_disease_outbreaks/index.qmd": {
+    "index.html": "ce419166"
+  },
+  "portfolio/charts/distribution/boxplot/spi_somalia/index.qmd": {
+    "index.html": "9228f06d"
+  },
+  "portfolio/charts/geospatial/map/armed_conflict_lake_chad/index.qmd": {
+    "index.html": "5b95a470"
   }
 }

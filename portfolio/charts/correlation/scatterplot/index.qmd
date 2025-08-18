@@ -1,0 +1,19 @@
+---
+title: "Scatterplots"
+subtitle: ""
+image: ix--scatterplot.svg
+categories: correlation
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Scatterplots are beautiful
+
+
+## Examples

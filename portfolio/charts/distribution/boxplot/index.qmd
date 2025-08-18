@@ -1,0 +1,28 @@
+---
+title: "Boxplots"
+subtitle: ""
+image: ix--box-plot.svg
+categories: distribution
+title-block-banner: true
+title-block-style: manuscript
+listing: 
+    contents: "/*/index.qmd"
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    fields: [image, title]
+    page-size: 100
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: "../../../portfolio.css"
+---
+### Description
+**Boxplots** are a type of data visualization that summarizes the distribution of a dataset by displaying its minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum values. They are particularly useful for identifying outliers and understanding the spread and symmetry of the data.
+
+### Examples

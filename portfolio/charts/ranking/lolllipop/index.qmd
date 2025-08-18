@@ -1,0 +1,19 @@
+---
+title: "Lollipop chart"
+subtitle: ""
+image: lollipop.svg
+categories: ranking
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Lollipop charts are beautiful
+
+
+## Examples

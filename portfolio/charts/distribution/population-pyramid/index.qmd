@@ -1,0 +1,19 @@
+---
+title: "Population pyramids"
+subtitle: ""
+image: population-pyramid.png
+categories: distribution
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Population pyramids are beautiful
+
+
+## Examples

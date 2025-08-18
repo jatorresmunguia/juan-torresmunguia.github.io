@@ -1,0 +1,19 @@
+---
+title: "Bubble charts"
+subtitle: ""
+image: tdesign--chart-bubble-filled.svg
+categories: correlation
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Bubble charts are beautiful
+
+
+## Examples

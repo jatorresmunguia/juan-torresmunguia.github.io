@@ -228,7 +228,7 @@
     "href": "portfolio/index.html",
     "title": "Data visualizations gallery",
     "section": "",
-    "text": "Visualizing changes over time of the prevalence of undernourishment\n\n\n\n\n\n\n\n\n\n\n\n\n\nA map to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Shiny Dashboard on disease outbreaks | 1996-2024\n\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
     "objectID": "portfolio/projects/shiny_disease_outbreaks/index.html",
@@ -950,5 +950,306 @@
     "title": "Un gráfico de waffle de brotes de enfermedades en el mundo",
     "section": "Guardar la gráfica en formato PNG",
     "text": "Guardar la gráfica en formato PNG\n\nshowtext_opts(dpi = 320) # Resolución de 320 (\"retina\")\nggsave(\n  \"waffle-pandemics.png\",\n  dpi = 320,\n  width = 14,\n  height = 7,\n  units = \"in\"\n)\nshowtext_auto(FALSE)"
+  },
+  {
+    "objectID": "portfolio/index.html#charts",
+    "href": "portfolio/index.html#charts",
+    "title": "Data visualizations gallery",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "portfolio/index.html#communication-products",
+    "href": "portfolio/index.html#communication-products",
+    "title": "Data visualizations gallery",
+    "section": "Communication products",
+    "text": "Communication products\n\n\n\n\n\n\n\n\n\n\nDashboards\n\n\n\n\n\n\n\n\n\n\n\n\n\nInfographics\n\n\n\n\n\n\n\n\n\n\n\n\n\nScrollytelling\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/comparison/bar-chart/index.html#examples",
+    "href": "portfolio/comparison/bar-chart/index.html#examples",
+    "title": "Bar charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/comparison/bar-chart/index.html#examples",
+    "href": "portfolio/charts/comparison/bar-chart/index.html#examples",
+    "title": "Bar charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/comparison/index.html#examples",
+    "href": "portfolio/charts/comparison/index.html#examples",
+    "title": "Bar charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/comparison/column-chart/index.html#examples",
+    "href": "portfolio/charts/comparison/column-chart/index.html#examples",
+    "title": "Column charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/correlation/index.html#examples",
+    "href": "portfolio/charts/correlation/index.html#examples",
+    "title": "Bubble charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/correlation/bubble-chart/index.html#examples",
+    "href": "portfolio/charts/correlation/bubble-chart/index.html#examples",
+    "title": "Bubble charts",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/correlation/venn-diagram/index.html#examples",
+    "href": "portfolio/charts/correlation/venn-diagram/index.html#examples",
+    "title": "Venn diagram",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/line-column-chart/index.html#examples",
+    "href": "portfolio/charts/time-series/line-column-chart/index.html#examples",
+    "title": "Line column chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/dot-plot/index.html#examples",
+    "href": "portfolio/charts/time-series/dot-plot/index.html#examples",
+    "title": "Dot-plot",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/correlation/heatmap/index.html#examples",
+    "href": "portfolio/charts/correlation/heatmap/index.html#examples",
+    "title": "Heatmap",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/area-chart/index.html#examples",
+    "href": "portfolio/charts/time-series/area-chart/index.html#examples",
+    "title": "Area chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/line-chart/index.html#examples",
+    "href": "portfolio/charts/time-series/line-chart/index.html#examples",
+    "title": "Line chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/slope-chart/index.html#examples",
+    "href": "portfolio/charts/time-series/slope-chart/index.html#examples",
+    "title": "Slope chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/correlation/scatterplot/index.html#examples",
+    "href": "portfolio/charts/correlation/scatterplot/index.html#examples",
+    "title": "Scatterplots",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/geospatial/map/index.html#examples",
+    "href": "portfolio/charts/geospatial/map/index.html#examples",
+    "title": "Maps",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/communication-products/infographics/index.html#examples",
+    "href": "portfolio/communication-products/infographics/index.html#examples",
+    "title": "Infographics",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/ranking/lolllipop/index.html#examples",
+    "href": "portfolio/charts/ranking/lolllipop/index.html#examples",
+    "title": "Lollipop chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/venn-diagram/index.html#examples",
+    "href": "portfolio/charts/proportions/venn-diagram/index.html#examples",
+    "title": "Venn diagram",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/sunburst/index.html#examples",
+    "href": "portfolio/charts/proportions/sunburst/index.html#examples",
+    "title": "Sunburst chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/donut-chart/index.html#examples",
+    "href": "portfolio/charts/proportions/donut-chart/index.html#examples",
+    "title": "Donut chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/distribution/population-pyramid/index.html#examples",
+    "href": "portfolio/charts/distribution/population-pyramid/index.html#examples",
+    "title": "Population pyramids",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/distribution/boxplot/index.html#examples",
+    "href": "portfolio/charts/distribution/boxplot/index.html#examples",
+    "title": "Boxplots",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/distribution/histogram/index.html#examples",
+    "href": "portfolio/charts/distribution/histogram/index.html#examples",
+    "title": "Histograms",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/flow/sankey/index.html#examples",
+    "href": "portfolio/charts/flow/sankey/index.html#examples",
+    "title": "Sankey diagram",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/pie-chart/index.html#examples",
+    "href": "portfolio/charts/proportions/pie-chart/index.html#examples",
+    "title": "Pie chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/treemap/index.html#examples",
+    "href": "portfolio/charts/proportions/treemap/index.html#examples",
+    "title": "Treemap chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/waffle-chart/index.html#examples",
+    "href": "portfolio/charts/proportions/waffle-chart/index.html#examples",
+    "title": "Waffle chart",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/charts/ranking/wordcloud/index.html#examples",
+    "href": "portfolio/charts/ranking/wordcloud/index.html#examples",
+    "title": "Wordcloud",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/communication-products/dashboards/index.html#examples",
+    "href": "portfolio/communication-products/dashboards/index.html#examples",
+    "title": "Dashboards",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/communication-products/scrollytelling/index.html#examples",
+    "href": "portfolio/communication-products/scrollytelling/index.html#examples",
+    "title": "Scrollytelling",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "portfolio/communication-products/dashboards/shiny_disease_outbreaks/index.html",
+    "href": "portfolio/communication-products/dashboards/shiny_disease_outbreaks/index.html",
+    "title": "A Shiny Dashboard on disease outbreaks | 1996-2024",
+    "section": "",
+    "text": "This Shiny app was developed in support of the research paper A global dataset of pandemic- and epidemic-prone disease outbreaks, aiming to visualize the distribution of disease outbreaks across the globe from 1996 to 2024.\n\n\n\n\nAccess the full interactive dashboard on Shinyapps.io.\nThe source code of the Shiny app is available on GitHub.\n\n\n\nCitationBibTeX citation:@online{torres munguía2024,\n  author = {Torres Munguía, Juan Armando},\n  title = {A {Shiny} {Dashboard} on Disease Outbreaks \\textbar{}\n    1996-2024},\n  date = {2024-10-12},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/communication-products/dashboards/shiny_disease_outbreaks},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2024. “A Shiny Dashboard on Disease\nOutbreaks | 1996-2024.” October 12, 2024. https://juan-torresmunguia.netlify.app/blog/portfolio/communication-products/dashboards/shiny_disease_outbreaks."
+  },
+  {
+    "objectID": "portfolio/communication-products/dashboards/index.html",
+    "href": "portfolio/communication-products/dashboards/index.html",
+    "title": "Dashboards",
+    "section": "",
+    "text": "Description\nDashboards are interactive visualizations that allow users to explore data dynamically. They often include multiple charts, filters, and controls to help users gain insights from the data.\n\n\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Shiny Dashboard on disease outbreaks | 1996-2024\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/charts/time-series/line-chart/index.html",
+    "href": "portfolio/charts/time-series/line-chart/index.html",
+    "title": "Line chart",
+    "section": "",
+    "text": "Description\nLine charts are used to visualize data points connected by straight lines, typically to show trends over time or continuous data. They are particularly useful for identifying patterns, fluctuations, and overall trends in datasets.\n\n\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing changes over time of the prevalence of undernourishment\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/charts/geospatial/map/index.html",
+    "href": "portfolio/charts/geospatial/map/index.html",
+    "title": "Maps",
+    "section": "",
+    "text": "Description\nMaps are visual representations of geographic space, used to display the relationship between a phenomenon of interest and its spatial distribution. They can illustrate different types of information, including categorical and continuous data. Maps are essential for identifying geographic patterns and supporting informed decision-making based on location-specific information.\n\n\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nViolence against civilians in the Lake Chad Basin\n\n\n\n\n\n\n\n\n\n\n\n\n\nA map to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/charts/geospatial/map/spi_somalia_visualization/index.html",
+    "href": "portfolio/charts/geospatial/map/spi_somalia_visualization/index.html",
+    "title": "A map to visualize the Standardized Precipitation Index (SPI) for drought analysis",
+    "section": "",
+    "text": "To access the source code and replicate this chart, visit my Blog.\n\n\n\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {A Map to Visualize the {Standardized} {Precipitation} {Index}\n    {(SPI)} for Drought Analysis},\n  date = {2025-02-14},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/charts/geospatial/map/spi_somalia_visualization},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “A Map to Visualize the\nStandardized Precipitation Index (SPI) for Drought Analysis.”\nFebruary 14, 2025. https://juan-torresmunguia.netlify.app/blog/portfolio/charts/geospatial/map/spi_somalia_visualization."
+  },
+  {
+    "objectID": "portfolio/charts/time-series/line-chart/food-security-fao-line-chart/index.html",
+    "href": "portfolio/charts/time-series/line-chart/food-security-fao-line-chart/index.html",
+    "title": "Visualizing changes over time of the prevalence of undernourishment",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Visualizing Changes over Time of the Prevalence of\n    Undernourishment},\n  date = {2025-04-18},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/charts/time-series/line-chart/food-security-fao-line-chart},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Visualizing Changes over Time\nof the Prevalence of Undernourishment.” April 18, 2025. https://juan-torresmunguia.netlify.app/blog/portfolio/charts/time-series/line-chart/food-security-fao-line-chart."
+  },
+  {
+    "objectID": "portfolio/charts/distribution/boxplot/index.html",
+    "href": "portfolio/charts/distribution/boxplot/index.html",
+    "title": "Boxplots",
+    "section": "",
+    "text": "Description\nBoxplots are a type of data visualization that summarizes the distribution of a dataset by displaying its minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum values. They are particularly useful for identifying outliers and understanding the spread and symmetry of the data.\n\n\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/waffle-chart/index.html",
+    "href": "portfolio/charts/proportions/waffle-chart/index.html",
+    "title": "Waffle chart",
+    "section": "",
+    "text": "Description\nA waffle chart is a grid-based visualization that displays categorical data using squares or rectangles. Each square represents a fixed number of data points, allowing for an easy comparison of proportions across categories. Waffle charts are particularly useful for showing the composition of a whole.\n\n\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA waffle chart of disease outbreaks in the world\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/charts/proportions/waffle-chart/waffle_chart_disease_outbreaks/index.html",
+    "href": "portfolio/charts/proportions/waffle-chart/waffle_chart_disease_outbreaks/index.html",
+    "title": "A waffle chart of disease outbreaks in the world",
+    "section": "",
+    "text": "This waffle chart was developed in support of the research paper A global dataset of pandemic- and epidemic-prone disease outbreaks, aiming to visualize the distribution of disease outbreaks across the globe.\n\n\n\nTo access the source code and replicate this chart, visit my Blog.\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {A Waffle Chart of Disease Outbreaks in the World},\n  date = {2025-01-12},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/charts/proportions/waffle-chart/waffle_chart_disease_outbreaks},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “A Waffle Chart of Disease\nOutbreaks in the World.” January 12, 2025. https://juan-torresmunguia.netlify.app/blog/portfolio/charts/proportions/waffle-chart/waffle_chart_disease_outbreaks."
+  },
+  {
+    "objectID": "portfolio/charts/distribution/boxplot/spi_somalia/index.html",
+    "href": "portfolio/charts/distribution/boxplot/spi_somalia/index.html",
+    "title": "A box-plot to visualize the Standardized Precipitation Index (SPI) for drought analysis",
+    "section": "",
+    "text": "To access the source code and replicate this chart, visit my Blog.\n\n\n\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {A Box-Plot to Visualize the {Standardized} {Precipitation}\n    {Index} {(SPI)} for Drought Analysis},\n  date = {2025-02-08},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/charts/distribution/boxplot/spi_somalia},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “A Box-Plot to Visualize the\nStandardized Precipitation Index (SPI) for Drought Analysis.”\nFebruary 8, 2025. https://juan-torresmunguia.netlify.app/blog/portfolio/charts/distribution/boxplot/spi_somalia."
+  },
+  {
+    "objectID": "portfolio/charts/geospatial/map/armed_conflict_lake_chad/index.html",
+    "href": "portfolio/charts/geospatial/map/armed_conflict_lake_chad/index.html",
+    "title": "Violence against civilians in the Lake Chad Basin",
+    "section": "",
+    "text": "To access the source code and replicate this chart, visit my Blog.\n\n\n\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Violence Against Civilians in the {Lake} {Chad} {Basin}},\n  date = {2025-03-09},\n  url = {https://juan-torresmunguia.netlify.app/blog/portfolio/charts/geospatial/map/armed_conflict_lake_chad},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Violence Against Civilians in\nthe Lake Chad Basin.” March 9, 2025. https://juan-torresmunguia.netlify.app/blog/portfolio/charts/geospatial/map/armed_conflict_lake_chad."
   }
 ]

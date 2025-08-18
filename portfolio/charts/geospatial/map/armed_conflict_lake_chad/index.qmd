@@ -1,0 +1,28 @@
+---
+title: "Violence against civilians in the Lake Chad Basin"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-03-09"
+categories: 
+ - data visualization
+image: "lake-chad-map.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/visualizing-conflict-lake-chad-basin/index.html).
+
+::: {.card}
+![](lake-chad-map.png){.lightbox fig-align="center" width=30% style="margin-top: 0px; margin-bottom: 0px;"}
+:::

@@ -1,0 +1,19 @@
+---
+title: "Line column chart"
+subtitle: ""
+image: gravity-ui--chart-mixed.svg
+categories: time-series
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Line column charts are beautiful
+
+
+## Examples

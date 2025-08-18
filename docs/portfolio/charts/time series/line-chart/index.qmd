@@ -1,0 +1,19 @@
+---
+title: "Line chart"
+subtitle: ""
+image: flat-color-icons--combo-chart.svg
+categories: time-series
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Line charts are beautiful
+
+
+## Examples

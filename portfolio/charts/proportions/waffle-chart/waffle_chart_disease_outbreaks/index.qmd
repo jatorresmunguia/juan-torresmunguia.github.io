@@ -1,0 +1,31 @@
+---
+title: "A waffle chart of disease outbreaks in the world"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-01-12"
+categories: 
+ - data visualization
+ - research paper
+image: "waffle-pandemics.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+This waffle chart was developed in support of the research paper [_A global dataset of pandemic- and epidemic-prone disease outbreaks_](https://www.nature.com/articles/s41597-022-01797-2), aiming to visualize the distribution of disease outbreaks across the globe.
+
+::: {.card}
+![](waffle-pandemics.png){width=100% .lightbox}
+:::
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/waffle-chart-disease-outbreaks/index.html).

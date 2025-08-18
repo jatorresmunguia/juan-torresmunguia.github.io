@@ -1,0 +1,19 @@
+---
+title: "Venn diagram"
+subtitle: ""
+image: carbon--chart-venn-diagram.svg
+categories: proportions
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Venn diagrams are beautiful
+
+
+## Examples

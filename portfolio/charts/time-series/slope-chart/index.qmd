@@ -1,0 +1,19 @@
+---
+title: "Slope chart"
+subtitle: ""
+image: tdesign--chart-line-data.svg
+categories: time-series
+title-block-banner: true
+title-block-style: manuscript
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: portfolio.css
+---
+
+## Slope charts are beautiful
+
+
+## Examples

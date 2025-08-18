@@ -1,0 +1,28 @@
+---
+title: "Waffle chart"
+subtitle: ""
+image: tabler--chart-cohort.svg
+categories: proportions
+title-block-banner: true
+title-block-style: manuscript
+listing: 
+    contents: "/*/index.qmd"
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    fields: [image, title]
+    page-size: 100
+execute:
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+    css: "../../../portfolio.css"
+---
+### Description
+A **waffle chart** is a grid-based visualization that displays categorical data using squares or rectangles. Each square represents a fixed number of data points, allowing for an easy comparison of proportions across categories. Waffle charts are particularly useful for showing the composition of a whole.
+
+### Examples
