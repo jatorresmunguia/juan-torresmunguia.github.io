@@ -20,7 +20,9 @@
       "charts/*/*/index.qmd",
       "/communication-products/*/index.qmd",
       "communication-products/*/index.qmd",
-      "/charts/*/*/index.qmd"
+      "/charts/*/*/index.qmd",
+      "charts/*/*/",
+      "communication-products/*/"
     ],
     "blog\\index-es.qmd": [
       "posts-es"
