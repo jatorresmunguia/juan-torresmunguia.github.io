@@ -3,6 +3,7 @@ title: "Data visualizations gallery"
 subtitle: ""
 title-block-banner: true
 title-block-style: manuscript
+link-external-newwindow: false
 listing: 
   - id: charts
     contents: charts/*/*/index.qmd
