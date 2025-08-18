@@ -5,7 +5,7 @@ title-block-banner: true
 title-block-style: manuscript
 listing: 
   - id: charts
-    contents: "charts/*/*/index.qmd"
+    contents: charts/*/*/index.qmd
     type: grid
     grid-columns: 6
     sort: "date desc"
@@ -15,7 +15,7 @@ listing:
     fields: [image, title]
     page-size: 100
   - id: communication-products
-    contents: "/communication-products/*/index.qmd"
+    contents: communication-products/*/index.qmd
     type: grid
     grid-columns: 6
     sort: "date desc"

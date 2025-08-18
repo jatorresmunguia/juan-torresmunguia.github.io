@@ -18,7 +18,8 @@
       "projects",
       "charts/*/index.qmd",
       "charts/*/*/index.qmd",
-      "/communication-products/*/index.qmd"
+      "/communication-products/*/index.qmd",
+      "communication-products/*/index.qmd"
     ],
     "blog\\index-es.qmd": [
       "posts-es"
