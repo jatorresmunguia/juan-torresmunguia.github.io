@@ -20,7 +20,6 @@ execute:
 format: 
   html: 
     page-layout: article
-    css: "../../../portfolio.css"
 ---
 ### Description
 **Maps** are visual representations of geographic space, used to display the relationship between a phenomenon of interest and its spatial distribution. They can illustrate different types of information, including categorical and continuous data. Maps are essential for identifying geographic patterns and supporting informed decision-making based on location-specific information.
