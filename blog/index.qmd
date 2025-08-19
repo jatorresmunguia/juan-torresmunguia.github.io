@@ -2,7 +2,11 @@
 title: "Data Art & Science Blog"
 title-block-banner: img/creazione-di-adamo.jpeg
 title-block-style: manuscript
-subtitle: "Exploring the art and science of working with development and humanitarian data"
+subtitle: |
+ Exploring the art and science of working with development and humanitarian data  
+ <div style="margin-top:1em; font-size:0.8em; text-align:right;">
+ <strong>Photo:</strong> <em>The Creation of Adam</em> (1508–1512) by Michelangelo. Via <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.
+ </div>
 listing:
   contents: posts
   sort: "date desc"

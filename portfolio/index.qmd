@@ -1,8 +1,12 @@
 ---
 title: "Data visualizations gallery"
-subtitle: ""
-title-block-banner: true
+title-block-banner: img/nightingale-mortality.jpg
 title-block-style: manuscript
+subtitle: |
+ A collection of charts to visualize development and humanitarian issues
+ <div style="margin-top:1em; font-size:0.8em; text-align:right;">
+ <strong>Photo:</strong> <em>Diagram of the causes of mortality in the army in the East</em> (1858) by Florence Nightingale. Via <a href="https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.
+ </div>
 link-external-newwindow: false
 listing: 
   - id: charts
