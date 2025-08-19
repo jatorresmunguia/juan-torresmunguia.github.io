@@ -1,0 +1,111 @@
+/* ---- Cards ---- */
+.card {
+  position: relative;
+  overflow: hidden;
+  border: none; 
+  transition: transform 0.4s ease, opacity 0.4s ease; 
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: scale(1.08); 
+  opacity: 0.3;  
+}
+
+.card:hover::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  font-weight: bold;
+  color: white;
+  pointer-events: none; 
+}
+
+/* ---- Card Title ---- */
+.card .card-title {
+  position: static;
+  width: 100%;
+  background: transparent; 
+  color: black; 
+  padding: 5px;
+  margin: 0;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card:hover .card-title {
+  color: white; 
+}
+
+.quarto-grid-item .card-title {
+  margin-bottom: 0;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 0;
+  color: var(--bs-card-color);
+}
+
+/* ---- Filter Buttons ---- */
+.filter-btn {
+  border: none;
+  background-color: #50a5d2;
+  font-size: 0.8em;
+  color: white;
+  margin: 4px; 
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #153268 !important;
+  color: white !important;
+}
+
+.filter-btn:hover {
+  color: #153268 !important;
+  background-color: #50a5d2 !important;
+}
+
+.btn-group {
+  margin-top: 8px; 
+}
+
+/* ---- Listing Categories ---- */
+.quarto-listing-category .btn.custom-btn {
+  font-size: 0.8em;
+  color: white;
+  cursor: pointer;
+}
+
+.quarto-listing-category .btn.custom-btn .category {
+  color: white; 
+  background-color: transparent;
+}
+
+.quarto-listing-category .btn.custom-btn:hover .category {
+  color: #153268; 
+}
+
+.quarto-listing-category .category.active {
+  background-color: #153268; 
+  color: white;
+}
+
+/* ---- Listing Images ---- */
+#charts .card-img,
+#charts .thumbnail-image,
+#communication-products .card-img,
+#communication-products .thumbnail-image {
+  max-height: 120px;  
+  object-fit: contain; 
+  margin: auto; 
+  display: block;
+}

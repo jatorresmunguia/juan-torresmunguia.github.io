@@ -1,0 +1,8 @@
+/* Effect button */
+.custom-btn {
+    color: #f2f0e8;
+}
+
+.custom-btn:hover {
+  color: #50a5d2;
+}
