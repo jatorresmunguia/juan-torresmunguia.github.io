@@ -95,10 +95,11 @@ We preprocess the data to extract relevant information to calculate the SPI. We 
 
 rainfall_data <- rainfall_data |>
   slice(-1) |> # Remove the first row (metadata)
+  filter(adm_level == 2) |>
   mutate(
     year = year(date), # Extract year from the 'date' column
     month = month(date), # Extract month from the 'date' column
-    district_code = ADM2_PCODE # Rename the 'ADM2_PCODE' column to 'district_code'
+    district_code = PCODE # Rename the 'ADM2_PCODE' column to 'district_code'
   ) |>
   filter(year < 2025) |> # Filter data up to 2024
   rename(

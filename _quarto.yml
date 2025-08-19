@@ -25,7 +25,7 @@ website:
   search: false
   page-navigation: true
   reader-mode: false
-  site-url: https://juan-torresmunguia.netlify.app/blog
+  site-url: https://juan-torresmunguia.netlify.app
   description: Exploring the art and science of working with development and humanitarian data
 
   navbar:
