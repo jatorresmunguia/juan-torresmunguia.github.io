@@ -2,7 +2,11 @@
 title: "Blog del Arte & Ciencia de Datos"
 title-block-banner: img/creazione-di-adamo.jpeg
 title-block-style: manuscript
-subtitle: "Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios"
+subtitle: |
+ Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios
+ <div style="margin-top:1em; font-size:0.8em; text-align:right;">
+ <strong>Imagen:</strong> <em>La Creación de Adán</em> (1508–1512) por Miguel Ángel. A través de <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.
+ </div>
 listing:
   contents: posts-es
   sort: "date desc"
