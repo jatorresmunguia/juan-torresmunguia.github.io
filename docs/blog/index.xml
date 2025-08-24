@@ -109,17 +109,14 @@
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
   <link>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</link>
   <description><![CDATA[ The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems. ]]></description>
-  <category>data analysis</category>
-  <category>drought</category>
-  <category>tidyverse</category>
+  <category>data visualizatin</category>
+  <category>persons seeking protection</category>
   <category>ggplot2</category>
-  <category>box plots</category>
-  <category>SCI</category>
-  <category>Standardized Precipitation Index (SPI)</category>
-  <category>Somalia</category>
+  <category>stacked area chart</category>
+  <category>Germany</category>
   <guid>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</guid>
   <pubDate>Sat, 08 Feb 2025 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/spi-somalia.png" medium="image" type="image/png" height="108" width="144"/>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>

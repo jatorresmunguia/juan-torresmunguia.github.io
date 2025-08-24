@@ -1,5 +1,5 @@
 ---
-title: "A population pyramid to visualize crime victimization by age and sex in Mexico"
+title: "A box plot to visualize the Standardized Precipitation Index (SPI) for drought analysis in Somalia"
 subtitle: ""
 author: 
  - name: 
