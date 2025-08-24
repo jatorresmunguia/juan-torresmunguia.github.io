@@ -23,11 +23,26 @@
     ],
     "portfolio\\index.qmd": [
       "charts/*/*/index.qmd",
-      "communication-products/*/index.qmd"
+      "communication-products/*/index.qmd",
+      "charts/*/*/*/index.qmd",
+      "/*/*/*/*/index.qmd",
+      "/*/index.qmd"
     ],
     "publications\\index.qmd": [
       "peer_reviewed_papers/*/index.qmd",
       "working_papers/*/index.qmd"
+    ],
+    "portfolio\\charts\\distribution\\population-pyramid\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\charts\\time-series\\dot-plot\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\dot-plot\\index.qmd": [
+      "/*/index.qmd"
+    ],
+    "portfolio\\population-pyramid\\index.qmd": [
+      "/*/index.qmd"
     ]
   }
 }

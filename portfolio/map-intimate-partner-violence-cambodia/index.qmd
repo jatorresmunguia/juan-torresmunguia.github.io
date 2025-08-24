@@ -1,0 +1,29 @@
+---
+title: "Three maps to examine the prevalence of intimate partner violence (IPV) in Cambodia"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-05-10"
+categories: 
+ - data visualization
+image: "ipv-cambodia-map.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/map-intimate-partner-violence-cambodia/index.html).
+
+::: {.card}
+![](ipv-cambodia-map.png){.lightbox fig-align="center" width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+:::
+

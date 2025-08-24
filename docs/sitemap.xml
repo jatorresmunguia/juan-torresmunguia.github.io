@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/index.html</loc>
-    <lastmod>2025-08-19T23:00:11.909Z</lastmod>
+    <lastmod>2025-08-24T21:34:32.758Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/communication-products/infographics/index.html</loc>
@@ -90,11 +90,11 @@
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/distribution/population-pyramid/index.html</loc>
-    <lastmod>2025-08-18T23:45:30.183Z</lastmod>
+    <lastmod>2025-08-23T10:10:57.068Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/distribution/boxplot/spi_somalia/index.html</loc>
-    <lastmod>2025-08-18T23:44:43.781Z</lastmod>
+    <lastmod>2025-08-23T10:02:57.987Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/correlation/scatterplot/index.html</loc>
@@ -226,7 +226,7 @@
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/time-series/dot-plot/index.html</loc>
-    <lastmod>2025-08-18T23:47:59.775Z</lastmod>
+    <lastmod>2025-08-23T18:21:19.622Z</lastmod>
   </url>
   <url>
     <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/time-series/line-chart/index.html</loc>
@@ -283,5 +283,81 @@
   <url>
     <loc>https://juan-torresmunguia.netlify.app/publications/working_papers/violent_crime_latam_iadb_2016/index.html</loc>
     <lastmod>2025-02-26T16:36:56.623Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/index.html</loc>
+    <lastmod>2025-08-24T21:12:13.146Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/index.html</loc>
+    <lastmod>2025-08-24T20:51:37.823Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/time-series/dot-plot/cambodia-acceptability-violence-dot-plot/index.html</loc>
+    <lastmod>2025-08-23T18:32:54.552Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/distribution/population-pyramid/population-pyramid-mexico-crime/index.html</loc>
+    <lastmod>2025-08-23T10:04:25.958Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/index.html</loc>
+    <lastmod>2025-08-24T20:09:02.774Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/charts/geospatial/map/map-intimate-partner-violence-cambodia/index.html</loc>
+    <lastmod>2025-08-24T20:17:01.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html</loc>
+    <lastmod>2025-08-24T21:19:47.272Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/spi_somalia_visualization/index.html</loc>
+    <lastmod>2025-08-18T22:44:52.503Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/shiny_disease_outbreaks/index.html</loc>
+    <lastmod>2025-04-15T17:38:21.513Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/population-pyramid/index.html</loc>
+    <lastmod>2025-08-23T10:10:57.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/dot-plot/index.html</loc>
+    <lastmod>2025-08-23T18:21:19.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad/index.html</loc>
+    <lastmod>2025-08-18T22:48:01.736Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/area-chart/index.html</loc>
+    <lastmod>2025-08-18T23:47:51.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/dot-plot/cambodia-acceptability-violence-dot-plot/index.html</loc>
+    <lastmod>2025-08-23T18:32:54.552Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/map-intimate-partner-violence-cambodia/index.html</loc>
+    <lastmod>2025-08-24T20:17:01.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/population-pyramid/population-pyramid-mexico-crime/index.html</loc>
+    <lastmod>2025-08-23T10:04:25.958Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/spi_somalia/index.html</loc>
+    <lastmod>2025-08-23T10:02:57.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/waffle_chart_disease_outbreaks/index.html</loc>
+    <lastmod>2025-08-18T22:31:58.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juan-torresmunguia.netlify.app/portfolio/population-pyramid-mexico-crime/index.html</loc>
+    <lastmod>2025-08-23T10:04:25.958Z</lastmod>
   </url>
 </urlset>

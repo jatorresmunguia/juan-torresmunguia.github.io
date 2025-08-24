@@ -1,0 +1,29 @@
+---
+title: "A dot plot of public acceptability of domestic violence in Cambodia between 2005 and 2009"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-06-18"
+categories: 
+ - data visualization
+image: "cambodia-domestic-violence-dot-plot.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/cambodia-acceptability-violence-dot-plot/index.html).
+
+::: {.card}
+![](cambodia-domestic-violence-dot-plot.png){width=100% .lightbox}
+:::
+

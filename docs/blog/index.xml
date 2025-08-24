@@ -10,7 +10,51 @@
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Wed, 26 Mar 2025 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 14 Jul 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Creating a population pyramid to visualize crime victimization by age and sex in Mexico</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/</link>
+  <description><![CDATA[ Population pyramids are a powerful way to visualize demographic data, especially when analyzing age and sex patterns. In this post, I will elaborate a population pyramid using the {ggplot2} package in R, specifically focusing on crime victimization data from Mexico’s National Survey of Victimization and Perception of Public Safety (<em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</em>, ENVIPE). ]]></description>
+  <category>data visualization</category>
+  <category>official statistics</category>
+  <category>Mexico</category>
+  <category>household surveys</category>
+  <category>ENVIPE</category>
+  <category>crime</category>
+  <category>victimization</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/</guid>
+  <pubDate>Mon, 14 Jul 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/pyramid-crime-mexico.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title>A dot plot of public acceptability of domestic violence in Cambodia between 2005 and 2009</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/</link>
+  <description><![CDATA[ According to official data from the National Institute of Statistics of Cambodia, in 2009 about 77 percent of Cambodians aged 15–49 considered it acceptable for a man to curse his wife. Although this figure is high, it represents a decrease of about 16 percentage points compared to the previous estimate from 2005. Analyzing these changes is important for gaining a better understanding of the phenomenon of violence against women and girls. ]]></description>
+  <category>data visualization</category>
+  <category>domestic violence</category>
+  <category>Cambodia</category>
+  <category>ggplot2</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/</guid>
+  <pubDate>Wed, 18 Jun 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title>Three maps to examine the prevalence of intimate partner violence (IPV) in Cambodia</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/</link>
+  <description><![CDATA[ According to the 2021-22 Domestic Violence module of the Kingdom of Cambodia’s Demographic and Health Survey (CDHS), over 21% of Cambodian women aged 15–49 who have ever had a husband (or intimate partner), have experienced physical, sexual, economic, and/or emotional intimate partner violence in their lifetime. This figures varies significantly across the country, with some provinces reporting rates as high as 45% while others report rates as low as 6%. ]]></description>
+  <category>data visualization</category>
+  <category>intimate partner violence (IPV)</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>shapefiles</category>
+  <category>Cambodia</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/</guid>
+  <pubDate>Sat, 10 May 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/ipv-cambodia-map.png" medium="image" type="image/png" height="57" width="144"/>
+</item>
 <item>
   <title>Working with Humanitarian Exchange Language (HXL) Hashtags</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
@@ -59,6 +103,23 @@
   <guid>https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/</guid>
   <pubDate>Fri, 14 Feb 2025 06:00:00 GMT</pubDate>
   <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/spi-somalia-map.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title>Persons seeking protection by status and reference year in Germany</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</link>
+  <description><![CDATA[ The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems. ]]></description>
+  <category>data analysis</category>
+  <category>drought</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>box plots</category>
+  <category>SCI</category>
+  <category>Standardized Precipitation Index (SPI)</category>
+  <category>Somalia</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</guid>
+  <pubDate>Sat, 08 Feb 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/spi-somalia.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
   <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>

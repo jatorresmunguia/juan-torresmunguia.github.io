@@ -2,32 +2,14 @@
   {
     "listing": "/portfolio/index.html",
     "items": [
-      "/portfolio/charts/comparison/bar-chart/index.html",
-      "/portfolio/charts/comparison/column-chart/index.html",
-      "/portfolio/charts/correlation/bubble-chart/index.html",
-      "/portfolio/charts/correlation/heatmap/index.html",
-      "/portfolio/charts/correlation/scatterplot/index.html",
-      "/portfolio/charts/distribution/boxplot/index.html",
-      "/portfolio/charts/distribution/histogram/index.html",
-      "/portfolio/charts/distribution/population-pyramid/index.html",
-      "/portfolio/charts/flow/sankey/index.html",
-      "/portfolio/charts/geospatial/map/index.html",
-      "/portfolio/charts/proportions/donut-chart/index.html",
-      "/portfolio/charts/proportions/pie-chart/index.html",
-      "/portfolio/charts/proportions/sunburst/index.html",
-      "/portfolio/charts/proportions/treemap/index.html",
-      "/portfolio/charts/proportions/venn-diagram/index.html",
-      "/portfolio/charts/proportions/waffle-chart/index.html",
-      "/portfolio/charts/ranking/lolllipop/index.html",
-      "/portfolio/charts/ranking/wordcloud/index.html",
-      "/portfolio/charts/time-series/area-chart/index.html",
-      "/portfolio/charts/time-series/dot-plot/index.html",
-      "/portfolio/charts/time-series/line-chart/index.html",
-      "/portfolio/charts/time-series/line-column-chart/index.html",
-      "/portfolio/charts/time-series/slope-chart/index.html",
-      "/portfolio/communication-products/dashboards/index.html",
-      "/portfolio/communication-products/infographics/index.html",
-      "/portfolio/communication-products/scrollytelling/index.html"
+      "/portfolio/population-pyramid-mexico-crime/index.html",
+      "/portfolio/cambodia-acceptability-violence-dot-plot/index.html",
+      "/portfolio/map-intimate-partner-violence-cambodia/index.html",
+      "/portfolio/armed_conflict_lake_chad/index.html",
+      "/portfolio/spi_somalia_visualization/index.html",
+      "/portfolio/spi_somalia/index.html",
+      "/portfolio/waffle_chart_disease_outbreaks/index.html",
+      "/portfolio/shiny_disease_outbreaks/index.html"
     ]
   },
   {
@@ -45,9 +27,13 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/population-pyramid-mexico-crime/index.html",
+      "/blog/posts/cambodia-acceptability-violence-dot-plot/index.html",
+      "/blog/posts/map-intimate-partner-violence-cambodia/index.html",
       "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts/spi_somalia_visualization/index.html",
+      "/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html",
       "/blog/posts/spi_somalia/index.html",
       "/blog/posts/estimating-envipe-prevalence/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks/index.html"
@@ -73,6 +59,7 @@
   {
     "listing": "/portfolio/charts/geospatial/map/index.html",
     "items": [
+      "/portfolio/charts/geospatial/map/map-intimate-partner-violence-cambodia/index.html",
       "/portfolio/charts/geospatial/map/armed_conflict_lake_chad/index.html",
       "/portfolio/charts/geospatial/map/spi_somalia_visualization/index.html"
     ]
@@ -105,6 +92,30 @@
       "/publications/working_papers/poverty_mexico_2020/index.html",
       "/publications/working_papers/behind_homicides_gender_gaps_mexico_2018/index.html",
       "/publications/working_papers/violent_crime_latam_iadb_2016/index.html"
+    ]
+  },
+  {
+    "listing": "/portfolio/charts/distribution/population-pyramid/index.html",
+    "items": [
+      "/portfolio/charts/distribution/population-pyramid/population-pyramid-mexico-crime/index.html"
+    ]
+  },
+  {
+    "listing": "/portfolio/charts/time-series/dot-plot/index.html",
+    "items": [
+      "/portfolio/charts/time-series/dot-plot/cambodia-acceptability-violence-dot-plot/index.html"
+    ]
+  },
+  {
+    "listing": "/portfolio/population-pyramid/index.html",
+    "items": [
+      "/portfolio/population-pyramid/population-pyramid-mexico-crime/index.html"
+    ]
+  },
+  {
+    "listing": "/portfolio/dot-plot/index.html",
+    "items": [
+      "/portfolio/dot-plot/cambodia-acceptability-violence-dot-plot/index.html"
     ]
   }
 ]

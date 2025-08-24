@@ -1,0 +1,29 @@
+---
+title: "Creating a population pyramid to visualize crime victimization by age and sex in Mexico"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-07-14"
+categories: 
+ - data visualization
+
+image: "pyramid-crime-mexico.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/population-pyramid-mexico-crime/index.html).
+
+::: {.card}
+![](pyramid-crime-mexico.png){width=100% .lightbox}
+:::

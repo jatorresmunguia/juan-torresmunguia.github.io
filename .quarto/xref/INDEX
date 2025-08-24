@@ -294,5 +294,62 @@
   },
   "portfolio/charts/geospatial/map/armed_conflict_lake_chad/index.qmd": {
     "index.html": "5b95a470"
+  },
+  "blog/posts/population-pyramid-mexico-crime/index.qmd": {
+    "index.html": "737e2633"
+  },
+  "blog/posts/cambodia-acceptability-violence-dot-plot/index.qmd": {
+    "index.html": "42fe0078"
+  },
+  "portfolio/charts/time-series/dot-plot/cambodia-acceptability-violence-dot-plot/index.qmd": {
+    "index.html": "04c48128"
+  },
+  "portfolio/charts/distribution/population-pyramid/population-pyramid-mexico-crime/index.qmd": {
+    "index.html": "64bbef07"
+  },
+  "blog/posts/map-intimate-partner-violence-cambodia/index.qmd": {
+    "index.html": "d3129334"
+  },
+  "portfolio/charts/geospatial/map/map-intimate-partner-violence-cambodia/index.qmd": {
+    "index.html": "89486550"
+  },
+  "blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.qmd": {
+    "index.html": "bb2e3c4c"
+  },
+  "portfolio/area-chart/index.qmd": {
+    "index.html": "f3d2a776"
+  },
+  "portfolio/armed_conflict_lake_chad/index.qmd": {
+    "index.html": "b583f3d8"
+  },
+  "portfolio/dot-plot/cambodia-acceptability-violence-dot-plot/index.qmd": {
+    "index.html": "f4770bd8"
+  },
+  "portfolio/dot-plot/index.qmd": {
+    "index.html": "73c4c655"
+  },
+  "portfolio/map-intimate-partner-violence-cambodia/index.qmd": {
+    "index.html": "1fa91c19"
+  },
+  "portfolio/population-pyramid/index.qmd": {
+    "index.html": "e37df152"
+  },
+  "portfolio/population-pyramid/population-pyramid-mexico-crime/index.qmd": {
+    "index.html": "a5382574"
+  },
+  "portfolio/shiny_disease_outbreaks/index.qmd": {
+    "index.html": "20bc1fe8"
+  },
+  "portfolio/spi_somalia/index.qmd": {
+    "index.html": "65f3301c"
+  },
+  "portfolio/spi_somalia_visualization/index.qmd": {
+    "index.html": "8166d44b"
+  },
+  "portfolio/waffle_chart_disease_outbreaks/index.qmd": {
+    "index.html": "39c3c22e"
+  },
+  "portfolio/population-pyramid-mexico-crime/index.qmd": {
+    "index.html": "2d54aa50"
   }
 }

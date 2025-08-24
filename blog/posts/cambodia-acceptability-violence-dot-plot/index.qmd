@@ -1,0 +1,244 @@
+---
+title: "A dot plot of public acceptability of domestic violence in Cambodia between 2005 and 2009"
+subtitle: "How to use {ggplot2} to create a dot plot to visualize changes over time"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-06-18"
+categories: 
+ - data visualization
+ - domestic violence
+ - Cambodia
+ - ggplot2
+
+image: "cambodia-domestic-violence-dot-plot.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Overview
+According to official data from the National Institute of Statistics of Cambodia, in 2009 about 77 percent of Cambodians aged 15–49 considered it acceptable for a man to curse his wife. Although this figure is high, it represents a decrease of about 16 percentage points compared to the previous estimate from 2005. Analyzing these changes is important for gaining a better understanding of the phenomenon of violence against women and girls.
+
+One of the most effective ways to visualize these changes over time is through dot plots. In this post, we will use the {ggplot2} package in R to create a dot plot that illustrates how public acceptance of domestic violence in Cambodia changed between 2005 and 2009.
+
+## Set-up
+Load necessary libraries for data processing and visualization.
+
+```{r}
+#| warning: false
+library(tidyverse) # For data wrangling
+library(ggplot2) # Data visualization
+library(readxl) # To read Excel files
+library(kableExtra) # For data tables
+library(ggplot2) # For data visualization
+library(ggtext) # For formatting text in ggplot2
+library(showtext) # For custom fonts in ggplot2
+library(stringr) # For string manipulation
+
+```
+
+## Loading data
+Data comes from the report "Women and Men in Cambodia" produced by the National Institute of Statistics of the Ministry of Planning. This document provides insights into the situation of women and men in different spheres of life, including health, education, labour, decision making, and violence. The data used in this post is available in the table "Public Acceptability of Domestic Violence between 2005 and 2009" in section "VIOLENCE AGAINST WOMEN". Report can be found [here](https://www.nis.gov.kh/nis/WM/Women%20and%20Men's%20in%20Cambodia%20final%20version_EN.pdf).
+
+I extracted the data from the report and created an Excel file that can be found [here](acceptability-violence-cambodia.xlsx)
+
+```{r}
+#| warning: false
+acceptability_violence <- read_excel("acceptability-violence-cambodia.xlsx")
+
+```
+
+This information looks like this:
+
+```{r}
+#| warning: false
+acceptability_violence |>
+  kbl(
+    caption = "Public Acceptability of Domestic Violence in Cambodia between 2005 and 2009"
+    ) |>
+  kable_paper("hover", full_width = F)
+
+```
+
+I use the `pivot_longer()` function in the {tidyverse} package to reshape the data to a long format, required for this plot. 
+
+```{r}
+#| warning: false
+acceptability_violence <- acceptability_violence |>
+  pivot_longer(!Action, names_to = "Year", values_to = "Percentage")
+```
+
+Now the data looks like this:
+```{r}
+#| warning: false
+acceptability_violence |>
+  kbl(caption = "Public Acceptability of Domestic Violence in Cambodia between 2005 and 2009") |>
+  kable_paper("hover", full_width = F)
+
+```
+
+## Dot plot design
+I create a custom theme for the dot plot and apply the font "Jacques Francois". More font alternatives can be found [here](https://fonts.google.com/).
+```{r}
+#| warning: false
+
+# Add custom font
+font_add_google("Jacques Francois", "Jacques Francois") 
+
+showtext_auto()
+
+# Custom theme for the waffle chart
+theme_dot_plot <- function() {
+  theme_minimal(
+    base_family = "Jacques Francois" # Base theme with custom font
+  ) +
+    # Custom theme settings
+    theme(
+      # remove grid lines
+      panel.grid = element_line(
+        size = 0.5,
+        colour = "white"
+        ),
+
+      # Axis settings
+      axis.line = element_blank(),
+      
+      axis.title.y = element_blank(),
+      axis.text.y = element_text(
+        color = "black",
+        face = "bold",
+        size = 16
+      ),
+      axis.title.x = element_text(
+        color = "black",
+        face = "bold",
+        size = 16
+      ),
+      axis.text.x = element_text(
+        color = "black",
+        face = "bold",
+        size = 16
+      ),
+
+      # Title settings
+      plot.title.position = "plot", # Position of the title
+      plot.title = element_text(
+        color = "black",
+        face = "bold",
+        size = 24,
+        margin = margin(5, 0, 5, 0) # Top, right, bottom, left
+      ),
+      
+      # Subtitle settings
+      plot.subtitle = element_text(
+        color = "grey20",
+        face = "italic",
+        size = 20,
+        margin = margin(0, 0, 10, 0)
+        ),
+      
+      # Legend settings
+      legend.position = "top",
+      legend.title = element_blank(),
+      legend.spacing.x = unit(0.2, "cm"),
+      legend.key.spacing = unit(0.5, "cm"), # Spacing between legend keys
+      legend.text = element_text(
+        margin = margin(5, 2, 5, 0),
+        face = "bold",
+        color = "black",
+        size = 16
+      ),
+      legend.direction = "horizontal",
+      legend.byrow = FALSE,
+      
+      # Caption settings
+      plot.caption = element_text(
+        margin = margin(40, 0, 0, 0), # Top, right, bottom, left
+        color = "black",
+        size = 16
+          ),
+      plot.caption.position = "plot",
+
+      plot.background = element_rect(
+        color = "#FBB4AE",
+        fill = "#FBB4AE"
+      ),
+      plot.margin = margin(20, 40, 20, 40)
+    )
+}
+
+title_chart <- "Public acceptability of domestic violence in Cambodia"
+subtitle_chart <- "Between 2005 and 2009, the share of people who tolerate violence has decreased"
+caption_chart <- "Cambodia Key Gender Statistics, 2015 \nChart created by Juan Torres Munguía"
+
+# Set the resolution of the image 320 dpi is for high-quality images ("retina")
+showtext_opts(dpi = 320) 
+```
+
+Finally, I create the dot plot using `geom_line()` and `geom_point()` functions from the {ggplto2} package.
+```{r}
+#| warning: false
+#| output: false
+
+dot_plot_acceptability <- acceptability_violence |> 
+  ggplot(
+    aes(x = Percentage, 
+    y = Action)
+    ) +
+  geom_line(
+    aes(group = Action),
+    linewidth = 1.5,
+    color = "#737373"
+  ) +
+  geom_point(
+    aes(color = Year), 
+    size = 6
+  ) +
+  scale_colour_manual(
+    values = c("#084081", "#2B8CBE")
+    ) +
+  labs(
+    title = title_chart, 
+    subtitle = subtitle_chart,
+    caption = caption_chart,
+  ) +
+  scale_x_continuous(
+    limits = c(0, 100)
+  ) +
+  scale_y_discrete(
+    # Wrap y-axis labels to a width of 32 characters
+    labels = function(x) str_wrap(x, width = 32)
+    ) +
+  theme_dot_plot() 
+
+```
+
+Finally, I export the plot using a 320-dpi resolution for high-quality ("retina")
+```{r}
+#| warning: false
+#| output: false
+
+dot_plot_acceptability
+showtext_opts(dpi = 320) 
+ggsave(
+  "cambodia-domestic-violence-dot-plot.png",
+  dpi = 320,
+  width = 12,
+  height = 9,
+  units = "in"
+)
+
+# Turn off the showtext functionality
+showtext_auto(FALSE) 
+```
+
+![](cambodia-domestic-violence-dot-plot.png){.lightbox fig-align="center" width=100% style="margin-top: 0px; margin-bottom: 0px;"}

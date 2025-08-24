@@ -1,0 +1,28 @@
+---
+title: "A population pyramid to visualize crime victimization by age and sex in Mexico"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-02-08"
+categories: 
+ - data visualization
+image: "spi-somalia.png"
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/spi_somalia/index.html).
+
+::: {.card}
+![](spi-somalia.png){width=100% .lightbox}
+:::
+
