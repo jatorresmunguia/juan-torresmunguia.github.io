@@ -10,7 +10,21 @@
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Mon, 14 Jul 2025 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 01 Aug 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>How has changed over time the number of persons seeking protection in Germany?</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</link>
+  <description><![CDATA[ In Germany, as of 31 December 204, according to the Central Register of Foreigners, more than 14 million people of the 83.6 Million residents are foreigners. ]]></description>
+  <category>data visualizatin</category>
+  <category>persons seeking protection</category>
+  <category>ggplot2</category>
+  <category>stacked area chart</category>
+  <category>Germany</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</guid>
+  <pubDate>Fri, 01 Aug 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>Creating a population pyramid to visualize crime victimization by age and sex in Mexico</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
@@ -103,20 +117,6 @@
   <guid>https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/</guid>
   <pubDate>Fri, 14 Feb 2025 06:00:00 GMT</pubDate>
   <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/spi-somalia-map.png" medium="image" type="image/png" height="108" width="144"/>
-</item>
-<item>
-  <title>Persons seeking protection by status and reference year in Germany</title>
-  <dc:creator>Juan Armando Torres Munguía</dc:creator>
-  <link>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</link>
-  <description><![CDATA[ The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems. ]]></description>
-  <category>data visualizatin</category>
-  <category>persons seeking protection</category>
-  <category>ggplot2</category>
-  <category>stacked area chart</category>
-  <category>Germany</category>
-  <guid>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</guid>
-  <pubDate>Sat, 08 Feb 2025 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>

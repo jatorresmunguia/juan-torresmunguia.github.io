@@ -5,8 +5,8 @@
 <meta name="generator" content="quarto-1.4.549">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Juan Armando Torres Munguía">
-<meta name="dcterms.date" content="2025-02-08">
-<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - Persons seeking protection by status and reference year in Germany</title>
+<meta name="dcterms.date" content="2025-08-01">
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - How has changed over time the number of persons seeking protection in Germany?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,17 +169,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Persons seeking protection by status and reference year in Germany</h1>
-<p class="subtitle lead">A</p>
+<h1 class="title">How has changed over time the number of persons seeking protection in Germany?</h1>
+<p class="subtitle lead">A stacked area chart using {ggplot2}</p>
   <div class="quarto-categories">
-    <div class="quarto-category">data analysis</div>
-    <div class="quarto-category">drought</div>
-    <div class="quarto-category">tidyverse</div>
+    <div class="quarto-category">data visualizatin</div>
+    <div class="quarto-category">persons seeking protection</div>
     <div class="quarto-category">ggplot2</div>
-    <div class="quarto-category">box plots</div>
-    <div class="quarto-category">SCI</div>
-    <div class="quarto-category">Standardized Precipitation Index (SPI)</div>
-    <div class="quarto-category">Somalia</div>
+    <div class="quarto-category">stacked area chart</div>
+    <div class="quarto-category">Germany</div>
   </div>
   </div>
 
@@ -197,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2025</p>
+      <p class="date">August 1, 2025</p>
     </div>
   </div>
   
@@ -207,438 +204,413 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The Standardized Precipitation Index (SPI) quantifies how precipitation deviates from the historical average over multiple time scales (e.g., from 1 to 12 months), allowing for consistent monitoring of droughts and floods across regions and time, making it a valuable tool for early warning and risk assessment systems.</p>
-<p>In this tutorial, I will walk through the process of calculating the SPI for Somalia at the subnational level using the {SCI} package in R.</p>
+<p>In Germany, as of 31 December 204, according to the Central Register of Foreigners, more than 14 million people of the 83.6 Million residents are foreigners.</p>
+<p>It is important to note, that about 3.3 Million arrived to the country seeking protection. This figure is about 78% larger than the reported in 2020, and 343% more than 10 years ago.</p>
+<p>An effective tool to analyze these data is through stacked area charts that allow to visualize the evolution of the variable of interest, persons seeking protection in this case, disaggregating it by categories. In this post, I will create a stacked area chart of this information using {ggplot2} in R.</p>
 </section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
-<p>The rainfall dataset used in this tutorial comes from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) and provides monthly precipitation data for Somalia’s subnational districts. It is derived from CHIRPS v2 (Climate Hazards Group InfraRed Precipitation with <em>in situ</em> Station data), using satellite imagery combined with ground-based observations.</p>
-<p>For each 10-day period (dekad), the dataset includes the following indicators:</p>
-<ul>
-<li>
-<code>rfh</code>: Total rainfall (mm) over 10 days</li>
-<li>
-<code>r1h</code>: 1-month rolling rainfall sum (mm)</li>
-<li>
-<code>r3h</code>: 3-month rolling rainfall sum (mm)</li>
-<li>
-<code>rfh_avg</code>: Long-term average rainfall for the dekad (mm)</li>
-<li>
-<code>r1h_avg</code>: Long-term average for 1-month rolling rainfall (mm)</li>
-<li>
-<code>r3h_avg</code>: Long-term average for 3-month rolling rainfall (mm)</li>
-<li>
-<code>rfq</code>: Rainfall anomaly (%)</li>
-<li>
-<code>r1q</code>: Rainfall anomaly (%)</li>
-<li>
-<code>r3q</code>: 3-month rainfall anomaly (%)</li>
-</ul>
-<p>The data is aggregated at the subnational level and follows administrative boundaries defined by the World Food Programme (WFP), with each unit assigned a unique code (<code>Pcode</code>).</p>
+<p>Data are produced by the Central Register of Foreigners and are presented by Statistisches Bundesamt (Destatis) in their website in Table <a href="https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html"><em>Persons seeking protection, by protection status, 2007 to 2024</em></a>. I downloaded this information and saved it in an Excel file named <code>persons-seeking-protection-germany.xlsx</code>.</p>
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>Before we begin, we need to install and load the necessary R packages. We will be using the {tidyverse} package for data wrangling, as well as the {SCI} package for calculating the SPI.</p>
+<p>First, I load the packages to be used:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">SCI</span><span class="op">)</span> <span class="co"># For Standardized Precipitation Index calculations (climate analysis)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://conflicted.r-lib.org/">conflicted</a></span><span class="op">)</span> <span class="co"># For resolving conflicts between function names in different packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> </span>
-<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> </span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
-<span></span>
-<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">)</span> <span class="co"># Prefer 'select' function from dplyr package</span></span>
-<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">)</span> <span class="co"># Prefer 'lag' function from dplyr package</span></span>
-<span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">)</span> <span class="co"># Prefer 'filter' function from dplyr package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Important to use {conflicted} package to specify preferred functions to avoid naming conflicts between {tidyverse} and {SCI} packages.</p>
-</div>
-</div>
-</section><section id="loading-data-hdx" class="level2"><h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
-<p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
+</section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
+<p>I downloaded Table <a href="https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html"><em>Persons seeking protection, by protection status, 2007 to 2024</em></a> and saved it in an Excel file named <code>persons-seeking-protection-germany.xlsx</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read the rainfall data for Somalia`</span></span>
-<span><span class="co"># You can also download the data from the HDX platform and read it locally</span></span>
-<span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/8b333d58-d69e-418c-b5e3-dd86f12eee05/download/som-rainfall-subnat-full.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"persons-seeking-protection-germany.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
-<p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and district_code.</p>
+<p>The table looks like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Remove the first row (metadata)</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">adm_level</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, <span class="co"># Extract year from the 'date' column</span></span>
-<span>    month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, <span class="co"># Extract month from the 'date' column</span></span>
-<span>    district_code <span class="op">=</span> <span class="va">PCODE</span> <span class="co"># Rename the 'ADM2_PCODE' column to 'district_code'</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&lt;</span> <span class="fl">2025</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Filter data up to 2024</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
-<span>    rainfall_monthly_total <span class="op">=</span> <span class="va">rfh</span>, <span class="co"># Rename the column 'rfh' to 'rainfall_monthly_total'</span></span>
-<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="va">rfh_avg</span> <span class="co"># Rename the column 'rfh_avg' to 'rainfall_monthly_lt_average'</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    rainfall_monthly_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span><span class="op">)</span>, <span class="co"># Convert rainfall total to numeric</span></span>
-<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rainfall_monthly_lt_average</span><span class="op">)</span> <span class="co"># Convert long-term average to numeric</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">district_code</span>, <span class="va">rainfall_monthly_total</span>, <span class="va">rainfall_monthly_lt_average</span><span class="op">)</span> <span class="co"># Select relevant columns</span></span>
-<span></span>
-<span><span class="co"># Group by year, month, and district_code, and calculate mean rainfall values by district</span></span>
-<span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">district_code</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    rainfall_monthly_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="co"># Calculate the mean of rainfall total</span></span>
-<span>    rainfall_monthly_lt_average <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rainfall_monthly_lt_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Calculate the mean of long-term average</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Optionally, you can calculate rainfall anomaly as a percentage of the long-term average</span></span>
-<span>  <span class="co"># rainfall_anomaly = 1, indicates no anomaly</span></span>
-<span>  <span class="co"># &lt; 1 indicates below average</span></span>
-<span>  <span class="co"># &gt; 1 indicates above average</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    rainfall_anomaly <span class="op">=</span> <span class="va">rainfall_monthly_total</span> <span class="op">/</span> <span class="va">rainfall_monthly_lt_average</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section><section id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months." class="level2"><h2 class="anchored" data-anchor-id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months.">We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_data</span> <span class="op">&lt;-</span> <span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">district_code</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Group by district_code</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    spi1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
-<span>      <span class="va">rainfall_monthly_total</span>,</span>
-<span>      first.mon <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Start month for SPI calculation</span></span>
-<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
-<span>        first.mon <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Start month for SPI calculation</span></span>
-<span>        time.scale <span class="op">=</span> <span class="fl">1</span>, <span class="co"># Time scale for SPI calculation</span></span>
-<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>, <span class="co"># Distribution for fitting</span></span>
-<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># Use initial parameter estimates</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    spi3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
-<span>      <span class="va">rainfall_monthly_total</span>,</span>
-<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
-<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>        time.scale <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
-<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    spi6 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
-<span>      <span class="va">rainfall_monthly_total</span>,</span>
-<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
-<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>        time.scale <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
-<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    spi12 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">transformSCI</a></span><span class="op">(</span></span>
-<span>      <span class="va">rainfall_monthly_total</span>,</span>
-<span>      first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>      obj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SCI/man/fitSCI.html">fitSCI</a></span><span class="op">(</span><span class="va">rainfall_monthly_total</span>,</span>
-<span>        first.mon <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>        time.scale <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>        distr <span class="op">=</span> <span class="st">"gamma"</span>,</span>
-<span>        p0 <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">district_code</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The output table looks like this:</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in attr(x, "align"): 'xfun::attr()' is deprecated.
-Use 'xfun::attr2()' instead.
-See help("Deprecated")</code></pre>
-</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span></span>
+<span>    caption <span class="op">=</span> <span class="st">"Persons seeking protection, by protection status, 2007 to 2024"</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_paper</a></span><span class="op">(</span><span class="st">"hover"</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Persons seeking protection, by protection status, 2007 to 2024</caption>
 <thead><tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">month</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">district_code</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_total</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_monthly_lt_average</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">rainfall_anomaly</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">spi1</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">spi3</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">spi6</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">spi12</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reference date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Foreign population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Persons seeking protection</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">unsettled</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">recognised</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">temporary</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">permanent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">refused</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">0.9417476</td>
-<td style="text-align: right;">1.744876</td>
-<td style="text-align: right;">0.5397218</td>
-<td style="text-align: right;">-1.1043463</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2007</td>
+<td style="text-align: right;">82217837</td>
+<td style="text-align: right;">6744880</td>
+<td style="text-align: right;">457430</td>
+<td style="text-align: right;">20145</td>
+<td style="text-align: right;">301995</td>
+<td style="text-align: right;">164350</td>
+<td style="text-align: right;">137650</td>
+<td style="text-align: right;">135290</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">2.0194174</td>
-<td style="text-align: right;">2.027616</td>
-<td style="text-align: right;">0.9959566</td>
-<td style="text-align: right;">0.1537152</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2008</td>
+<td style="text-align: right;">82002356</td>
+<td style="text-align: right;">6727620</td>
+<td style="text-align: right;">456050</td>
+<td style="text-align: right;">18930</td>
+<td style="text-align: right;">330365</td>
+<td style="text-align: right;">150795</td>
+<td style="text-align: right;">179570</td>
+<td style="text-align: right;">106755</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">32.8349507</td>
-<td style="text-align: right;">9.696980</td>
-<td style="text-align: right;">3.3861008</td>
-<td style="text-align: right;">2.0730688</td>
-<td style="text-align: right;">2.0600381</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2009</td>
+<td style="text-align: right;">81802257</td>
+<td style="text-align: right;">6694775</td>
+<td style="text-align: right;">477595</td>
+<td style="text-align: right;">24620</td>
+<td style="text-align: right;">361775</td>
+<td style="text-align: right;">158735</td>
+<td style="text-align: right;">203040</td>
+<td style="text-align: right;">91195</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">18.3139157</td>
-<td style="text-align: right;">24.722222</td>
-<td style="text-align: right;">0.7407876</td>
-<td style="text-align: right;">-0.3498783</td>
-<td style="text-align: right;">0.9740066</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2010</td>
+<td style="text-align: right;">81751602</td>
+<td style="text-align: right;">6753620</td>
+<td style="text-align: right;">503470</td>
+<td style="text-align: right;">35835</td>
+<td style="text-align: right;">382325</td>
+<td style="text-align: right;">168205</td>
+<td style="text-align: right;">214115</td>
+<td style="text-align: right;">85310</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">6.7928803</td>
-<td style="text-align: right;">17.754692</td>
-<td style="text-align: right;">0.3825963</td>
-<td style="text-align: right;">-1.1682128</td>
-<td style="text-align: right;">0.3482195</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2011</td>
+<td style="text-align: right;">80327900</td>
+<td style="text-align: right;">6930895</td>
+<td style="text-align: right;">505925</td>
+<td style="text-align: right;">47130</td>
+<td style="text-align: right;">373875</td>
+<td style="text-align: right;">151045</td>
+<td style="text-align: right;">222825</td>
+<td style="text-align: right;">84920</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">2.7443365</td>
-<td style="text-align: right;">4.763215</td>
-<td style="text-align: right;">0.5761522</td>
-<td style="text-align: right;">-1.1812731</td>
-<td style="text-align: right;">-1.5032149</td>
-<td style="text-align: right;">0.1598925</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2012</td>
+<td style="text-align: right;">80523746</td>
+<td style="text-align: right;">7213710</td>
+<td style="text-align: right;">549825</td>
+<td style="text-align: right;">65920</td>
+<td style="text-align: right;">399050</td>
+<td style="text-align: right;">165610</td>
+<td style="text-align: right;">233440</td>
+<td style="text-align: right;">84860</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">17.3592230</td>
-<td style="text-align: right;">14.047789</td>
-<td style="text-align: right;">1.2357264</td>
-<td style="text-align: right;">0.7686934</td>
-<td style="text-align: right;">-0.9048239</td>
-<td style="text-align: right;">0.3881687</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2013</td>
+<td style="text-align: right;">80767463</td>
+<td style="text-align: right;">7633630</td>
+<td style="text-align: right;">613925</td>
+<td style="text-align: right;">110335</td>
+<td style="text-align: right;">410570</td>
+<td style="text-align: right;">174110</td>
+<td style="text-align: right;">236460</td>
+<td style="text-align: right;">93020</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">34.8381870</td>
-<td style="text-align: right;">26.758146</td>
-<td style="text-align: right;">1.3019657</td>
-<td style="text-align: right;">0.8281462</td>
-<td style="text-align: right;">0.7648482</td>
-<td style="text-align: right;">0.7461252</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2014</td>
+<td style="text-align: right;">81197537</td>
+<td style="text-align: right;">8152970</td>
+<td style="text-align: right;">746320</td>
+<td style="text-align: right;">177900</td>
+<td style="text-align: right;">460140</td>
+<td style="text-align: right;">208460</td>
+<td style="text-align: right;">251675</td>
+<td style="text-align: right;">108280</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">29.1682857</td>
-<td style="text-align: right;">19.003020</td>
-<td style="text-align: right;">1.5349290</td>
-<td style="text-align: right;">1.2521098</td>
-<td style="text-align: right;">1.2306838</td>
-<td style="text-align: right;">0.0193027</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2015</td>
+<td style="text-align: right;">82175684</td>
+<td style="text-align: right;">9107895</td>
+<td style="text-align: right;">1036235</td>
+<td style="text-align: right;">349810</td>
+<td style="text-align: right;">547935</td>
+<td style="text-align: right;">285805</td>
+<td style="text-align: right;">262130</td>
+<td style="text-align: right;">138495</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1981</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">SO1101</td>
-<td style="text-align: right;">4.1974111</td>
-<td style="text-align: right;">8.226213</td>
-<td style="text-align: right;">0.5102483</td>
-<td style="text-align: right;">-0.3816705</td>
-<td style="text-align: right;">0.7653264</td>
-<td style="text-align: right;">0.1559530</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">31 December 2016</td>
+<td style="text-align: right;">82521653</td>
+<td style="text-align: right;">10039080</td>
+<td style="text-align: right;">1597570</td>
+<td style="text-align: right;">574945</td>
+<td style="text-align: right;">867500</td>
+<td style="text-align: right;">599235</td>
+<td style="text-align: right;">268265</td>
+<td style="text-align: right;">155120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2017</td>
+<td style="text-align: right;">82792351</td>
+<td style="text-align: right;">10623940</td>
+<td style="text-align: right;">1680700</td>
+<td style="text-align: right;">348640</td>
+<td style="text-align: right;">1154365</td>
+<td style="text-align: right;">888355</td>
+<td style="text-align: right;">266010</td>
+<td style="text-align: right;">177700</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2018</td>
+<td style="text-align: right;">83019214</td>
+<td style="text-align: right;">10915455</td>
+<td style="text-align: right;">1781750</td>
+<td style="text-align: right;">306095</td>
+<td style="text-align: right;">1283225</td>
+<td style="text-align: right;">1017760</td>
+<td style="text-align: right;">265465</td>
+<td style="text-align: right;">192430</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2019</td>
+<td style="text-align: right;">83166711</td>
+<td style="text-align: right;">11228300</td>
+<td style="text-align: right;">1839115</td>
+<td style="text-align: right;">266470</td>
+<td style="text-align: right;">1360070</td>
+<td style="text-align: right;">1090475</td>
+<td style="text-align: right;">269590</td>
+<td style="text-align: right;">212575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2020</td>
+<td style="text-align: right;">83155031</td>
+<td style="text-align: right;">11432460</td>
+<td style="text-align: right;">1856785</td>
+<td style="text-align: right;">215960</td>
+<td style="text-align: right;">1397685</td>
+<td style="text-align: right;">1116970</td>
+<td style="text-align: right;">280715</td>
+<td style="text-align: right;">243140</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2021</td>
+<td style="text-align: right;">83237124</td>
+<td style="text-align: right;">11817790</td>
+<td style="text-align: right;">1936350</td>
+<td style="text-align: right;">238945</td>
+<td style="text-align: right;">1451375</td>
+<td style="text-align: right;">1133545</td>
+<td style="text-align: right;">317835</td>
+<td style="text-align: right;">246030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2022</td>
+<td style="text-align: right;">83118501</td>
+<td style="text-align: right;">13383910</td>
+<td style="text-align: right;">3078650</td>
+<td style="text-align: right;">570060</td>
+<td style="text-align: right;">2253875</td>
+<td style="text-align: right;">1916630</td>
+<td style="text-align: right;">337245</td>
+<td style="text-align: right;">254710</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2023</td>
+<td style="text-align: right;">83456045</td>
+<td style="text-align: right;">13895865</td>
+<td style="text-align: right;">3173135</td>
+<td style="text-align: right;">454795</td>
+<td style="text-align: right;">2528935</td>
+<td style="text-align: right;">2188665</td>
+<td style="text-align: right;">340275</td>
+<td style="text-align: right;">189405</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2024</td>
+<td style="text-align: right;">83577140</td>
+<td style="text-align: right;">14061640</td>
+<td style="text-align: right;">3304705</td>
+<td style="text-align: right;">427415</td>
+<td style="text-align: right;">2706320</td>
+<td style="text-align: right;">2377115</td>
+<td style="text-align: right;">329205</td>
+<td style="text-align: right;">170970</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</section><section id="interpretation" class="level2"><h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Laasqoray district in Sanaag region. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
+</section><section id="designing-the-stacked-area-chart" class="level2"><h2 class="anchored" data-anchor-id="designing-the-stacked-area-chart">Designing the stacked area chart</h2>
+<p>Before plotting, I reshape the data and rename some of their columns for easiness of working with them in the {ggplot2} context.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Roboto Condensed"</span>, <span class="st">"Roboto Condensed"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># I use year() to extract the information of the year</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">`Reference date`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Only the subset of variables to use</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">unsettled</span>, <span class="va">temporary</span>, <span class="va">permanent</span>, <span class="va">refused</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Lengthening the data</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="op">!</span><span class="va">year</span>, </span>
+<span>              names_to <span class="op">=</span> <span class="st">"status"</span>, </span>
+<span>              values_to <span class="op">=</span> <span class="st">"persons"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First, I set a theme for the chart and the font to “Josefin Sans” using the <code>showtext</code> package. More options can be found at <a href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Josefin Sans"</span>, <span class="st">"Josefin Sans"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Custom theme for the chart</span></span>
-<span><span class="va">theme_boxplot_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="va">theme_stacked_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
-<span>    base_family <span class="op">=</span> <span class="st">"Roboto Condensed"</span> </span>
+<span>    base_family <span class="op">=</span> <span class="st">"Josefin Sans"</span> </span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="co"># Custom theme settings</span></span>
+<span>    <span class="co"># Custom settings</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>      <span class="co"># Axis settings</span></span>
-<span>      axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
-<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">14</span></span>
-<span>      <span class="op">)</span>,</span>
-<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
-<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">12</span></span>
-<span>      <span class="op">)</span>,</span>
 <span></span>
 <span>      <span class="co"># Title settings</span></span>
 <span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, </span>
 <span>      plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
-<span>        color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">24</span>,</span>
-<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>        size <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">0</span><span class="op">)</span>, <span class="co"># top, right, bottom, left</span></span>
 <span>        width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span> </span>
 <span>      <span class="op">)</span>,</span>
 <span></span>
-<span>      <span class="co"># Legend settings</span></span>
-<span>      legend.position <span class="op">=</span> <span class="st">"top"</span>,</span>
-<span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      legend.key.height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>      legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>      legend.spacing.x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>      legend.key.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span>, </span>
-<span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>        color <span class="op">=</span> <span class="st">"grey10"</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">10</span></span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>      color <span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">35</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>      width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
 <span>      <span class="op">)</span>,</span>
-<span>      legend.direction <span class="op">=</span> <span class="st">"horizontal"</span>,</span>
-<span>      legend.byrow <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span></span>
+<span>      <span class="co"># Axis settings</span></span>
+<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span></span>
+<span>        size <span class="op">=</span> <span class="fl">1.1</span>, </span>
+<span>        colour <span class="op">=</span> <span class="st">"#800000"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span></span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">16</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Legend settings</span></span>
+<span>      legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="fl">0.80</span><span class="op">)</span>,</span>
+<span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
 <span></span>
 <span>      <span class="co"># Caption settings</span></span>
-<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html">element_markdown</a></span><span class="op">(</span></span>
-<span>        color <span class="op">=</span> <span class="st">"grey70"</span>,</span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
 <span>        face <span class="op">=</span> <span class="st">"italic"</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>        hjust <span class="op">=</span> <span class="fl">0</span></span>
+<span>        size <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>        hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span> <span class="co"># top, right, bottom, left</span></span>
 <span>        <span class="op">)</span>,</span>
 <span>      plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
-<span>        color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span>        fill <span class="op">=</span> <span class="st">"white"</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#D6D6CE"</span>,</span>
+<span>        fill <span class="op">=</span> <span class="st">"#D6D6CE"</span></span>
 <span>      <span class="op">)</span>,</span>
-<span>      plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">40</span><span class="op">)</span></span>
+<span>      plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span><span class="op">)</span> <span class="co"># top, right, bottom, left</span></span>
 <span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"1-month Standardized Precipitation Index (SPI-1) in Laasqoray, Somalia for the period 1981-2024"</span></span>
-<span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"**Data:** Own estimations using Somalia rainfall Indicators at Subnational Level (HDX)"</span>,</span>
-<span>                        <span class="st">"&lt;br&gt;"</span>, </span>
-<span>                        <span class="st">"**Graphic:** Juan Torres Munguía"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#</span></span>
-<span><span class="va">spi_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span>,</span>
-<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
-<span>      <span class="st">"Near normal"</span>, <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>      <span class="st">"Extremely dry"</span>, <span class="st">"Severely dry"</span>, <span class="st">"Moderately dry"</span>, <span class="st">"Near normal"</span>,</span>
-<span>      <span class="st">"Moderately wet"</span>, <span class="st">"Severely wet"</span>, <span class="st">"Extremely wet"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>    <span class="st">"#F76D5E"</span>, <span class="st">"#FFAD72"</span>, <span class="st">"#FFE099"</span>, <span class="st">"#99FF99"</span>,</span>
-<span>    <span class="st">"#99FF99"</span>, <span class="st">"#99EAFF"</span>, <span class="st">"#75D3FF"</span>, <span class="st">"#3D87FF"</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">rainfall_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">district_code</span> <span class="op">==</span> <span class="st">"SO1503"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">month</span>, levels <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, labels <span class="op">=</span> <span class="va">month.name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Convert month to factor</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">month</span>, y <span class="op">=</span> <span class="va">spi1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span></span>
-<span>  <span class="co"># Add box plot with SPI categories</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect</a></span><span class="op">(</span></span>
-<span>    data <span class="op">=</span> <span class="va">spi_colors</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">ymin</span>, ymax <span class="op">=</span> <span class="va">ymax</span>, xmin <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>, xmax <span class="op">=</span> <span class="cn">Inf</span>, fill <span class="op">=</span> <span class="va">label</span><span class="op">)</span>,</span>
-<span>    alpha <span class="op">=</span> <span class="fl">0.2</span>, inherit.aes <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span>, outlier.size <span class="op">=</span> <span class="fl">2</span>, outlier.shape <span class="op">=</span> <span class="fl">16</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">spi_colors</span><span class="op">$</span><span class="va">fill</span>, <span class="va">spi_colors</span><span class="op">$</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="va">title_chart</span>,</span>
-<span>    caption <span class="op">=</span> <span class="va">caption_chart</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">""</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"SPI-1"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">""</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Number of rows in the legend</span></span>
-<span>  <span class="fu">theme_boxplot_chart</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Set the resolution of the image 320 dpi is for high-quality images ("retina")</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
-<span>  <span class="st">"spi-somalia.png"</span>,</span>
-<span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
-<span>  width <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>  height <span class="op">=</span> <span class="fl">9</span>,</span>
-<span>  units <span class="op">=</span> <span class="st">"in"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># Turn off the showtext functionality</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="spi-somalia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<p>The plot is created with the following code:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>status <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">status</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">seeking_protection</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">year</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">persons</span>,</span>
+<span>      fill <span class="op">=</span> <span class="va">status</span>,</span>
+<span>      color <span class="op">=</span> <span class="va">status</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Protection status"</span>, </span>
+<span>                             position <span class="op">=</span> <span class="st">"inside"</span><span class="op">)</span>,</span>
+<span>         color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Protection status"</span>, </span>
+<span>                             position <span class="op">=</span> <span class="st">"inside"</span><span class="op">)</span></span>
+<span>                             <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Unsettled"</span><span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>               <span class="st">"Temporary"</span><span class="op">=</span> <span class="st">"#8A9045"</span>, </span>
+<span>               <span class="st">"Refused"</span> <span class="op">=</span> <span class="st">"#D49464"</span>,</span>
+<span>               <span class="st">"Permanent"</span> <span class="op">=</span> <span class="st">"#5B8FA8"</span></span>
+<span>               <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Unsettled"</span><span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>               <span class="st">"Temporary"</span><span class="op">=</span> <span class="st">"#8A9045"</span>, </span>
+<span>               <span class="st">"Refused"</span> <span class="op">=</span> <span class="st">"#D49464"</span>,</span>
+<span>               <span class="st">"Permanent"</span> <span class="op">=</span> <span class="st">"#5B8FA8"</span></span>
+<span>               <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span></span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span></span>
+<span>      scale <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2006.5</span>, <span class="fl">2024.5</span><span class="op">)</span>, </span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2007</span>, <span class="fl">2024</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Persons seeking protection in Germany by status | 2007-2024"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Number of persons \n(in Millions)"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: Central Register of Foreigners. \nDesign: Juan Torres Munguía."</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_stacked_chart</span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="stacked-area-germany-seeking-protection.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="stacked-area-germany-seeking-protection.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
   author = {Torres Munguía, Juan Armando},
-  title = {Persons Seeking Protection by Status and Reference Year in
-    {Germany}},
-  date = {2025-02-08},
+  title = {How Has Changed over Time the Number of Persons Seeking
+    Protection in {Germany?}},
+  date = {2025-08-01},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Torres Munguía, Juan Armando. 2025. <span>“Persons Seeking Protection by
-Status and Reference Year in Germany.”</span> February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart">https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart</a>.
+Torres Munguía, Juan Armando. 2025. <span>“How Has Changed over Time the
+Number of Persons Seeking Protection in Germany?”</span> August 1, 2025.
+<a href="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart">https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart</a>.
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1057,7 +1029,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

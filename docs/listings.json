@@ -5,6 +5,7 @@
       "/portfolio/population-pyramid-mexico-crime/index.html",
       "/portfolio/cambodia-acceptability-violence-dot-plot/index.html",
       "/portfolio/map-intimate-partner-violence-cambodia/index.html",
+      "/portfolio/food-security-fao-line-chart/index.html",
       "/portfolio/armed_conflict_lake_chad/index.html",
       "/portfolio/spi_somalia_visualization/index.html",
       "/portfolio/spi_somalia/index.html",
@@ -27,13 +28,13 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html",
       "/blog/posts/population-pyramid-mexico-crime/index.html",
       "/blog/posts/cambodia-acceptability-violence-dot-plot/index.html",
       "/blog/posts/map-intimate-partner-violence-cambodia/index.html",
       "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts/spi_somalia_visualization/index.html",
-      "/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html",
       "/blog/posts/spi_somalia/index.html",
       "/blog/posts/estimating-envipe-prevalence/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks/index.html"

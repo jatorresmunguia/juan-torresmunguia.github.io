@@ -1,11 +1,11 @@
 ---
-title: "Persons seeking protection by status and reference year in Germany"
+title: "How has changed over time the number of persons seeking protection in Germany?"
 subtitle: "A stacked area chart using {ggplot2}"
 author: 
  - name: 
     given: Juan Armando 
     family: Torres Munguía
-date: "2025-02-08"
+date: "2025-08-01"
 categories: 
  - data visualizatin
  - persons seeking protection
@@ -26,67 +26,222 @@ comments:
 ---
 
 ## Overview
+In Germany, as of 31 December 204, according to the Central Register of Foreigners, more than 14 million people of the 83.6 Million residents are foreigners. 
 
+It is important to note, that about 3.3 Million arrived to the country seeking protection. This figure is about 78% larger than the reported in 2020, and 343% more than 10 years ago. 
+
+An effective tool to analyze these data is through stacked area charts that allow to visualize the evolution of the variable of interest, persons seeking protection in this case, disaggregating it by categories. In this post, I will create a stacked area chart of this information using {ggplot2} in R.
 
 ## About the data
-
-
+Data are produced by the Central Register of Foreigners and are presented by Statistisches Bundesamt (Destatis) in their website in Table [_Persons seeking protection, by protection status, 2007 to 2024_
+](https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html). I downloaded this information and saved it in an Excel file named `persons-seeking-protection-germany.xlsx`.
 
 ## Set-up
-
+First, I load the packages to be used:
 
 ```{r}
 #| warning: false
 
 library(tidyverse) 
 library(kableExtra) 
-
+library(readxl)
 library(ggplot2) 
 library(ggtext) 
+library(ggrepel)
 library(showtext) 
+library(scales)
 
 ```
 
 ## Loading data 
-
-
-```{r}
-#| warning: false
-
-
-```
-
-### Data wrangling
-
+I downloaded Table [_Persons seeking protection, by protection status, 2007 to 2024_
+](https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html) and saved it in an Excel file named `persons-seeking-protection-germany.xlsx`.
 
 ```{r}
 #| warning: false
-
+seeking_protection <- read_excel("persons-seeking-protection-germany.xlsx")
 
 ```
 
+The table looks like this: 
+```{r}
+#| warning: false
+seeking_protection |>
+  kbl(
+    caption = "Persons seeking protection, by protection status, 2007 to 2024"
+    ) |>
+  kable_paper("hover", full_width = F)
 
+```
+
+## Designing the stacked area chart
+Before plotting, I reshape the data and rename some of their columns for easiness of working with them in the {ggplot2} context.
 ```{r}
 #| warning: false
 
+seeking_protection <- seeking_protection |>
+  # I use year() to extract the information of the year
+  mutate(year = year(dmy(`Reference date`))) |>
+  # Only the subset of variables to use
+  select(year, unsettled, temporary, permanent, refused) |>
+  # Lengthening the data
+  pivot_longer(!year, 
+              names_to = "status", 
+              values_to = "persons")
+``` 
 
-```
-
-The output table looks like this: 
-```{r}
-#| echo: false
-
-
-```
-
-## Interpretation
-
-
+First, I set a theme for the chart and the font to "Josefin Sans" using the `showtext` package. More options can be found at [https://fonts.google.com/](https://fonts.google.com/).
 ```{r}
 #| warning: false
 #| output: false
 
+font_add_google("Josefin Sans", "Josefin Sans")
+
+showtext_auto()
+
+theme_stacked_chart <- function() {
+  theme_minimal(
+    base_family = "Josefin Sans" 
+  ) +
+    # Custom settings
+    theme(
+
+      # Title settings
+      plot.title.position = "plot", 
+      plot.title = element_textbox(
+        color = "#800000",
+        face = "bold",
+        size = 20,
+        margin = margin(5, 0, 15, 0), # top, right, bottom, left
+        hjust = 0,
+        halign = 0      ),
+
+      plot.subtitle = element_textbox(
+      color = "#767676",
+      #face = "bold",
+      size = 18,
+      margin = margin(5, 0, 35, 0),
+      hjust = 0,
+      halign = 0
+      ),
+
+      # Axis settings
+      axis.line = element_line(
+        size = 1.1, 
+        colour = "#800000"
+        ),
+
+      axis.title.y = element_text(
+        color = "#800000",
+        face = "bold",
+        size = 16
+      ),
+      axis.text.y = element_text(
+        color = "#800000",
+        face = "bold",
+        size = 13
+      ),
+      axis.title.x = element_blank(),
+      axis.text.x = element_text(
+        color = "#800000",
+        face = "bold",
+        size = 13
+      ),
+
+      # Legend settings
+      legend.position.inside = c(0.15, 0.80),
+      legend.title = element_text(
+        color = "#800000",
+        face = "bold",
+        size = 14
+      ),
+      legend.text = element_text(
+        color = "#800000",
+        size = 13
+      ),
+
+      # Caption settings
+      plot.caption = element_text(
+        color = "#800000",
+        face = "italic",
+        size = 14,
+        hjust = 0,
+        margin = margin(20, 0, 5, 0), # top, right, bottom, left
+        ),
+
+      plot.background = element_rect(
+        color = "#D6D6CE",
+        fill = "#D6D6CE"
+      ),
+      plot.margin = margin(40, 40, 40, 40) # top, right, bottom, left
+    )
+}
+```
+
+The plot is created with the following code:
+```{r}
+#| warning: false
+#| output: false
+
+seeking_protection <- seeking_protection |>
+  mutate(status = str_to_title(status))
+
+ggplot(seeking_protection,
+  aes(
+      x = year,
+      y = persons,
+      fill = status,
+      color = status
+      )
+    ) +
+  geom_area() +
+  guides(fill = guide_legend(title = "Protection status", 
+                             position = "inside"),
+         color = guide_legend(title = "Protection status", 
+                             position = "inside")
+                             ) +
+  scale_fill_manual(
+    values = c("Unsettled"= "#767676",
+               "Temporary"= "#CC8214", 
+               "Refused" = "#8A9045",
+               "Permanent" = "#155F83"
+               )
+  ) + 
+  scale_color_manual(
+    values = c("Unsettled"= "#767676",
+               "Temporary"= "#CC8214", 
+               "Refused" = "#8A9045",
+               "Permanent" = "#155F83"
+               )
+  ) + 
+  scale_y_continuous(
+    labels = label_number(
+      scale = 1e-6
+      )
+    ) +
+  scale_x_continuous(
+    expand = c(0, 0),
+    limits = c(2006.5, 2024.5), 
+    breaks = seq(2007, 2024, by = 1)
+  ) +
+  labs(
+    title = "Persons seeking protection in Germany by status | 2007-2024",
+    y = "Number of persons \n(in Millions)",
+    caption = "Source: Central Register of Foreigners. \nDesign: Juan Torres Munguía."
+    ) + 
+  theme_stacked_chart() 
+
+showtext_opts(dpi = 320) 
+ggsave(
+  "stacked-area-germany-seeking-protection.png",
+  dpi = 320,
+  width = 12,
+  height = 9,
+  units = "in"
+)
+showtext_auto(FALSE) # Turn off the showtext functionality
 
 ```
+
 
 ![](stacked-area-germany-seeking-protection.png){width=100% style="margin-top: 0px; margin-bottom: 0px;" .lightbox}
