@@ -1,5 +1,5 @@
 ---
-title: "How has changed over time the number of persons seeking protection in Germany?"
+title: "How has the number of persons seeking protection in Germany changed over time?"
 subtitle: "A stacked area chart using {ggplot2}"
 author: 
  - name: 

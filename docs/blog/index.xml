@@ -12,7 +12,7 @@
 <generator>quarto-1.4.549</generator>
 <lastBuildDate>Fri, 01 Aug 2025 06:00:00 GMT</lastBuildDate>
 <item>
-  <title>How has changed over time the number of persons seeking protection in Germany?</title>
+  <title>How has the number of persons seeking protection in Germany changed over time?</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
   <link>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</link>
   <description><![CDATA[ In Germany, as of 31 December 204, according to the Central Register of Foreigners, more than 14 million people of the 83.6 Million residents are foreigners. ]]></description>
@@ -23,7 +23,7 @@
   <category>Germany</category>
   <guid>https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</guid>
   <pubDate>Fri, 01 Aug 2025 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" medium="image" type="image/png"/>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
   <title>Creating a population pyramid to visualize crime victimization by age and sex in Mexico</title>
