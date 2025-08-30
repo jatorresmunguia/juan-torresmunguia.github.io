@@ -1,0 +1,378 @@
+---
+title: "Tres mapas para examinar la prevalencia de la violencia de pareja (IPV) en Camboya"
+subtitle: "Desarrollando mapas coropléticos con {ggplot2}, {sf} y shapefiles"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-05-10"
+categories: 
+ - visualización de datos
+ - violencia de pareja (IPV)
+ - tidyverse
+ - ggplot2
+ - shapefiles
+ - Camboya
+image: "ipv-cambodia-map.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Introducción
+De acuerdo con el módulo de Violencia Doméstica 2021-22 de la Encuesta Demográfica y de Salud de Camboya (CDHS), más del 21% de las mujeres camboyanas de 15 a 49 años que alguna vez han tenido esposo (o pareja íntima) han experimentado violencia de pareja íntima física, sexual, económica y/o emocional a lo largo de su vida. Estas cifras varían significativamente en todo el país, con algunas provincias reportando tasas de hasta 45%, mientras que otras reportan tasas tan bajas como 6%.  
+
+Una mejor comprensión de la distribución geográfica de la violencia de pareja íntima (VPI) en Camboya puede ayudar a los responsables de políticas y a las organizaciones a orientar sus esfuerzos de manera más efectiva. En esta entrada de blog, mostraré cómo crear mapas coropléticos usando R y archivos *shapefiles* para visualizar la prevalencia de la VPI en Camboya a nivel provincial. Además, utilizaré el paquete {patchwork} para combinar estos mapas en una misma gráfica. El resultado se verá así:  
+
+![](ipv-cambodia-map.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
+
+## Acerca de los datos
+La información proviene del documento *"Further Data Analysis Report. From the Cambodia Demographic and Health Survey 2021-2022"*, disponible [aquí](https://nis.gov.kh/nis/CDHS_Further_Data/CDHS%20Domestic%20Violence%20Report%202024_En.pdf). En particular, utilizaré la **Tabla A.1: Violencia de pareja íntima según características de fondo**.  
+
+## Preparación
+Primero, instalamos y cargamos los paquetes de R necesarios.  
+
+```{r}
+#| warning: false
+
+library(tidyverse) 
+library(sf) # Para trabajar con shapefiles
+library(readxl) # Para leer archivos Excel
+library(kableExtra) # Para tablas de datos
+library(ggplot2) 
+library(ggtext) 
+library(showtext) 
+library(patchwork) # Para combinar múltiples ggplots
+library(colorspace) # Para paletas de colores
+library(grid) # Para añadir líneas y elementos de texto a objetos gráficos
+
+```
+
+## Carga de datos
+Guardé la información de la Tabla A.1: Violencia de pareja íntima según características de fondo en el archivo Excel [intimate-partner-violence-cambodia.xlsx](/intimate-partner-violence-cambodia.xlsx). 
+
+```{r}
+#| warning: false
+
+ipv_cambodia <- read_excel("intimate-partner-violence-cambodia.xlsx")
+
+```
+
+Así se ve la información:
+
+```{r}
+#| warning: false
+
+ipv_cambodia |>
+  kbl(
+    caption = "Experiencia de por vida de actos específicos de violencia física de pareja íntima cometidos por su pareja actual o más reciente, por provincias, Camboya 2021-22"
+    ) |>
+  kable_paper("hover", full_width = F)
+
+```
+
+Ahora, cargamos los datos geográficos de la división administrativa de Camboya. Estos datos se obtuvieron de la iniciativa [Humanitarian Data Exchange (HDX)](https://data.humdata.org/) de la Oficina de Coordinación de Asuntos Humanitarios de las Naciones Unidas (OCHA). La información viene en un archivo shapefile `.shp` y está disponible [aquí](https://data.humdata.org/dataset/cod-ab-khm) en un archivo zip llamado `khm_admbnda_adm1_gov_20181004.zip`. Descargué este archivo y lo ubiqué en la carpeta `/khmadm_gov_20181004_ab_shp`.
+```{r}
+#| warning: false
+
+shp_cambodia <- read_sf("khmadm_gov_20181004_ab_shp/khm_admbnda_adm1_gov_20181004.shp")
+
+```
+
+### Preparación de los datos
+El siguiente paso es combinar la información geográfica del shapefile, `shp_cambodia`, con la base de datos que contiene la información sobre IPV, `ipv_cambodia`. Para lograr este objetivo, necesitamos asegurarnos de que ambos conjuntos de datos tengan una variable común para hacer el cruce. En este caso, utilizaremos el nombre de la provincia `ADM1_EN` en el shapefile y `Region` en la base de datos. Luego, comparo si los nombres de las provincias en ambos conjuntos coinciden:
+
+```{r}
+#| warning: false
+
+setdiff(shp_cambodia$ADM1_EN, ipv_cambodia$Region)
+```
+
+La salida indica que existe una discrepancia. En `shp_cambodia`, el nombre de la provincia "Oddar Meanchey" corresponde a "Otdar Meanchey" en `ipv_cambodia`. Renombraré esta provincia en el shapefile para que coincida con el nombre en los datos del informe oficial.
+
+```{r}
+#| warning: false
+
+shp_cambodia <- shp_cambodia |>
+  mutate(ADM1_EN = case_when(
+    ADM1_EN == "Oddar Meanchey" ~ "Otdar Meanchey",
+    TRUE ~ ADM1_EN
+  ))
+
+```
+
+Después de esta modificación, uno ambos conjuntos de datos usando un left join para conservar todas las provincias del shapefile y añadir los valores de VPI correspondientes desde el marco de datos:
+```{r}
+#| warning: false
+
+shp_cambodia <- shp_cambodia |>
+  left_join(ipv_cambodia, by = c("ADM1_EN" = "Region"))
+```
+
+## Creación del mapa
+Mi idea es desarrollar tres mapas, cada uno representando un tipo de violencia contra mujeres y niñas: emocional, física y sexual. Primero, crearé el mapa correspondiente a la violencia emocional.
+
+```{r}
+#| warning: false
+
+# Más alternativas de fuentes aquí https://fonts.google.com/
+font_add_google("Scada", "Scada") 
+
+showtext_auto()
+
+map_ipv_emotional_cambodia <- ggplot() +
+  geom_sf(
+    data = shp_cambodia, 
+    aes(fill = `Emotional violence`), 
+    color = "white", # Color de los bordes de las provincias
+    linewidth = 0.5
+  ) +
+  geom_sf_text(
+    data = shp_cambodia,
+    aes(label = `Emotional violence`),
+    check_overlap = TRUE, # Evita que se sobreponga el texto en el gráfico
+    size = 4, 
+    color = "black",
+    fontface = "bold"
+  ) +
+  scale_fill_gradient2(
+    low = "#FFFE9EB3",
+    mid = "#C53270B3",
+    high = "#040404B3",
+    midpoint = 22.5,
+    limits = c(0, 45),
+    breaks = c(0, 15, 30, 45),
+    labels = c("0", "15", "30", "45")
+  ) +
+  labs(
+    title = "Emocional", # Título de este submapa
+    subtitle = "",
+    caption = "",
+    x = "",
+    y = "",
+    fill = "Porcentaje de víctimas (%)" # Título de la leyenda
+  ) +
+  theme_minimal(
+    base_family = "Scada"
+  ) +
+  theme(
+    plot.margin = margin(0, 40, 0, 40),
+    
+    plot.background = element_blank(), # Sin color de fondo
+    plot.title = element_text(
+      color = "black",
+      face = "bold",
+      size = 22,
+      hjust = 0.5,
+      margin = margin(5, 0, 5, 0)
+    )
+  )
+
+```
+
+Ahora replico el mismo formato para violencia física y sexual.
+```{r}
+#| warning: false
+
+map_ipv_physical_cambodia <- ggplot() +
+  geom_sf(
+    data = shp_cambodia, 
+    aes(fill = `Physical violence`), 
+    color = "white", 
+    linewidth = 0.5
+  ) +
+  geom_sf_text(
+    data = shp_cambodia,
+    aes(label = `Physical violence`),
+    check_overlap = TRUE,
+    size = 4, 
+    color = "black",
+    fontface = "bold"
+  ) +
+  scale_fill_gradient2(
+    low = "#FFFE9EB3",
+    mid = "#C53270B3",
+    high = "#040404B3",
+    midpoint = 22.5,
+    limits = c(0, 45)
+  ) +
+  labs(
+    title = "Física",
+    subtitle = "",
+    caption = "",
+    x = "",
+    y = "",
+    fill = ""
+  ) + 
+  guides(fill = "none") +
+  theme_minimal(
+    base_family = "Scada"
+  ) +
+  theme(
+    plot.margin = margin(0, 40, 0, 40),
+    
+    plot.background = element_blank(),
+    plot.title = element_text(
+      color = "black",
+      face = "bold",
+      size = 22,
+      hjust = 0.5,
+      margin = margin(5, 0, 5, 0)
+    )
+  )
+
+map_ipv_sexual_cambodia <- ggplot() +
+  geom_sf(
+    data = shp_cambodia, 
+    aes(fill = `Sexual violence`), 
+    color = "white", 
+    linewidth = 0.5
+  ) +
+  geom_sf_text(
+    data = shp_cambodia,
+    aes(label = `Sexual violence`),
+    check_overlap = TRUE,
+    size = 4, 
+    color = "black",
+    fontface = "bold"
+  ) +
+  scale_fill_gradient2(
+    low = "#FFFE9EB3",
+    mid = "#C53270B3",
+    high = "#040404B3",
+    midpoint = 22.5,
+    limits = c(0, 45)
+  ) +
+  labs(
+    title = "Sexual",
+    subtitle = "",
+    caption = "",
+    x = "",
+    y = "",
+    fill = ""
+  ) + 
+  guides(fill = "none") +
+  theme_minimal(
+    base_family = "Scada"
+  ) +
+  theme(
+    plot.margin = margin(0, 40, 0, 40),
+    
+    plot.background = element_blank(),
+    plot.title = element_text(
+      color = "black",
+      face = "bold",
+      size = 22,
+      hjust = 0.5,
+      margin = margin(5, 0, 5, 0)
+    )
+  )
+
+```
+
+Ahora, usando el paquete {patchwork}, combino los tres gráficos en una sola representación. También uso la función `plot_annotation()` para añadir un título, subtítulo y nota al diseño general.  
+
+```{r}
+#| warning: false
+
+# El diseño muestra dos filas: una con los tres mapas y la segunda solo con la guía común
+map_ipv_cambodia <- (map_ipv_emotional_cambodia + map_ipv_physical_cambodia + map_ipv_sexual_cambodia) / guide_area() + 
+  # Título, subtítulo y nota personalizados
+  plot_annotation(
+    title = "Violencia de pareja íntima en Camboya, 2021-22",
+    subtitle = "Proporción de mujeres y niñas de 15 a 49 años que han tenido pareja alguna vez y han sido víctimas de violencia ejercida por su pareja íntima, según tipo de violencia.",
+    caption = "**Datos:** Encuesta Demográfica y de Salud de Camboya (CDHS) 2021-22 <br> **Gráfico:** Juan Torres Munguía",
+    theme = theme(
+      # Configuración del título
+      plot.title.position = "plot", 
+      plot.title = element_text(
+        color = "black",
+        face = "bold",
+        size = 30,
+        hjust = 0,
+        margin = margin(5, 0, 5, 50)
+      ),
+      
+      plot.subtitle = element_text(
+        color = "grey20",
+        size = 25,
+        hjust = 0,
+        margin = margin(5, 0, 40, 50)
+        ),
+        
+        # Configuración de la nota
+        # Uso element_markdown() porque la nota contiene texto en markdown
+        plot.caption = element_markdown(
+          color = "black",
+          size = 15,
+          hjust = 0,
+          margin = margin(80, 0, 5, 50)
+        )
+  )) +
+
+  plot_layout(guides = "collect",
+              heights = unit(c(13, 1),
+               c('cm', 'cm'))
+              ) + 
+  theme_minimal(
+    base_family = "Scada"
+  ) &
+  # Configuración personalizada del tema
+  theme(
+    legend.background = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(
+      margin = margin(5, 0, 10, 0),
+      face = "bold",
+      color = "grey10",
+      size = 14,
+      hjust = 0.5
+    ),
+    legend.title.position = "top",
+    legend.text = element_text(
+      margin = margin(5, 5, 5, 5), 
+      face = "bold",
+      color = "grey10",
+      size = 14
+    ),
+    legend.key.width = unit(1.4, "cm"),
+    legend.key.height = unit(1, "cm"),
+    legend.direction = "horizontal",
+
+    plot.background = element_rect(
+      color = "#E5E5E5",
+      fill = "#E5E5E5"),
+    # Configuración de ejes
+    axis.title = element_blank(),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank()
+    
+  )
+```
+
+Finalmente, uso grid.lines() del paquete {grid} para añadir una línea horizontal después del subtítulo.
+```{r}
+#| warning: false
+#| output: false
+
+map_ipv_cambodia
+
+grid.lines(
+  x = c(0.04, 0.96), # Los valores deben estar entre 0 y 1
+  y = 0.88, # El valor debe estar entre 0 y 1
+  gp = gpar(col = "#C53270B3", 
+            lwd = 4)
+)
+
+```
+
+![](ipv-cambodia-map.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}

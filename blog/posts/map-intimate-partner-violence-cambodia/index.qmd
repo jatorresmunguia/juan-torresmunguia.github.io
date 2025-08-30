@@ -78,7 +78,7 @@ ipv_cambodia |>
 
 ```
 
-Now, we load geographical data of the administrative division of Cambodia. These data are obtained from the [Humanitarian Data Exchange (HDX) initiative](https://data.humdata.org/) of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile `.shp` and is available [here](https://data.humdata.org/dataset/cod-ab-khm) in a zip file named `som_adm_ocha_20250108_AB_SHP.zip`. I downloaded this file and located it in `/khmadm_gov_20181004_ab_shp` folder.
+Now, we load geographical data of the administrative division of Cambodia. These data are obtained from the [Humanitarian Data Exchange (HDX) initiative](https://data.humdata.org/) of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile `.shp` and is available [here](https://data.humdata.org/dataset/cod-ab-khm) in a zip file named `khm_admbnda_adm1_gov_20181004.zip`. I downloaded this file and located it in `/khmadm_gov_20181004_ab_shp` folder.
 ```{r}
 #| warning: false
 

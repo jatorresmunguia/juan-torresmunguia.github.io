@@ -36,6 +36,7 @@
       "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts/spi_somalia_visualization/index.html",
+      "/blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/index.html",
       "/blog/posts/spi_somalia/index.html",
       "/blog/posts/estimating-envipe-prevalence/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks/index.html"
@@ -44,6 +45,10 @@
   {
     "listing": "/blog/index-es.html",
     "items": [
+      "/blog/posts-es/germany-persons-seeking-protection-stacked-area-chart/index.html",
+      "/blog/posts-es/population-pyramid-mexico-crime/index.html",
+      "/blog/posts-es/cambodia-acceptability-violence-dot-plot/index.html",
+      "/blog/posts-es/map-intimate-partner-violence-cambodia/index.html",
       "/blog/posts-es/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts-es/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts-es/spi_somalia_visualization/index.html",

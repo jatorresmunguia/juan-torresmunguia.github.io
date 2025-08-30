@@ -1,0 +1,15 @@
+{
+  "hash": "40c2c5fe11fe118132801a5171488f4f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"A two-step methodology to create levels of social gaps\"\nsubtitle: \"Applying Principal Component Analysis and Dalenius-Hodges univariate stratification method in R\"\nauthor: \n - name: \n    given: Juan Armando \n    family: Torres Munguía\ndate: \"2025-02-08\"\ncategories: \n - data analysis\n - drought\n - tidyverse\n - ggplot2\n - box plots\n - SCI\n - Standardized Precipitation Index (SPI)\nimage: \"spi-somalia.png\"\ntitle-block-banner: false\ncitation: true\nexecute: \n  freeze: true\nformat: \n  html: \n    page-layout: article\ncomments:\n  utterances: \n    repo: jatorresmunguia/juan-torresmunguia.github.io\n---\n\n\n## Overview\n\n\n## About the data\n\n## Set-up\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse) \n```\n:::\n\n\n## Loading data HDX\n\n### Data wrangling\n\n\n\n::: {.cell}\n\n:::\n\n\nThe output table looks like this: \n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\n![](){width=100% style=\"margin-top: 0px; margin-bottom: 0px;\" .lightbox}\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

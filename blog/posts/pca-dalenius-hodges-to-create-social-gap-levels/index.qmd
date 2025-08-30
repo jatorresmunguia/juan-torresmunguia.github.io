@@ -1,0 +1,69 @@
+---
+title: "A two-step methodology to create levels of social gaps"
+subtitle: "Applying Principal Component Analysis and Dalenius-Hodges univariate stratification method in R"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-02-08"
+categories: 
+ - data analysis
+ - drought
+ - tidyverse
+ - ggplot2
+ - box plots
+ - SCI
+ - Standardized Precipitation Index (SPI)
+image: "spi-somalia.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Overview
+
+
+## About the data
+
+## Set-up
+
+```{r}
+#| warning: false
+
+library(tidyverse) 
+
+```
+
+## Loading data HDX
+
+### Data wrangling
+
+
+```{r}
+#| warning: false
+
+
+```
+
+The output table looks like this: 
+```{r}
+#| echo: false
+
+```
+
+
+
+```{r}
+#| warning: false
+#| output: false
+
+```
+
+![](){width=100% style="margin-top: 0px; margin-bottom: 0px;" .lightbox}

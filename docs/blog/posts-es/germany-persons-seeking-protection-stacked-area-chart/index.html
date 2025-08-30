@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2025-08-01">
+<title>Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST - ¿Cómo ha cambiado a lo largo del tiempo el número de personas solicitando protección en Alemania?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
+<script src="../../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title"></span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../portfolio/index.html"> 
+<span class="menu-text">DataViz</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../contact/index.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jtorresmunguia.bsky.social" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/jatorresmunguia" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:github" style="font-size: 1.1em;" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://figshare.com/authors/Juan_Armando_Torres_Mungu_a/11840372" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="simple-icons:figshare" style="font-size: 1.1em;" aria-label="Icon figshare from simple-icons Iconify.design set." title="Figshare"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-3432-6941" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:orcid" style="font-size: 1.1em;" aria-label="Icon orcid from fa6-brands Iconify.design set." title="Orcid"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?hl=es&amp;user=VelzdlMAAAAJ" target="blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../blog/index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">¿Cómo ha cambiado a lo largo del tiempo el número de personas solicitando protección en Alemania?</h1>
+<p class="subtitle lead">Un gráfico de áreas apiladas con {ggplot2}</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">visualización de datos</div>
+    <div class="quarto-category">solicitantes de protección</div>
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">gráfico de áreas apiladas</div>
+    <div class="quarto-category">Alemania</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Juan Armando Torres Munguía </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 1, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><section id="descripción-general" class="level2"><h2 class="anchored" data-anchor-id="descripción-general">Descripción general</h2>
+<p>En Alemania, al 31 de diciembre de 2024, según el Registro Central de Extranjeros, más de 14 millones de los 83.6 millones de habitantes son extranjeros.</p>
+<p>Es importante señalar que alrededor de 3.3 millones llegaron al país en busca de protección. Esta cifra es aproximadamente 78% mayor que la reportada en 2020, y 343% más que hace 10 años.</p>
+<p>Una herramienta eficaz para analizar estos datos son los gráficos de áreas apiladas, que permiten visualizar la evolución de la variable de interés, personas que solicitan protección en este caso, desagregándola por categorías. En esta publicación, crearé un gráfico de áreas apiladas con esta información utilizando {ggplot2} en R.</p>
+</section><section id="sobre-los-datos" class="level2"><h2 class="anchored" data-anchor-id="sobre-los-datos">Sobre los datos</h2>
+<p>Los datos son producidos por el Registro Central de Extranjeros y presentados por la Oficina Federal de Estadística (Destatis) en su sitio web, en la tabla <a href="https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html"><em>Persons seeking protection, by protection status, 2007 to 2024</em></a>. Descargué esta información y la guardé en un archivo de Excel llamado <code>persons-seeking-protection-germany.xlsx</code>.</p>
+</section><section id="preparación" class="level2"><h2 class="anchored" data-anchor-id="preparación">Preparación</h2>
+<p>Primero, cargo los paquetes necesarios:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="carga-de-datos" class="level2"><h2 class="anchored" data-anchor-id="carga-de-datos">Carga de datos</h2>
+<p>Descargué la tabla <a href="https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html"><em>Persons seeking protection, by protection status, 2007 to 2024</em></a> y la guardé en un archivo de Excel llamado <code>persons-seeking-protection-germany.xlsx</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"persons-seeking-protection-germany.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La tabla se ve así:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span></span>
+<span>    caption <span class="op">=</span> <span class="st">"Personas solicitando protección, por estatus, 2007 a 2024"</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_paper</a></span><span class="op">(</span><span class="st">"hover"</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Personas solicitando protección, por estatus, 2007 a 2024</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reference date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Foreign population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Persons seeking protection</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">unsettled</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">recognised</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">temporary</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">permanent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">refused</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">31 December 2007</td>
+<td style="text-align: right;">82217837</td>
+<td style="text-align: right;">6744880</td>
+<td style="text-align: right;">457430</td>
+<td style="text-align: right;">20145</td>
+<td style="text-align: right;">301995</td>
+<td style="text-align: right;">164350</td>
+<td style="text-align: right;">137650</td>
+<td style="text-align: right;">135290</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2008</td>
+<td style="text-align: right;">82002356</td>
+<td style="text-align: right;">6727620</td>
+<td style="text-align: right;">456050</td>
+<td style="text-align: right;">18930</td>
+<td style="text-align: right;">330365</td>
+<td style="text-align: right;">150795</td>
+<td style="text-align: right;">179570</td>
+<td style="text-align: right;">106755</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2009</td>
+<td style="text-align: right;">81802257</td>
+<td style="text-align: right;">6694775</td>
+<td style="text-align: right;">477595</td>
+<td style="text-align: right;">24620</td>
+<td style="text-align: right;">361775</td>
+<td style="text-align: right;">158735</td>
+<td style="text-align: right;">203040</td>
+<td style="text-align: right;">91195</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2010</td>
+<td style="text-align: right;">81751602</td>
+<td style="text-align: right;">6753620</td>
+<td style="text-align: right;">503470</td>
+<td style="text-align: right;">35835</td>
+<td style="text-align: right;">382325</td>
+<td style="text-align: right;">168205</td>
+<td style="text-align: right;">214115</td>
+<td style="text-align: right;">85310</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2011</td>
+<td style="text-align: right;">80327900</td>
+<td style="text-align: right;">6930895</td>
+<td style="text-align: right;">505925</td>
+<td style="text-align: right;">47130</td>
+<td style="text-align: right;">373875</td>
+<td style="text-align: right;">151045</td>
+<td style="text-align: right;">222825</td>
+<td style="text-align: right;">84920</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2012</td>
+<td style="text-align: right;">80523746</td>
+<td style="text-align: right;">7213710</td>
+<td style="text-align: right;">549825</td>
+<td style="text-align: right;">65920</td>
+<td style="text-align: right;">399050</td>
+<td style="text-align: right;">165610</td>
+<td style="text-align: right;">233440</td>
+<td style="text-align: right;">84860</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2013</td>
+<td style="text-align: right;">80767463</td>
+<td style="text-align: right;">7633630</td>
+<td style="text-align: right;">613925</td>
+<td style="text-align: right;">110335</td>
+<td style="text-align: right;">410570</td>
+<td style="text-align: right;">174110</td>
+<td style="text-align: right;">236460</td>
+<td style="text-align: right;">93020</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2014</td>
+<td style="text-align: right;">81197537</td>
+<td style="text-align: right;">8152970</td>
+<td style="text-align: right;">746320</td>
+<td style="text-align: right;">177900</td>
+<td style="text-align: right;">460140</td>
+<td style="text-align: right;">208460</td>
+<td style="text-align: right;">251675</td>
+<td style="text-align: right;">108280</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2015</td>
+<td style="text-align: right;">82175684</td>
+<td style="text-align: right;">9107895</td>
+<td style="text-align: right;">1036235</td>
+<td style="text-align: right;">349810</td>
+<td style="text-align: right;">547935</td>
+<td style="text-align: right;">285805</td>
+<td style="text-align: right;">262130</td>
+<td style="text-align: right;">138495</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2016</td>
+<td style="text-align: right;">82521653</td>
+<td style="text-align: right;">10039080</td>
+<td style="text-align: right;">1597570</td>
+<td style="text-align: right;">574945</td>
+<td style="text-align: right;">867500</td>
+<td style="text-align: right;">599235</td>
+<td style="text-align: right;">268265</td>
+<td style="text-align: right;">155120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2017</td>
+<td style="text-align: right;">82792351</td>
+<td style="text-align: right;">10623940</td>
+<td style="text-align: right;">1680700</td>
+<td style="text-align: right;">348640</td>
+<td style="text-align: right;">1154365</td>
+<td style="text-align: right;">888355</td>
+<td style="text-align: right;">266010</td>
+<td style="text-align: right;">177700</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2018</td>
+<td style="text-align: right;">83019214</td>
+<td style="text-align: right;">10915455</td>
+<td style="text-align: right;">1781750</td>
+<td style="text-align: right;">306095</td>
+<td style="text-align: right;">1283225</td>
+<td style="text-align: right;">1017760</td>
+<td style="text-align: right;">265465</td>
+<td style="text-align: right;">192430</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2019</td>
+<td style="text-align: right;">83166711</td>
+<td style="text-align: right;">11228300</td>
+<td style="text-align: right;">1839115</td>
+<td style="text-align: right;">266470</td>
+<td style="text-align: right;">1360070</td>
+<td style="text-align: right;">1090475</td>
+<td style="text-align: right;">269590</td>
+<td style="text-align: right;">212575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2020</td>
+<td style="text-align: right;">83155031</td>
+<td style="text-align: right;">11432460</td>
+<td style="text-align: right;">1856785</td>
+<td style="text-align: right;">215960</td>
+<td style="text-align: right;">1397685</td>
+<td style="text-align: right;">1116970</td>
+<td style="text-align: right;">280715</td>
+<td style="text-align: right;">243140</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2021</td>
+<td style="text-align: right;">83237124</td>
+<td style="text-align: right;">11817790</td>
+<td style="text-align: right;">1936350</td>
+<td style="text-align: right;">238945</td>
+<td style="text-align: right;">1451375</td>
+<td style="text-align: right;">1133545</td>
+<td style="text-align: right;">317835</td>
+<td style="text-align: right;">246030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2022</td>
+<td style="text-align: right;">83118501</td>
+<td style="text-align: right;">13383910</td>
+<td style="text-align: right;">3078650</td>
+<td style="text-align: right;">570060</td>
+<td style="text-align: right;">2253875</td>
+<td style="text-align: right;">1916630</td>
+<td style="text-align: right;">337245</td>
+<td style="text-align: right;">254710</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31 December 2023</td>
+<td style="text-align: right;">83456045</td>
+<td style="text-align: right;">13895865</td>
+<td style="text-align: right;">3173135</td>
+<td style="text-align: right;">454795</td>
+<td style="text-align: right;">2528935</td>
+<td style="text-align: right;">2188665</td>
+<td style="text-align: right;">340275</td>
+<td style="text-align: right;">189405</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31 December 2024</td>
+<td style="text-align: right;">83577140</td>
+<td style="text-align: right;">14061640</td>
+<td style="text-align: right;">3304705</td>
+<td style="text-align: right;">427415</td>
+<td style="text-align: right;">2706320</td>
+<td style="text-align: right;">2377115</td>
+<td style="text-align: right;">329205</td>
+<td style="text-align: right;">170970</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="diseño-del-gráfico-de-áreas-apiladas" class="level2"><h2 class="anchored" data-anchor-id="diseño-del-gráfico-de-áreas-apiladas">Diseño del gráfico de áreas apiladas</h2>
+<p>Antes de graficar, transformo los datos y renombro algunas columnas para facilitar su uso en {ggplot2}..</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Extraigo el año de la fecha de referencia</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">`Reference date`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Solo selecciono las variables de interés</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">unsettled</span>, <span class="va">temporary</span>, <span class="va">permanent</span>, <span class="va">refused</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Reestructuración de los datos a formato largo</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="op">!</span><span class="va">year</span>, </span>
+<span>              names_to <span class="op">=</span> <span class="st">"status"</span>, </span>
+<span>              values_to <span class="op">=</span> <span class="st">"persons"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>FA continuación, defino un tema para el gráfico y establezco la tipografía “Josefin Sans” con el paquete <code>showtext</code>Más opciones disponibles en <a href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Josefin Sans"</span>, <span class="st">"Josefin Sans"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">theme_stacked_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span></span>
+<span>    base_family <span class="op">=</span> <span class="st">"Josefin Sans"</span> </span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="co"># Ajustes personalizados</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span></span>
+<span>      <span class="co"># Configuración de títulos</span></span>
+<span>      plot.title.position <span class="op">=</span> <span class="st">"plot"</span>, </span>
+<span>      plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>        hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        halign <span class="op">=</span> <span class="fl">0</span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_textbox.html">element_textbox</a></span><span class="op">(</span></span>
+<span>      color <span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">35</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>      hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>      halign <span class="op">=</span> <span class="fl">0</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Configuración de ejes</span></span>
+<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span></span>
+<span>        size <span class="op">=</span> <span class="fl">1.1</span>, </span>
+<span>        colour <span class="op">=</span> <span class="st">"#800000"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span></span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">16</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Configuración de la leyenda</span></span>
+<span>      legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="fl">0.80</span><span class="op">)</span>,</span>
+<span>      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">14</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">13</span></span>
+<span>      <span class="op">)</span>,</span>
+<span></span>
+<span>      <span class="co"># Configuración del pie de figura</span></span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#800000"</span>,</span>
+<span>        face <span class="op">=</span> <span class="st">"italic"</span>,</span>
+<span>        size <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>        hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>        <span class="op">)</span>,</span>
+<span></span>
+<span>      plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#D6D6CE"</span>,</span>
+<span>        fill <span class="op">=</span> <span class="st">"#D6D6CE"</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span><span class="op">)</span> </span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El gráfico se crea con el siguiente código:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">seeking_protection</span> <span class="op">&lt;-</span> <span class="va">seeking_protection</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>status <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">status</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">seeking_protection</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">year</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">persons</span>,</span>
+<span>      fill <span class="op">=</span> <span class="va">status</span>,</span>
+<span>      color <span class="op">=</span> <span class="va">status</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Estatus de protección"</span>, </span>
+<span>                             position <span class="op">=</span> <span class="st">"inside"</span><span class="op">)</span>,</span>
+<span>         color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Estatus de protección"</span>, </span>
+<span>                             position <span class="op">=</span> <span class="st">"inside"</span><span class="op">)</span></span>
+<span>                             <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Unsettled"</span><span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>               <span class="st">"Temporary"</span><span class="op">=</span> <span class="st">"#CC8214"</span>, </span>
+<span>               <span class="st">"Refused"</span> <span class="op">=</span> <span class="st">"#8A9045"</span>,</span>
+<span>               <span class="st">"Permanent"</span> <span class="op">=</span> <span class="st">"#155F83"</span></span>
+<span>               <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Unsettled"</span><span class="op">=</span> <span class="st">"#767676"</span>,</span>
+<span>               <span class="st">"Temporary"</span><span class="op">=</span> <span class="st">"#CC8214"</span>, </span>
+<span>               <span class="st">"Refused"</span> <span class="op">=</span> <span class="st">"#8A9045"</span>,</span>
+<span>               <span class="st">"Permanent"</span> <span class="op">=</span> <span class="st">"#155F83"</span></span>
+<span>               <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span></span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span></span>
+<span>      scale <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>    expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2006.5</span>, <span class="fl">2024.5</span><span class="op">)</span>, </span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2007</span>, <span class="fl">2024</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Personas solicitando protección en Alemania por estatus | 2007-2024"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Número de personas \n(en millones)"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Fuente: Registro Central de Extranjeros. \nDiseño: Juan Torres Munguía."</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_stacked_chart</span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="st">"stacked-area-germany-seeking-protection.png"</span>,</span>
+<span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">9</span>,</span>
+<span>  units <span class="op">=</span> <span class="st">"in"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># Desactiva la funcionalidad de showtext</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="stacked-area-germany-seeking-protection.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="stacked-area-germany-seeking-protection.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+  author = {Torres Munguía, Juan Armando},
+  title = {¿Cómo Ha Cambiado a Lo Largo Del Tiempo El Número de Personas
+    Solicitando Protección En {Alemania?}},
+  date = {2025-08-01},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts-es/germany-persons-seeking-protection-stacked-area-chart},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2025. <span>“¿Cómo Ha Cambiado a Lo Largo
+Del Tiempo El Número de Personas Solicitando Protección En
+Alemania?”</span> August 1, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts-es/germany-persons-seeking-protection-stacked-area-chart">https://juan-torresmunguia.netlify.app/blog/posts-es/germany-persons-seeking-protection-stacked-area-chart</a>.
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/juan-torresmunguia\.netlify\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Juan TORRES MUNGUÍA</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Website built with <a href="https://www.r-project.org/" target="_blank"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a> <br>Source available at <a href="https://github.com/jatorresmunguia/juan-torresmunguia.github.io" target="_blank"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="GitHub"></iconify-icon></a></p>
+</div>
+    <div class="nav-footer-right">
+<p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
+</div>
+  </div>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+</body></html>
