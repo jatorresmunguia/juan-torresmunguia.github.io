@@ -300,7 +300,7 @@ ggplot(aes(x = rainfall,
 
 ```
 
-![](rainfall-vietnam-ridgeline_gradient.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
+![](rainfall-vietnam-ridgeline-gradient.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
 
 ::: {.callout-important}
 ### Interpretation
