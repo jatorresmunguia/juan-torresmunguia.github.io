@@ -239,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>               names_to <span class="op">=</span> <span class="st">"month"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"rainfall"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This information looks like this:</p>
+<p>After reshaping, data looks like this:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_vietnam</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -352,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section><section id="creating-the-ridgeline-plots" class="level2"><h2 class="anchored" data-anchor-id="creating-the-ridgeline-plots">Creating the ridgeline plots</h2>
-<p>I will create three versions of the ridgeline plot. First, the ridgeline plot will show the interquantile range of rainfall by month in Ha Noi. Here, the colors represent different quantiles of the distribution of rainfall per month. To show this, I will plot the data from <a href="https://en.wikipedia.org/wiki/Hanoi">Ha Noi</a>, capital of Vietnam.</p>
+<p>I will create two versions of the ridgeline plot. First, a ridgeline plot to show the interquantile range of rainfall by month in <a href="https://en.wikipedia.org/wiki/Hanoi">Ha Noi</a>, capital of Vietnam. Here, the colors represent different quantiles of the distribution of rainfall per month.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rainfall_vietnam</span> <span class="op">&lt;-</span> <span class="va">rainfall_vietnam</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">month</span>, levels <span class="op">=</span> <span class="va">month.name</span><span class="op">)</span><span class="op">)</span> <span class="co"># Important to order months in the correct order</span></span>
@@ -455,6 +455,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># showtext_auto(FALSE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="rainfall-vietnam-ridgeline.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="rainfall-vietnam-ridgeline.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The first version of the ridgeline plot allows us to see the distribution of rainfall in Ha Noi by month. Particularly, it shows that the wettest months are June, July, and August, i.e.&nbsp;the summer months. The rainy season is easily identified as these months have their median values more to the right of the x-axis. On the other hand, the driest months are from November to April, i.e.&nbsp;the winter months. The interquantile ranges also show that there is a lot of variability in precipitation during the rainy season, while the dry season has less variablity.</p>
+</div>
+</div>
 <p>In the second version of the ridgeline plot, I will use a gradient with a continuous fill color scale to represent the amount of rainfall. I will also use other font and color choices. To show this, I will plot the data from <a href="https://en.wikipedia.org/wiki/Nha_Trang">Nha Trang</a>, a coastal city and the capital of Khánh Hòa Province.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># More font alternatives can be found here https://fonts.google.com/</span></span>
@@ -528,34 +541,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">25</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span></span>
-<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span>    legend.title.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span>    legend.key.size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>      color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span>      size <span class="op">=</span> <span class="fl">60</span>,</span>
-<span>      hjust <span class="op">=</span> <span class="fl">0.5</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
-<span>      color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span>      size <span class="op">=</span> <span class="fl">60</span>,</span>
-<span>      hjust <span class="op">=</span> <span class="fl">0.5</span></span>
-<span>    <span class="op">)</span>,</span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span></span>
 <span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># showtext_opts(dpi = 320) </span></span>
-<span><span class="co"># ggsave(</span></span>
-<span><span class="co">#  "rainfall-vietnam-ridgeline_gradient.png",</span></span>
-<span><span class="co">#  dpi = 320,</span></span>
-<span><span class="co">#  width = 15,</span></span>
-<span><span class="co">#  height = 11,</span></span>
-<span><span class="co">#  units = "in"</span></span>
-<span><span class="co"># )</span></span>
-<span><span class="co"># showtext_auto(FALSE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> </span>
+<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="st">"rainfall-vietnam-ridgeline_gradient.png"</span>,</span>
+<span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">11</span>,</span>
+<span>  units <span class="op">=</span> <span class="st">"in"</span></span>
+<span> <span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="rainfall-vietnam-ridgeline_gradient.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="rainfall-vietnam-ridgeline_gradient.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The second version of the ridgeline plot allows us to see the distribution of rainfall in Nha Trang by month. As can be seen, the wettest months, i.e.&nbsp;those with the highest median values and the most spread out distributions, are from September to December. The dry season is from January to August, in which the values are more concentrated to the left of the x-axis.</p>
+</div>
+</div>
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
@@ -987,7 +999,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -77,7 +77,7 @@ rainfall_vietnam <- rainfall_vietnam |>
 
 ```
 
-This information looks like this:
+After reshaping, data looks like this:
 ```{r}
 #| warning: false
 
@@ -91,7 +91,7 @@ rainfall_vietnam |>
 ```
 
 ## Creating the ridgeline plots
-I will create three versions of the ridgeline plot. First, the ridgeline plot will show the interquantile range of rainfall by month in Ha Noi. Here, the colors represent different quantiles of the distribution of rainfall per month. To show this, I will plot the data from [Ha Noi](https://en.wikipedia.org/wiki/Hanoi), capital of Vietnam.
+I will create two versions of the ridgeline plot. First, a ridgeline plot to show the interquantile range of rainfall by month in [Ha Noi](https://en.wikipedia.org/wiki/Hanoi), capital of Vietnam. Here, the colors represent different quantiles of the distribution of rainfall per month.
 ```{r}
 #| warning: false
 #| output: false
@@ -201,6 +201,12 @@ ggplot(aes(x = rainfall,
 
 ![](rainfall-vietnam-ridgeline.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
 
+::: {.callout-important}
+### Interpretation
+The first version of the ridgeline plot allows us to see the distribution of rainfall in Ha Noi by month. Particularly, it shows that the wettest months are June, July, and August, i.e. the summer months. The rainy season is easily identified as these months have their median values more to the right of the x-axis. On the other hand, the driest months are from November to April, i.e. the winter months. The interquantile ranges also show that there is a lot of variability in precipitation during the rainy season, while the dry season has less variablity. 
+
+:::
+
 In the second version of the ridgeline plot, I will use a gradient with a continuous fill color scale to represent the amount of rainfall. I will also use other font and color choices. To show this, I will plot the data from [Nha Trang](https://en.wikipedia.org/wiki/Nha_Trang), a coastal city and the capital of Khánh Hòa Province.
 
 ```{r}
@@ -278,21 +284,7 @@ ggplot(aes(x = rainfall,
       margin = margin(25, 0, 5, 0)
     ),
 
-    legend.position = "bottom",
-    legend.title.position = "bottom",
-    legend.key.size = unit(1, "cm"),
-    legend.title = element_text(
-      face = "bold",
-      color = "white",
-      size = 60,
-      hjust = 0.5
-    ),
-    legend.text = element_text(
-      face = "bold",
-      color = "white",
-      size = 60,
-      hjust = 0.5
-    ),
+    legend.position = "none"
 
   )
 
@@ -309,3 +301,9 @@ ggplot(aes(x = rainfall,
 ```
 
 ![](rainfall-vietnam-ridgeline_gradient.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
+
+::: {.callout-important}
+### Interpretation
+The second version of the ridgeline plot allows us to see the distribution of rainfall in Nha Trang by month. As can be seen, the wettest months, i.e. those with the highest median values and the most spread out distributions, are from September to December. The dry season is from January to August, in which the values are more concentrated to the left of the x-axis.
+
+:::
