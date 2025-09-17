@@ -10,7 +10,22 @@
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Fri, 01 Aug 2025 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Sep 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Ridgeline plots to study subnational rainfall patterns in Vietnam</title>
+  <dc:creator>Juan Armando Torres Munguía</dc:creator>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/</link>
+  <description><![CDATA[ Ridgeline plots are a type of chart that displays the distribution of a numeric variable for different categories. These plots are commonly used to visualize changes in distributions over time. To showcase how to create ridgeline plots with {ggplot2} and {ggridges} in R, I will use data on monthly rainfall at some stations by provincies and month in Vietnam, from 2002 to 2024. ]]></description>
+  <category>data visualization</category>
+  <category>rainfall</category>
+  <category>tidyverse</category>
+  <category>ggplot2</category>
+  <category>ridgeline plot</category>
+  <category>Vietnam</category>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/</guid>
+  <pubDate>Mon, 15 Sep 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/rainfall-vietnam-ridgeline.png" medium="image" type="image/png" height="106" width="144"/>
+</item>
 <item>
   <title>How has the number of persons seeking protection in Germany changed over time?</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
@@ -117,22 +132,6 @@
   <guid>https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/</guid>
   <pubDate>Fri, 14 Feb 2025 06:00:00 GMT</pubDate>
   <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/spi-somalia-map.png" medium="image" type="image/png" height="108" width="144"/>
-</item>
-<item>
-  <title>A two-step methodology to create levels of social gaps</title>
-  <dc:creator>Juan Armando Torres Munguía</dc:creator>
-  <link>https://juan-torresmunguia.netlify.app/blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/</link>
-  <description><![CDATA[ The output table looks like this: ]]></description>
-  <category>data analysis</category>
-  <category>drought</category>
-  <category>tidyverse</category>
-  <category>ggplot2</category>
-  <category>box plots</category>
-  <category>SCI</category>
-  <category>Standardized Precipitation Index (SPI)</category>
-  <guid>https://juan-torresmunguia.netlify.app/blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/</guid>
-  <pubDate>Sat, 08 Feb 2025 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/spi-somalia.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis</title>

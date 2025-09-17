@@ -1,0 +1,29 @@
+---
+title: "A ridgeline plot to study subnational rainfall patterns in Nha Trang, Vietnam"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-09-15"
+categories: 
+ - data visualization
+image: "rainfall-vietnam-ridgeline_gradient.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+Ridgeline plots are an alternative to compare distributions across different categories. Technically, they are a set of overlapping density plots, where each one represents a different category.
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/vietnam-rainfall-ridgeline-plot/index.html).
+
+::: {.card}
+![](rainfall-vietnam-ridgeline_gradient.png){.lightbox fig-align="center" width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+:::

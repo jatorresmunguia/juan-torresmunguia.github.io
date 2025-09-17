@@ -378,5 +378,14 @@
   },
   "blog/posts-es/germany-persons-seeking-protection-stacked-area-chart/index.qmd": {
     "index.html": "ac565fdf"
+  },
+  "blog/posts/vietnam-rainfall-ridgeline-plot/index.qmd": {
+    "index.html": "f3300cf3"
+  },
+  "portfolio/vietnam-rainfall-ridgeline-plot/index.qmd": {
+    "index.html": "49f54b90"
+  },
+  "portfolio/vietnam-rainfall-ridgeline-plot-gradient/index.qmd": {
+    "index.html": "058f17c4"
   }
 }

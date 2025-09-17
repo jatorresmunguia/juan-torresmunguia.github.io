@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "A two-step methodology to create levels of social gaps"
 subtitle: "Applying Principal Component Analysis and Dalenius-Hodges univariate stratification method in R"
 author: 
