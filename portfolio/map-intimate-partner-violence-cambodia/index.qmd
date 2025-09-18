@@ -1,5 +1,5 @@
 ---
-title: "Three maps to examine the prevalence of intimate partner violence (IPV) in Cambodia"
+title: "Three maps for examining the prevalence of intimate partner violence (IPV) in Cambodia"
 subtitle: ""
 author: 
  - name: 

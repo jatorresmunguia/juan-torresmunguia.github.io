@@ -1,5 +1,5 @@
 ---
-title: "A ridgeline plot to study subnational rainfall patterns in Ha Noi, Vietnam"
+title: "Visualizing monthly rainfall in Ha Noi, Vietnam with a ridgeline plot"
 subtitle: ""
 author: 
  - name: 

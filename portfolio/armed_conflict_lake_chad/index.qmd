@@ -1,5 +1,5 @@
 ---
-title: "Violence against civilians in the Lake Chad Basin"
+title: "Mapping violence against civilians in the Lake Chad Basin"
 subtitle: ""
 author: 
  - name: 

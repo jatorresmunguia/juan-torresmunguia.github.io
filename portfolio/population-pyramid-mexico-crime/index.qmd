@@ -1,5 +1,5 @@
 ---
-title: "Creating a population pyramid to visualize crime victimization by age and sex in Mexico"
+title: "A population pyramid to visualize crime victimization by age and sex in Mexico"
 subtitle: ""
 author: 
  - name: 

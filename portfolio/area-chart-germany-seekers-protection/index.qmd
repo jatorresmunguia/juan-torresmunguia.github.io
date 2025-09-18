@@ -1,5 +1,5 @@
 ---
-title: "How has the number of persons seeking protection in Germany changed over time?"
+title: "A stacked area chart showing the number of persons seeking protection in Germany over time"
 subtitle: ""
 author: 
  - name: 

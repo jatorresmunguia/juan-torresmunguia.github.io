@@ -1,5 +1,5 @@
 ---
-title: "A ridgeline plot to study subnational rainfall patterns in Nha Trang, Vietnam"
+title: "A ridgeline plot to analyze precipitation patterns in Nha Trang"
 subtitle: ""
 author: 
  - name: 
