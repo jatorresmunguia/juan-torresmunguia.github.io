@@ -20,7 +20,7 @@ listing:
     items: 20
     title: "Data Art & Science Blog"
     description: "Exploring the art and science of working with development and humanitarian data"
-    type: partial
+    type: full
 execute:
   freeze: true
 format: 
