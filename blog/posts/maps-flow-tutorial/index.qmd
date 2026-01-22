@@ -1,0 +1,69 @@
+---
+draft: true 
+title: "Creating flow maps with {ggplot2} in R"
+subtitle: "Visualizing forced displacement in Sudan"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2026-01-15"
+categories: 
+ - data visualization
+ - forced displacement
+ - tidyverse
+ - ggplot2
+ - flow maps
+ - Sudan
+image: "displacement-flow-map-sudan.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+## Overview
+
+
+## About the data
+
+## Set-up
+
+```{r}
+#| warning: false
+
+library(tidyverse) 
+
+```
+
+## Loading data HDX
+
+### Data wrangling
+
+
+```{r}
+#| warning: false
+
+
+```
+
+The output table looks like this: 
+```{r}
+#| echo: false
+
+```
+
+
+
+```{r}
+#| warning: false
+#| output: false
+
+```
+
+![](displacement-flow-map-sudan.png){width=100% style="margin-top: 0px; margin-bottom: 0px;" .lightbox}
