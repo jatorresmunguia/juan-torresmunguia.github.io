@@ -102,11 +102,33 @@ canvas {
   left: 0; 
   width: 100%;
   height: 100vh;
-  background-color: #153268;
+  background-color: transparent;
   z-index: -2;
 }
 
+.title-main,
+.g-col-12,
+.g-col-sm-4 {
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
+
+#content-overlay {
+  position: relative;
+  z-index: 1;
+  pointer-events: none; 
+}
+
+#content-overlay a {
+  pointer-events: auto;
+}
+
 #particles-js{
+  position: fixed;
+  top: 0;
+  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -116,7 +138,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1; 
+  z-index: 0; 
   }
 
 #particles-js h1 h2 {

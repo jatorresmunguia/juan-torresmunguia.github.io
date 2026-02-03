@@ -1,27 +1,39 @@
 ---
-title: "Juan Torres Munguía, Ph.D."
-profile_image: "profile_pic.png"
-subtitle: "HUMANITARIAN DATA SCIENTIST"
+title: "About me"
+about_image: "about_pic.jpeg"
+subtitle: ""
 execute:
   freeze: true
 about:
   template: solana
 format:
-  md: default
   html:
     page-layout: article
 ---
-
 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I am a Statistician specialized in the management, analysis, and visualization of data related to humanitarian emergencies and most vulnerable populations.
+I hold a PhD in Applied Statistics and Empirical Methods from the [Georg-August-Universität Göttingen](https://www.uni-goettingen.de/), completed in 2022 with the _summa cum laude_ distinction. My [PhD dissertation](https://ediss.uni-goettingen.de/handle/11858/14585?locale-attribute=en) focused on developing [boosting structured additive regression models](https://link.springer.com/chapter/10.1007/978-3-662-63882-8_9) to address critical issues in development economics. 
 
-My work integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.
+<span style="font-weight:700; font-size:1.25em;"> A glimpse of my research</span>
 
-As an R-enthusiast, I love coding to optimize and streamline my work. Check out my [Blog](../blog/index.qmd), where I share insights on using R for the study of humanitarian and development data.
+My research integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.
+
+Another line of my research focuses on enhancing knowledge of [disease outbreaks](disease-outbreaks-data.netlify.app) by improving the availability and quality of data and promoting analyses to identify geospatial trends and patterns worldwide.
+
+Recently, I have applied boosting structured additive regression models to predict and describe _whether_, _how_, _where_, and _when_ development and humanitarian emergencies may occur in the future. Feel free to [send me a message](../contact/index.qmd) if you are interested in this line of work.
+
+Check out my [publications](../publications/index.qmd).
+
+<span style="font-weight:700; font-size:1.25em;"> Brief summary of my professional experience</span>
+
+I have contributed to the management, analysis, and visualization of data related to humanitarian emergencies and vulnerable populations across several international projects, including the Norwegian Refugee Council, the United Nations Office on Drugs and Crime, the United Nations Institute for Disarmament Research, the International Organization for Migration, and UN Women.
+
+Recently, as a Research Analyst at the Internal Displacement Monitoring Centre, I contributed to the analysis of displacement risk assessment models estimating the likelihood and potential impacts of different scenarios caused by riverine floods, storm surges, cyclonic winds, and droughts in Guatemala, Kenya, Nigeria, and Bangladesh. Additionally, I worked on a separate project where I managed, analyzed, and visualized data from a large-scale survey on internal displacement in Sudan comprising more than 10,000 respondents. In this role, I conducted analyses of the socio-economic impacts of displacement on both displaced and non-displaced households, as well as a multi-sector needs assessment using severity-score metrics across ten development areas, including access to food, health services, non-food items, water, sanitation and hygiene, and security.
+
+See my [CV](../cv/index.qmd) for more details.
 
 :::
 
@@ -30,11 +42,13 @@ As an R-enthusiast, I love coding to optimize and streamline my work. Check out 
 ```{=html}
 
 <div class="g-col-12 g-col-sm-12 text-center">
-  <img class="img-fluid rounded-circle" src="{{< meta profile_image >}}" >
+  <img class="img-fluid" src="{{< meta about_image >}}" style="width:100%; height:auto;">
+    <figcaption style="font-size:0.85em; color:#666; margin-top:6px;">
+      <b>Credit:</b> Photo taken by friends following my PhD viva.
+    </figcaption>
 </div>
 
 ```
-
 :::
 
 :::

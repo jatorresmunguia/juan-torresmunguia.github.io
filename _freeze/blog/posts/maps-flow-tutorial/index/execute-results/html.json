@@ -1,0 +1,15 @@
+{
+  "hash": "00820fe5bb017e2de762e9e46b46bd32",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ndraft: true \ntitle: \"Creating flow maps with {ggplot2} in R\"\nsubtitle: \"Visualizing forced displacement in Sudan\"\nauthor: \n - name: \n    given: Juan Armando \n    family: Torres Munguía\ndate: \"2026-01-15\"\ncategories: \n - data visualization\n - forced displacement\n - tidyverse\n - ggplot2\n - flow maps\n - Sudan\nimage: \"displacement-flow-map-sudan.png\"\ntitle-block-banner: false\ncitation: true\nexecute: \n  freeze: true\nformat: \n  html: \n    page-layout: article\ncomments:\n  utterances: \n    repo: jatorresmunguia/juan-torresmunguia.github.io\n---\n\n## Overview\n\n\n## About the data\n\n## Set-up\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse) \n```\n:::\n\n\n## Loading data HDX\n\n### Data wrangling\n\n\n\n::: {.cell}\n\n:::\n\n\nThe output table looks like this: \n\n::: {.cell}\n\n:::\n\n\n\n\n\n::: {.cell}\n\n:::\n\n\n![](displacement-flow-map-sudan.png){width=100% style=\"margin-top: 0px; margin-bottom: 0px;\" .lightbox}\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

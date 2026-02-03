@@ -1,0 +1,4 @@
+"0","#| warning: false"
+"0","envipe_data |>"
+"0","  kbl(caption = ""Prevalence of victimization by age and sex in Mexico, 2023"") |>"
+"0","  kable_paper(""hover"", full_width = F)"
