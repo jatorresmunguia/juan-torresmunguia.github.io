@@ -72,7 +72,8 @@
     "about.html": "b7b6b70a"
   },
   "about/index.qmd": {
-    "index.html": "a4b92cbc"
+    "index.html": "a4b92cbc",
+    "index.md": "acef7f69"
   },
   "blog/index.qmd": {
     "index.html": "82f27aa7",
