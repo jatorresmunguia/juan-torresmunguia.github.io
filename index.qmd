@@ -6,6 +6,7 @@ profile_image: "profile_pic.png"
 format: 
   html:
     page-layout: article 
+    css: "about/styles.css"
 execute: 
   echo: false
   warning: false
@@ -33,7 +34,7 @@ As an R-enthusiast, I love coding to optimize and streamline my work. Check out 
 ```{=html}
 
 <div class="g-col-12 g-col-sm-4 text-center">
-  <img class="img-fluid rounded-circle" src="{{< meta profile_image >}}" >
+  <img class="img-fluid rounded-circle" src="{{< meta profile_image >}}" style="height:auto;"> <br>
   <span style="font-weight:700; font-size:1.25em;">Juan Torres Munguía, Ph.D.</span><br>
 <span style="font-weight:700; font-size:0.85em;">HUMANITARIAN DATA STATISTICIAN</span>
 </div>

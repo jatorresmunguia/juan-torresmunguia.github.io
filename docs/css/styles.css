@@ -5,6 +5,7 @@
 .navbar-dark, .navbar[data-bs-theme=dark] {
   --bs-navbar-color: #f2f0e8;
   --bs-navbar-hover-color: #50a5d2;
+  --bs-navbar-brand-hover-color: #50a5d2;
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
@@ -208,4 +209,3 @@ div.callout-note.callout {
   background-repeat: no-repeat;
   background-size: .9rem .9rem;
 }
-

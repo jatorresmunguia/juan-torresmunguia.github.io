@@ -4,8 +4,6 @@ about_image: "about_pic.jpeg"
 subtitle: ""
 execute:
   freeze: true
-about:
-  template: solana
 format:
   html:
     page-layout: article
@@ -13,19 +11,33 @@ format:
 
 ::: {.grid}
 
+::: {.g-col-12 .g-col-sm-4}
+
+```{=html}
+
+<div class="g-col-12 g-col-sm-12 text-center">
+  <img class="img-fluid" src="{{< meta about_image >}}" style="height:auto;">
+    <figcaption style="font-size:0.85em; color:#666; margin-top:6px;">
+      <b>Credit:</b> Photo taken by friends following my PhD viva.
+    </figcaption>
+</div>
+
+```
+:::
+
 ::: {.g-col-12 .g-col-sm-8}
 
 I hold a PhD in Applied Statistics and Empirical Methods from the [Georg-August-Universität Göttingen](https://www.uni-goettingen.de/), completed in 2022 with the _summa cum laude_ distinction. My [PhD dissertation](https://ediss.uni-goettingen.de/handle/11858/14585?locale-attribute=en) focused on developing [boosting structured additive regression models](https://link.springer.com/chapter/10.1007/978-3-662-63882-8_9) to address critical issues in development economics. 
 
 <span style="font-weight:700; font-size:1.25em;"> A glimpse of my research</span>
 
-My research integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and displacement.
+My research integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and forced displacement.
 
 Another line of my research focuses on enhancing knowledge of [disease outbreaks](disease-outbreaks-data.netlify.app) by improving the availability and quality of data and promoting analyses to identify geospatial trends and patterns worldwide.
 
 Recently, I have applied boosting structured additive regression models to predict and describe _whether_, _how_, _where_, and _when_ development and humanitarian emergencies may occur in the future. Feel free to [send me a message](../contact/index.qmd) if you are interested in this line of work.
 
-Check out my [publications](../publications/index.qmd).
+Check out my [publications](../publications/index.qmd) to learn more about my research.
 
 <span style="font-weight:700; font-size:1.25em;"> Brief summary of my professional experience</span>
 
@@ -35,20 +47,6 @@ Recently, as a Research Analyst at the Internal Displacement Monitoring Centre, 
 
 See my [CV](../cv/index.qmd) for more details.
 
-:::
-
-::: {.g-col-12 .g-col-sm-4}
-
-```{=html}
-
-<div class="g-col-12 g-col-sm-12 text-center">
-  <img class="img-fluid" src="{{< meta about_image >}}" style="width:100%; height:auto;">
-    <figcaption style="font-size:0.85em; color:#666; margin-top:6px;">
-      <b>Credit:</b> Photo taken by friends following my PhD viva.
-    </figcaption>
-</div>
-
-```
 :::
 
 :::

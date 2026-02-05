@@ -1,0 +1,10 @@
+.img-fluid {
+  width: 60%;
+  height: auto;
+}
+
+@media (min-width: 700px) { 
+  .img-fluid {
+    width: 100%;
+  }
+}
