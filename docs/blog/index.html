@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-795e9e8eca1e12b12abcb09a27409631.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1a9172c24952516df83fb0944ee3fce1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b65a96458c1e05523f06f0280f84610d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -110,7 +111,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -138,7 +139,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo">
+    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo light-content">
+    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Juan Torres Munguía, PhD</span>
@@ -311,7 +313,7 @@ if (window.location.href.includes("index-es.html")) {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZQ==" data-listing-date-sort="1771048800000" data-listing-file-modified-sort="1771350690165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1772">
+<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZQ==" data-listing-date-sort="1771048800000" data-listing-file-modified-sort="1771363058105" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1772">
 <a href="../blog/posts/waffle-chart-disease-outbreaks-2025/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -327,7 +329,23 @@ A publication-ready waffle chart to visualize disease outbreaks in the world
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpbiUyQ3BlcnNvbnMlMjBzZWVraW5nJTIwcHJvdGVjdGlvbiUyQ2dncGxvdDIlMkNzdGFja2VkJTIwYXJlYSUyMGNoYXJ0JTJDR2VybWFueQ==" data-listing-date-sort="1754028000000" data-listing-file-modified-sort="1756223304170" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1451">
+<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ21hcA==" data-listing-date-sort="1770530400000" data-listing-file-modified-sort="1771362908944" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1976">
+<a href="../blog/posts/world-map-disease-outbreaks-2026/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../blog/posts/world-map-disease-outbreaks-2026/outbreaks_map_colorblind_2026.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Designing a map to visualize the geographic distribution of pandemic- and epidemic-prone disease outbreaks in 2025
+</h5>
+<div class="card-subtitle listing-subtitle">
+Using {ggplot}, {sf}, and a colorblind alternative
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpbiUyQ3BlcnNvbnMlMjBzZWVraW5nJTIwcHJvdGVjdGlvbiUyQ2dncGxvdDIlMkNzdGFja2VkJTIwYXJlYSUyMGNoYXJ0JTJDR2VybWFueQ==" data-listing-date-sort="1754028000000" data-listing-file-modified-sort="1756223304170" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1451">
 <a href="../blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -343,7 +361,7 @@ A stacked area chart using {ggplot2}
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNvZmZpY2lhbCUyMHN0YXRpc3RpY3MlMkNNZXhpY28lMkNob3VzZWhvbGQlMjBzdXJ2ZXlzJTJDRU5WSVBFJTJDY3JpbWUlMkN2aWN0aW1pemF0aW9u" data-listing-date-sort="1752472800000" data-listing-file-modified-sort="1756589154411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1483">
+<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNvZmZpY2lhbCUyMHN0YXRpc3RpY3MlMkNNZXhpY28lMkNob3VzZWhvbGQlMjBzdXJ2ZXlzJTJDRU5WSVBFJTJDY3JpbWUlMkN2aWN0aW1pemF0aW9u" data-listing-date-sort="1752472800000" data-listing-file-modified-sort="1756589154411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1483">
 <a href="../blog/posts/population-pyramid-mexico-crime/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -359,11 +377,11 @@ How to create a population pyramid using {ggplot2} in R
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkb21lc3RpYyUyMHZpb2xlbmNlJTJDQ2FtYm9kaWElMkNnZ3Bsb3Qy" data-listing-date-sort="1750226400000" data-listing-file-modified-sort="1756068697823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1308">
+<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkb21lc3RpYyUyMHZpb2xlbmNlJTJDQ2FtYm9kaWElMkNnZ3Bsb3Qy" data-listing-date-sort="1750226400000" data-listing-file-modified-sort="1756068697823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1308">
 <a href="../blog/posts/cambodia-acceptability-violence-dot-plot/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../blog/posts/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -375,7 +393,7 @@ How to use {ggplot2} to create a dot plot to visualize changes over time
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNpbnRpbWF0ZSUyMHBhcnRuZXIlMjB2aW9sZW5jZSUyMChJUFYpJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNDYW1ib2RpYQ==" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1756587497015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2123">
+<div class="g-col-1" data-index="5" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNpbnRpbWF0ZSUyMHBhcnRuZXIlMjB2aW9sZW5jZSUyMChJUFYpJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNDYW1ib2RpYQ==" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1756587497015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2123">
 <a href="../blog/posts/map-intimate-partner-violence-cambodia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -391,7 +409,7 @@ Developing choropleth maps with {ggplot2}, {sf}, and shapefiles
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="ZGF0YSUyMG1hbmFnZW1lbnQlMkNIdW1hbml0YXJpYW4lMjBEYXRhJTIwRXhjaGFuZ2UlMkNIdW1hbml0YXJpYW4lMjBFeGNoYW5nZSUyMExhbmd1YWdlJTJDZGlzZWFzZSUyMG91dGJyZWFrcyUyQ2VwaWRlbWljcyUyQ3BhbmRlbWljcw==" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1755069953094" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="718">
+<div class="g-col-1" data-index="6" data-categories="ZGF0YSUyMG1hbmFnZW1lbnQlMkNIdW1hbml0YXJpYW4lMjBEYXRhJTIwRXhjaGFuZ2UlMkNIdW1hbml0YXJpYW4lMjBFeGNoYW5nZSUyMExhbmd1YWdlJTJDZGlzZWFzZSUyMG91dGJyZWFrcyUyQ2VwaWRlbWljcyUyQ3BhbmRlbWljcw==" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1755069953094" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="718">
 <a href="../blog/posts/hdx-tags-to-outbreaks-data/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -407,7 +425,7 @@ Applying HXL to a global dataset of pandemic- and epidemic-prone disease outbrea
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNhcm1lZCUyMGNvbmZsaWN0JTJDQUNMRUQlMkNMYWtlJTIwQ2hhZCUyMGJhc2luJTJDTmlnZXJpYSUyQ05pZ2VyJTJDQ2hhZCUyQ0NhbWVyb29uJTJDZ2dwbG90Mg==" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755377941353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2865">
+<div class="g-col-1" data-index="7" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNhcm1lZCUyMGNvbmZsaWN0JTJDQUNMRUQlMkNMYWtlJTIwQ2hhZCUyMGJhc2luJTJDTmlnZXJpYSUyQ05pZ2VyJTJDQ2hhZCUyQ0NhbWVyb29uJTJDZ2dwbG90Mg==" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755377941353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2865">
 <a href="../blog/posts/visualizing-conflict-lake-chad-basin/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -423,7 +441,7 @@ Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Ch
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkcm91Z2h0JTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNzdGFuZGFyZGl6ZWQlMjBwcmVjaXBpdGF0aW9uJTIwaW5kZXglMjAoU1BJKSUyQ1NvbWFsaWE=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1755069953099" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
+<div class="g-col-1" data-index="8" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkcm91Z2h0JTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNzdGFuZGFyZGl6ZWQlMjBwcmVjaXBpdGF0aW9uJTIwaW5kZXglMjAoU1BJKSUyQ1NvbWFsaWE=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1755069953099" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
 <a href="../blog/posts/spi_somalia_visualization/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -439,7 +457,7 @@ Part 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDZHJvdWdodCUyQ3RpZHl2ZXJzZSUyQ2dncGxvdDIlMkNib3glMjBwbG90cyUyQ1NDSSUyQ1N0YW5kYXJkaXplZCUyMFByZWNpcGl0YXRpb24lMjBJbmRleCUyMChTUEkpJTJDU29tYWxpYQ==" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1755562041925" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1966">
+<div class="g-col-1" data-index="9" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDZHJvdWdodCUyQ3RpZHl2ZXJzZSUyQ2dncGxvdDIlMkNib3glMjBwbG90cyUyQ1NDSSUyQ1N0YW5kYXJkaXplZCUyMFByZWNpcGl0YXRpb24lMjBJbmRleCUyMChTUEkpJTJDU29tYWxpYQ==" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1755562041925" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1966">
 <a href="../blog/posts/spi_somalia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -455,7 +473,7 @@ Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R us
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDb2ZmaWNpYWwlMjBzdGF0aXN0aWNzJTJDTWV4aWNvJTJDaG91c2Vob2xkJTIwc3VydmV5cyUyQ0VOVklQRSUyQ2NyaW1lJTJDdmljdGltaXphdGlvbiUyQ3B1YmxpYyUyMHNhZmV0eSUyQ3RpZHl2ZXJzZSUyQ3NydnlyJTJDbWljcm9kYXRh" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1755069953035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1262">
+<div class="g-col-1" data-index="10" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDb2ZmaWNpYWwlMjBzdGF0aXN0aWNzJTJDTWV4aWNvJTJDaG91c2Vob2xkJTIwc3VydmV5cyUyQ0VOVklQRSUyQ2NyaW1lJTJDdmljdGltaXphdGlvbiUyQ3B1YmxpYyUyMHNhZmV0eSUyQ3RpZHl2ZXJzZSUyQ3NydnlyJTJDbWljcm9kYXRh" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1755069953035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1262">
 <a href="../blog/posts/estimating-envipe-prevalence/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -471,7 +489,7 @@ Part 1: Estimating crime prevalence with the {srvyr} package
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZSUyMGNoYXJ0" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755556005408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1663">
+<div class="g-col-1" data-index="11" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZSUyMGNoYXJ0" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755556005408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1663">
 <a href="../blog/posts/waffle-chart-disease-outbreaks/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -544,13 +562,14 @@ Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

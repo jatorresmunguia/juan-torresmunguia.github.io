@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Juan Armando Torres Munguía">
 <meta name="dcterms.date" content="2026-02-14">
@@ -82,14 +82,15 @@ div.csl-indent {
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-1b3e43c72e8be34557c75123b0b69e0d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-795e9e8eca1e12b12abcb09a27409631.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-1a9172c24952516df83fb0944ee3fce1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-b65a96458c1e05523f06f0280f84610d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -119,7 +120,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo"></a>
+    <img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo light-content"><img src="../../../img/academicons--open-data-square.svg" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Juan Torres Munguía, PhD</span>
     </a>
@@ -223,6 +224,14 @@ div.csl-indent {
   </div>
   
     
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/https://doi.org/10.59350/6ek9t-j8s96">https://doi.org/10.59350/6ek9t-j8s96</a>
+      </p>
+    </div>
+  </div>
   </div>
   
 
@@ -239,7 +248,7 @@ div.csl-indent {
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>To create the waffle chart, we will use the following R packages:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Data manipulation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Data manipulation</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Waffle chart</span></span>
@@ -253,26 +262,26 @@ div.csl-indent {
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create styled HTML/LaTeX tables</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
 <p>The table with the organized data can be downloaded here. This table contains the outbreaks recorded by year and by disease worldwide. The dataset is stored in a <code>.csv</code> file and is ready to be downloaded from <a href="blog/posts/waffle-chart-disease-outbreaks-2025/outbreaks_year_disease_grouped.csv">here</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"outbreaks_year_disease_grouped.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"outbreaks_year_disease_grouped.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This table is shown below:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">outbreaks_year_disease_grouped</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Year</span>, <span class="op">-</span><span class="va">freq</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Disease outbreaks per disease and year"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_paper</a></span><span class="op">(</span><span class="st">"hover"</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_paper</a></span><span class="op">(</span><span class="st">"hover"</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in attr(x, "align"): 'xfun::attr()' is deprecated.
 Use 'xfun::attr2()' instead.
 See help("Deprecated")</code></pre>
 </div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Disease outbreaks per disease and year</caption>
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Year</th>
@@ -507,13 +516,13 @@ See help("Deprecated")</code></pre>
 </section><section id="step-1.-visual-elements-of-the-plot" class="level2"><h2 class="anchored" data-anchor-id="step-1.-visual-elements-of-the-plot">Step 1. Visual elements of the plot</h2>
 <p>First, I define the font to be used in the final chart. To do this, I commonly use the <code><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google()</a></code> function from the <code>showtext</code> package. package. This function retrieves font families from the <a href="https://fonts.google.com/">Google Fonts repository</a>. In this example, I use the <em>Atkinson Hyperlegible Next</em> font.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Add custom font</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Add custom font</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Atkinson Hyperlegible Next"</span>, <span class="st">"Atkinson Hyperlegible Next"</span><span class="op">)</span> </span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then, I customize a theme to be applied to the plot.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Custom theme for the waffle chart</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Custom theme for the waffle chart</span></span>
 <span><span class="va">theme_waffle_chart</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span></span>
 <span>  <span class="co"># Introduce the previously selected font</span></span>
@@ -581,29 +590,29 @@ See help("Deprecated")</code></pre>
 <span>    axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span>,</span>
 <span>    axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">17</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then, I define the title, subtitle, and caption of the plot.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Title, subtitle, and caption for the waffle chart</span></span>
 <span><span class="va">title_chart</span> <span class="op">&lt;-</span> <span class="st">"Pandemic- and epidemic-prone disease outbreaks in the world | 2021–2025"</span></span>
-<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"In 2025, influenza emerged as the most reported disease behind outbreaks, being responsible for 121 events."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">subtitle_chart</span> <span class="op">&lt;-</span> <span class="st">"In 2025, influenza emerged as the most reported disease behind outbreaks, being responsible for 121 events."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For the caption, I use rich text by introducing markdown to format specific elements. This is enabled through the <code>ggtext</code> package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">caption_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
 <span>  <span class="st">"**Note:** Each circle represents a country."</span>,</span>
 <span>  <span class="st">"&lt;br&gt;"</span>, </span>
 <span>  <span class="st">"**Data:** A global dataset of pandemic- and epidemic-prone disease outbreaks (DOI: 10.1038/s41597-022-01797-2)."</span>,</span>
 <span>  <span class="st">"&lt;br&gt;"</span>, </span>
 <span>  <span class="st">"**Graphic:** Juan Torres Munguía."</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="step-2.-designing-the-waffle-plot-using-ggplot2-package" class="level2"><h2 class="anchored" data-anchor-id="step-2.-designing-the-waffle-plot-using-ggplot2-package">Step 2. Designing the waffle plot using <code>ggplot2</code> package</h2>
 <p>First, I use the <code><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle()</a></code> function to construct the waffle chart with squares. The main arguments of this function include <em>size</em> (border size of the tiles), <em>n_rows</em> (number of rows in the waffle grid), <em>flip</em> (orientation of the tiles), <em>color</em> (border color), and <em>make_proportional</em> (whether values are rescaled to proportions).</p>
 <p>Additionally, to</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">icd104n</span>, values <span class="op">=</span> <span class="va">freq</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span>, </span>
 <span>              n_rows <span class="op">=</span> <span class="fl">10</span>, </span>
@@ -612,11 +621,11 @@ See help("Deprecated")</code></pre>
 <span>              make_proportional <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Year</span>, </span>
 <span>             nrow <span class="op">=</span> <span class="fl">1</span>, </span>
-<span>             strip.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>             strip.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In this example, I use the set of colors from the <em>paletteMartin</em> palette of the <code>colorBlindness</code> package. I also add the custom <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> along with the title, subtitle, and caption elements.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
 <span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">icd104n</span>, values <span class="op">=</span> <span class="va">freq</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span>, </span>
 <span>              n_rows <span class="op">=</span> <span class="fl">10</span>, </span>
@@ -639,12 +648,12 @@ See help("Deprecated")</code></pre>
 <span>    y <span class="op">=</span> <span class="st">"Frequency of disease outbreaks"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"Pathogen:"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_waffle_chart</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">theme_waffle_chart</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="step-3.-transforming-the-squares-into-circles." class="level2"><h2 class="anchored" data-anchor-id="step-3.-transforming-the-squares-into-circles.">Step 3. Transforming the squares into circles.</h2>
 <p>Finally, to transform the tiles from squares into circles, I use <em>radius</em> as an aesthetic inside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, assigning the value <em>grid::unit(0.5, “npc”)</em>. This produces circular tiles while preserving the waffle layout structure.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">outbreaks_year_disease_grouped</span>, </span>
 <span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">icd104n</span>, values <span class="op">=</span> <span class="va">freq</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle</a></span><span class="op">(</span>radius <span class="op">=</span> <span class="fu">grid</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"npc"</span><span class="op">)</span>,</span>
 <span>              size <span class="op">=</span> <span class="fl">0.75</span>, </span>
@@ -668,11 +677,11 @@ See help("Deprecated")</code></pre>
 <span>    y <span class="op">=</span> <span class="st">"Frequency of disease outbreaks"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"Pathogen:"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_waffle_chart</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">theme_waffle_chart</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="step-4.-save-the-waffle-chart-as-a-high-quality-image" class="level2"><h2 class="anchored" data-anchor-id="step-4.-save-the-waffle-chart-as-a-high-quality-image">Step 4. Save the waffle chart as a high-quality image</h2>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Resolution of 320 dpi for high-quality images ("retina")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">320</span><span class="op">)</span> <span class="co"># Resolution of 320 dpi for high-quality images ("retina")</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
 <span>  <span class="st">"waffle-pandemics-2026.png"</span>,</span>
 <span>  dpi <span class="op">=</span> <span class="fl">320</span>,</span>
@@ -680,7 +689,7 @@ See help("Deprecated")</code></pre>
 <span>  height <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  units <span class="op">=</span> <span class="st">"in"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="waffle-pandemics-2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="waffle-pandemics-2026.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 <section id="references" class="level3"><h3 class="anchored" data-anchor-id="references">References</h3>
@@ -706,12 +715,14 @@ See help("Deprecated")</code></pre>
     \{Waffle\} and \{Ggplot2\} Libraries in {R?}},
   date = {2026-02-14},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/},
+  doi = {https://doi.org/10.59350/6ek9t-j8s96},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Torres Munguía, Juan Armando. 2026. <span>“How to Build a Waffle Chart
-with Circle-Shaped Tiles Using {Waffle} and {Ggplot2} Libraries in
-R?”</span> February 14, 2026. <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</a>.
+<div class="">Torres Munguía, J. A. How to build a waffle
+chart with circle-shaped tiles using {waffle} and {ggplot2} libraries in
+R? <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</a>
+(2026) doi:<a href="https://doi.org/10.59350/6ek9t-j8s96">https://doi.org/10.59350/6ek9t-j8s96</a>.</div>
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -763,13 +774,14 @@ R?”</span> February 14, 2026. <a href="https://juan-torresmunguia.netlify.app/
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
