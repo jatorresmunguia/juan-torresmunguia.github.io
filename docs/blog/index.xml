@@ -17,11 +17,11 @@
   <link>https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</link>
   <description><![CDATA[ <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Waffle charts are a useful way to visualize part-to-whole relationships. Commonly, waffle charts depict a grid of regular squares to represent the distribution of a categorical variable.</p>
-<p>Previously, in a <a href="../../../blog/posts/waffle-chart-disease-outbreaks/index.html">post on this Blog</a>, I built the following waffle chart to visualize disease outbreaks in the world between 2015 and 2024.</p>
+<p>Previously, in a <a href="../../../blog/posts/waffle-chart-disease-outbreaks/index.html">post on this Blog</a><span class="citation" data-cites="TorresMunguia.2025"><sup>1</sup></span>, I built the following waffle chart to visualize disease outbreaks in the world between 2015 and 2024.</p>
 <p><a href="../../..\blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
-<p>This visualization was developed in support of an analysis paper published in the BMJ Public Health journal, which can be accessed <a href="">here</a>. As can be seen, this waffle chart uses the traditional approach of stacking colored squares to represent the number of outbreaks per year by pathogen. In this post, I will illustrate a visual alternative in which circles are used instead of squares to represent the distribution of diseases by year.</p>
+<p>This visualization was developed in support of an analysis paper published in BMJ Global Health, which can be accessed <a href="https://gh.bmj.com/content/11/2/e020708">here</a><span class="citation" data-cites="TorresMunguia.2026"><sup>2</sup></span>. As can be seen, this waffle chart uses the traditional approach of stacking colored squares to represent the number of outbreaks per year by pathogen. In this post, I will illustrate a visual alternative in which circles are used instead of squares to represent the distribution of diseases by year.</p>
 </section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
-<p>The information is sourced from the <a href="https://www.nature.com/articles/s41597-022-01797-2">global dataset of pandemic- and epidemic-prone disease outbreaks</a>, whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project.</p>
+<p>The information is sourced from the <a href="https://www.nature.com/articles/s41597-022-01797-2">global dataset of pandemic- and epidemic-prone disease outbreaks</a><span class="citation" data-cites="TorresMunguia.2022"><sup>3</sup></span>, whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project.</p>
 <p>This global dataset documents more than 3,450 outbreaks across over 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and pathogen for each outbreak.</p>
 <p>The dataset of pandemic- and epidemic-prone disease outbreaks is also part of the <a href="https://data.humdata.org/">Humanitarian Data Exchange</a> coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA).</p>
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
@@ -1714,9 +1714,24 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p><a href="waffle-pandemics-2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/waffle-pandemics-2026.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<section id="references" class="level3"><h3 class="anchored" data-anchor-id="references">References</h3>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2">
+<div id="ref-TorresMunguia.2025" class="csl-entry">
+<div class="csl-left-margin">1. </div>
+<div class="csl-right-inline">Torres Munguía, J. A. <em>A Waffle Chart of Disease Outbreaks in the World</em>. (2025). doi:<a href="https://doi.org/10.59350/kg492-0rv24">10.59350/kg492-0rv24</a>.</div>
+</div>
+<div id="ref-TorresMunguia.2026" class="csl-entry">
+<div class="csl-left-margin">2. </div>
+<div class="csl-right-inline">Torres Munguía, J. A. &amp; Martínez-Zarzoso, I. <a href="https://doi.org/10.1136/bmjgh-2025-020708">Global trends of pandemic-prone and epidemic-prone disease outbreaks in 2024</a>. <em>BMJ global health</em> <strong>11</strong>, e020708 (2026).</div>
+</div>
+<div id="ref-TorresMunguia.2022" class="csl-entry">
+<div class="csl-left-margin">3. </div>
+<div class="csl-right-inline">Torres Munguía, J. A., Badarau, F. C., Díaz Pavez, L. R., Martínez-Zarzoso, I. &amp; Wacker, K. M. <a href="https://doi.org/10.1038/s41597-022-01797-2">A global dataset of pandemic- and epidemic-prone disease outbreaks</a>. <em>Scientific data</em> <strong>9</strong>, 683 (2022).</div>
+</div>
+</div>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2026,
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2026,
   author = {Torres Munguía, Juan Armando},
   title = {How to Build a Waffle Chart with Circle-Shaped Tiles Using
     \{Waffle\} and \{Ggplot2\} Libraries in {R?}},
@@ -1725,9 +1740,10 @@ font-style: inherit;">)</span></span></code></pre></div>
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas">
-Torres Munguía, Juan Armando. 2026. <span>“How to Build a Waffle Chart
-with Circle-Shaped Tiles Using {Waffle} and {Ggplot2} Libraries in
-R?”</span> February 14, 2026. <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</a>.
+<div class="">Torres Munguía, J. A. How to build a waffle
+chart with circle-shaped tiles using {waffle} and {ggplot2} libraries in
+R? <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</a>
+(2026).</div>
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>

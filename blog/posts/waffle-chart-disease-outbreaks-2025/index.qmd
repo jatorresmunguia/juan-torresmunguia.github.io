@@ -25,19 +25,21 @@ format:
 comments:
   utterances: 
     repo: jatorresmunguia/juan-torresmunguia.github.io
+bibliography: references.bib
+csl: ../../nature.csl
 ---
 
 ## Overview
 Waffle charts are a useful way to visualize part-to-whole relationships. Commonly, waffle charts depict a grid of regular squares to represent the distribution of a categorical variable.
 
-Previously, in a [post on this Blog](/blog/posts/waffle-chart-disease-outbreaks/index.qmd), I built the following waffle chart to visualize disease outbreaks in the world between 2015 and 2024.
+Previously, in a [post on this Blog](/blog/posts/waffle-chart-disease-outbreaks/index.qmd) [@TorresMunguia.2025], I built the following waffle chart to visualize disease outbreaks in the world between 2015 and 2024.
 
 ![](/blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png){.lightbox width=100% style="margin-top: 0px; margin-bottom: 0px;"}
 
-This visualization was developed in support of an analysis paper published in the BMJ Public Health journal, which can be accessed [here](). As can be seen, this waffle chart uses the traditional approach of stacking colored squares to represent the number of outbreaks per year by pathogen. In this post, I will illustrate a visual alternative in which circles are used instead of squares to represent the distribution of diseases by year.
+This visualization was developed in support of an analysis paper published in BMJ Global Health, which can be accessed [here](https://gh.bmj.com/content/11/2/e020708) [@TorresMunguia.2026]. As can be seen, this waffle chart uses the traditional approach of stacking colored squares to represent the number of outbreaks per year by pathogen. In this post, I will illustrate a visual alternative in which circles are used instead of squares to represent the distribution of diseases by year.
 
 ## About the data
-The information is sourced from the [global dataset of pandemic- and epidemic-prone disease outbreaks](https://www.nature.com/articles/s41597-022-01797-2), whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project. 
+The information is sourced from the [global dataset of pandemic- and epidemic-prone disease outbreaks](https://www.nature.com/articles/s41597-022-01797-2) [@TorresMunguia.2022], whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project. 
 
 This global dataset documents more than 3,450 outbreaks across over 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and pathogen for each outbreak.
 
@@ -302,3 +304,7 @@ showtext_auto(FALSE)
 ```
 
 ![](waffle-pandemics-2026.png){.lightbox width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+
+### References
+::: {#refs}
+:::
