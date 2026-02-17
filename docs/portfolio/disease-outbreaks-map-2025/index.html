@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Juan Armando Torres Munguía">
+<meta name="dcterms.date" content="2026-02-08">
 
-<title>Data visualization gallery – Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST</title>
+<title>A waffle chart of disease outbreaks in the world – Juan TORRES MUNGUÍA | HUMANITARIAN DATA SCIENTIST</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../img/academicons--open-data.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-795e9e8eca1e12b12abcb09a27409631.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b65a96458c1e05523f06f0280f84610d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../img/academicons--open-data.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-795e9e8eca1e12b12abcb09a27409631.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b65a96458c1e05523f06f0280f84610d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -58,90 +61,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-all_plots .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-all_plots'] = new List('listing-all_plots', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<style>
-
-      .quarto-title-block .quarto-title-banner {
-        background-image: url(img/nightingale-mortality.jpg);
-background-size: cover;
-      }
-</style>
 <meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../css/styles.css">
-<link rel="stylesheet" href="portfolio.css">
+<link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo light-content">
-    <img src="../img/academicons--open-data-square.svg" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/academicons--open-data-square.svg" alt="" class="navbar-logo light-content">
+    <img src="../../img/academicons--open-data-square.svg" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Juan Torres Munguía, PhD</span>
     </a>
   </div>
@@ -151,27 +88,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv/index.html"> 
+    <a class="nav-link" href="../../cv/index.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/index.html"> 
+    <a class="nav-link" href="../../publications/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog/index.html"> 
+    <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../portfolio/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../portfolio/index.html"> 
 <span class="menu-text">DataViz</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact/index.html"> 
+    <a class="nav-link" href="../../contact/index.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -197,7 +134,7 @@ window.Quarto = {
 <span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:google-scholar" style="font-size: 1.1em;" aria-label="Icon google-scholar from fa6-brands Iconify.design set." title="Google Scholar"></iconify-icon></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../blog/index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -209,239 +146,67 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Data visualization gallery</h1>
-            <p class="subtitle lead">A collection of charts I designed to visualize development and humanitarian issues
-</p><div style="margin-top:1em; font-size:0.8em; text-align:right;">
-<p><strong>Photo:</strong> <em>Diagram of the causes of mortality in the army in the East</em> (1858) by Florence Nightingale. Via <a href="https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.</p>
-</div><p></p>
-          </div>
-
-    
-    <div class="quarto-title-meta-container">
-      <div class="quarto-title-meta-column-start">
-        
-        <div class="quarto-title-meta">
-
-                
-          
-                
-              </div>
-      </div>
-      <div class="quarto-title-meta-column-end quarto-other-formats-target">
-      </div>
-    </div>
-
-
-
-    <div class="quarto-other-links-text-target">
-    </div>  </div>
-</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A waffle chart of disease outbreaks in the world</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data visualization</div>
+    <div class="quarto-category">research paper</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Juan Armando Torres Munguía </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
   
 
 
-<div id="listing-all_plots" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNyZXNlYXJjaCUyMHBhcGVy" data-listing-date-sort="1771048800000" data-listing-file-modified-sort="1771363873887" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<a href="../portfolio/waffle-chart-circles-outbreaks-2025/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/waffle-chart-circles-outbreaks-2025/waffle-pandemics-2026.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
-</h5>
+</header>
+
+
+<p>This waffle chart was developed in support of the research paper <a href="https://gh.bmj.com/content/11/2/e020708"><em>Global trends of pandemic-prone and epidemic-prone disease outbreaks in 2024 </em></a>, aiming to visualize the distribution of disease outbreaks across the globe.</p>
+<div class="card">
+<p><a href="outbreaks_map_colorblind_2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="outbreaks_map_colorblind_2026.png" class="img-fluid" style="width:100.0%"></a></p>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNyZXNlYXJjaCUyMHBhcGVy" data-listing-date-sort="1770530400000" data-listing-file-modified-sort="1771364068355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<a href="../portfolio/disease-outbreaks-map-2025/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/disease-outbreaks-map-2025/outbreaks_map_colorblind_2026.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1757916000000" data-listing-file-modified-sort="1758172284081" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<a href="../portfolio/vietnam-rainfall-ridgeline-plot-gradient/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/vietnam-rainfall-ridgeline-plot-gradient/rainfall-vietnam-ridgeline_gradient.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A ridgeline plot to analyze precipitation patterns in Nha Trang
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1757916000000" data-listing-file-modified-sort="1758172232321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<a href="../portfolio/vietnam-rainfall-ridgeline-plot/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/vietnam-rainfall-ridgeline-plot/rainfall-vietnam-ridgeline.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Visualizing monthly rainfall in Ha Noi, Vietnam with a ridgeline plot
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1754028000000" data-listing-file-modified-sort="1758172341200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<a href="../portfolio/area-chart-germany-seekers-protection/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/area-chart-germany-seekers-protection/stacked-area-germany-seeking-protection.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A stacked area chart showing the number of persons seeking protection in Germany over time
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1752472800000" data-listing-file-modified-sort="1758172321788" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<a href="../portfolio/population-pyramid-mexico-crime/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/population-pyramid-mexico-crime/pyramid-crime-mexico.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A population pyramid to visualize crime victimization by age and sex in Mexico
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1750226400000" data-listing-file-modified-sort="1755973974552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<a href="../portfolio/cambodia-acceptability-violence-dot-plot/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A dot plot of public acceptability of domestic violence in Cambodia between 2005 and 2009
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1758172395179" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<a href="../portfolio/map-intimate-partner-violence-cambodia/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/map-intimate-partner-violence-cambodia/ipv-cambodia-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Three maps for examining the prevalence of intimate partner violence (IPV) in Cambodia
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNmb29kJTIwc2VjdXJpdHk=" data-listing-date-sort="1744956000000" data-listing-file-modified-sort="1755556607788" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
-<a href="../portfolio/food-security-fao-line-chart/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/food-security-fao-line-chart/undernourishment.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Visualizing changes over time of the prevalence of undernourishment
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1758172371348" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<a href="../portfolio/armed_conflict_lake_chad/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/armed_conflict_lake_chad/lake-chad-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Mapping violence against civilians in the Lake Chad Basin
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1755557092503" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<a href="../portfolio/spi_somalia_visualization/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/spi_somalia_visualization/spi-somalia-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A map to visualize the Standardized Precipitation Index (SPI) for drought analysis
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24=" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1756072635359" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<a href="../portfolio/spi_somalia/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/spi_somalia/spi-somalia.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A box plot to visualize the Standardized Precipitation Index (SPI) for drought analysis in Somalia
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="12" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNyZXNlYXJjaCUyMHBhcGVy" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755556318418" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
-<a href="../portfolio/waffle_chart_disease_outbreaks/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/waffle_chart_disease_outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
-</h5>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="13" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNyZXNlYXJjaCUyMHBhcGVy" data-listing-date-sort="1728712800000" data-listing-file-modified-sort="1744738701513" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
-<a href="../portfolio/shiny_disease_outbreaks/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../portfolio/shiny_disease_outbreaks/shiny-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A Shiny Dashboard on disease outbreaks | 1996-2024
-</h5>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
+<p>To access the source code and replicate this chart, visit my <a href="../..\blog/posts/world-map-disease-outbreaks-2026/index.html">Blog</a>.</p>
 
 
 
-
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2026,
+  author = {Torres Munguía, Juan Armando},
+  title = {A Waffle Chart of Disease Outbreaks in the World},
+  date = {2026-02-08},
+  url = {https://juan-torresmunguia.netlify.app/portfolio/disease-outbreaks-map-2025/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Torres Munguía, Juan Armando. 2026. <span>“A Waffle Chart of Disease
+Outbreaks in the World.”</span> February 8, 2026. <a href="https://juan-torresmunguia.netlify.app/portfolio/disease-outbreaks-map-2025/">https://juan-torresmunguia.netlify.app/portfolio/disease-outbreaks-map-2025/</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -529,6 +294,11 @@ A Shiny Dashboard on disease outbreaks | 1996-2024
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -842,6 +612,8 @@ A Shiny Dashboard on disease outbreaks | 1996-2024
     }
   });
   </script>
+<script src="https://utteranc.es/client.js" repo="jatorresmunguia/juan-torresmunguia.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -856,6 +628,38 @@ A Shiny Dashboard on disease outbreaks | 1996-2024
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

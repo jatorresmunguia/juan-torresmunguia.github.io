@@ -398,5 +398,11 @@
   },
   "blog/posts/world-map-disease-outbreaks-2026/index.qmd": {
     "index.html": "0e58553c"
+  },
+  "portfolio/waffle-chart-circles-outbreaks-2025/index.qmd": {
+    "index.html": "215d2ef9"
+  },
+  "portfolio/disease-outbreaks-map-2025/index.qmd": {
+    "index.html": "458ccf29"
   }
 }

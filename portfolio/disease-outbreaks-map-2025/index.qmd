@@ -1,0 +1,32 @@
+---
+title: "A waffle chart of disease outbreaks in the world"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2026-02-08"
+categories: 
+ - data visualization
+ - research paper
+image: "outbreaks_map_colorblind_2026.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+This waffle chart was developed in support of the research paper [_Global trends of pandemic-prone and epidemic-prone disease outbreaks in 2024
+_](https://gh.bmj.com/content/11/2/e020708), aiming to visualize the distribution of disease outbreaks across the globe.
+
+::: {.card}
+![](outbreaks_map_colorblind_2026.png){width=100% .lightbox}
+:::
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/world-map-disease-outbreaks-2026/index.html).
