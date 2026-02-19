@@ -124,7 +124,7 @@ background-color: null;
 font-style: inherit;">)</span>  </span></code></pre></div></div>
 </div>
 </section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
-<p>The table with the organized data can be downloaded here. This table contains the outbreaks recorded by year and by disease worldwide. The dataset is stored in a <code>.csv</code> file and is ready to be downloaded from <a href="blog/posts/waffle-chart-disease-outbreaks-2025/outbreaks_year_disease_grouped.csv">here</a>.</p>
+<p>The table with the organized data can be downloaded <a href="blog/posts/waffle-chart-disease-outbreaks-2025/outbreaks_year_disease_grouped.csv">here</a>. This table contains the outbreaks recorded by year and by disease worldwide.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;

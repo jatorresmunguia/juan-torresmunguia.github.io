@@ -71,7 +71,7 @@ library(kableExtra)
 ```
 
 ## Loading data
-The table with the organized data can be downloaded here. This table contains the outbreaks recorded by year and by disease worldwide. The dataset is stored in a `.csv` file and is ready to be downloaded from [here](blog/posts/waffle-chart-disease-outbreaks-2025/outbreaks_year_disease_grouped.csv). 
+The table with the organized data can be downloaded [here](blog/posts/waffle-chart-disease-outbreaks-2025/outbreaks_year_disease_grouped.csv). This table contains the outbreaks recorded by year and by disease worldwide.
 
 ```{r}
 #| warning: false
