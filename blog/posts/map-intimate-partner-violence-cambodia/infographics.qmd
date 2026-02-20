@@ -1,0 +1,143 @@
+---
+title: "Study (Non-)Economic returns of ODA regarding Switzerland's"
+subtitle: Replicability code
+author: Juan Armando Torres Munguía
+format: pdf
+---
+
+## Description of the Official Development Assistance (ODA) from Switzerland
+```{r}
+#| warning: false
+
+library(tidyverse) 
+library(sf) # For handling shapefiles
+library(readxl) # To read Excel files
+library(kableExtra) # For data tables
+library(ggplot2) 
+library(ggtext) 
+library(showtext) 
+library(patchwork) # To combine multiple ggplots
+library(colorspace) # For color palettes
+library(grid) # To add lines and text elements to graphical objects
+
+```
+
+### Data
+```{r}
+oda_plot_1 <- read_excel("data/apd-schweiz-2024_EN.xlsx", sheet = "T01d-16.01.26-en") 
+
+title <- oda_plot_1 |>
+    select(`T01d-16.01.26-en`) |>
+    filter(row_number() == 1) 
+
+oda_data_plot_1 <- oda_plot_1 |>
+    str_detect()
+    filter(!is.na(...2)) |>
+    rename(concept = 1) |>
+    rename_with(~paste0("year_", 1960:2024), .cols = starts_with("...")) 
+
+oda_data_plot_1 <- oda_data_plot_1 |>
+    select(concept, paste0("year_", 2000:2024)) |>
+    filter(!row_number() == 1) |>
+    mutate(across(matches("year"), as.numeric))
+
+```
+
+
+```{r}
+# More font alternatives can be found here https://fonts.google.com/
+font_add_google("Scada", "Scada") 
+
+showtext_auto()
+```
+
+
+```{r}
+# Design display two rows, one with the three maps, and the second one only with the common guide
+map_ipv_cambodia <- (map_ipv_emotional_cambodia + map_ipv_physical_cambodia + map_ipv_sexual_cambodia) / guide_area() + 
+  # Custom title, subtitle, and caption
+  plot_annotation(
+    title = "Intimate partner violence in Cambodia, 2021-22",
+    subtitle = "Proportion of ever-partnered women and girls aged 15-49 who have been victims of violence perpetrated by their intimate partner, by type of violence.",
+    caption = "**Data:** 2021-22 Cambodia Demographic and Health Survey (CDHS) <br> **Chart:** Juan Torres Munguía",
+    theme = theme(
+      # Title settings
+      plot.title.position = "plot", 
+      plot.title = element_text(
+        color = "black",
+        face = "bold",
+        size = 30,
+        hjust = 0,
+        margin = margin(5, 0, 5, 50)
+      ),
+      
+      plot.subtitle = element_text(
+        color = "grey20",
+        size = 25,
+        hjust = 0,
+        margin = margin(5, 0, 40, 50)
+        ),
+        
+        # Caption settings
+        # I use element_markdown() because the caption has markdown text
+        plot.caption = element_markdown(
+          color = "black",
+          size = 15,
+          hjust = 0,
+          margin = margin(80, 0, 5, 50)
+        )
+  )) +
+
+  plot_layout(guides = "collect",
+              heights = unit(c(13, 1),
+               c('cm', 'cm'))
+              ) + 
+  theme_minimal(
+    base_family = "Scada"
+  ) &
+  # Custom theme settings
+  theme(
+    legend.background = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(
+      margin = margin(5, 0, 10, 0),
+      face = "bold",
+      color = "grey10",
+      size = 14,
+      hjust = 0.5
+    ),
+    legend.title.position = "top",
+    legend.text = element_text(
+      margin = margin(5, 5, 5, 5), 
+      face = "bold",
+      color = "grey10",
+      size = 14
+    ),
+    legend.key.width = unit(1.4, "cm"),
+    legend.key.height = unit(1, "cm"),
+    legend.direction = "horizontal",
+
+    plot.background = element_rect(
+      color = "#E5E5E5",
+      fill = "#E5E5E5"),
+    # Axis settings
+    axis.title = element_blank(),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank()
+    
+  )
+```
+
+```{r}
+map_ipv_cambodia
+
+grid.lines(
+  x = c(0.04, 0.96), # Values should be between 0 and 1
+  y = 0.88, # Value should be between 0 and 1
+  gp = gpar(col = "#C53270B3", 
+            lwd = 4)
+            )
+
+```
