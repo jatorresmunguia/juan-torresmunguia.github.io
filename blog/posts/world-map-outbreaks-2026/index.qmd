@@ -31,17 +31,17 @@ csl: ../../nature.csl
 ---
 
 ## Overview
-Recently, I built a visualization as part of a paper published in BMJ Global Health, which can be accessedd [here](https://gh.bmj.com/content/11/2/e020708) [@TorresMunguia.2026]. The goal of this map was to communicate the geographic distribution of disease outbreaks worldwide during 2025. Additionally, I aimed to provide complementary information on the frequency of events at the continental level (suggested during the review process). In this post, I describe the process of reproducing this plot using R.
+Recently, I built a visualization as part of a paper published in BMJ Global Health, which can be accessedd [here](https://gh.bmj.com/content/11/2/e020708) [@TorresMunguia.2026]. The goal of this map was to communicate the geographic distribution of disease outbreaks worldwide during 2025. Additionally, I aimed to provide complementary information on the frequency of events at the continental level (suggested during the review process). In this blog post, I describe the process of reproducing this plot using {ggplot} and {sf} in R.
 
 ## About the data
-The information is sourced from the [global dataset of pandemic- and epidemic-prone disease outbreaks](https://www.nature.com/articles/s41597-022-01797-2) [@TorresMunguia.2022], whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project. 
+The statistical information is sourced from the [global dataset of pandemic- and epidemic-prone disease outbreaks](https://www.nature.com/articles/s41597-022-01797-2) [@TorresMunguia.2022], whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project. 
 
-This global dataset documents more than 3,450 outbreaks across over 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and pathogen for each outbreak.
+This global dataset documents over 3,450 outbreaks across more than 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases and the dataset contains information on the year, country, and pathogen for each outbreak.
 
 The dataset of pandemic- and epidemic-prone disease outbreaks is also part of the [Humanitarian Data Exchange](https://data.humdata.org/) coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA).
 
 ## Set-up
-To create the world map, we will use the following R packages:
+To create the map of the World, we will use the following R packages:
 
 ```{r}
 

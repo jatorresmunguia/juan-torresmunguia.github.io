@@ -1760,15 +1760,15 @@ R? <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disea
 <item>
   <title>Designing a map to visualize the geographic distribution of pandemic- and epidemic-prone disease outbreaks in 2025</title>
   <dc:creator>Juan Armando Torres Munguía</dc:creator>
-  <link>https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/</link>
+  <link>https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/</link>
   <description><![CDATA[ <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Recently, I built a visualization as part of a paper published in BMJ Global Health, which can be accessedd <a href="https://gh.bmj.com/content/11/2/e020708">here</a><span class="citation" data-cites="TorresMunguia.2026"><sup>1</sup></span>. The goal of this map was to communicate the geographic distribution of disease outbreaks worldwide during 2025. Additionally, I aimed to provide complementary information on the frequency of events at the continental level (suggested during the review process). In this post, I describe the process of reproducing this plot using R.</p>
+<p>Recently, I built a visualization as part of a paper published in BMJ Global Health, which can be accessedd <a href="https://gh.bmj.com/content/11/2/e020708">here</a><span class="citation" data-cites="TorresMunguia.2026"><sup>1</sup></span>. The goal of this map was to communicate the geographic distribution of disease outbreaks worldwide during 2025. Additionally, I aimed to provide complementary information on the frequency of events at the continental level (suggested during the review process). In this blog post, I describe the process of reproducing this plot using {ggplot} and {sf} in R.</p>
 </section><section id="about-the-data" class="level2"><h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
-<p>The information is sourced from the <a href="https://www.nature.com/articles/s41597-022-01797-2">global dataset of pandemic- and epidemic-prone disease outbreaks</a><span class="citation" data-cites="TorresMunguia.2022"><sup>2</sup></span>, whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project.</p>
-<p>This global dataset documents more than 3,450 outbreaks across over 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases, 10th Revision (ICD-10), and the dataset contains information on the year, country, and pathogen for each outbreak.</p>
+<p>The statistical information is sourced from the <a href="https://www.nature.com/articles/s41597-022-01797-2">global dataset of pandemic- and epidemic-prone disease outbreaks</a><span class="citation" data-cites="TorresMunguia.2022"><sup>2</sup></span>, whose data are freely available at the <a href="https://github.com/jatorresmunguia/disease_outbreak_news" target="_blank">GitHub repository</a> of the disease outbreaks project.</p>
+<p>This global dataset documents over 3,450 outbreaks across more than 230 countries and territories from January 1996 to January 2026. The diseases are classified according to the International Classification of Diseases and the dataset contains information on the year, country, and pathogen for each outbreak.</p>
 <p>The dataset of pandemic- and epidemic-prone disease outbreaks is also part of the <a href="https://data.humdata.org/">Humanitarian Data Exchange</a> coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA).</p>
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>To create the world map, we will use the following R packages:</p>
+<p>To create the map of the World, we will use the following R packages:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2544,7 +2544,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -2751,7 +2751,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -3441,7 +3441,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -3967,7 +3967,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -4950,7 +4950,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Final output is shown below:</p>
-<p><a href="outbreaks_map_colorblind_2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/outbreaks_map_colorblind_2026.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<p><a href="outbreaks_map_colorblind_2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/outbreaks_map_colorblind_2026.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 <section id="references" class="level3"><h3 class="anchored" data-anchor-id="references">References</h3>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-TorresMunguia.2026" class="csl-entry">
@@ -4969,13 +4969,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   title = {Designing a Map to Visualize the Geographic Distribution of
     Pandemic- and Epidemic-Prone Disease Outbreaks in 2025},
   date = {2026-02-08},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas">
 <div class="">Torres Munguía, J. A. Designing a map to
 visualize the geographic distribution of pandemic- and epidemic-prone
-disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/">https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/</a>
+disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/">https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/</a>
 (2026).</div>
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
@@ -4985,9 +4985,9 @@ disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/
   <category>tidyverse</category>
   <category>ggplot2</category>
   <category>map</category>
-  <guid>https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/</guid>
+  <guid>https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/</guid>
   <pubDate>Sun, 08 Feb 2026 06:00:00 GMT</pubDate>
-  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/world-map-disease-outbreaks-2026/outbreaks_map_colorblind_2026.png" medium="image" type="image/png" height="96" width="144"/>
+  <media:content url="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/outbreaks_map_colorblind_2026.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>How has the number of persons seeking protection in Germany changed over time?</title>
