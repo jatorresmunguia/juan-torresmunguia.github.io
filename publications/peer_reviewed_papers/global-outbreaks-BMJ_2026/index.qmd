@@ -1,0 +1,52 @@
+---
+title: "Global trends of pandemic-prone and epidemic-prone disease outbreaks in 2024"
+subtitle: BMJ Global Health
+doi: 10.1136/bmjgh-2025-020708
+year: 2026
+date: "2026-02-17"
+author: 
+ - name: Juan Armando Torres Munguía
+   orcid: 0000-0003-3432-6941 
+ - name: Inmaculada Martínez-Zarzoso
+categories:
+ - disease outbreaks
+ - epidemics
+ - pandemics
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: https://gh.bmj.com/content/bmjgh/11/2/e020708.full.pdf
+- icon: database
+  icon_pack: fas
+  name: Data
+  url: https://github.com/jatorresmunguia/disease_outbreak_news/tree/main/Last%20update
+- icon: code
+  icon_pack: fas
+  name: Code
+  url: https://github.com/jatorresmunguia/disease_outbreak_news/blob/main/code_to_extract_dons.R
+- icon: github
+  icon_pack: fab
+  name: GitHub
+  url:  https://github.com/jatorresmunguia/disease_outbreak_news
+format: 
+  html: 
+    page-layout: article
+---
+
+### Abstract 
+During 2024, the number of pandemic-prone and epidemic-prone disease outbreaks worldwide was estimated at 301. The data highlight a shift in disease outbreak patterns, with a decline in the number of countries reporting public health events of concern linked to COVID-19 and a rise in those reporting outbreaks of viral diseases transmitted by vectors.
+
+About 90% of the outbreaks in 2024 were associated with COVID-19, dengue, yellow fever, Oropouche virus disease and influenza (linked to identified zoonotic or pandemic influenza virus). Although disease outbreaks can affect any country anywhere, they tend to disproportionately occur in countries facing many other socio-economic development, climatic and humanitarian challenges. In this regard, sub-Saharan Africa and the subregion of Latin America and the Caribbean—home to just 23.3% of the world’s population—reported the highest number of disease outbreaks in 2024 with about 57% of the total. Particularly, the sub-Saharan Africa region has been the site of nearly 32% of recorded outbreaks since 1996. Future research should include efforts to improve the quality and availability of disease outbreaks data—particularly in the most exposed or vulnerable regions—and to promote the scientific use of such information for foresight purposes and for forecasting future health events of concern to support anticipatory action.
+
+### Citation
+<p><b>Torres Munguía, Juan Armando <a href="https://orcid.org/0000-0003-3432-6941" target="_blank"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" height="16" width="16" ></a>; Martínez-Zarzoso, Inmaculada</b> (2026). Global trends of pandemic-prone and epidemic-prone disease outbreaks in 2024d. <i>BMJ Global Health</i>, 7. DOI: <a href="https://gh.bmj.com/content/11/2/e020708" target="_blank">10.1136/bmjgh-2025-020708</a>. Retrieved from: <a href="https://gh.bmj.com/content/11/2/e020708" target="_blank">https://gh.bmj.com/content/11/2/e020708</a></p>
+
+```{=html}
+
+  <div class="container text-center mt-4" >
+  <a href="cite.bib" class="btn custom-btn mt-1" style="border:1px solid #153268; background-color: #153268; margin-top: 5px;" download>
+    <i class="fas fa-cloud-arrow-down"></i> Download .bib file <br> (compatible with LaTeX)
+  </a>
+
+```

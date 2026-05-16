@@ -407,5 +407,8 @@
   },
   "blog/posts/world-map-outbreaks-2026/index.qmd": {
     "index.html": "d65158d5"
+  },
+  "publications/peer_reviewed_papers/global-outbreaks-BMJ_2026/index.qmd": {
+    "index.html": "5e84e5ec"
   }
 }
