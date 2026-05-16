@@ -38,6 +38,16 @@ a:hover {
     filter: invert(92%) sepia(4%) saturate(90%) hue-rotate(30deg) brightness(100%) contrast(95%); /* #f2f0e8 */
   }
 
+.navbar-brand {
+    font-size: 1em !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-brand {
+    font-size: 0.8em !important;
+}
+}
+
 .navbar-brand img:hover {
   filter: invert(55%) sepia(38%) saturate(600%) hue-rotate(160deg) brightness(90%) contrast(95%); /* #50a5d2 */
 }
