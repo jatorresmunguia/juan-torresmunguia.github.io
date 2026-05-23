@@ -12,6 +12,7 @@ format:
     theme: flatly
     css: "css/styles.css"
     mainfont: "Spline Sans"
+    fontsize: 1em
     link-external-newwindow: true
     toc: false
     fontawesome: true
