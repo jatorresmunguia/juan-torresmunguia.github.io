@@ -1,5 +1,12 @@
 ---
 title: "Publications"
+title-block-banner: img/lake-chad-map.png
+title-block-style: manuscript
+subtitle: | 
+ List of research articles on computational development and humanitarian research
+ <div style="margin-top:1em; font-size:0.8em; text-align:right;">
+ <strong>Photo:</strong> <em>A map of violence against civilians in the Lake Chad Basin</em>. Link to <a href="https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad/" style="color:#50a5d2;">original image</a>.
+ </div>
 listing: 
   - id: journal-articles
     contents: "peer_reviewed_papers/*/index.qmd"

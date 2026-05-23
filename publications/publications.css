@@ -88,3 +88,41 @@
     word-wrap: break-word; 
     overflow-wrap: break-word; 
 }
+
+.thumbnail-image {
+  border-width: 0px !important;
+  border-style: solid;
+  margin-top: 0px !important;
+  padding-top: 0em !important;
+  border-color: transparent !important;
+}
+
+.quarto-title-banner h1, .quarto-title-banner .h1, .quarto-title-banner h2, .quarto-title-banner .h2 {
+  color: #153268;
+}
+
+.quarto-title-banner {
+  margin-bottom: 0em;
+  color: #153268;
+}
+
+.quarto-title-block .quarto-title-banner {
+    background-position: center;
+    z-index: 0;
+}
+
+.quarto-title-block .quarto-title-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    z-index: 1;
+}
+
+.quarto-title-block .quarto-title-banner * {
+    position: relative;
+    z-index: 2;
+}

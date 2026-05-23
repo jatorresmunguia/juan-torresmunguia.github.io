@@ -786,7 +786,7 @@
   {
     "objectID": "contact/index.html",
     "href": "contact/index.html",
-    "title": "Juan TORRES MUNGUÍA | HUMANITARIAN DATA STATISTICIAN",
+    "title": "Juan TORRES MUNGUÍA |> HUMANITARIAN DATA STATISTICIAN",
     "section": "",
     "text": "You can use this space to contact me for queries, collaboration ideas, or comments.\n\n \n\n\n\n\n\n\n\nName \nEmail address \nMessage\n\n\nSend message"
   },
@@ -1236,7 +1236,7 @@
     "href": "portfolio/armed_conflict_lake_chad/index.html",
     "title": "Mapping violence against civilians in the Lake Chad Basin",
     "section": "",
-    "text": "To access the source code and replicate this chart, visit my Blog.\n\n\n\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{torres munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Mapping Violence Against Civilians in the {Lake} {Chad}\n    {Basin}},\n  date = {2025-03-09},\n  url = {https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Mapping Violence Against\nCivilians in the Lake Chad Basin.” March 9, 2025. https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad."
+    "text": "To access the source code and replicate this chart, visit my Blog.\n\n\n\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{torres_munguía2025,\n  author = {Torres Munguía, Juan Armando},\n  title = {Mapping Violence Against Civilians in the {Lake} {Chad}\n    {Basin}},\n  date = {2025-03-09},\n  url = {https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTorres Munguía, Juan Armando. 2025. “Mapping Violence Against\nCivilians in the Lake Chad Basin.” March 9, 2025. https://juan-torresmunguia.netlify.app/portfolio/armed_conflict_lake_chad/."
   },
   {
     "objectID": "portfolio/area-chart/index.html#examples",

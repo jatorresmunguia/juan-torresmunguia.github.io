@@ -20,7 +20,7 @@ format:
     highlight-style: tango
     
 website:
-  title: "Juan TORRES MUNGUÍA | HUMANITARIAN DATA STATISTICIAN"
+  title: "Juan TORRES MUNGUÍA |> HUMANITARIAN DATA STATISTICIAN"
   favicon: "img/academicons--open-data.png"
   search: false
   page-navigation: true
@@ -29,8 +29,8 @@ website:
   description: Exploring the art and science of working with development and humanitarian data
 
   navbar:
-    title: "Juan Torres Munguía, PhD"
-    logo: "img/academicons--open-data-square.svg"
+    title: "Juan Torres Munguía, PhD |> "
+    logo: ""
     background: "#153268"
     foreground: "#f2f0e8"
     toggle-position: right
