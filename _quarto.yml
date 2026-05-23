@@ -11,7 +11,7 @@ format:
     include-in-header: _head.html
     theme: flatly
     css: "css/styles.css"
-    mainfont: "Signika"
+    mainfont: "Spline Sans"
     link-external-newwindow: true
     toc: false
     fontawesome: true

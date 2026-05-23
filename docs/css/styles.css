@@ -1,6 +1,6 @@
 
 /* Font family */
-@import url('https://fonts.googleapis.com/css2?family=Signika:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spline Sans:wght@300&display=swap');
 
 .navbar-dark, .navbar[data-bs-theme=dark] {
   --bs-navbar-color: #f2f0e8;
@@ -62,8 +62,6 @@ a:hover {
   margin-top: 0px;
   margin-bottom: 15px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
 .text-effect {
   display: inline-block;
