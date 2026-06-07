@@ -1,0 +1,29 @@
+---
+draft: true
+title: "A stacked area chart showing the number of persons seeking protection in Germany over time"
+subtitle: ""
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2025-08-01"
+categories: 
+ - data visualization
+image: "stacked-area-germany-seeking-protection.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+To access the source code and replicate this chart, visit my [Blog](/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html).
+
+::: {.card}
+![](stacked-area-germany-seeking-protection.png){.lightbox fig-align="center" width=100% style="margin-top: 0px; margin-bottom: 0px;"}
+:::

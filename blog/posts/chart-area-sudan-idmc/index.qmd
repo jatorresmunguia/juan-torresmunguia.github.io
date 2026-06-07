@@ -1,0 +1,94 @@
+---
+draft: true
+title: "Using {ggplot2} and {ggrepel} to replace a legend with direct labels on the right side of a stacked area chart"
+subtitle: "A practical example with conflict-induced internal displacement data disaggregated by gender in Sudan"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2026-05-10"
+categories: 
+ - data visualization
+ - internally displaced people
+ - Sudan
+ - ggplot2
+ - ggrepel
+ - stacked area chart
+ - text annotation
+image: "stacked-area-sudan-idps.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+  warning: false
+
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+bibliography: references.bib
+csl: ../../nature.csl
+---
+
+## Overview
+The conflict that started in April 2023 in Sudan has generated the [worst humanitarian emergency globally](https://www.ohchr.org/en/stories/2026/04/three-years-war-sudan-crisis-world-cant-ignore).[@ohchr_sudan_2026] In this post, we will visualize one of the multiple faces of this crisis: **internal forced displacement**. Internally displaced persons (IDPs) are defined as _"persons or groups of persons who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of or in order to avoid the effects of armed conflict, situations of generalized violence, violations of human rights or natural or human-made disasters, and who have not crossed an internationally recognized State border"_.[@un1998idp]
+
+To illustrate this, I will create a stacked area chart showing the distribution by sex of the total number of people living in situations of internal displacement as of December 31 of each year. The distinctive feature of this visualization is the use of annotated text positioned on the right side of the chart and connected with arrows to their corresponding areas. By avoiding label overlap, this approach provides an alternative to traditional legends while making it easier to identify each category directly within the visualization.
+
+## About the data
+Data are produced by the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/), world's leading source of data and analysis on internal displacement.
+
+IDMC estimates of conflict-induced displacement are produced through continuous situational monitoring in affected countries. To do this, IDMC compiles information from a wide range of sources, including national and local authorities, United Nations agencies, international organizations, civil society organizations, media reports, and other relevant entities. These data are then used to generate annual estimates of both new displacements and the total number of internally displaced persons at the end of each year. Data are available from the [Global Internal Displacement Database (GIDD)](https://www.internal-displacement.org/database/displacement-data/).
+
+## Set-up
+
+```{r}
+
+library(tidyverse) 
+library(kableExtra) 
+library(readxl)
+library(ggplot2) 
+library(ggrepel)
+
+```
+
+## Loading data 
+
+
+```{r}
+
+
+```
+
+The table looks like this: 
+```{r}
+
+
+
+```
+
+## Designing the stacked area chart
+Before plotting, I reshape the data and rename some of their columns for easiness of working with them in the {ggplot2} context.
+```{r}
+
+
+
+``` 
+
+First, I set a theme for the chart and the font to "Josefin Sans" using the `showtext` package. More options can be found at [https://fonts.google.com/](https://fonts.google.com/).
+```{r}
+#| output: false
+
+
+```
+
+The plot is created with the following code:
+```{r}
+#| output: false
+
+
+```
+
+
