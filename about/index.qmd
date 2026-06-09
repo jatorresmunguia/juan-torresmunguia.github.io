@@ -1,7 +1,9 @@
 ---
 title: "About me"
+title-block-banner: "#f2f0e8"
+title-block-banner-color: "#153268"
+title-block-style: manuscript
 about_image: "about_pic.jpeg"
-subtitle: ""
 execute:
   freeze: true
 format:

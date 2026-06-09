@@ -12,7 +12,7 @@ format:
     theme: flatly
     css: "css/styles.css"
     mainfont: "Spline Sans"
-    fontsize: 0.9em
+    fontsize: 1em
     link-external-newwindow: true
     toc: false
     fontawesome: true
@@ -30,7 +30,7 @@ website:
   description: Exploring the art and science of working with development and humanitarian data
 
   navbar:
-    title: "Juan Torres Munguía, PhD |> "
+    title: "Juan TORRES MUNGUÍA, PhD |> "
     logo: ""
     background: "#153268"
     foreground: "#f2f0e8"

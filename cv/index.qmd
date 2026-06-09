@@ -1,9 +1,12 @@
 ---
 title: "Curriculum vitae"
+title-block-banner: "#f2f0e8"
+title-block-banner-color: "#153268"
+title-block-style: manuscript
 execute:
   freeze: true
-format: 
-  html: 
+format:
+  html:
     page-layout: article
 ---
 
