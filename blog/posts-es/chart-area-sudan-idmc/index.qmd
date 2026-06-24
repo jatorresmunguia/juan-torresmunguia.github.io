@@ -1,0 +1,93 @@
+---
+draft: true
+title: "Uso de {ggplot2} y {ggrepel} para reemplazar una leyenda con etiquetas directas al lado derecho de una gráfica de áreas apiladas"
+subtitle: "Un ejemplo práctico con datos desagregados por sexo sobre el desplazamiento interno forzado por el conflicto armado en Sudán"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2026-05-10"
+categories: 
+ - visualización de datos
+ - personas desplazadas internas
+ - Sudan
+ - ggplot2
+ - ggrepel
+ - gráfica de áreas apiladas
+ - anotaciones de texto
+image: "stacked-area-sudan-idps.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+  warning: false
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+bibliography: references.bib
+csl: ../../nature.csl
+---
+
+## Introducción
+El conflicto que comenzó en abril de 2023 en Sudán ha generado la [peor emergencia humanitaria del mundo](https://www.ohchr.org/en/stories/2026/04/three-years-war-sudan-crisis-world-cant-ignore).[@ohchr_sudan_2026] En este post, visualizaremos una de las múltiples dimensiones de esta crisis: el **desplazamiento forzado interno**. Las personas desplazadas internas (PDI) se definen como _"las personas o grupos de personas que se han visto forzadas u obligadas a escapar o huir de su hogar o de su lugar de residencia habitual, en particular como resultado o para evitar los efectos de un conflicto armado, de situaciones de violencia generalizada, de violaciones de los derechos humanos o de catástrofes naturales o provocadas por el ser humano, y que no han cruzado una frontera estatal internacionalmente reconocida."_.[@un1998idp]
+
+Para ilustrar esto, crearé una gráfica de áreas apiladas que muestra la distribución por sexo del número total de personas que viven en situación de desplazamiento interno al 31 de diciembre de cada año. La característica distintiva de esta visualización es el uso de etiquetas de texto ubicadas al lado derecho y conectadas mediante flechas con sus respectivas áreas. Al evitar la superposición de etiquetas, este opción ofrece una alternativa a las leyendas tradicionales y facilita la identificación de cada categoría directamente dentro de la visualización.
+
+## Acerca de los datos
+Los datos son producidos por el [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/), la principal fuente mundial de datos y análisis sobre desplazamiento interno.
+
+Las estimaciones del IDMC sobre desplazamiento forzado debido a conflictos se producen mediante un monitoreo continuo de las situaciones en los países afectados. Para ello, el IDMC recopila información de una amplia variedad de fuentes, incluyendo autoridades nacionales y locales, agencias de las Naciones Unidas, organizaciones internacionales, organizaciones de la sociedad civil, informes de medios de comunicación y otras entidades relevantes. Posteriormente, estos datos se utilizan para generar estimaciones anuales tanto de los nuevos desplazamientos como del número total de personas desplazadas internas al final de cada año. Los datos están disponibles en la [Base de Datos Global de Desplazamiento Interno (GIDD)](https://www.internal-displacement.org/database/displacement-data/).
+
+## Set-up
+
+```{r}
+
+library(tidyverse) 
+library(kableExtra) 
+library(readxl)
+library(ggplot2) 
+library(ggrepel)
+
+```
+
+## Loading data 
+
+
+```{r}
+
+
+```
+
+The table looks like this: 
+```{r}
+
+
+
+```
+
+## Designing the stacked area chart
+Before plotting, I reshape the data and rename some of their columns for easiness of working with them in the {ggplot2} context.
+```{r}
+
+
+
+``` 
+
+First, I set a theme for the chart and the font to "Josefin Sans" using the `showtext` package. More options can be found at [https://fonts.google.com/](https://fonts.google.com/).
+```{r}
+#| output: false
+
+
+```
+
+The plot is created with the following code:
+```{r}
+#| output: false
+
+
+```
+
+

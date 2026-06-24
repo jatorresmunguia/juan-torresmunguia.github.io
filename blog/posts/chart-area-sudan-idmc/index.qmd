@@ -21,7 +21,6 @@ citation: true
 execute: 
   freeze: true
   warning: false
-
 format: 
   html: 
     page-layout: article
