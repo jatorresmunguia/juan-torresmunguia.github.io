@@ -188,11 +188,6 @@ background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in attr(x, "align"): 'xfun::attr()' is deprecated.
-Use 'xfun::attr2()' instead.
-See help("Deprecated")</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Disease outbreaks per disease and year</caption>
@@ -429,7 +424,7 @@ See help("Deprecated")</code></pre>
 </section><section id="step-1.-visual-elements-of-the-plot" class="level2"><h2 class="anchored" data-anchor-id="step-1.-visual-elements-of-the-plot">Step 1. Visual elements of the plot</h2>
 <p>First, I define the font to be used in the final chart. To do this, I commonly use the <code><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google()</a></code> function from the <code>showtext</code> package. package. This function retrieves font families from the <a href="https://fonts.google.com/">Google Fonts repository</a>. In this example, I use the <em>Atkinson Hyperlegible Next</em> font.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Add custom font</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -453,7 +448,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Then, I customize a theme to be applied to the plot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Custom theme for the waffle chart</span></span>
 <span><span class="va" style="color: #111111;
@@ -1038,7 +1033,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>Then, I define the title, subtitle, and caption of the plot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Title, subtitle, and caption for the waffle chart</span></span>
 <span><span class="va" style="color: #111111;
@@ -1058,7 +1053,7 @@ font-style: inherit;">"In 2025, influenza emerged as the most reported disease b
 </div>
 <p>For the caption, I use rich text by introducing markdown to format specific elements. This is enabled through the <code>ggtext</code> package.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">caption_chart</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1090,7 +1085,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>First, I use the <code><a href="https://rdrr.io/pkg/waffle/man/geom_waffle.html">geom_waffle()</a></code> function to construct the waffle chart with squares. The main arguments of this function include <em>size</em> (border size of the tiles), <em>n_rows</em> (number of rows in the waffle grid), <em>flip</em> (orientation of the tiles), <em>color</em> (border color), and <em>make_proportional</em> (whether values are rescaled to proportions).</p>
 <p>Additionally, to</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1173,7 +1168,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>In this example, I use the set of colors from the <em>paletteMartin</em> palette of the <code>colorBlindness</code> package. I also add the custom <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> along with the title, subtitle, and caption elements.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1408,7 +1403,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section><section id="step-3.-transforming-the-squares-into-circles." class="level2"><h2 class="anchored" data-anchor-id="step-3.-transforming-the-squares-into-circles.">Step 3. Transforming the squares into circles.</h2>
 <p>Finally, to transform the tiles from squares into circles, I use <em>radius</em> as an aesthetic inside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, assigning the value <em>grid::unit(0.5, “npc”)</em>. This produces circular tiles while preserving the waffle layout structure.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1659,7 +1654,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="step-4.-save-the-waffle-chart-as-a-high-quality-image" class="level2"><h2 class="anchored" data-anchor-id="step-4.-save-the-waffle-chart-as-a-high-quality-image">Step 4. Save the waffle chart as a high-quality image</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4970,13 +4965,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     Pandemic- and Epidemic-Prone Disease Outbreaks in 2025},
   date = {2026-02-08},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/},
+  doi = {https://doi.org/10.59350/xe5y3-ejw91},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas">
 <div class="">Torres Munguía, J. A. Designing a map to
 visualize the geographic distribution of pandemic- and epidemic-prone
 disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/">https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/</a>
-(2026).</div>
+(2026) doi:<a href="https://doi.org/10.59350/xe5y3-ejw91">https://doi.org/10.59350/xe5y3-ejw91</a>.</div>
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>
@@ -5002,7 +4998,7 @@ disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>First, I load the packages to be used:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -5081,12 +5077,12 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;"><a href="https://scales.r-lib.org">scales</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
 <p>I downloaded Table <a href="https://www.destatis.de/EN/Themes/Society-Environment/Population/Migration-Integration/Tables/protection-time-series-protections-status.html"><em>Persons seeking protection, by protection status, 2007 to 2024</em></a> and saved it in an Excel file named <code>persons-seeking-protection-germany.xlsx</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">seeking_protection</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5098,11 +5094,11 @@ font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"persons-seeking-protection-germany.xlsx"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>The table looks like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">seeking_protection</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5134,9 +5130,9 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Persons seeking protection, by protection status, 2007 to 2024</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Reference date</th>
@@ -5355,7 +5351,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </section><section id="designing-the-stacked-area-chart" class="level2"><h2 class="anchored" data-anchor-id="designing-the-stacked-area-chart">Designing the stacked area chart</h2>
 <p>Before plotting, I reshape the data and rename some of their columns for easiness of working with them in the {ggplot2} context.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">seeking_protection</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5437,11 +5433,11 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"persons"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>First, I set a theme for the chart and the font to “Josefin Sans” using the <code>showtext</code> package. More options can be found at <a href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5880,11 +5876,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>The plot is created with the following code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">seeking_protection</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -6208,8 +6204,8 @@ font-style: inherit;">theme_stacked_chart</span><span class="op" style="color: #
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span> </span></code></pre></div>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+font-style: inherit;">)</span> </span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -6261,23 +6257,23 @@ font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Turn off the showtext functionality</span></span></code></pre></div>
+font-style: inherit;"># Turn off the showtext functionality</span></span></code></pre></div></div>
 </div>
 <p><a href="stacked-area-germany-seeking-protection.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {How Has the Number of Persons Seeking Protection in {Germany}
     Changed over Time?},
   date = {2025-08-01},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How Has the Number of Persons
 Seeking Protection in Germany Changed over Time?”</span> August 1, 2025.
-<a href="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart">https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart</a>.
+<a href="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/">https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</a>.
 </div></div></section></div> ]]></description>
   <category>data visualizatin</category>
   <category>persons seeking protection</category>
@@ -7642,7 +7638,7 @@ to Visualize Crime Victimization by Age and Sex in Mexico.”</span> July
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>Load necessary libraries for data processing and visualization.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -7737,13 +7733,13 @@ font-style: inherit;"><a href="https://stringr.tidyverse.org">stringr</a></span>
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># For string manipulation</span></span></code></pre></div>
+font-style: inherit;"># For string manipulation</span></span></code></pre></div></div>
 </div>
 </section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
 <p>Data comes from the report “Women and Men in Cambodia” produced by the National Institute of Statistics of the Ministry of Planning. This document provides insights into the situation of women and men in different spheres of life, including health, education, labour, decision making, and violence. The data used in this post is available in the table “Public Acceptability of Domestic Violence between 2005 and 2009” in section “VIOLENCE AGAINST WOMEN”. Report can be found <a href="https://www.nis.gov.kh/nis/WM/Women%20and%20Men's%20in%20Cambodia%20final%20version_EN.pdf">here</a>.</p>
 <p>I extracted the data from the report and created an Excel file that can be found <a href="acceptability-violence-cambodia.xlsx">here</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">acceptability_violence</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -7755,11 +7751,11 @@ font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"acceptability-violence-cambodia.xlsx"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>This information looks like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">acceptability_violence</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -7791,9 +7787,9 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Public Acceptability of Domestic Violence in Cambodia between 2005 and 2009</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Action</th>
@@ -7842,7 +7838,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>I use the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function in the {tidyverse} package to reshape the data to a long format, required for this plot.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">acceptability_violence</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -7869,11 +7865,11 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Percentage"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now the data looks like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">acceptability_violence</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -7903,9 +7899,9 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Public Acceptability of Domestic Violence in Cambodia between 2005 and 2009</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Action</th>
@@ -7990,7 +7986,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </section><section id="dot-plot-design" class="level2"><h2 class="anchored" data-anchor-id="dot-plot-design">Dot plot design</h2>
 <p>I create a custom theme for the dot plot and apply the font “Jacques Francois”. More font alternatives can be found <a href="https://fonts.google.com/">here</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Add custom font</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -8503,11 +8499,11 @@ font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">320</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span> </span></code></pre></div>
+font-style: inherit;">)</span> </span></code></pre></div></div>
 </div>
 <p>Finally, I create the dot plot using <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> functions from the {ggplto2} package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">dot_plot_acceptability</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -8713,14 +8709,14 @@ font-style: inherit;">theme_dot_plot</span><span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span> </span></code></pre></div>
+font-style: inherit;">)</span> </span></code></pre></div></div>
 </div>
 <p>Finally, I export the plot using a 320-dpi resolution for high-quality (“retina”)</p>
 <div class="cell">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">dot_plot_acceptability</span></span></code></pre></div>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+font-style: inherit;">dot_plot_acceptability</span></span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -8774,7 +8770,7 @@ font-style: inherit;">(</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span> </span></code></pre></div>
+font-style: inherit;">)</span> </span></code></pre></div></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="cambodia-domestic-violence-dot-plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
@@ -8782,18 +8778,18 @@ font-style: inherit;">)</span> </span></code></pre></div>
 </div>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {A Dot Plot of Public Acceptability of Domestic Violence in
     {Cambodia} Between 2005 and 2009},
   date = {2025-06-18},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“A Dot Plot of Public
 Acceptability of Domestic Violence in Cambodia Between 2005 and
-2009.”</span> June 18, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot">https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot</a>.
+2009.”</span> June 18, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/">https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>domestic violence</category>
@@ -8816,7 +8812,7 @@ Acceptability of Domestic Violence in Cambodia Between 2005 and
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>First, we install and load the necessary R packages.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -8927,12 +8923,12 @@ font-style: inherit;">grid</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># To add lines and text elements to graphical objects</span></span></code></pre></div>
+font-style: inherit;"># To add lines and text elements to graphical objects</span></span></code></pre></div></div>
 </div>
 </section><section id="loading-data" class="level2"><h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
 <p>I saved the information from Table A.1: <em>Intimate-partner violence by background characteristics</em> in the Excel file <a href="../../..\intimate-partner-violence-cambodia.xlsx">intimate-partner-violence-cambodia.xlsx</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">ipv_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -8944,11 +8940,11 @@ font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"intimate-partner-violence-cambodia.xlsx"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>This information looks like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">ipv_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -8980,9 +8976,9 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small">
 <caption>Lifetime experience of specific acts of intimate partner physical violence committed by their current or most recent partner by provinces, Cambodia 2021-22</caption>
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Region</th>
@@ -9225,7 +9221,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>Now, we load geographical data of the administrative division of Cambodia. These data are obtained from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile <code>.shp</code> and is available <a href="https://data.humdata.org/dataset/cod-ab-khm">here</a> in a zip file named <code>som_adm_ocha_20250108_AB_SHP.zip</code>. I downloaded this file and located it in <code>/khmadm_gov_20181004_ab_shp</code> folder.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">shp_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9237,12 +9233,12 @@ font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"khmadm_gov_20181004_ab_shp/khm_admbnda_adm1_gov_20181004.shp"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>Next step is to combine the geographic information from the shapefile, <code>shp_cambodia</code>, with the data frame with the information on IPV, <code>ipv_cambodia</code>. To achieve this goal, we need to make sure that both datasets have a common variable to merge them. In this case, we will use the province name <code>ADM1_EN</code> in the shapefile and <code>Region</code> in the data frame. Then, I compare if the names of the provinces in both datasets match:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9260,14 +9256,14 @@ font-style: inherit;">$</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">Region</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Oddar Meanchey"</code></pre>
 </div>
 </div>
 <p>The output indicates that there is one discrepancy. In <code>shp_cambodia</code>, the name of the province “Oddar Meanchey” corresponds to “Otdar Meanchey” in <code>ipv_cambodia</code>. I will rename this province in the shapefile to match the name in the data from the official report.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">shp_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9309,11 +9305,11 @@ font-style: inherit;">ADM1_EN</span></span>
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>After this modification, I join both datasets using a left join to keep all the provinces in the shapefile and add the corresponding IPV values from the data frame:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">shp_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -9344,12 +9340,12 @@ font-style: inherit;">"Region"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section></section><section id="creating-the-map" class="level2"><h2 class="anchored" data-anchor-id="creating-the-map">Creating the map</h2>
 <p>My idea is to develop three maps, each representing one type of violence against women and girls: emotional, physical, and sexual. I will first create the map corresponding to emotional violence.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># More font alternatives can be found here https://fonts.google.com/</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -9690,11 +9686,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now, I replicate the same format for physical and sexual violence.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">map_ipv_physical_cambodia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -10270,11 +10266,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now, using {patchwork} package, I combine the three plots into one single representation. I also use <code><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation()</a></code> function to add a title, subtitle, and caption to the overall design.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Design display two rows, one with the three maps, and the second one only with the common guide</span></span>
 <span><span class="va" style="color: #111111;
@@ -10768,11 +10764,11 @@ font-style: inherit;">)</span></span>
 <span>    </span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Finally, I use <code><a href="https://rdrr.io/r/grid/grid.lines.html">grid.lines()</a></code> from {grid} package to add a horizontal line after the subtitle.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">map_ipv_cambodia</span></span>
 <span></span>
@@ -10823,23 +10819,23 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p><a href="ipv-cambodia-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/ipv-cambodia-map.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {Three Maps to Examine the Prevalence of Intimate Partner
     Violence {(IPV)} in {Cambodia}},
   date = {2025-05-10},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Three Maps to Examine the
 Prevalence of Intimate Partner Violence (IPV) in Cambodia.”</span> May
-10, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia">https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia</a>.
+10, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/">https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>intimate partner violence (IPV)</category>
@@ -10858,7 +10854,7 @@ Prevalence of Intimate Partner Violence (IPV) in Cambodia.”</span> May
   <description><![CDATA[ <section id="setting-up-the-environment" class="level2"><h2 class="anchored" data-anchor-id="setting-up-the-environment">Setting Up the Environment</h2>
 <p>We begin by loading the necessary R packages:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load required packages</span></span>
 <span><span class="kw" style="color: #003B4F;
@@ -10920,12 +10916,12 @@ font-style: inherit;"><a href="https://ropensci.r-universe.dev/writexl">writexl<
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># For writing Excel files</span></span></code></pre></div>
+font-style: inherit;"># For writing Excel files</span></span></code></pre></div></div>
 </div>
 </section><section id="step-1-accessing-the-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-1-accessing-the-dataset">Step 1: Accessing the Dataset</h2>
 <p>We retrieve the latest dataset of disease outbreaks from GitHub:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define the API URL from GitHub containing the latest dataset update</span></span>
 <span><span class="va" style="color: #111111;
@@ -11097,13 +11093,13 @@ font-style: inherit;">icd11l3</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="step-2-adding-who-and-unsd-regional-classifications" class="level2"><h2 class="anchored" data-anchor-id="step-2-adding-who-and-unsd-regional-classifications">Step 2: Adding WHO and UNSD Regional Classifications</h2>
 <p>We integrate additional geographic classifications from WHO and UNSD.</p>
 <section id="who-regions" class="level3"><h3 class="anchored" data-anchor-id="who-regions">WHO Regions</h3>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define the URL for the WHO regional classification dataset</span></span>
 <span><span class="va" style="color: #111111;
@@ -11156,7 +11152,7 @@ font-style: inherit;">TRUE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3]
   Date: 2025-04-28 06:21
@@ -11165,7 +11161,7 @@ font-style: inherit;">)</span></span></code></pre></div>
   Size: 28.9 kB
 &lt;ON DISK&gt;  C:\Users\jator\AppData\Local\Temp\RtmpiGD1DX\file990423923f25.xlsx</code></pre>
 </div>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Read the WHO classification data from the downloaded Excel file</span></span>
 <span><span class="va" style="color: #111111;
@@ -11241,11 +11237,11 @@ font-style: inherit;">"iso3"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Merge with the main dataset based on the ISO3 country code</span></span></code></pre></div>
+font-style: inherit;"># Merge with the main dataset based on the ISO3 country code</span></span></code></pre></div></div>
 </div>
 </section><section id="unsd-regions" class="level3"><h3 class="anchored" data-anchor-id="unsd-regions">UNSD Regions</h3>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Read the UNSD regional classification dataset from an Excel file</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -11336,7 +11332,7 @@ font-style: inherit;">"iso3"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Merge with the main dataset based on the ISO3 country code</span></span></code></pre></div>
+font-style: inherit;"># Merge with the main dataset based on the ISO3 country code</span></span></code></pre></div></div>
 </div>
 </section></section><section id="step-3-structuring-the-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-3-structuring-the-dataset">Step 3: Structuring the Dataset</h2>
 <p>To facilitate better organization, we:</p>
@@ -11346,7 +11342,7 @@ font-style: inherit;"># Merge with the main dataset based on the ISO3 country co
 <li>Insert an empty row for HXL headers.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Arrange the dataset in descending order by Year, then by ISO3 country code, and ICD-10 4-character code</span></span>
 <span><span class="va" style="color: #111111;
@@ -11418,12 +11414,12 @@ font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="step-4-adding-hxl-hashtags" class="level2"><h2 class="anchored" data-anchor-id="step-4-adding-hxl-hashtags">Step 4: Adding HXL Hashtags</h2>
 <p>We define HXL hashtags for each relevant column:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define the mapping of column names to their corresponding HXL hashtags</span></span>
 <span><span class="va" style="color: #111111;
@@ -11666,12 +11662,12 @@ font-style: inherit;">who_region</span>, <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">DONs</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="step-5-exporting-the-final-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-5-exporting-the-final-dataset">Step 5: Exporting the Final Dataset</h2>
 <p>Finally, we save the dataset as an Excel file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">write_xlsx</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -11693,21 +11689,21 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"disease_outbreaks_HDX.xlsx"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {Working with {Humanitarian} {Exchange} {Language} {(HXL)}
     {Hashtags}},
   date = {2025-03-26},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Working with Humanitarian
-Exchange Language (HXL) Hashtags.”</span> March 26, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data">https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data</a>.
+Exchange Language (HXL) Hashtags.”</span> March 26, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/">https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/</a>.
 </div></div></section></div> ]]></description>
   <category>data management</category>
   <category>Humanitarian Data Exchange</category>
@@ -14620,7 +14616,7 @@ Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025. <a href="https
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>Before we begin, we need to install and load the necessary R packages.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -14680,12 +14676,12 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span> </span></code></pre></div>
+font-style: inherit;">)</span> </span></code></pre></div></div>
 </div>
 </section><section id="loading-data-hdx" class="level2"><h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
 <p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">shp_somalia</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -14725,12 +14721,12 @@ background-color: null;
 font-style: inherit;">ADM2_PCODE</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>I will add the SPI values previously calculated to the shapefile data frame. I saved the SPI values in a RData file named <code>rainfall_data.RData</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -14807,11 +14803,11 @@ font-style: inherit;">"district_code"</span><span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section></section><section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map" class="level2"><h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-map">Set theme settings and define fonts, colors, and text to be used in the map</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15207,11 +15203,11 @@ font-style: inherit;">caption_chart</span> <span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"**Data:** Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) &lt;br&gt; **Graphic:** Juan Torres Munguía"</span></span></code></pre></div>
+font-style: inherit;">"**Data:** Somalia: Own estimations using Somalia Rainfall Indicators at Subnational Level (HDX) &lt;br&gt; **Graphic:** Juan Torres Munguía"</span></span></code></pre></div></div>
 </div>
 <p>Now, lets create a histogram of the SPI values for the districts of Somalia to use as a legend for the map.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">spi_colors</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15676,10 +15672,10 @@ font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/coord_fli
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Read the shapefile of Somalia with the interior region borders</span></span>
 <span><span class="va" style="color: #111111;
@@ -15938,10 +15934,10 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">map_spi</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -15974,8 +15970,8 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+font-style: inherit;">)</span></span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -16025,23 +16021,23 @@ font-style: inherit;">(</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p><a href="spi-somalia-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/spi-somalia-map.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {How to Compute and Visualize the {Standardized}
     {Precipitation} {Index} {(SPI)} for Drought Analysis},
   date = {2025-02-14},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
 the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
-February 14, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization</a>.
+February 14, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>drought</category>
@@ -16088,7 +16084,7 @@ February 14, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/sp
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>Before we begin, we need to install and load the necessary R packages. We will be using the {tidyverse} package for data wrangling, as well as the {SCI} package for calculating the SPI.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -16208,7 +16204,7 @@ font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/filter.html
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Prefer 'filter' function from dplyr package</span></span></code></pre></div>
+font-style: inherit;"># Prefer 'filter' function from dplyr package</span></span></code></pre></div></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -16226,7 +16222,7 @@ Warning
 </section><section id="loading-data-hdx" class="level2"><h2 class="anchored" data-anchor-id="loading-data-hdx">Loading data HDX</h2>
 <p>Data can be found <a href="https://data.humdata.org/dataset/som-rainfall-subnational">here</a> in file <code>som-rainfall-adm2-full.csv</code>. For Somalia, data is available from January 1981.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Read the rainfall data for Somalia`</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -16244,12 +16240,12 @@ font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"https://data.humdata.org/dataset/ed6e1b4b-8094-47e6-bdf7-f6d56fa7abb9/resource/8b333d58-d69e-418c-b5e3-dd86f12eee05/download/som-rainfall-subnat-full.csv"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>We preprocess the data to extract relevant information to calculate the SPI. We extract the year and month from the date column, calculate the rainfall anomaly, and group the data by year, month, and district_code.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">rainfall_data</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -16536,11 +16532,11 @@ background-color: null;
 font-style: inherit;">rainfall_monthly_lt_average</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section></section><section id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months." class="level2"><h2 class="anchored" data-anchor-id="we-then-calculate-the-spi-for-different-time-scales-1-3-6-12-months.">We then calculate the SPI for different time scales (1, 3, 6, 12 months).</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">rainfall_data</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -16799,12 +16795,12 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">district_code</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>The output table looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table caption-top table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">month</th>
@@ -16945,7 +16941,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </section><section id="interpretation" class="level2"><h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
 <p>Drought events are indicated by negative SPI values, with more negative values indicating more severe drought conditions. Conversely, positive SPI values indicate wetter-than-average conditions. For demonstrating purposes, let’s visualize the SPI values for Laasqoray district in Sanaag region. One efficient way to visualize SPI values is by using a box plot with SPI categories.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -17765,8 +17761,8 @@ font-style: inherit;">theme_boxplot_chart</span><span class="op" style="color: #
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+font-style: inherit;">)</span></span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -17820,23 +17816,23 @@ font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Turn off the showtext functionality</span></span></code></pre></div>
+font-style: inherit;"># Turn off the showtext functionality</span></span></code></pre></div></div>
 </div>
 <p><a href="spi-somalia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/spi-somalia.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {How to Compute and Visualize the {Standardized}
     {Precipitation} {Index} {(SPI)} for Drought Analysis},
   date = {2025-02-08},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
 the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
-February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia</a>.
+February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/</a>.
 </div></div></section></div> ]]></description>
   <category>data analysis</category>
   <category>drought</category>
@@ -17898,7 +17894,7 @@ February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>First, install and load the required packages:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -17945,12 +17941,12 @@ font-style: inherit;"><a href="http://haozhu233.github.io/kableExtra/">kableExtr
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Create HTML table</span></span></code></pre></div>
+font-style: inherit;"># Create HTML table</span></span></code></pre></div></div>
 </div>
 </section><section id="loading-survey-microdata-from-inegi" class="level2"><h2 class="anchored" data-anchor-id="loading-survey-microdata-from-inegi">Loading survey microdata from INEGI</h2>
 <p>Microdata is available <a href="https://www.inegi.org.mx/programas/envipe/2024/#microdatos">here</a> in various formats (CSV, DBF, DTA, SAV, and RData). In this post, we will use the RData files.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -17973,7 +17969,7 @@ font-style: inherit;">"BD_ENVIPE_2024.RData"</span></span>
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -18009,7 +18005,7 @@ Tip
 </ul>
 <p>We specify the survey design as follows:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Identify victims from TMod_Vic, excluding</span></span>
 <span><span class="co" style="color: #5E5E5E;
@@ -18206,12 +18202,12 @@ background-color: null;
 font-style: inherit;"># Nesting within strata</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="calculating-point-estimates-and-variablity-indicators" class="level3"><h3 class="anchored" data-anchor-id="calculating-point-estimates-and-variablity-indicators">2. Calculating point estimates and variablity indicators</h3>
 <p>To compute proportions from survey data, we use <code><a href="http://gdfe.co/srvyr/reference/survey_mean.html">survey_mean()</a></code> from {srvyr} package. From ENVIPE’s documentation, we know that <code>NOM_ENT</code> represents the state, while <code>SEXO</code> corresponds to the respondent’s sex.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">envipe_design</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -18424,12 +18420,12 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Apply bootstrap theme to the table</span></span></code></pre></div>
+font-style: inherit;"># Apply bootstrap theme to the table</span></span></code></pre></div></div>
 </div>
 <p>The output table looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table caption-top table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">State</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">Sex</th>
@@ -19022,17 +19018,17 @@ font-style: inherit;"># Apply bootstrap theme to the table</span></span></code><
 </div>
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {Using a Tidy Approach in {R} to Analyze {Mexico’s} 2024
     {ENVIPE}},
   date = {2025-01-27},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Using a Tidy Approach in R to
-Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence">https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence</a>.
+Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/">https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/</a>.
 </div></div></section></div> ]]></description>
   <category>data analysis</category>
   <category>official statistics</category>
@@ -19064,7 +19060,7 @@ Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025. <a href="https://jua
 </section><section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>To create the waffle chart, we will use the following R packages:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -19135,12 +19131,12 @@ font-style: inherit;">waffle</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Create waffle charts</span></span></code></pre></div>
+font-style: inherit;"># Create waffle charts</span></span></code></pre></div></div>
 </div>
 </section><section id="loading-data-from-github" class="level2"><h2 class="anchored" data-anchor-id="loading-data-from-github">Loading data from GitHub</h2>
 <p>The dataset is stored in an Excel. We will download it from the <a href="https://github.com/jatorresmunguia/disease_outbreak_news/raw/refs/heads/main/Humanitarian%20Data%20Exchange/data_2_share/disease_outbreaks_HDX.xlsx">GitHub repository</a> and load it into R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define the GitHub raw content URL</span></span>
 <span><span class="va" style="color: #111111;
@@ -19232,12 +19228,12 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">temp</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>We will group the data by year and disease, and then filter the top 10 diseases from 1996 to 2024. We will also group the data by year and disease, and then filter the top 10 diseases from 2015 to 2024. Finally, we will create a factor variable for the top 10 diseases and the “Other” category:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Top 10 diseases 1996-2024</span></span>
 <span><span class="va" style="color: #111111;
@@ -19537,11 +19533,11 @@ font-style: inherit;">)</span></span>
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section></section><section id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart" class="level2"><h2 class="anchored" data-anchor-id="set-theme-settings-and-define-fonts-colors-and-text-to-be-used-in-the-waffle-chart">Set theme settings and define fonts, colors, and text to be used in the waffle chart</h2>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Add custom font</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -20019,11 +20015,11 @@ background-color: null;
 font-style: inherit;">"grey80"</span></span>
 <span>  <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="create-the-waffle-chart" class="level2"><h2 class="anchored" data-anchor-id="create-the-waffle-chart">Create the waffle chart</h2>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -20268,11 +20264,11 @@ font-style: inherit;">theme_waffle_chart</span><span class="op" style="color: #5
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="save-the-waffle-chart-as-an-image" class="level2"><h2 class="anchored" data-anchor-id="save-the-waffle-chart-as-an-image">Save the waffle chart as an image</h2>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -20324,20 +20320,20 @@ font-style: inherit;">(</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres munguía2025,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
   author = {Torres Munguía, Juan Armando},
   title = {A Waffle Chart of Disease Outbreaks in the World},
   date = {2025-01-12},
-  url = {https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks},
+  url = {https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres munguía2025" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“A Waffle Chart of Disease
-Outbreaks in the World.”</span> January 12, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks</a>.
+Outbreaks in the World.”</span> January 12, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>
