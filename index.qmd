@@ -23,7 +23,7 @@ I am a Statistician specialized in the management, analysis, and visualization o
 
 My work integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and forced displacement.
 
-As an R-enthusiast, I love coding to optimize and streamline my work. Check out my [Blog](blog/index.qmd), where I share insights on using R for the study of humanitarian and development data.
+As an R enthusiast, I enjoy coding throughout the entire research lifecycle, from data collection and reshaping to analysis and visualization of the results. Check out my [Blog](blog/index.qmd), where I share insights on using R for the study of humanitarian and development data.
 
 [Click here to learn more about me](about/index.qmd).
 

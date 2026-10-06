@@ -29,6 +29,8 @@ format:
 
 ::: {.g-col-12 .g-col-sm-8}
 
+I am a Postdoctoral Researcher in the [School of Social Sciences and Government at the Tecnológico de Monterrey](https://tec.mx/en/our-faculty/ecsg). 
+
 I hold a PhD in Applied Statistics and Empirical Methods from the [Georg-August-Universität Göttingen](https://www.uni-goettingen.de/), completed in 2022 with the _summa cum laude_ distinction. My [PhD dissertation](https://ediss.uni-goettingen.de/handle/11858/14585?locale-attribute=en) focused on developing [boosting structured additive regression models](https://link.springer.com/chapter/10.1007/978-3-662-63882-8_9) to address critical issues in development economics. 
 
 <span style="font-weight:700; font-size:1.25em;"> A glimpse of my research</span>
