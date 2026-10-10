@@ -1,14 +1,14 @@
 ---
-title: "Blog del Arte & Ciencia de Datos"
+title: "Data Art & Science Blog"
 title-block-banner: img/creazione-di-adamo.jpeg
 title-block-style: manuscript
 subtitle: |
- Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios
+ Exploring the art and science of working with development and humanitarian data  
  <div style="margin-top:1em; font-size:0.8em; text-align:right;">
- <strong>Imagen:</strong> <em>La Creación de Adán</em> (1508–1512) por Miguel Ángel. A través de <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.
+ <strong>Photo:</strong> <em>The Creation of Adam</em> (1508–1512) by Michelangelo. Via <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.
  </div>
 listing:
-  contents: posts-es
+  contents: posts
   sort: "date desc"
   type: grid
   categories: false
@@ -16,6 +16,11 @@ listing:
   filter-ui: false
   fields: [image, title, subtitle]
   page-size: 4
+  feed:
+    items: 20
+    title: "Data Art & Science Blog"
+    description: "Exploring the art and science of working with development and humanitarian data"
+    type: full
 execute:
   freeze: true
 format: 
@@ -24,65 +29,69 @@ format:
     css: blog.css
 ---
 
-::: {.grid}
+<div class="lang-grid">
 
-::: {.g-col-12 .g-col-sm-10}
+<div class="lang-spacer"></div>
 
-:::
+<div class="lang-selector">
 
-::: {.g-col-12 .g-col-sm-2}
 ```{=html}
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
-  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:150px; display:flex; align-items:center; justify-content:center;">
+  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:125px; display:flex; align-items:center; justify-content:center;">
     Español ▼
   </button>
-  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:150px;">
+  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:125px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
-      English
+      Español
     </li>
     <li id="lang-es" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index-es.html'">
-      Español
+      English
     </li>
   </ul>
 </div>
 
 <style>
 .selected-lang {
-  background-color: #f2f0e8; 
+  background-color: #f2f0e8;
   font-weight: bold;
+}
+
+.lang-selector {
+  text-align: right;
 }
 </style>
 
 <script>
 function toggleDropdown() {
   const dropdown = document.getElementById("langDropdown");
-  dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+  dropdown.style.display =
+    dropdown.style.display === "block" ? "none" : "block";
 }
 
 window.onclick = function(event) {
-  if (!event.target.matches('button')) {
+  if (!event.target.closest("#langButton") &&
+      !event.target.closest("#langDropdown")) {
     const dropdown = document.getElementById("langDropdown");
     if (dropdown.style.display === "block") {
       dropdown.style.display = "none";
     }
   }
-}
+};
 
 const langButton = document.getElementById("langButton");
 const enOption = document.getElementById("lang-en");
 const esOption = document.getElementById("lang-es");
 
 if (window.location.href.includes("index-es.html")) {
-  langButton.innerHTML = 'Español ▼';
+  langButton.innerHTML = "English ▼";
   esOption.classList.add("selected-lang");
 } else {
-  langButton.innerHTML = 'English ▼';
+  langButton.innerHTML = "Español ▼";
   enOption.classList.add("selected-lang");
 }
 </script>
-
 ```
-:::
 
-:::
+</div>
 
+</div>
