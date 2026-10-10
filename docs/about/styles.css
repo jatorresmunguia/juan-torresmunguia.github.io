@@ -1,10 +1,32 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.about-image {
+  text-align: center;
+  min-width: 0;
+}
+
+.about-text {
+  min-width: 0;
+}
+
 .img-fluid {
   width: 60%;
   height: auto;
 }
 
-@media (min-width: 700px) { 
+@media (min-width: 700px) {
   .img-fluid {
     width: 100%;
+  }
+}
+
+@media (max-width: 699px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
