@@ -44,7 +44,7 @@ Currently, I also contribute as a data analyst and researcher to the [Internal D
 
 My research integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and forced displacement.
 
-Another line of my research focuses on enhancing knowledge of [disease outbreaks](disease-outbreaks-data.netlify.app) by improving the availability and quality of data and promoting analyses to identify geospatial trends and patterns worldwide.
+Another line of my research focuses on enhancing knowledge of [disease outbreaks](https://jatorresmunguia.github.io/disease-outbreaks-data.github.io/) by improving the availability and quality of data and promoting analyses to identify geospatial trends and patterns worldwide.
 
 Recently, I have applied boosting structured additive regression models to predict and describe _whether_, _how_, _where_, and _when_ development and humanitarian emergencies may occur in the future. Feel free to [send me a message](../contact/index.qmd) if you are interested in this line of work.
 
