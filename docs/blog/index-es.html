@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Art &amp; Science Blog – Juan TORRES MUNGUÍA |&gt; HUMANITARIAN DATA STATISTICIAN</title>
+<title>Blog del Arte &amp; Ciencia de Datos – Juan TORRES MUNGUÍA |&gt; HUMANITARIAN DATA STATISTICIAN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="blog.css">
-<link rel="alternate" type="application/rss+xml" title="Data Art &amp; Science Blog" href="index-es.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
@@ -209,10 +209,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Data Art &amp; Science Blog</h1>
-            <p class="subtitle lead">Exploring the art and science of working with development and humanitarian data
+      <h1 class="title">Blog del Arte &amp; Ciencia de Datos</h1>
+            <p class="subtitle lead">Explorando el arte y la ciencia de trabajar con datos sobre desarrollo y humanitarios
 </p><div style="margin-top:1em; font-size:0.8em; text-align:right;">
-<p><strong>Photo:</strong> <em>The Creation of Adam</em> (1508–1512) by Michelangelo. Via <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.</p>
+<p><strong>Imagen:</strong> <em>La Creación de Adán</em> (1508–1512) por Miguel Ángel. A través de <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.</p>
 </div><p></p>
           </div>
 
@@ -247,65 +247,60 @@ window.Quarto = {
   
 
 
-<div class="lang-grid">
-<div class="lang-spacer">
+<div class="grid">
+<div class="g-col-12 g-col-sm-10">
 
 </div>
-<div class="lang-selector">
+<div class="g-col-12 g-col-sm-2">
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
-  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:125px; display:flex; align-items:center; justify-content:center;">
+  <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:150px; display:flex; align-items:center; justify-content:center;">
     Español ▼
   </button>
-  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:125px;">
+  <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:150px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
-      Español
+      English
     </li>
     <li id="lang-es" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index-es.html'">
-      English
+      Español
     </li>
   </ul>
 </div>
 
 <style>
 .selected-lang {
-  background-color: #f2f0e8;
+  background-color: #f2f0e8; 
   font-weight: bold;
-}
-
-.lang-selector {
-  text-align: right;
 }
 </style>
 
 <script>
 function toggleDropdown() {
   const dropdown = document.getElementById("langDropdown");
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
+  dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
 }
 
 window.onclick = function(event) {
-  if (!event.target.closest("#langButton") &&
-      !event.target.closest("#langDropdown")) {
+  if (!event.target.matches('button')) {
     const dropdown = document.getElementById("langDropdown");
     if (dropdown.style.display === "block") {
       dropdown.style.display = "none";
     }
   }
-};
+}
 
 const langButton = document.getElementById("langButton");
 const enOption = document.getElementById("lang-en");
 const esOption = document.getElementById("lang-es");
 
 if (window.location.href.includes("index-es.html")) {
-  langButton.innerHTML = "English ▼";
+  langButton.innerHTML = 'Español ▼';
   esOption.classList.add("selected-lang");
 } else {
-  langButton.innerHTML = "Español ▼";
+  langButton.innerHTML = 'English ▼';
   enOption.classList.add("selected-lang");
 }
 </script>
+
 </div>
 </div>
 
@@ -314,258 +309,178 @@ if (window.location.href.includes("index-es.html")) {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNpbnRlcm5hbGx5JTIwZGlzcGxhY2VkJTIwcGVvcGxlJTJDU3VkYW4lMkNnZ3Bsb3QyJTJDZ2dyZXBlbCUyQ3N0YWNrZWQlMjBhcmVhJTIwY2hhcnQlMkN0ZXh0JTIwYW5ub3RhdGlvbg==" data-listing-date-sort="1778392800000" data-listing-file-modified-sort="1781212426401" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="363">
-<a href="../blog/posts/chart-area-sudan-idmc/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ3BlcnNvbmFzJTIwZGVzcGxhemFkYXMlMjBpbnRlcm5hcyUyQ1N1ZGFuJTJDZ2dwbG90MiUyQ2dncmVwZWwlMkNnciVDMyVBMWZpY2ElMjBkZSUyMCVDMyVBMXJlYXMlMjBhcGlsYWRhcyUyQ2Fub3RhY2lvbmVzJTIwZGUlMjB0ZXh0bw==" data-listing-date-sort="1778392800000" data-listing-file-modified-sort="1781244845593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="398">
+<a href="../blog/posts-es/chart-area-sudan-idmc/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../blog/posts/chart-area-sudan-idmc/stacked-area-sudan-idps.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="../blog/posts-es/chart-area-sudan-idmc/stacked-area-sudan-idps.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Using {ggplot2} and {ggrepel} to replace a legend with direct labels on the right side of a stacked area chart
+Uso de {ggplot2} y {ggrepel} para reemplazar una leyenda con etiquetas directas al lado derecho de una gráfica de áreas apiladas
 </h5>
 <div class="card-subtitle listing-subtitle">
-A practical example with conflict-induced internal displacement data disaggregated by gender in Sudan
+Un ejemplo práctico con datos desagregados por sexo sobre el desplazamiento interno forzado por el conflicto armado en Sudán
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZQ==" data-listing-date-sort="1771048800000" data-listing-file-modified-sort="1789011101625" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1755">
-<a href="../blog/posts/waffle-chart-disease-outbreaks-2025/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ3NvbGljaXRhbnRlcyUyMGRlJTIwcHJvdGVjY2klQzMlQjNuJTJDZ2dwbG90MiUyQ2dyJUMzJUExZmljbyUyMGRlJTIwJUMzJUExcmVhcyUyMGFwaWxhZGFzJTJDQWxlbWFuaWE=" data-listing-date-sort="1754028000000" data-listing-file-modified-sort="1756590845383" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1435">
+<a href="../blog/posts-es/germany-persons-seeking-protection-stacked-area-chart/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../blog/posts/waffle-chart-disease-outbreaks-2025/waffle-pandemics-2026.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="../blog/posts-es/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-How to build a waffle chart with circle-shaped tiles using {waffle} and {ggplot2} libraries in R?
+¿Cómo ha cambiado a lo largo del tiempo el número de personas solicitando protección en Alemania?
 </h5>
 <div class="card-subtitle listing-subtitle">
-A publication-ready waffle chart to visualize disease outbreaks in the world
+Un gráfico de áreas apiladas con {ggplot2}
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ21hcA==" data-listing-date-sort="1770530400000" data-listing-file-modified-sort="1789011396028" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1981">
-<a href="../blog/posts/world-map-outbreaks-2026/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ2VzdGFkJUMzJUFEc3RpY2FzJTIwb2ZpY2lhbGVzJTJDTSVDMyVBOXhpY28lMkNlbmN1ZXN0YXMlMjBkZSUyMGhvZ2FyZXMlMkNFTlZJUEUlMkNkZWxpdG8lMkN2aWN0aW1pemFjaSVDMyVCM24=" data-listing-date-sort="1752472800000" data-listing-file-modified-sort="1756589947698" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1472">
+<a href="../blog/posts-es/population-pyramid-mexico-crime/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../blog/posts/world-map-outbreaks-2026/outbreaks_map_colorblind_2026.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="../blog/posts-es/population-pyramid-mexico-crime/pyramid-crime-mexico.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Designing a map to visualize the geographic distribution of pandemic- and epidemic-prone disease outbreaks in 2025
+Creando una pirámide poblacional para visualizar la victimización por delito según edad y sexo en México
 </h5>
 <div class="card-subtitle listing-subtitle">
-Using {ggplot}, {sf}, and a colorblind alternative
+¿Cómo crear una pirámide poblacional usando {ggplot2} en R?
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNmb3JjZWQlMjBkaXNwbGFjZW1lbnQlMkN0aWR5dmVyc2UlMkNnZ3Bsb3QyJTJDZmxvdyUyMG1hcHMlMkNTdWRhbg==" data-listing-date-sort="1768456800000" data-listing-file-modified-sort="1768458549188" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<a href="../blog/posts/maps-flow-tutorial/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ3Zpb2xlbmNpYSUyMGRvbSVDMyVBOXN0aWNhJTJDQ2FtYm95YSUyQ2dncGxvdDI=" data-listing-date-sort="1750226400000" data-listing-file-modified-sort="1756590716681" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1332">
+<a href="../blog/posts-es/cambodia-acceptability-violence-dot-plot/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../blog/posts/maps-flow-tutorial/displacement-flow-map-sudan.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="../blog/posts-es/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Creating flow maps with {ggplot2} in R
+Un diagrama de puntos sobre la aceptabilidad pública de la violencia doméstica en Camboya entre 2005 y 2009
 </h5>
 <div class="card-subtitle listing-subtitle">
-Visualizing forced displacement in Sudan
+Cómo usar {ggplot2} para crear un diagrama de puntos y visualizar cambios a lo largo del tiempo
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNwb3ZlcnR5JTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ2JhciUyMHBsb3QlMkNNYWRhZ2FzY2Fy" data-listing-date-sort="1758434400000" data-listing-file-modified-sort="1758519010311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="204">
-<a href="../blog/posts/vietnam-rainfall-ridgeline-plot/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ3Zpb2xlbmNpYSUyMGRlJTIwcGFyZWphJTIwKElQViklMkN0aWR5dmVyc2UlMkNnZ3Bsb3QyJTJDc2hhcGVmaWxlcyUyQ0NhbWJveWE=" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1756588224889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2183">
+<a href="../blog/posts-es/map-intimate-partner-violence-cambodia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/vietnam-rainfall-ridgeline-plot/bar-plot-poverty-madagascar.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/map-intimate-partner-violence-cambodia/ipv-cambodia-map.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Proportion of the population living below the national poverty line in Madagascar
+Tres mapas para examinar la prevalencia de la violencia de pareja (IPV) en Camboya
 </h5>
 <div class="card-subtitle listing-subtitle">
-A {ggplot2}
+Desarrollando mapas coropléticos con {ggplot2}, {sf} y shapefiles
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpbiUyQ3BlcnNvbnMlMjBzZWVraW5nJTIwcHJvdGVjdGlvbiUyQ2dncGxvdDIlMkNzdGFja2VkJTIwYXJlYSUyMGNoYXJ0JTJDR2VybWFueQ==" data-listing-date-sort="1754028000000" data-listing-file-modified-sort="1756223304170" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1451">
-<a href="../blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="5" data-categories="bWFuZWpvJTIwZGUlMjBkYXRvcyUyQ0h1bWFuaXRhcmlhbiUyMERhdGElMjBFeGNoYW5nZSUyQ0h1bWFuaXRhcmlhbiUyMEV4Y2hhbmdlJTIwTGFuZ3VhZ2UlMkNicm90ZXMlMjBkZSUyMGVuZmVybWVkYWRlcyUyQ2VwaWRlbWlhcyUyQ3BhbmRlbWlhcw==" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1755214141410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="782">
+<a href="../blog/posts-es/hdx-tags-to-outbreaks-data/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/germany-persons-seeking-protection-stacked-area-chart/stacked-area-germany-seeking-protection.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/hdx-tags-to-outbreaks-data/hdx_image.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-How has the number of persons seeking protection in Germany changed over time?
+Trabajando con hashtags de Humanitarian Exchange Language (HXL)
 </h5>
 <div class="card-subtitle listing-subtitle">
-A stacked area chart using {ggplot2}
+Usando HXL en una base de datos global sobre brotes de enfermedades que tienden a provocar pandemias y epidemias.
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNvZmZpY2lhbCUyMHN0YXRpc3RpY3MlMkNNZXhpY28lMkNob3VzZWhvbGQlMjBzdXJ2ZXlzJTJDRU5WSVBFJTJDY3JpbWUlMkN2aWN0aW1pemF0aW9u" data-listing-date-sort="1752472800000" data-listing-file-modified-sort="1756589154411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1483">
-<a href="../blog/posts/population-pyramid-mexico-crime/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="6" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ2NvbmZsaWN0byUyMGFybWFkbyUyQ0FDTEVEJTJDQ3VlbmNhJTIwZGVsJTIwTGFnbyUyMENoYWQlMkNOaWdlcmlhJTJDTiVDMyVBRGdlciUyQ0NoYWQlMkNDYW1lciVDMyVCQW4lMkNnZ3Bsb3Qy" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755377862872" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3097">
+<a href="../blog/posts-es/visualizing-conflict-lake-chad-basin/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/population-pyramid-mexico-crime/pyramid-crime-mexico.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/visualizing-conflict-lake-chad-basin/lake-chad-map.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Creating a population pyramid to visualize crime victimization by age and sex in Mexico
+Visualizando el conflicto armado usando los datos de ACLED y los shapefiles de HDX
 </h5>
 <div class="card-subtitle listing-subtitle">
-How to create a population pyramid using {ggplot2} in R
+Usando {ggplot2} y {tidyverse} para hacer un mapa de la violencia contra civiles en la Cuenca del Lago Chad
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkb21lc3RpYyUyMHZpb2xlbmNlJTJDQ2FtYm9kaWElMkNnZ3Bsb3Qy" data-listing-date-sort="1750226400000" data-listing-file-modified-sort="1756068697823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1308">
-<a href="../blog/posts/cambodia-acceptability-violence-dot-plot/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="7" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ3NlcXUlQzMlQURhJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkMlQzMlOERuZGljZSUyMEVzdGFuZGFyaXphZG8lMjBkZSUyMFByZWNpcGl0YWNpJUMzJUIzbiUyMChTUEkpJTJDU29tYWxpYQ==" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1755215960424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1301">
+<a href="../blog/posts-es/spi_somalia_visualization/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/cambodia-acceptability-violence-dot-plot/cambodia-domestic-violence-dot-plot.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/spi_somalia_visualization/spi-somalia-map.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-A dot plot of public acceptability of domestic violence in Cambodia between 2005 and 2009
+Cómo calcular y visualizar el Índice Estandarizado de Precipitación (SPI) para el análisis de sequías
 </h5>
 <div class="card-subtitle listing-subtitle">
-How to use {ggplot2} to create a dot plot to visualize changes over time
+Parte 2: Visualización del SPI para los distritos de Somalia usando {ggplot2} en R
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNpbnRpbWF0ZSUyMHBhcnRuZXIlMjB2aW9sZW5jZSUyMChJUFYpJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNDYW1ib2RpYQ==" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1756587497015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2123">
-<a href="../blog/posts/map-intimate-partner-violence-cambodia/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="8" data-categories="YW4lQzMlQTFsaXNpcyUyMGRlJTIwZGF0b3MlMkNzZXF1JUMzJUFEYSUyQ3RpZHl2ZXJzZSUyQ2dncGxvdDIlMkNkaWFncmFtYXMlMjBkZSUyMGNhamElMkNTQ0klMkMlQzMlOERuZGljZSUyMEVzdGFuZGFyaXphZG8lMjBkZSUyMFByZWNpcGl0YWNpJUMzJUIzbiUyMChTUEkpJTJDU29tYWxpYQ==" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1755215875117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1995">
+<a href="../blog/posts-es/spi_somalia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/map-intimate-partner-violence-cambodia/ipv-cambodia-map.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/spi_somalia/spi-somalia.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Three maps to examine the prevalence of intimate partner violence (IPV) in Cambodia
+Cómo calcular y visualizar el Índice Estandarizado de Precipitación (SPI) para el análisis de sequías
 </h5>
 <div class="card-subtitle listing-subtitle">
-Developing choropleth maps with {ggplot2}, {sf}, and shapefiles
+Parte 1: Guía paso a paso para calcular el SPI con el paquete {SCI} en R usando datos de Somalia a nivel subnacional
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="ZGF0YSUyMG1hbmFnZW1lbnQlMkNIdW1hbml0YXJpYW4lMjBEYXRhJTIwRXhjaGFuZ2UlMkNIdW1hbml0YXJpYW4lMjBFeGNoYW5nZSUyMExhbmd1YWdlJTJDZGlzZWFzZSUyMG91dGJyZWFrcyUyQ2VwaWRlbWljcyUyQ3BhbmRlbWljcw==" data-listing-date-sort="1742968800000" data-listing-file-modified-sort="1755069953094" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="718">
-<a href="../blog/posts/hdx-tags-to-outbreaks-data/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="9" data-categories="YW4lQzMlQTFsaXNpcyUyMGRlJTIwZGF0b3MlMkNlc3RhZCVDMyVBRHN0aWNhcyUyMG9maWNpYWxlcyUyQ00lQzMlQTl4aWNvJTJDZW5jdWVzdGFzJTIwYSUyMGhvZ2FyZXMlMkNFTlZJUEUlMkNkZWxpdG8lMkN2aWN0aW1pemFjaSVDMyVCM24lMkNzZWd1cmlkYWQlMjBwJUMzJUJBYmxpY2ElMkN0aWR5dmVyc2UlMkNzcnZ5ciUyQ21pY3JvZGF0b3M=" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1755120322721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1220">
+<a href="../blog/posts-es/estimating-envipe-prevalence/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/hdx-tags-to-outbreaks-data/hdx_image.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Working with Humanitarian Exchange Language (HXL) Hashtags
+Usando un enfoque tidy en R para analizar la ENVIPE 2024 de México
 </h5>
 <div class="card-subtitle listing-subtitle">
-Applying HXL to a global dataset of pandemic- and epidemic-prone disease outbreaks.
+Parte 1: Estimando la prevalencia delictiva con el paquete {srvyr}
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNhcm1lZCUyMGNvbmZsaWN0JTJDQUNMRUQlMkNMYWtlJTIwQ2hhZCUyMGJhc2luJTJDTmlnZXJpYSUyQ05pZ2VyJTJDQ2hhZCUyQ0NhbWVyb29uJTJDZ2dwbG90Mg==" data-listing-date-sort="1741500000000" data-listing-file-modified-sort="1755377941353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2865">
-<a href="../blog/posts/visualizing-conflict-lake-chad-basin/index.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="10" data-categories="dmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ2Jyb3RlcyUyMGRlJTIwZW5mZXJtZWRhZGVzJTJDZXBpZGVtaWFzJTJDcGFuZGVtaWFzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ2dyJUMzJUExZmljbyUyMGRlJTIwd2FmZmxl" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755378967004" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1710">
+<a href="../blog/posts-es/waffle-chart-disease-outbreaks/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/visualizing-conflict-lake-chad-basin/lake-chad-map.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../blog/posts-es/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Visualizing armed conflict using ACLED’s data and HDX shapefiles
+Un gráfico de waffle de brotes de enfermedades en el mundo
 </h5>
 <div class="card-subtitle listing-subtitle">
-Using {ggplot2} and {tidyverse} to map violence against civilians in the Lake Chad Basin
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkcm91Z2h0JTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3NoYXBlZmlsZXMlMkNzdGFuZGFyZGl6ZWQlMjBwcmVjaXBpdGF0aW9uJTIwaW5kZXglMjAoU1BJKSUyQ1NvbWFsaWE=" data-listing-date-sort="1739512800000" data-listing-file-modified-sort="1755069953099" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
-<a href="../blog/posts/spi_somalia_visualization/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/spi_somalia_visualization/spi-somalia-map.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 2: Visualizing the SPI for the districts of Somalia using {ggplot2} in R
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="12" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDZHJvdWdodCUyQ3RpZHl2ZXJzZSUyQ2dncGxvdDIlMkNib3glMjBwbG90cyUyQ1NDSSUyQ1N0YW5kYXJkaXplZCUyMFByZWNpcGl0YXRpb24lMjBJbmRleCUyMChTUEkp" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1758072774005" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<a href="../blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/spi-somalia.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A two-step methodology to create levels of social gaps
-</h5>
-<div class="card-subtitle listing-subtitle">
-Applying Principal Component Analysis and Dalenius-Hodges univariate stratification method in R
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="13" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDZHJvdWdodCUyQ3RpZHl2ZXJzZSUyQ2dncGxvdDIlMkNib3glMjBwbG90cyUyQ1NDSSUyQ1N0YW5kYXJkaXplZCUyMFByZWNpcGl0YXRpb24lMjBJbmRleCUyMChTUEkpJTJDU29tYWxpYQ==" data-listing-date-sort="1738994400000" data-listing-file-modified-sort="1755562041925" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1966">
-<a href="../blog/posts/spi_somalia/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/spi_somalia/spi-somalia.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How to compute and visualize the Standardized Precipitation Index (SPI) for drought analysis
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 1: A step-by-step guide to calculate the SPI with the {SCI} package in R using data from Somalia at subnational level
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="14" data-categories="ZGF0YSUyMGFuYWx5c2lzJTJDb2ZmaWNpYWwlMjBzdGF0aXN0aWNzJTJDTWV4aWNvJTJDaG91c2Vob2xkJTIwc3VydmV5cyUyQ0VOVklQRSUyQ2NyaW1lJTJDdmljdGltaXphdGlvbiUyQ3B1YmxpYyUyMHNhZmV0eSUyQ3RpZHl2ZXJzZSUyQ3NydnlyJTJDbWljcm9kYXRh" data-listing-date-sort="1737957600000" data-listing-file-modified-sort="1755069953035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1262">
-<a href="../blog/posts/estimating-envipe-prevalence/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/estimating-envipe-prevalence/table_envipe.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Using a tidy approach in R to analyze Mexico’s 2024 ENVIPE
-</h5>
-<div class="card-subtitle listing-subtitle">
-Part 1: Estimating crime prevalence with the {srvyr} package
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="15" data-categories="ZGF0YSUyMHZpc3VhbGl6YXRpb24lMkNkaXNlYXNlJTIwb3V0YnJlYWtzJTJDZXBpZGVtaWNzJTJDcGFuZGVtaWNzJTJDdGlkeXZlcnNlJTJDZ2dwbG90MiUyQ3dhZmZsZSUyMGNoYXJ0" data-listing-date-sort="1736661600000" data-listing-file-modified-sort="1755556005408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1663">
-<a href="../blog/posts/waffle-chart-disease-outbreaks/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="../blog/posts/waffle-chart-disease-outbreaks/waffle-pandemics.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A waffle chart of disease outbreaks in the world
-</h5>
-<div class="card-subtitle listing-subtitle">
-Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in the world
+Usando {ggplot2} en R para crear un gráfico de waffle y visualizar brotes de enfermedades en el mundo
 </div>
 </div>
 </div></a>
