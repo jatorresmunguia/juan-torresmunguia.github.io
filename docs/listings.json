@@ -33,11 +33,8 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/chart-area-sudan-idmc/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks-2025/index.html",
       "/blog/posts/world-map-outbreaks-2026/index.html",
-      "/blog/posts/maps-flow-tutorial/index.html",
-      "/blog/posts/vietnam-rainfall-ridgeline-plot/index.html",
       "/blog/posts/germany-persons-seeking-protection-stacked-area-chart/index.html",
       "/blog/posts/population-pyramid-mexico-crime/index.html",
       "/blog/posts/cambodia-acceptability-violence-dot-plot/index.html",
@@ -45,7 +42,6 @@
       "/blog/posts/hdx-tags-to-outbreaks-data/index.html",
       "/blog/posts/visualizing-conflict-lake-chad-basin/index.html",
       "/blog/posts/spi_somalia_visualization/index.html",
-      "/blog/posts/pca-dalenius-hodges-to-create-social-gap-levels/index.html",
       "/blog/posts/spi_somalia/index.html",
       "/blog/posts/estimating-envipe-prevalence/index.html",
       "/blog/posts/waffle-chart-disease-outbreaks/index.html"
@@ -54,7 +50,6 @@
   {
     "listing": "/blog/index-es.html",
     "items": [
-      "/blog/posts-es/chart-area-sudan-idmc/index.html",
       "/blog/posts-es/germany-persons-seeking-protection-stacked-area-chart/index.html",
       "/blog/posts-es/population-pyramid-mexico-crime/index.html",
       "/blog/posts-es/cambodia-acceptability-violence-dot-plot/index.html",
