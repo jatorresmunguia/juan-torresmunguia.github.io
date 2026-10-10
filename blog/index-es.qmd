@@ -34,7 +34,7 @@ format:
 ```{=html}
 <div style="text-align: right; margin-bottom: 1em; position: relative; display: inline-block; font-size:0.8em;">
   <button id="langButton" onclick="toggleDropdown()" style="padding:4px 8px; font-size:0.8em; width:150px; display:flex; align-items:center; justify-content:center;">
-    Español ▼
+    Versión en Español ▼
   </button>
   <ul id="langDropdown" style="display:none; list-style:none; margin:0; padding:0; position:absolute; right:0; background:#fff; border:1px solid #ccc; z-index:1000; width:150px;">
     <li id="lang-en" style="padding:4px 8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.8em;" onclick="window.location.href='index.html'">
@@ -73,10 +73,10 @@ const enOption = document.getElementById("lang-en");
 const esOption = document.getElementById("lang-es");
 
 if (window.location.href.includes("index-es.html")) {
-  langButton.innerHTML = 'Español ▼';
+  langButton.innerHTML = 'Versión en Español ▼';
   esOption.classList.add("selected-lang");
 } else {
-  langButton.innerHTML = 'English ▼';
+  langButton.innerHTML = 'Version in English ▼';
   enOption.classList.add("selected-lang");
 }
 </script>
