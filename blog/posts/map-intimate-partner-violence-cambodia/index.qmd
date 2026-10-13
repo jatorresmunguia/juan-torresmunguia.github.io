@@ -5,6 +5,7 @@ author:
  - name: 
     given: Juan Armando 
     family: Torres Munguía
+doi: https://doi.org/10.59350/xc58v-hjg76
 date: "2025-05-10"
 categories: 
  - data visualization

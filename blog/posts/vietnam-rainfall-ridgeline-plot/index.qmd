@@ -5,6 +5,7 @@ author:
  - name: 
     given: Juan Armando 
     family: Torres Munguía
+doi: https://doi.org/10.59350/jwabm-b4h40
 date: "2025-09-15"
 categories: 
  - data visualization
@@ -296,16 +297,16 @@ ggplot(aes(x = rainfall,
 
   )
 
-# showtext_opts(dpi = 320) 
+#showtext_opts(dpi = 320) 
 # ggsave(
-#  "rainfall-vietnam-ridgeline_gradient.png",
-#  dpi = 320,
-#  width = 15,
-#  height = 11,
-#  units = "in"
-# )
+#   "rainfall-vietnam-ridgeline_gradient.png",
+#   dpi = 320,
+#   width = 15,
+#   height = 11,
+#   units = "in"
+#  )
 # showtext_auto(FALSE)
 
 ```
 
-![](rainfall-vietnam-ridgeline_gradient.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}
+![](rainfall-vietnam-ridgeline-gradient.png){width=100% style="margin-top: 0px; margin-bottom: 0px;".lightbox}

@@ -1732,14 +1732,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     \{Waffle\} and \{Ggplot2\} Libraries in {R?}},
   date = {2026-02-14},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/},
-  doi = {https://doi.org/10.59350/6ek9t-j8s96},
+  doi = {https://doi.org/10.59350/bwsfe-gd984},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas">
 <div class="">Torres Munguía, J. A. How to build a waffle
 chart with circle-shaped tiles using {waffle} and {ggplot2} libraries in
 R? <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks-2025/</a>
-(2026) doi:<a href="https://doi.org/10.59350/6ek9t-j8s96">https://doi.org/10.59350/6ek9t-j8s96</a>.</div>
+(2026) doi:<a href="https://doi.org/10.59350/bwsfe-gd984">https://doi.org/10.59350/bwsfe-gd984</a>.</div>
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>
@@ -4965,13 +4965,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     Pandemic- and Epidemic-Prone Disease Outbreaks in 2025},
   date = {2026-02-08},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/},
+  doi = {https://doi.org/10.59350/xe5y3-ejw91},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2026" class="csl-entry quarto-appendix-citeas">
 <div class="">Torres Munguía, J. A. Designing a map to
 visualize the geographic distribution of pandemic- and epidemic-prone
 disease outbreaks in 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/">https://juan-torresmunguia.netlify.app/blog/posts/world-map-outbreaks-2026/</a>
-(2026).</div>
+(2026) doi:<a href="https://doi.org/10.59350/xe5y3-ejw91">https://doi.org/10.59350/xe5y3-ejw91</a>.</div>
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>
@@ -6573,33 +6574,33 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># showtext_opts(dpi = 320) </span></span>
+font-style: inherit;">#showtext_opts(dpi = 320) </span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ggsave(</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  "rainfall-vietnam-ridgeline_gradient.png",</span></span>
+font-style: inherit;">#   "rainfall-vietnam-ridgeline_gradient.png",</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  dpi = 320,</span></span>
+font-style: inherit;">#   dpi = 320,</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  width = 15,</span></span>
+font-style: inherit;">#   width = 15,</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  height = 11,</span></span>
+font-style: inherit;">#   height = 11,</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  units = "in"</span></span>
+font-style: inherit;">#   units = "in"</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># )</span></span>
+font-style: inherit;">#  )</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># showtext_auto(FALSE)</span></span></code></pre></div></div>
 </div>
-<p><a href="rainfall-vietnam-ridgeline_gradient.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/rainfall-vietnam-ridgeline_gradient.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
+<p><a href="rainfall-vietnam-ridgeline-gradient.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/rainfall-vietnam-ridgeline-gradient.png" class="img-fluid" style="margin-top: 0px; margin-bottom: 0px;;width:100.0%"></a></p>
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{torres_munguía2025,
@@ -6608,11 +6609,13 @@ font-style: inherit;"># showtext_auto(FALSE)</span></span></code></pre></div></d
     {Vietnam}},
   date = {2025-09-15},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/},
+  doi = {https://doi.org/10.59350/jwabm-b4h40},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Ridgeline Plots to Study
-Subnational Rainfall Patterns in Vietnam.”</span> September 15, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/">https://juan-torresmunguia.netlify.app/blog/posts/vietnam-rainfall-ridgeline-plot/</a>.
+Subnational Rainfall Patterns in Vietnam.”</span> September 15, 2025.
+https://doi.org/<a href="https://doi.org/10.59350/jwabm-b4h40">https://doi.org/10.59350/jwabm-b4h40</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>rainfall</category>
@@ -7907,12 +7910,13 @@ font-style: inherit;"># Turn off the showtext functionality</span></span></code>
     Changed over Time?},
   date = {2025-08-01},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/},
+  doi = {https://doi.org/10.59350/s25t4-m5z85},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How Has the Number of Persons
 Seeking Protection in Germany Changed over Time?”</span> August 1, 2025.
-<a href="https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/">https://juan-torresmunguia.netlify.app/blog/posts/germany-persons-seeking-protection-stacked-area-chart/</a>.
+https://doi.org/<a href="https://doi.org/10.59350/s25t4-m5z85">https://doi.org/10.59350/s25t4-m5z85</a>.
 </div></div></section></div> ]]></description>
   <category>data visualizatin</category>
   <category>persons seeking protection</category>
@@ -9249,12 +9253,13 @@ font-style: inherit;"># Turn off the showtext functionality</span></span></code>
     Victimization by Age and Sex in {Mexico}},
   date = {2025-07-14},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/},
+  doi = {https://doi.org/10.59350/2s4kp-vg312},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Creating a Population Pyramid
 to Visualize Crime Victimization by Age and Sex in Mexico.”</span> July
-14, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/">https://juan-torresmunguia.netlify.app/blog/posts/population-pyramid-mexico-crime/</a>.
+14, 2025. https://doi.org/<a href="https://doi.org/10.59350/2s4kp-vg312">https://doi.org/10.59350/2s4kp-vg312</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>official statistics</category>
@@ -10423,12 +10428,13 @@ font-style: inherit;">)</span> </span></code></pre></div></div>
     {Cambodia} Between 2005 and 2009},
   date = {2025-06-18},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/},
+  doi = {https://doi.org/10.59350/md9gf-9px76},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“A Dot Plot of Public
 Acceptability of Domestic Violence in Cambodia Between 2005 and
-2009.”</span> June 18, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/">https://juan-torresmunguia.netlify.app/blog/posts/cambodia-acceptability-violence-dot-plot/</a>.
+2009.”</span> June 18, 2025. https://doi.org/<a href="https://doi.org/10.59350/md9gf-9px76">https://doi.org/10.59350/md9gf-9px76</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>domestic violence</category>
@@ -10858,7 +10864,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </table>
 </div>
 </div>
-<p>Now, we load geographical data of the administrative division of Cambodia. These data are obtained from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile <code>.shp</code> and is available <a href="https://data.humdata.org/dataset/cod-ab-khm">here</a> in a zip file named <code>som_adm_ocha_20250108_AB_SHP.zip</code>. I downloaded this file and located it in <code>/khmadm_gov_20181004_ab_shp</code> folder.</p>
+<p>Now, we load geographical data of the administrative division of Cambodia. These data are obtained from the <a href="https://data.humdata.org/">Humanitarian Data Exchange (HDX) initiative</a> of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA). The information comes as a shapefile <code>.shp</code> and is available <a href="https://data.humdata.org/dataset/cod-ab-khm">here</a> in a zip file named <code>khm_admbnda_adm1_gov_20181004.zip</code>. I downloaded this file and located it in <code>/khmadm_gov_20181004_ab_shp</code> folder.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
@@ -12469,12 +12475,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     Violence {(IPV)} in {Cambodia}},
   date = {2025-05-10},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/},
+  doi = {https://doi.org/10.59350/xc58v-hjg76},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Three Maps to Examine the
 Prevalence of Intimate Partner Violence (IPV) in Cambodia.”</span> May
-10, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/">https://juan-torresmunguia.netlify.app/blog/posts/map-intimate-partner-violence-cambodia/</a>.
+10, 2025. https://doi.org/<a href="https://doi.org/10.59350/xc58v-hjg76">https://doi.org/10.59350/xc58v-hjg76</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>intimate partner violence (IPV)</category>
@@ -12794,11 +12801,11 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/un-agencies-region-classification-for-country.xlsx?sfvrsn=289af35f_3]
-  Date: 2025-04-28 06:21
+  Date: 2026-10-13 18:29
   Status: 200
   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
   Size: 28.9 kB
-&lt;ON DISK&gt;  C:\Users\jator\AppData\Local\Temp\RtmpiGD1DX\file990423923f25.xlsx</code></pre>
+&lt;ON DISK&gt;  C:\Users\jator\AppData\Local\Temp\Rtmpi8kfwe\file89305d9d2ebd.xlsx</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -13338,11 +13345,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     {Hashtags}},
   date = {2025-03-26},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/},
+  doi = {https://doi.org/10.59350/0dt7g-rr206},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Working with Humanitarian
-Exchange Language (HXL) Hashtags.”</span> March 26, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/">https://juan-torresmunguia.netlify.app/blog/posts/hdx-tags-to-outbreaks-data/</a>.
+Exchange Language (HXL) Hashtags.”</span> March 26, 2025.
+https://doi.org/<a href="https://doi.org/10.59350/0dt7g-rr206">https://doi.org/10.59350/0dt7g-rr206</a>.
 </div></div></section></div> ]]></description>
   <category>data management</category>
   <category>Humanitarian Data Exchange</category>
@@ -15872,7 +15881,7 @@ font-style: inherit;">)</span></span>
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using ggplot2. It includes the ne_countries function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.</p>
+<p>We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using {ggplot2}. It includes the <code>ne_countries</code> function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -16214,7 +16223,7 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></p>
+<figure class="figure"><p><a href="lake-chad-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></a></p>
 </figure>
 </div>
 
@@ -16225,11 +16234,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     Shapefiles},
   date = {2025-03-09},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/},
+  doi = {https://doi.org/10.59350/cpzt6-efs07},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Visualizing Armed Conflict
-Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/">https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/</a>.
+Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025.
+https://doi.org/<a href="https://doi.org/10.59350/cpzt6-efs07">https://doi.org/10.59350/cpzt6-efs07</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>armed conflict</category>
@@ -17671,12 +17682,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
     {Precipitation} {Index} {(SPI)} for Drought Analysis},
   date = {2025-02-14},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/},
+  doi = {https://doi.org/10.59350/4c24v-c9z61},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
 the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
-February 14, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia_visualization/</a>.
+February 14, 2025. https://doi.org/<a href="https://doi.org/10.59350/4c24v-c9z61">https://doi.org/10.59350/4c24v-c9z61</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>drought</category>
@@ -19466,12 +19478,13 @@ font-style: inherit;"># Turn off the showtext functionality</span></span></code>
     {Precipitation} {Index} {(SPI)} for Drought Analysis},
   date = {2025-02-08},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/},
+  doi = {https://doi.org/10.59350/v1x6c-fv074},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“How to Compute and Visualize
 the Standardized Precipitation Index (SPI) for Drought Analysis.”</span>
-February 8, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/">https://juan-torresmunguia.netlify.app/blog/posts/spi_somalia/</a>.
+February 8, 2025. https://doi.org/<a href="https://doi.org/10.59350/v1x6c-fv074">https://doi.org/10.59350/v1x6c-fv074</a>.
 </div></div></section></div> ]]></description>
   <category>data analysis</category>
   <category>drought</category>
@@ -20663,11 +20676,13 @@ font-style: inherit;"># Apply bootstrap theme to the table</span></span></code><
     {ENVIPE}},
   date = {2025-01-27},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/},
+  doi = {https://doi.org/10.59350/a1rrg-n4y36},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“Using a Tidy Approach in R to
-Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/">https://juan-torresmunguia.netlify.app/blog/posts/estimating-envipe-prevalence/</a>.
+Analyze Mexico’s 2024 ENVIPE.”</span> January 27, 2025.
+https://doi.org/<a href="https://doi.org/10.59350/a1rrg-n4y36">https://doi.org/10.59350/a1rrg-n4y36</a>.
 </div></div></section></div> ]]></description>
   <category>data analysis</category>
   <category>official statistics</category>
@@ -21968,11 +21983,12 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   title = {A Waffle Chart of Disease Outbreaks in the World},
   date = {2025-01-12},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/},
+  doi = {https://doi.org/10.59350/kg492-0rv24},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas">
 Torres Munguía, Juan Armando. 2025. <span>“A Waffle Chart of Disease
-Outbreaks in the World.”</span> January 12, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/">https://juan-torresmunguia.netlify.app/blog/posts/waffle-chart-disease-outbreaks/</a>.
+Outbreaks in the World.”</span> January 12, 2025. https://doi.org/<a href="https://doi.org/10.59350/kg492-0rv24">https://doi.org/10.59350/kg492-0rv24</a>.
 </div></div></section></div> ]]></description>
   <category>data visualization</category>
   <category>disease outbreaks</category>

@@ -73,7 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-91e21551b20a7b55b1ec73757822e3b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -200,6 +203,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
     
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/https://doi.org/10.59350/cpzt6-efs07">https://doi.org/10.59350/cpzt6-efs07</a>
+      </p>
+    </div>
+  </div>
   </div>
   
 
@@ -577,7 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#ECEFF1"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using ggplot2. It includes the ne_countries function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.</p>
+<p>We create a zoomed-in map of the Lake Chad Basin inset within the African continent, using {ggplot2}. It includes the <code>ne_countries</code> function from the {rnaturalearth} package to retrieve the map of Africa. The map of the Lake Chad Basin is overlaid on top of Africa, and a rectangle is drawn to highlight the region of interest (Lake Chad Basin). The map is customized with a white background and black borders.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fetch African countries map from the rnaturalearth package</span></span>
 <span><span class="va">africa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_countries.html">ne_countries</a></span><span class="op">(</span>continent <span class="op">=</span> <span class="st">"Africa"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
@@ -649,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></p>
+<figure class="figure"><p><a href="lake-chad-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="lake-chad-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="margin-top: 0px; margin-bottom: 0px;;width:30.0%"></a></p>
 </figure>
 </div>
 
@@ -660,11 +671,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Shapefiles},
   date = {2025-03-09},
   url = {https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/},
+  doi = {https://doi.org/10.59350/cpzt6-efs07},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-torres_munguía2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Torres Munguía, Juan Armando. 2025. <span>“Visualizing Armed Conflict
-Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025. <a href="https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/">https://juan-torresmunguia.netlify.app/blog/posts/visualizing-conflict-lake-chad-basin/</a>.
+Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025.
+https://doi.org/<a href="https://doi.org/10.59350/cpzt6-efs07">https://doi.org/10.59350/cpzt6-efs07</a>.
 </div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1083,7 +1096,38 @@ Using ACLED’s Data and HDX Shapefiles.”</span> March 9, 2025. <a href="https
 <p>Licensed under <br><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i><i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons Zero v1.0 Universal</a></p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 </body></html>
