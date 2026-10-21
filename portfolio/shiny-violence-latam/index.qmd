@@ -1,0 +1,35 @@
+---
+title: "A Shiny Dashboard on violent events in Latin America and the Caribbean | 2018-2026"
+author: 
+ - name: 
+    given: Juan Armando 
+    family: Torres Munguía
+date: "2026-10-20"
+categories: 
+ - data visualization
+ - violence
+image: "screenshot-shiny-violence.png"
+title-block-banner: false
+citation: true
+execute: 
+  freeze: true
+format: 
+  html: 
+    page-layout: article
+comments:
+  utterances: 
+    repo: jatorresmunguia/juan-torresmunguia.github.io
+---
+
+This interactive dashboard presents data on violent events recorded by [ACLED](https://acleddata.com/) across Latin America and the Caribbean. The dashboard was developed by me as part of a project for the [UNODC Centre of Excellence for Statistical Information on Government, Crime, Victimization and Justice](https://www.cdeunodc.inegi.org.mx/unodc/index.htm).
+
+:::{=html}
+<iframe src="https://j-torresmunguia.shinyapps.io/dashboard_latam/" 
+        width="100%" height="600px" style="border: none;"
+        title="Shiny dashboard on disease outbreaks 1996-2024">
+</iframe>
+:::
+
+Access the full interactive dashboard on <a href="https://j-torresmunguia.shinyapps.io/dashboard_latam/" target="_blank">Shinyapps.io</a>.
+
+

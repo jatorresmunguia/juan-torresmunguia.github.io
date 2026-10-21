@@ -419,5 +419,8 @@
   },
   "blog/posts-es/chart-area-sudan-idmc/index.qmd": {
     "index.html": "6517cb4a"
+  },
+  "portfolio/shiny-violence-latam/index.qmd": {
+    "index.html": "9c6e8e2f"
   }
 }
