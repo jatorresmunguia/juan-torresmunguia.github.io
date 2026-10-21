@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Data Art &amp; Science Blog – Juan TORRES MUNGUÍA |&gt; HUMANITARIAN DATA STATISTICIAN</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -31,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-795e9e8eca1e12b12abcb09a27409631.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-11098932bb39e8ccbcedcb139d3d0c2d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-91e21551b20a7b55b1ec73757822e3b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5f778f7ca05cb19ac41697506c9797aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -98,7 +103,7 @@ background-size: cover;
 <meta name="google-site-verification" content="DAMrkH9t8X7ImfV091u4zhmn_J6pAGoYFQssCxeZptA">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -210,10 +215,7 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Data Art &amp; Science Blog</h1>
-            <p class="subtitle lead">Exploring the art and science of working with development and humanitarian data
-</p><div style="margin-top:1em; font-size:0.8em; text-align:right;">
-<p><strong>Photo:</strong> <em>The Creation of Adam</em> (1508–1512) by Michelangelo. Via <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>.</p>
-</div><p></p>
+            <p class="subtitle lead">Exploring the art and science of working with development and humanitarian data <span style="display:block; margin-top:0.5em; font-size:0.65em; text-align:right;"> <span style="font-weight:bold;">Photo:</span> <em>The Creation of Adam</em> (1508–1512) by Michelangelo. Via <a href="https://commons.wikimedia.org/wiki/File:Creation_of_Adam_Michelangelo.jpg" style="color:#50a5d2;">Wikimedia Commons</a>. </span></p>
           </div>
 
     
@@ -610,11 +612,6 @@ Using {ggplot2} in R to create a waffle chart to visualize disease outbreaks in 
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

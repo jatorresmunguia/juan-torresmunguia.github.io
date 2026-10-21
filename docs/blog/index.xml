@@ -9,7 +9,7 @@
 <link>https://juan-torresmunguia.netlify.app/blog/</link>
 <atom:link href="https://juan-torresmunguia.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Exploring the art and science of working with development and humanitarian data</description>
-<generator>quarto-1.8.27</generator>
+<generator>quarto-1.10.19</generator>
 <lastBuildDate>Sat, 14 Feb 2026 06:00:00 GMT</lastBuildDate>
 <item>
   <title>How to build a waffle chart with circle-shaped tiles using {waffle} and {ggplot2} libraries in R?</title>
