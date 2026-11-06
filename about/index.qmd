@@ -33,7 +33,7 @@ I hold a PhD in Applied Statistics and Empirical Methods from the [Georg-August-
 
 Before pursuing my doctoral studies, I earned a bachelor's degree in Economics from the [Universidad Autónoma de Coahuila](https://www.uadec.mx/) and a master's degree in Applied Statistics from the [Tecnológico de Monterrey](https://tec.mx/en/our-faculty/ecsg).
 
-Currently, I also contribute as a data analyst and researcher to the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/) of the [Norwegian Refugee Council](https://www.nrc.no/), where I work on quantifying the socio-economic impacts of forced displacement across more than 200 countries and territories worldwide.
+Currently, I also contribute as a Research Data Analyst to the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/) of the [Norwegian Refugee Council](https://www.nrc.no/), where I work on quantifying the socio-economic impacts of forced displacement across more than 200 countries and territories worldwide.
 
 </div>
 
@@ -42,11 +42,11 @@ Currently, I also contribute as a data analyst and researcher to the [Internal D
 <br>
 <span style="font-weight:700; font-size:1.25em;"> A glimpse of my research</span>
 
-My research integrates statistical methods, machine learning algorithms, and data science techniques to better understand how individuals, families, and communities experience, adapt to, and cope with phenomena such as armed conflict, violence, climate change, poverty, and forced displacement.
+My research integrates statistical models, machine learning algorithms, and data science techniques to advance our understanding of _how individuals, families, and communities experience, adapt to, and cope with complex phenomena such as armed conflict, violence, climate change, poverty, and forced displacement_. Through the application of cutting-edge methods to these phenomena, my work contributes to an emerging scientific field that I refer to as **_computational humanitarian research_**.
 
 Another line of my research focuses on enhancing knowledge of [disease outbreaks](https://jatorresmunguia.github.io/disease-outbreaks-data.github.io/) by improving the availability and quality of data and promoting analyses to identify geospatial trends and patterns worldwide.
 
-Recently, I have applied boosting structured additive regression models to predict and describe _whether_, _how_, _where_, and _when_ development and humanitarian crises may occur in the future. Feel free to [send me a message](../contact/index.qmd) if you are interested in this line of work.
+More recently, I have applied boosting for structured additive regression models, which combine model interpretability with predictive performance, to investigate development and humanitarian outcomes associated with armed conflict and climate change. Three main research questions guide this work: **(1)** _How do armed conflict and climate change jointly contribute to the emergence of humanitarian [_polycrises_](https://en.wikipedia.org/wiki/Polycrisis)?_ **(2)** _Does the interaction between armed conflict and climate change disproportionately expose certain population groups to humanitarian crises?_ and **(3)** _How can we predict whether, how, where, and when these polycrises may occur in the future?_. Feel free to [send me a message](../contact/index.qmd) if you are interested in this line of work.
 
 Check out my [publications](../publications/index.qmd) to learn more about my research.
 
